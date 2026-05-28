@@ -40,6 +40,7 @@ delivery-pilot-template/
 ├── .gitignore
 ├── .env.example
 ├── agents.md             # Agent rules & persona instructions
+├── prompts.md            # Prompt log & PM framework
 ├── claude.md
 ├── kilocode.md
 ├── copilot.md
@@ -81,6 +82,7 @@ delivery-pilot-template/
 - Every significant change must be followed by `git commit` and `git push`
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
 - Leverage Gemini's multimodal capabilities for image analysis in `3_Simulation`
+- **Record every prompt** in `prompts.md` — log date, agent, and purpose for each prompt given
 
 ### Code Standards
 - Use modern CSS (Flexbox/Grid) for responsive design

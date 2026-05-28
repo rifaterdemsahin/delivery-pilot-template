@@ -40,6 +40,7 @@ delivery-pilot-template/
 ├── .gitignore
 ├── .env.example
 ├── agents.md             # Agent rules & persona instructions
+├── prompts.md            # Prompt log & PM framework
 ├── claude.md             # This file
 ├── kilocode.md
 ├── copilot.md
@@ -80,6 +81,7 @@ delivery-pilot-template/
 - When adding files, place them in the appropriate numbered folder
 - Every significant change must be followed by `git commit` and `git push`
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
+- **Record every prompt** in `prompts.md` — log date, agent, and purpose for each prompt given
 
 ### Code Standards
 - Use modern CSS (Flexbox/Grid) for responsive design
