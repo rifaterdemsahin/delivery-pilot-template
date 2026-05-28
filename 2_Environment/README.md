@@ -37,11 +37,11 @@ docker run -p 6333:6333 qdrant/qdrant
 
 - **Embedding model:** `nomic-embed-text` (4096 dimensions)
 - **Vector DB:** Qdrant
-- **Secrets:** Managed via Doppler (see `.env.example`)
+- **Secrets:** Managed via Azure Key Vault (see `.env.example`)
 
 ## Rules
 
-- All secrets go to Doppler — never commit to git
+- All secrets go to Azure Key Vault — never commit to git
 - Document every tool version used (reproducibility)
 - Keep setup guides tested and working 🛠
 
@@ -53,5 +53,5 @@ docker run -p 6333:6333 qdrant/qdrant
 - [ ] Windows setup guide is complete and tested
 - [ ] Ollama `nomic-embed-text` model pulls successfully
 - [ ] Qdrant starts and responds on port 6333
-- [ ] Doppler project created and secrets synced
+- [ ] Azure Key Vault created and secrets synced
 - [ ] Architecture diagram renders via Mermaid

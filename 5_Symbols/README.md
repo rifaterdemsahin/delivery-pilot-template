@@ -36,7 +36,7 @@ This folder contains the **core source code and implementation files**. Everythi
 
 - **Never** store secrets in this folder
 - Use `.env.example` in root to document required variables
-- Load secrets at runtime via Doppler
+- Load secrets at runtime via Azure Key Vault
 
 ## Rules
 

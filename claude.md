@@ -39,7 +39,7 @@ delivery-pilot-template/
 ├── sitemap.xml
 ├── .gitignore
 ├── .env.example
-├── aigent.md             # Agent rules & persona instructions
+├── agents.md             # Agent rules & persona instructions
 ├── claude.md             # This file
 ├── kilocode.md
 ├── copilot.md
@@ -52,7 +52,7 @@ delivery-pilot-template/
 
 ### Infrastructure
 - **Static Hosting:** GitHub Pages via GitHub Actions
-- **Secrets Management:** Doppler (never commit secrets to git)
+- **Secrets Management:** Azure Key Vault (never commit secrets to git)
 - **AI Stack:** Qdrant + Ollama (`nomic-embed-text`, 4096 dimensions)
 - **Backend:** Fly.io for Python services
 - **CI/CD:** GitHub Actions
@@ -92,10 +92,16 @@ delivery-pilot-template/
 - Every folder must have a Testing Checklist with an embedded YouTube video
 
 ### Secrets & Environment
-- Use Doppler for all secrets: [dashboard.doppler.com](https://dashboard.doppler.com/workplace/5ccb59c6d72db414f3e7/getting-started)
-- Create matching project name in Doppler
+- Use Azure Key Vault for all secrets — enterprise-grade security at low cost with pay-per-operation pricing
+- Create a matching Key Vault per environment (dev/staging/prod) in Azure Portal
 - Never push secrets to GitHub
 - Reference `.env.example` for required variables
+
+#### Why Azure Key Vault?
+- **Security:** FIPS 140-2 validated HSMs, RBAC + access policies, automatic key rotation, audit logs via Azure Monitor
+- **Low cost:** ~$0.03/10,000 operations (Standard tier); free tier available for dev/test; no per-seat licensing
+- **Compliance:** Meets SOC 2, ISO 27001, HIPAA, GDPR requirements out of the box
+- **Integration:** Native GitHub Actions support via `azure/login` + `Azure/get-keyvault-secrets`; works with Fly.io via env vars
 
 ---
 
@@ -113,6 +119,6 @@ delivery-pilot-template/
 - [ ] Debug mode toggles via cookie
 - [ ] Search autocomplete functional
 - [ ] All markdown files render via `markdown_renderer.html`
-- [ ] Secrets managed via Doppler (not in git)
+- [ ] Secrets managed via Azure Key Vault (not in git)
 - [ ] `index.html` links to GitHub, LinkedIn, YouTube
 - [ ] README.md contains GitHub Pages URL

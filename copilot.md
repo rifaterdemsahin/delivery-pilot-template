@@ -39,7 +39,7 @@ delivery-pilot-template/
 ├── sitemap.xml
 ├── .gitignore
 ├── .env.example
-├── aigent.md             # Agent rules & persona instructions
+├── agents.md             # Agent rules & persona instructions
 ├── claude.md
 ├── kilocode.md
 ├── copilot.md            # This file
@@ -52,7 +52,7 @@ delivery-pilot-template/
 
 ### Infrastructure
 - **Static Hosting:** GitHub Pages via GitHub Actions
-- **Secrets Management:** Doppler (never commit secrets to git)
+- **Secrets Management:** Azure Key Vault (never commit secrets to git)
 - **AI Stack:** Qdrant + Ollama (`nomic-embed-text`, 4096 dimensions)
 - **Backend:** Fly.io for Python services
 - **CI/CD:** GitHub Actions
@@ -93,8 +93,8 @@ delivery-pilot-template/
 - Every folder must have a Testing Checklist with an embedded YouTube video
 
 ### Secrets & Environment
-- Use Doppler for all secrets: [dashboard.doppler.com](https://dashboard.doppler.com/workplace/5ccb59c6d72db414f3e7/getting-started)
-- Create matching project name in Doppler
+- Use Azure Key Vault for all secrets — enterprise-grade security at low cost with pay-per-operation pricing
+- Create a matching Key Vault per environment (dev/staging/prod) in Azure Portal
 - Never push secrets to GitHub
 - Reference `.env.example` for required variables
 
@@ -114,6 +114,6 @@ delivery-pilot-template/
 - [ ] Debug mode toggles via cookie
 - [ ] Search autocomplete functional
 - [ ] All markdown files render via `markdown_renderer.html`
-- [ ] Secrets managed via Doppler (not in git)
+- [ ] Secrets managed via Azure Key Vault (not in git)
 - [ ] `index.html` links to GitHub, LinkedIn, YouTube
 - [ ] README.md contains GitHub Pages URL

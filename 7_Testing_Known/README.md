@@ -70,7 +70,7 @@ This folder is the **validation layer** of the project. Every hypothesis, OKR, a
 - [ ] Each folder has a Testing Checklist with YouTube embed
 
 ### Integrations
-- [ ] Secrets managed via Doppler (zero secrets in git)
+- [ ] Secrets managed via Azure Key Vault (zero secrets in git)
 - [ ] Qdrant responds on port 6333
 - [ ] Ollama `nomic-embed-text` model available
 - [ ] Fly.io backend deploys successfully
