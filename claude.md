@@ -59,13 +59,19 @@ delivery-pilot-template/
 - **CI/CD:** GitHub Actions
 
 ### Navigation & UI Rules
-- Unified responsive menu across all pages (Flexbox/Grid)
-- Menu contains links to all 7 folders (no direct link to `markdown_renderer.html`)
-- Search with autocomplete in the menu
-- Debug mode toggleable via `debug=true` cookie
-- Debug button enables top navigation menu showing all 7 stages
-- Content menu (Menu 2) for non-framework page content
-- Menus read from JSON config (reusable)
+
+**Two menus required:**
+
+1. **Project Menu** (always visible) — Links and functionality for the project being delivered. This is what end-users see.
+2. **Debug Menu** (hidden by default) — All delivery-pilot-template framework links (7 stages, agent files, tools). Only shown when the user clicks the **debug button** at the **bottom-right corner** of the page.
+
+**Menu behavior:**
+- Debug button is always visible at bottom-right (small icon, e.g., bug/gear)
+- Clicking debug button toggles the Debug Menu on/off
+- Debug mode persists via `debug=true` cookie
+- Both menus use Flexbox/Grid, responsive, and read from JSON config
+- Search with autocomplete in the Debug Menu
+- No direct link to `markdown_renderer.html`
 
 ### Social Links (required in `index.html`)
 - GitHub Repository link
@@ -120,6 +126,8 @@ delivery-pilot-template/
 - [ ] GitHub Pages enabled and building via GitHub Actions
 - [ ] All 7 folders exist with content
 - [ ] Navigation menu works on mobile
+- [ ] Project Menu (always visible) shows project-specific links
+- [ ] Debug Menu (bottom-right button) shows all 7 stages + agent files
 - [ ] Debug mode toggles via cookie
 - [ ] Search autocomplete functional
 - [ ] All markdown files render via `markdown_renderer.html`

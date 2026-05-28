@@ -27,6 +27,7 @@ This folder documents the **setup, constraints, and operating context** of the p
 | `cloudflare_workers.md` | Edge compute — auth, routing, caching, rate limiting |
 | `fly_io.md` | Backend hosting — Python APIs, databases, WebSockets |
 | `github_pages.md` | Frontend static hosting — docs, SPAs, landing pages |
+| `navigation.md` | Two-menu system: Project Menu + Debug Menu (bottom-right) |
 
 ## AI Stack Setup
 

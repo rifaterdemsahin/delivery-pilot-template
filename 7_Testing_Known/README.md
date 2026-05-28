@@ -56,12 +56,13 @@ This folder is the **validation layer** of the project. Every hypothesis, OKR, a
 - [ ] `index.html` loads correctly from Pages URL
 
 ### Navigation & UI
-- [ ] Unified menu present on all pages
-- [ ] Menu works on mobile (375px viewport)
-- [ ] Search autocomplete returns relevant results
-- [ ] Debug mode toggles via `debug=true` cookie
-- [ ] Debug navigation shows all 7 stage links
-- [ ] Content menu (Menu 2) links all non-framework pages
+- [ ] Project Menu (always visible) shows project-specific links
+- [ ] Debug button visible at bottom-right corner
+- [ ] Debug Menu toggles on/off when debug button is clicked
+- [ ] Debug Menu shows all 7 stages + agent files
+- [ ] Debug mode persists via `debug=true` cookie
+- [ ] Search autocomplete works in Debug Menu
+- [ ] Both menus work on mobile (375px viewport)
 
 ### Content & Structure
 - [ ] All 7 folders exist with populated READMEs
