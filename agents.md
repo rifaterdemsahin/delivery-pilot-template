@@ -15,7 +15,7 @@ This file defines how AI agents interact with the **Delivery Pilot Template** pr
 
 - Always follow the 7-stage folder structure (`1_Real_Unknown` through `7_Testing_Known`)
 - Never commit secrets — use Azure Key Vault for all sensitive values
-- Every significant change must be committed and pushed
+- **After every command, commit and push** — do not batch changes; each step gets its own commit
 - Place files in the correct numbered folder based on their stage
 - Use emojis for scannability in documentation
 - **Record every prompt** — all prompts given to agents must be logged in `prompts.md` with date, agent name, and purpose

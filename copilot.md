@@ -79,7 +79,7 @@ delivery-pilot-template/
 ### Behavior Guidelines
 - Always follow the 7-stage structure when creating or organizing content
 - When adding files, place them in the appropriate numbered folder
-- Every significant change must be followed by `git commit` and `git push`
+- **After every command, commit and push** — do not batch changes; each step gets its own commit
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
 - Leverage GitHub-native integrations (Actions, Pages, Issues) wherever possible
 - **Record every prompt** in `prompts.md` — log date, agent, and purpose for each prompt given
