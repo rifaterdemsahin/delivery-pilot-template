@@ -24,6 +24,9 @@ This folder documents the **setup, constraints, and operating context** of the p
 | `roadmap.md` | Project roadmap and milestones |
 | `constraints.md` | Known limitations and constraints |
 | `architecture.md` | System architecture with Mermaid diagrams |
+| `cloudflare_workers.md` | Edge compute — auth, routing, caching, rate limiting |
+| `fly_io.md` | Backend hosting — Python APIs, databases, WebSockets |
+| `github_pages.md` | Frontend static hosting — docs, SPAs, landing pages |
 
 ## AI Stack Setup
 

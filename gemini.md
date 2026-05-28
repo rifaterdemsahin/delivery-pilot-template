@@ -84,6 +84,7 @@ delivery-pilot-template/
 - Leverage Gemini's multimodal capabilities for image analysis in `3_Simulation`
 - **Record every prompt** in `prompts.md` — log date, agent, and purpose for each prompt given
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
+- **Keep `index.html` at the repo root** — GitHub Pages requires it at the root for the site to work
 
 ### Code Standards
 - Use modern CSS (Flexbox/Grid) for responsive design
