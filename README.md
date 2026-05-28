@@ -24,6 +24,9 @@ This template is the starting point for any new project that uses AI agents (Cla
 
 ## Links
 
+- **GitHub Pages:** [https://rifaterdemsahin.github.io/delivery-pilot-template/](https://rifaterdemsahin.github.io/delivery-pilot-template/)
 - **GitHub:** [delivery-pilot-template](https://github.com/rifaterdemsahin/delivery-pilot-template)
 - **LinkedIn:** [rifaterdemsahin](https://www.linkedin.com/in/rifaterdemsahin/)
 - **YouTube:** [@RifatErdemSahin](https://www.youtube.com/@RifatErdemSahin)
+
+> Example of a live Pages site: [https://rifaterdemsahin.github.io/proxmox/](https://rifaterdemsahin.github.io/proxmox/)

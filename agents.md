@@ -19,6 +19,7 @@ This file defines how AI agents interact with the **Delivery Pilot Template** pr
 - Place files in the correct numbered folder based on their stage
 - Use emojis for scannability in documentation
 - **Record every prompt** — all prompts given to agents must be logged in `prompts.md` with date, agent name, and purpose
+- **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
 
 ## Secrets Management
 

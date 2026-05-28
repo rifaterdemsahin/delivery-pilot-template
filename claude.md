@@ -82,6 +82,7 @@ delivery-pilot-template/
 - **After every command, commit and push** — do not batch changes; each step gets its own commit
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
 - **Record every prompt** in `prompts.md` — log date, agent, and purpose for each prompt given
+- **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
 
 ### Code Standards
 - Use modern CSS (Flexbox/Grid) for responsive design
