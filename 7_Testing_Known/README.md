@@ -48,7 +48,7 @@ This folder is the **validation layer** of the project. Every hypothesis, OKR, a
 
 ## 🧪 Master Testing Checklist
 
-<!-- Embed a relevant YouTube video explaining test-driven development / acceptance testing -->
+[![Test-Driven Development (TDD)](https://img.youtube.com/vi/u6QfIXgjwGQ/0.jpg)](https://www.youtube.com/watch?v=u6QfIXgjwGQ)
 
 ### GitHub Pages & Deployment
 - [ ] GitHub Pages enabled and live
