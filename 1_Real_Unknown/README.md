@@ -31,7 +31,7 @@ This folder captures everything we **don't yet know** — the questions that dri
 
 ## 🧪 Testing Checklist
 
-<!-- Embed a relevant YouTube video explaining problem framing / OKRs -->
+[![OKRs and Problem Framing](https://img.youtube.com/vi/mJB83EZtAjc/0.jpg)](https://www.youtube.com/watch?v=mJB83EZtAjc)
 
 - [ ] Problem statement is clear and specific
 - [ ] OKRs are measurable and time-bound
