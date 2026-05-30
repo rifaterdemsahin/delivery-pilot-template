@@ -44,7 +44,7 @@ This folder is the **honest record** of what went wrong, what was harder than ex
 
 ## 🧪 Testing Checklist
 
-<!-- Embed a relevant YouTube video explaining blameless postmortems / incident reviews -->
+[![Blameless Postmortems & Incident Reviews](https://img.youtube.com/vi/8s81S6UqZcQ/0.jpg)](https://www.youtube.com/watch?v=8s81S6UqZcQ)
 
 - [ ] Error log has at least one real entry from the build
 - [ ] All active workarounds are documented
