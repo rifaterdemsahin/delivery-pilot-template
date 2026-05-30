@@ -90,6 +90,7 @@ delivery-pilot-template/
 - **Record every prompt** in `prompts.md` — log date, agent, and purpose for each prompt given
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
 - **Keep `index.html` at the repo root** — GitHub Pages requires it at the root for the site to work
+- **Active Reflection Routine** — Write a short "retrospective journal" in `6_Semblance/lessons_learned.md` after every milestone.
 
 ### Code Standards
 - Use modern CSS (Flexbox/Grid) for responsive design
