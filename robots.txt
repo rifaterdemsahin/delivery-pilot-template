@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rifaterdemsahin.github.io/delivery-pilot-template/sitemap.xml
