@@ -15,13 +15,21 @@ This file defines how AI agents interact with the **Delivery Pilot Template** pr
 
 - Always follow the 7-stage folder structure (`1_Real_Unknown` through `7_Testing_Known`)
 - Never commit secrets — use Azure Key Vault for all sensitive values
-- **After every command, commit and push** — do not batch changes; each step gets its own commit
-- Place files in the correct numbered folder based on their stage
+- **After every command, commit and push** — do not batch changes; each step gets its own commit. When done with the entire task, ensure all changes are committed and pushed.
+- Place files in the correct numbered folder based on their stage:
+  - **1_Real_Unknown**: Update if there is a new objective or Key Result (OKR) change.
+  - **2_Environment**: Update environment-related files here if there is a change in the environment.
+  - **3_Simulation**: If the abstract UI is updated, create/generate an image and place/mention it here.
+  - **4_Formula**: If there is a new way of working, recipe, or build logic, document it here.
+  - **5_Symbols**: All new source code must be placed here, except for files that must stay in the root folder (e.g., `index.html`, `markdown_renderer.html`).
+  - **6_Semblance**: Document all encountered errors, workarounds, and gap analyses here.
+  - **7_Testing_Known**: Place testing validation, checklists, and proof of working here.
 - Use emojis for scannability in documentation
-- **Record every prompt** — all prompts given to agents must be logged in `prompts.md` with date, agent name, and purpose
+- **Record every prompt** — all prompts given to agents must be logged in `prompts.md` with date, agent name, purpose, and what was done.
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
 - **Keep `index.html` at the repo root** — GitHub Pages requires it at the root for the site to work
 - **Two menus required** — Project Menu (always visible, project-specific) + Debug Menu (bottom-right button, shows 7 stages + agent files). See `2_Environment/navigation.md`
+
 
 ## Secrets Management
 
