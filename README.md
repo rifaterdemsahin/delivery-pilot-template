@@ -14,7 +14,20 @@ This template is the starting point for any new project that uses AI agents (Cla
 6. **Semblance** — Capture errors, workarounds, and lessons learned
 7. **Testing** — Validate everything against the original unknowns
 
+## 🧠 Fitness as a Self-Learning Platform
+
+The 7-stage structure is highly suited to self-learning because it mimics the cognitive steps of learning:
+
+1. **[1_Real_Unknown](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown)** maps to **Active Ignorance** (recognizing what you do not know).
+2. **[2_Environment](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment)** & **[3_Simulation](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/3_Simulation)** map to **Mental Sandbox** (building context and visualizing the system).
+3. **[4_Formula](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/4_Formula)** maps to **Synthesis** (developing recipes, logic, and planning).
+4. **[5_Symbols](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/5_Symbols)** maps to **Execution** (translating theory to reality).
+5. **[6_Semblance](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/6_Semblance)** maps to **Feedback Loop** (documenting mistakes, debugging, active reflection).
+6. **[7_Testing_Known](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/7_Testing_Known)** maps to **Consolidation** (proving outcomes).
+
 ## How to use
+
+
 
 1. Fork or clone this repo
 2. Read `agents.md` for agent coordination rules
