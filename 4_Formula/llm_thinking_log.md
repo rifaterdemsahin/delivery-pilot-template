@@ -224,6 +224,29 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Created `sitemap.xml`.
 - Staged, committed, and pushed each file individually.
 
+---
+
+## 📅 2026-05-30 — Add Self-Learning Platform Features & Rules
+
+### 📥 Input / Task
+- Document how the 7 stages map to cognitive learning steps inside root `README.md`.
+- Add the Active Reflection Routine rule to `agents.md`, `claude.md`, `gemini.md`, `copilot.md`, and `kilocode.md`.
+- Log the prompt in `prompts.md` and document the LLM thinking phase here.
+
+### 💭 Thinking & Reasoning Process
+1. **Requirements Gathering**: The user requested that the cognitive steps mapping of the 7-stage structure (which identifies fitness as a self-learning platform) be mentioned in the README files. Additionally, a new rule forcing retrospective journaling in `6_Semblance/lessons_learned.md` after every milestone needed to be declared across all rule files.
+2. **Execution**:
+   - Modified root `README.md` to explain the cognitive mapping. Verified that line number prefixes from parsing templates were completely scrubbed.
+   - Appended the "Active Reflection Routine" rule under the standard agent instructions in `agents.md`, `claude.md`, `gemini.md`, `copilot.md`, and `kilocode.md`.
+   - Staged, committed, and pushed each modified file to follow the commit-per-task rules.
+3. **Logs Updates**: Appended logs in `prompts.md` and recorded this thinking phase.
+
+### 📤 Outcomes & Decisions
+- Updated root `README.md` with cognitive steps definitions.
+- Appended Active Reflection Routine rules to all agent/rules files.
+- Staged, committed, and pushed all modifications.
+
+
 
 
 
