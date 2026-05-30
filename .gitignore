@@ -1,0 +1,19 @@
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+node_modules/
+jspm_packages/
+web_modules/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Vector DB storage / local caches
+qdrant_storage/
+.ollama/
+.claude/
+.antigravitycli/
