@@ -311,6 +311,26 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Updated `markdown_renderer.html` to support configuration fetching, search autocomplete, and direct GitHub Edit redirection buttons.
 - Staged, committed, and pushed all modifications.
 
+---
+
+## 📅 2026-05-30 — Create dsl.md Domain Specific Language Dictionary
+
+### 📥 Input / Task
+- Create a Domain-Specific Language (DSL) dictionary inside `4_Formula/dsl.md`.
+- Include definitions for Delivery Pilot, cognitive mappings for the 7 stages, two-menu architecture, active reflection routines, and Azure Key Vault configs.
+- Log the prompt in `prompts.md` and document the LLM thinking phase here.
+
+### 💭 Thinking & Reasoning Process
+1. **Requirements Gathering**: Catalog the conceptual terminology and domain words associated with the self-learning delivery framework.
+2. **Template Design**: Compiled a glossary of unique platform terms, architecture terms, and cognitive stages.
+3. **Execution & Commits**: Created `4_Formula/dsl.md`, staged, committed, and pushed it to the repository.
+4. **Logs Updates**: Appended logs in `prompts.md` and registered these steps in `llm_thinking_log.md`.
+
+### 📤 Outcomes & Decisions
+- Created `4_Formula/dsl.md` containing glossary definitions.
+- Staged, committed, and pushed changes.
+
+
 
 
 
