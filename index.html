@@ -698,12 +698,12 @@
   </div>
 
   <script>
-    // 🗃️ Menu Configuration JSON Data
-    const navigationData = {
+    // 🗃️ Menu Configuration Fallback Data
+    let navigationData = {
       projectMenu: [
-        { label: "Home", url: "#" },
-        { label: "Docs", url: "2_Environment/" },
-        { label: "API", url: "4_Formula/" }
+        { label: "Home", url: "index.html" },
+        { label: "Docs", url: "markdown_renderer.html?file=2_Environment/README.md" },
+        { label: "API", url: "markdown_renderer.html?file=4_Formula/README.md" }
       ],
       debugMenu: [
         { label: "1. Real Unknown", url: "1_Real_Unknown/" },
@@ -746,26 +746,47 @@
       const debugLinksList = document.getElementById("debugLinksList");
       const projectMenuContainer = document.getElementById("projectMenu");
 
-      // 1. Build Project Menu
-      projectMenuContainer.innerHTML = "";
-      navigationData.projectMenu.forEach((item, index) => {
-        const link = document.createElement("a");
-        link.href = item.url;
-        link.className = `menu-link ${index === 0 ? 'active' : ''}`;
-        link.textContent = item.label;
-        projectMenuContainer.appendChild(link);
-      });
+      // Load Reusable Menu Configuration
+      fetch("navigation_config.json")
+        .then(res => res.json())
+        .then(data => {
+          navigationData = data;
+          initMenus();
+        })
+        .catch(err => {
+          console.warn("Failed to load navigation config, using local fallback.", err);
+          initMenus();
+        });
 
-      // 2. Build Debug Menu
+      function initMenus() {
+        // 1. Build Project Menu
+        projectMenuContainer.innerHTML = "";
+        navigationData.projectMenu.forEach((item, index) => {
+          const link = document.createElement("a");
+          
+          // Route relative URLs (except Home index.html) through renderer if they are MD files or directories
+          let finalUrl = item.url;
+          if (finalUrl !== "index.html" && !finalUrl.startsWith("http") && !finalUrl.includes("markdown_renderer.html")) {
+            finalUrl = `markdown_renderer.html?file=${finalUrl}`;
+          }
+          
+          link.href = finalUrl;
+          link.className = `menu-link ${index === 0 ? 'active' : ''}`;
+          link.textContent = item.label;
+          projectMenuContainer.appendChild(link);
+        });
+
+        // 2. Build Debug Menu
+        buildDebugMenu();
+      }
+
+      // Build Debug Menu List Items
       function buildDebugMenu(filterText = "") {
         debugLinksList.innerHTML = "";
         const query = filterText.toLowerCase();
 
         navigationData.debugMenu.forEach(item => {
-          // If search active, skip divider
           if (query && item.label === "---") return;
-          
-          // Apply Autocomplete Filtering
           if (query && !item.label.toLowerCase().includes(query)) return;
 
           if (item.label === "---") {
@@ -777,7 +798,14 @@
             li.className = "debug-item";
             
             const a = document.createElement("a");
-            a.href = item.url;
+            
+            // Route relative URLs dynamically through the renderer
+            let finalUrl = item.url;
+            if (finalUrl !== "index.html" && finalUrl !== "divider" && !finalUrl.startsWith("http")) {
+              finalUrl = `markdown_renderer.html?file=${finalUrl}`;
+            }
+            
+            a.href = finalUrl;
             a.className = "debug-link";
             a.innerHTML = `
               <span>${item.label}</span>
@@ -788,9 +816,6 @@
           }
         });
       }
-
-      // Initial Debug list build
-      buildDebugMenu();
 
       // 3. Search Autocomplete Listener
       debugSearch.addEventListener("input", (e) => {
