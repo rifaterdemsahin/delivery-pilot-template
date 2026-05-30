@@ -316,6 +316,28 @@
         padding: 1.5rem;
       }
     }
+
+    .edit-github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+      border: none;
+      color: white;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .edit-github-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+      color: white;
+      opacity: 0.9;
+    }
   </style>
 </head>
 <body>
@@ -326,7 +348,13 @@
         <i class="fa-solid fa-arrow-left"></i>
         <span>Home</span>
       </a>
-      <span class="file-path-badge" id="filePath">loading...</span>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span class="file-path-badge" id="filePath">loading...</span>
+        <a href="#" target="_blank" class="edit-github-btn" id="editGitHubBtn" style="display: none;">
+          <i class="fa-solid fa-pen"></i>
+          <span>Edit on GitHub</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -349,6 +377,11 @@
       <h2 class="debug-menu-title"><i class="fa-solid fa-terminal"></i> Debug Menu</h2>
       <button id="debugClose" style="background:none; border:none; color:white; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
     </div>
+    <!-- Search Box with Autocomplete -->
+    <div class="search-wrapper" style="position: relative; margin-bottom: 1.5rem;">
+      <i class="fa-solid fa-magnifying-glass search-icon" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+      <input type="text" class="search-input" id="debugSearch" placeholder="Search stages or agents..." style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 8px; color: white; font-family: var(--font-body); outline: none; transition: var(--transition);">
+    </div>
     <ul class="debug-links-list" id="debugLinksList"></ul>
   </div>
 
@@ -362,22 +395,29 @@
 
   <script>
     // Config JSON fallback
-    const debugMenuConfig = [
-      { label: "1. Real Unknown", url: "1_Real_Unknown/" },
-      { label: "2. Environment", url: "2_Environment/" },
-      { label: "3. Simulation", url: "3_Simulation/" },
-      { label: "4. Formula", url: "4_Formula/" },
-      { label: "5. Symbols", url: "5_Symbols/" },
-      { label: "6. Semblance", url: "6_Semblance/" },
-      { label: "7. Testing Known", url: "7_Testing_Known/" },
-      { label: "---", url: "divider" },
-      { label: "agents.md", url: "agents.md" },
-      { label: "prompts.md", url: "prompts.md" },
-      { label: "claude.md", url: "claude.md" },
-      { label: "gemini.md", url: "gemini.md" },
-      { label: "copilot.md", url: "copilot.md" },
-      { label: "kilocode.md", url: "kilocode.md" }
-    ];
+    let navigationData = {
+      projectMenu: [
+        { label: "Home", url: "index.html" },
+        { label: "Docs", url: "markdown_renderer.html?file=2_Environment/README.md" },
+        { label: "API", url: "markdown_renderer.html?file=4_Formula/README.md" }
+      ],
+      debugMenu: [
+        { label: "1. Real Unknown", url: "1_Real_Unknown/" },
+        { label: "2. Environment", url: "2_Environment/" },
+        { label: "3. Simulation", url: "3_Simulation/" },
+        { label: "4. Formula", url: "4_Formula/" },
+        { label: "5. Symbols", url: "5_Symbols/" },
+        { label: "6. Semblance", url: "6_Semblance/" },
+        { label: "7. Testing Known", url: "7_Testing_Known/" },
+        { label: "---", url: "divider" },
+        { label: "agents.md", url: "agents.md" },
+        { label: "prompts.md", url: "prompts.md" },
+        { label: "claude.md", url: "claude.md" },
+        { label: "gemini.md", url: "gemini.md" },
+        { label: "copilot.md", url: "copilot.md" },
+        { label: "kilocode.md", url: "kilocode.md" }
+      ]
+    };
 
     // Cookies helper
     function getCookie(name) {
@@ -393,32 +433,68 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Setup Debug menu links
-      const debugLinksList = document.getElementById("debugLinksList");
-      debugMenuConfig.forEach(item => {
-        if (item.label === "---") {
-          const divider = document.createElement("li");
-          divider.className = "debug-divider";
-          debugLinksList.appendChild(divider);
-        } else {
-          const li = document.createElement("li");
-          li.className = "debug-item";
-          
-          const a = document.createElement("a");
-          // route through renderer
-          a.href = `markdown_renderer.html?file=${item.url}`;
-          a.className = "debug-link";
-          a.innerHTML = `<span>${item.label}</span><i class="fa-solid fa-chevron-right" style="font-size:0.8rem;opacity:0.5;"></i>`;
-          li.appendChild(a);
-          debugLinksList.appendChild(li);
-        }
-      });
-
-      // 2. Setup Debug toggle actions
       const debugToggle = document.getElementById("debugToggle");
       const debugClose = document.getElementById("debugClose");
       const debugMenuOverlay = document.getElementById("debugMenuOverlay");
+      const debugSearch = document.getElementById("debugSearch");
+      const debugLinksList = document.getElementById("debugLinksList");
+      const editGitHubBtn = document.getElementById("editGitHubBtn");
 
+      // Load config dynamically
+      fetch("navigation_config.json")
+        .then(res => res.json())
+        .then(data => {
+          navigationData = data;
+          initDebugMenu();
+        })
+        .catch(err => {
+          console.warn("Failed to load navigation config, using local fallback.", err);
+          initDebugMenu();
+        });
+
+      function initDebugMenu() {
+        buildDebugMenu();
+      }
+
+      function buildDebugMenu(filterText = "") {
+        debugLinksList.innerHTML = "";
+        const query = filterText.toLowerCase();
+
+        navigationData.debugMenu.forEach(item => {
+          if (query && item.label === "---") return;
+          if (query && !item.label.toLowerCase().includes(query)) return;
+
+          if (item.label === "---") {
+            const divider = document.createElement("li");
+            divider.className = "debug-divider";
+            debugLinksList.appendChild(divider);
+          } else {
+            const li = document.createElement("li");
+            li.className = "debug-item";
+            
+            const a = document.createElement("a");
+            
+            // Route relative URLs dynamically through the renderer
+            let finalUrl = item.url;
+            if (finalUrl !== "index.html" && finalUrl !== "divider" && !finalUrl.startsWith("http")) {
+              finalUrl = `markdown_renderer.html?file=${finalUrl}`;
+            }
+            
+            a.href = finalUrl;
+            a.className = "debug-link";
+            a.innerHTML = `<span>${item.label}</span><i class="fa-solid fa-chevron-right" style="font-size:0.8rem;opacity:0.5;"></i>`;
+            li.appendChild(a);
+            debugLinksList.appendChild(li);
+          }
+        });
+      }
+
+      // Search Autocomplete Listener
+      debugSearch.addEventListener("input", (e) => {
+        buildDebugMenu(e.target.value);
+      });
+
+      // Setup Debug toggle actions
       const debugState = getCookie("debug");
       if (debugState === "true") {
         debugMenuOverlay.classList.add("open");
@@ -446,6 +522,11 @@
 
       document.getElementById("filePath").textContent = fetchPath;
       document.title = `📄 ${fetchPath.split('/').pop()}`;
+
+      // Show and configure Edit on GitHub button
+      const gitHubEditUrl = `https://github.com/rifaterdemsahin/delivery-pilot-template/edit/main/${fetchPath}`;
+      editGitHubBtn.href = gitHubEditUrl;
+      editGitHubBtn.style.display = "inline-flex";
 
       fetch(fetchPath)
         .then(response => {
