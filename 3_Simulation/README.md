@@ -38,7 +38,7 @@ To add a new slide:
 
 ## 🧪 Testing Checklist
 
-<!-- Embed a relevant YouTube video explaining UI prototyping / wireframing -->
+[![UI Prototyping & Wireframing](https://img.youtube.com/vi/V81R6Q1x8x0/0.jpg)](https://www.youtube.com/watch?v=V81R6Q1x8x0)
 
 - [ ] At least one mockup exists for the homepage
 - [ ] Carousel loads and cycles through all images in this folder
