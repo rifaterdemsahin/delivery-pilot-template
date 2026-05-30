@@ -54,7 +54,7 @@ services:
 
 ## 🧪 Testing Checklist
 
-<!-- Embed a relevant YouTube video explaining architecture decision records / Docker Compose -->
+[![Architecture Decision Records & Design](https://img.youtube.com/vi/g1mS6_u4tIY/0.jpg)](https://www.youtube.com/watch?v=g1mS6_u4tIY)
 
 - [ ] Implementation guide covers all major features
 - [ ] All major decisions have an ADR entry
