@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delivery Pilot Template - A self-learning platform and project structure guided by AI.">
+  <title>✨ Delivery Pilot Template</title>
+  
+  <!-- Modern Typography (Inter & Outfit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- PrismJS for Syntax Highlighting (for Symbols) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+  <style>
+    /* Design Tokens / Variables */
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: rgba(22, 28, 45, 0.7);
+      --bg-glass: rgba(15, 23, 42, 0.6);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(139, 92, 246, 0.2);
+      
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      
+      /* Vibrant Accent Colors */
+      --accent-violet: #8b5cf6;
+      --accent-violet-glow: rgba(139, 92, 246, 0.4);
+      --accent-cyan: #06b6d4;
+      --accent-cyan-glow: rgba(6, 182, 212, 0.4);
+      --accent-green: #10b981;
+      
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Core Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.15) 0px, transparent 50%);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    /* Header & Project Menu (Always Visible) */
+    .app-header {
+      backdrop-filter: blur(12px);
+      background-color: var(--bg-glass);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .app-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Project Menu Navigation */
+    .project-menu-nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .menu-link {
+      font-weight: 500;
+      color: var(--text-muted);
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .menu-link:hover, .menu-link.active {
+      color: var(--text-primary);
+    }
+
+    .menu-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-violet), var(--accent-cyan));
+      transition: var(--transition);
+    }
+
+    .menu-link:hover::after, .menu-link.active::after {
+      width: 100%;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .social-icon {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+    }
+
+    .social-icon:hover {
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      max-width: 1200px;
+      margin: 4rem auto 2rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-violet);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem auto;
+    }
+
+    /* Grid Layout for Main Content & Carousel */
+    .dashboard-grid {
+      max-width: 1200px;
+      margin: 0 auto 6rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .glass-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 15px 35px -5px rgba(139, 92, 246, 0.1);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Simulation Carousel Section */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    .carousel-placeholder-image {
+      font-size: 4rem;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 15px var(--accent-violet-glow));
+    }
+
+    .carousel-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .carousel-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      max-width: 80%;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      bottom: 1rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      z-index: 10;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--text-muted);
+      opacity: 0.4;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .carousel-dot.active {
+      background-color: var(--accent-cyan);
+      opacity: 1;
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    /* Floating Debug Toggle Button */
+    .debug-toggle-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 20px var(--accent-violet-glow);
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .debug-toggle-btn:hover {
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 6px 24px rgba(6, 182, 212, 0.6);
+    }
+
+    /* Debug Side Overlay Menu */
+    .debug-menu-overlay {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      height: 100vh;
+      background-color: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--border-color);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .debug-menu-overlay.open {
+      right: 0;
+    }
+
+    .debug-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+
+    .debug-menu-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Autocomplete Search input */
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: white;
+      font-family: var(--font-body);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    /* Debug menu items list */
+    .debug-links-list {
+      list-style: none;
+      overflow-y: auto;
+      flex-grow: 1;
+      padding-right: 0.5rem;
+    }
+
+    /* Custom Scrollbar for list */
+    .debug-links-list::-webkit-scrollbar {
+      width: 6px;
+    }
+    .debug-links-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .debug-links-list::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+
+    .debug-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .debug-divider {
+      height: 1px;
+      background-color: var(--border-color);
+      margin: 1rem 0;
+    }
+
+    .debug-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .debug-link:hover {
+      background-color: rgba(6, 182, 212, 0.08);
+      border-color: rgba(6, 182, 212, 0.2);
+      color: var(--accent-cyan);
+      transform: translateX(4px);
+    }
+
+    .debug-link-icon {
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+
+    /* Stage Steps Timeline styling */
+    .timeline-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: rgba(139, 92, 246, 0.1);
+      border: 1px solid var(--accent-violet);
+      color: var(--accent-violet);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex-grow: 1;
+    }
+
+    .step-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 968px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .app-header {
+        position: relative;
+      }
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      .debug-menu-overlay {
+        width: 100vw;
+        right: -100vw;
+      }
+      .hero-section {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Two-Menu Architecture: Menu 1 - Project Menu (Always Visible) -->
+  <header class="app-header">
+    <div class="header-container">
+      <a href="#" class="app-logo">
+        <i class="fa-solid fa-plane-departure"></i>
+        <span>Delivery Pilot</span>
+      </a>
+      
+      <nav class="project-menu-nav" id="projectMenu">
+        <!-- Will be populated dynamically via script, fallback options: -->
+        <a href="#" class="menu-link active">Home</a>
+        <a href="#docs" class="menu-link">Docs</a>
+        <a href="#api" class="menu-link">API</a>
+      </nav>
+
+      <div class="social-links">
+        <a href="https://github.com/rifaterdemsahin/delivery-pilot-template" target="_blank" class="social-icon" title="GitHub Repository">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/rifaterdemsahin/" target="_blank" class="social-icon" title="LinkedIn Profile">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.youtube.com/@RifatErdemSahin" target="_blank" class="social-icon" title="YouTube Channel">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero introduction Section -->
+  <section class="hero-section">
+    <div class="hero-badge">
+      <i class="fa-solid fa-code-fork"></i> Template Version 0.9
+    </div>
+    <h1 class="hero-title">Self-Learning Projects Boilerplate</h1>
+    <p class="hero-subtitle">
+      A structured 7-stage framework bridging the gap between problem discovery, environment preparation, logic formulation, and validated deployment.
+    </p>
+  </section>
+
+  <!-- Main Content Grid -->
+  <main class="dashboard-grid">
+    
+    <!-- Left panel: Framework Timeline Info -->
+    <section class="glass-card">
+      <h2 class="card-title">
+        <i class="fa-solid fa-layer-group" style="color: var(--accent-violet)"></i>
+        <span>The 7-Stage Framework</span>
+      </h2>
+      <ul class="timeline-steps">
+        <li class="step-item">
+          <span class="step-number">1</span>
+          <div class="step-content">
+            <h3 class="step-title">Real Unknown</h3>
+            <p class="step-desc">Identifying core problem statements, OKRs, and assumptions to validate.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-number">2</span>
+          <div class="step-content">
+            <h3 class="step-title">Environment Context</h3>
+            <p class="step-desc">Preparing macOS, Windows setups, credentials managers and local AI tools.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-number">3</span>
+          <div class="step-content">
+            <h3 class="step-title">Simulation</h3>
+            <p class="step-desc">Formulating user journeys and mockups before writing production code.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-number">4</span>
+          <div class="step-content">
+            <h3 class="step-title">Formula</h3>
+            <p class="step-desc">Creating decision logs, implementation recipes, and LLM thinking logs.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-number">5</span>
+          <div class="step-content">
+            <h3 class="step-title">Symbols</h3>
+            <p class="step-desc">Compiling main code, Docker configurations, and Git workflows.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-number">6</span>
+          <div class="step-content">
+            <h3 class="step-title">Semblance</h3>
+            <p class="step-desc">Chronological logs of errors, hotfixes, and objective-to-reality gaps.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-number">7</span>
+          <div class="step-content">
+            <h3 class="step-title">Testing Known</h3>
+            <p class="step-desc">Close-loop validation maps, sign-offs, and master checklist audits.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Right panel: Simulation Carousel -->
+    <section class="glass-card">
+      <h2 class="card-title">
+        <i class="fa-solid fa-display" style="color: var(--accent-cyan)"></i>
+        <span>Simulation Mockups</span>
+      </h2>
+      
+      <div class="carousel-container" id="carousel">
+        <!-- Slide 1 -->
+        <div class="carousel-slide active">
+          <div class="carousel-placeholder-image">
+            <i class="fa-regular fa-image"></i>
+          </div>
+          <h3 class="carousel-title">Stage 3: Mockup Index</h3>
+          <p class="carousel-desc">Visual representation of the user dashboard landing page.</p>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+          <div class="carousel-placeholder-image">
+            <i class="fa-solid fa-network-wired"></i>
+          </div>
+          <h3 class="carousel-title">Stage 3: Navigation Flow</h3>
+          <p class="carousel-desc">Interactive mobile menu drawer design simulation.</p>
+        </div>
+      </div>
+      
+      <div class="carousel-controls" id="carouselDots">
+        <span class="carousel-dot active" onclick="setSlide(0)"></span>
+        <span class="carousel-dot" onclick="setSlide(1)"></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- 2. Two-Menu Architecture: Menu 2 - Debug Toggle Button -->
+  <button class="debug-toggle-btn" id="debugToggle" title="Toggle Developer Debug Menu">
+    <i class="fa-solid fa-bug"></i>
+  </button>
+
+  <!-- Two-Menu Architecture: Debug Side Overlay Menu (Hidden by Default) -->
+  <div class="debug-menu-overlay" id="debugMenuOverlay">
+    <div class="debug-menu-header">
+      <h2 class="debug-menu-title">
+        <i class="fa-solid fa-terminal"></i>
+        <span>Debug Menu</span>
+      </h2>
+      <button id="debugClose" style="background:none; border:none; color:white; cursor:pointer; font-size:1.1rem;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Search Box with Autocomplete -->
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" class="search-input" id="debugSearch" placeholder="Search stages or agents...">
+    </div>
+
+    <!-- Debug Menu Links -->
+    <ul class="debug-links-list" id="debugLinksList">
+      <!-- Generated dynamically -->
+    </ul>
+  </div>
+
+  <script>
+    // 🗃️ Menu Configuration JSON Data
+    const navigationData = {
+      projectMenu: [
+        { label: "Home", url: "#" },
+        { label: "Docs", url: "2_Environment/" },
+        { label: "API", url: "4_Formula/" }
+      ],
+      debugMenu: [
+        { label: "1. Real Unknown", url: "1_Real_Unknown/" },
+        { label: "2. Environment", url: "2_Environment/" },
+        { label: "3. Simulation", url: "3_Simulation/" },
+        { label: "4. Formula", url: "4_Formula/" },
+        { label: "5. Symbols", url: "5_Symbols/" },
+        { label: "6. Semblance", url: "6_Semblance/" },
+        { label: "7. Testing Known", url: "7_Testing_Known/" },
+        { label: "---", url: "divider" },
+        { label: "agents.md", url: "agents.md" },
+        { label: "prompts.md", url: "prompts.md" },
+        { label: "claude.md", url: "claude.md" },
+        { label: "gemini.md", url: "gemini.md" },
+        { label: "copilot.md", url: "copilot.md" },
+        { label: "kilocode.md", url: "kilocode.md" }
+      ]
+    };
+
+    // 🍪 Helper Functions for Cookie Management
+    function setCookie(name, value, days = 7) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = `${name}=${value};path=/;expires=${d.toUTCString()};SameSite=Strict`;
+    }
+
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
+
+    // 🖥️ UI Handlers
+    document.addEventListener("DOMContentLoaded", () => {
+      const debugToggle = document.getElementById("debugToggle");
+      const debugClose = document.getElementById("debugClose");
+      const debugMenuOverlay = document.getElementById("debugMenuOverlay");
+      const debugSearch = document.getElementById("debugSearch");
+      const debugLinksList = document.getElementById("debugLinksList");
+      const projectMenuContainer = document.getElementById("projectMenu");
+
+      // 1. Build Project Menu
+      projectMenuContainer.innerHTML = "";
+      navigationData.projectMenu.forEach((item, index) => {
+        const link = document.createElement("a");
+        link.href = item.url;
+        link.className = `menu-link ${index === 0 ? 'active' : ''}`;
+        link.textContent = item.label;
+        projectMenuContainer.appendChild(link);
+      });
+
+      // 2. Build Debug Menu
+      function buildDebugMenu(filterText = "") {
+        debugLinksList.innerHTML = "";
+        const query = filterText.toLowerCase();
+
+        navigationData.debugMenu.forEach(item => {
+          // If search active, skip divider
+          if (query && item.label === "---") return;
+          
+          // Apply Autocomplete Filtering
+          if (query && !item.label.toLowerCase().includes(query)) return;
+
+          if (item.label === "---") {
+            const divider = document.createElement("li");
+            divider.className = "debug-divider";
+            debugLinksList.appendChild(divider);
+          } else {
+            const li = document.createElement("li");
+            li.className = "debug-item";
+            
+            const a = document.createElement("a");
+            a.href = item.url;
+            a.className = "debug-link";
+            a.innerHTML = `
+              <span>${item.label}</span>
+              <i class="fa-solid fa-chevron-right debug-link-icon"></i>
+            `;
+            li.appendChild(a);
+            debugLinksList.appendChild(li);
+          }
+        });
+      }
+
+      // Initial Debug list build
+      buildDebugMenu();
+
+      // 3. Search Autocomplete Listener
+      debugSearch.addEventListener("input", (e) => {
+        buildDebugMenu(e.target.value);
+      });
+
+      // 4. Persistence of Debug Panel via Cookie
+      const debugState = getCookie("debug");
+      if (debugState === "true") {
+        debugMenuOverlay.classList.add("open");
+      }
+
+      // Toggle action
+      debugToggle.addEventListener("click", () => {
+        const isOpen = debugMenuOverlay.classList.toggle("open");
+        setCookie("debug", isOpen ? "true" : "false");
+      });
+
+      // Close Action
+      debugClose.addEventListener("click", () => {
+        debugMenuOverlay.classList.remove("open");
+        setCookie("debug", "false");
+      });
+    });
+
+    // 🎠 Image Carousel Logic
+    let activeSlideIndex = 0;
+    const slides = document.querySelectorAll(".carousel-slide");
+    const dots = document.querySelectorAll(".carousel-dot");
+
+    function setSlide(index) {
+      activeSlideIndex = index;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    }
+
+    // Auto play every 5 seconds
+    setInterval(() => {
+      let nextIndex = (activeSlideIndex + 1) % slides.length;
+      setSlide(nextIndex);
+    }, 5000);
+  </script>
+</body>
+</html>
