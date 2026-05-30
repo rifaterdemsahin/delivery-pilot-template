@@ -46,7 +46,7 @@ This folder contains the **core source code and implementation files**. Everythi
 
 ## 🧪 Testing Checklist
 
-<!-- Embed a relevant YouTube video explaining CI/CD with GitHub Actions -->
+[![CI/CD with GitHub Actions](https://img.youtube.com/vi/R8_veQiYur0/0.jpg)](https://www.youtube.com/watch?v=R8_veQiYur0)
 
 - [ ] `main.py` runs without errors locally
 - [ ] `Dockerfile` builds successfully
