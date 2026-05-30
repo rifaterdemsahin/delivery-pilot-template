@@ -121,6 +121,25 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Created `2_Environment/setup_azure.md`.
 - Staged, committed, and pushed each file independently to main.
 
+---
+
+## 📅 2026-05-30 — Create Stage 3 Image Prompts Template
+
+### 📥 Input / Task
+- Create a templated version of `image_prompts.md` in the `3_Simulation` folder.
+- Log the prompt in `prompts.md` and document the LLM thinking phase here.
+
+### 💭 Thinking & Reasoning Process
+1. **Requirements Gathering**: In Stage 3 (Simulation), UI mockups and screenshots are generated. An `image_prompts.md` file helps log the exact prompts fed to generative AI engines (DALL-E, Midjourney, etc.) to recreate or iterate on these assets.
+2. **Template Design**: Designed a template specifying asset name, platform screen details, AI generator, prompt text, date, and markdown links to the final generated assets.
+3. **Execution & Commits**: Created `3_Simulation/image_prompts.md`, then added, committed, and pushed it to remote repository main branch.
+4. **Logs Updates**: Appended prompt logs to `prompts.md` and registered reasoning steps in `llm_thinking_log.md`.
+
+### 📤 Outcomes & Decisions
+- Created `3_Simulation/image_prompts.md`.
+- Staged, committed, and pushed to main.
+
+
 
 
 
