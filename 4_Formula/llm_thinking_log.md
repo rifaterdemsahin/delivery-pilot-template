@@ -100,5 +100,27 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Created `1_Real_Unknown/hypotheses.md`.
 - Committed and pushed each file individually to GitHub.
 
+---
+
+## 📅 2026-05-30 — Create Stage 2 Setup Templates
+
+### 📥 Input / Task
+- Create templated setup instructions for macOS, Windows, local AI Stack (Ollama + Qdrant), and Azure Key Vault credentials inside the `2_Environment` folder.
+- Log the prompt in `prompts.md` and document the LLM thinking phase here.
+
+### 💭 Thinking & Reasoning Process
+1. **Requirements Gathering**: Evaluated the need for standardized, clear local setup instructions for teams using this template on macOS, Windows, Docker/Ollama stacks, and cloud settings (Azure).
+2. **Template Design**: Designed setup documentation with clear bash/powershell command references, checklists, and configuration settings (e.g. nomic-embed-text sizes).
+3. **Execution & Commits**: Created `setup_mac.md`, `setup_windows.md`, `setup_ai.md`, and `setup_azure.md` individually, running a git commit and push after each write to keep history granular.
+4. **Logs Updates**: Recorded prompt details and action items in `prompts.md` and added this reasoning log.
+
+### 📤 Outcomes & Decisions
+- Created `2_Environment/setup_mac.md`.
+- Created `2_Environment/setup_windows.md`.
+- Created `2_Environment/setup_ai.md`.
+- Created `2_Environment/setup_azure.md`.
+- Staged, committed, and pushed each file independently to main.
+
+
 
 
