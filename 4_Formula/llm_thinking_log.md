@@ -287,6 +287,31 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Confirmed the active workspace session is fully synced inside the Antigravity IDE environment.
 - Staged, committed, and pushed log files to the main branch.
 
+---
+
+## 📅 2026-05-30 — Make Menus Reusable & Add GitHub Edit Integration
+
+### 📥 Input / Task
+- Create a reusable configuration for both menus and dashboard project docs.
+- Enable direct markdown loading and insert edit on GitHub buttons for quick online modification.
+- Log the prompt in `prompts.md` and document the LLM thinking phase here.
+
+### 💭 Thinking & Reasoning Process
+1. **Requirements Gathering**: The user requested that the dashboard project documentation reaches markdowns using a reusable menu and includes GitHub edit buttons.
+2. **Reusable Configuration**: Created a central `navigation_config.json` at the root containing the arrays for both `projectMenu` and `debugMenu`. Refactored `index.html` and `markdown_renderer.html` to fetch this JSON config dynamically with a fallback for offline execution.
+3. **Markdown Routing & Editing**:
+   - Refactored index.html's menu compiler to dynamically convert file links (e.g. `1_Real_Unknown/`) to markdown_renderer query URLs (`markdown_renderer.html?file=1_Real_Unknown/`) to satisfy the routing rules.
+   - Modified `markdown_renderer.html` to generate an edit URL referencing the current file being loaded (`https://github.com/rifaterdemsahin/delivery-pilot-template/edit/main/{filePath}`) and render a beautiful gradient button next to the file path.
+4. **Execution & Commits**: Created `navigation_config.json`, updated `index.html`, and updated `markdown_renderer.html` separately, staging, committing, and pushing after each write to satisfy history guidelines.
+5. **Logs Updates**: Appended prompt logs in `prompts.md` and documented details in `4_Formula/llm_thinking_log.md`.
+
+### 📤 Outcomes & Decisions
+- Created `navigation_config.json` configuration file.
+- Updated `index.html` to dynamically fetch and compile menus.
+- Updated `markdown_renderer.html` to support configuration fetching, search autocomplete, and direct GitHub Edit redirection buttons.
+- Staged, committed, and pushed all modifications.
+
+
 
 
 
