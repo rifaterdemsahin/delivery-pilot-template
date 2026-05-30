@@ -20,7 +20,7 @@ This file defines how AI agents interact with the **Delivery Pilot Template** pr
   - **1_Real_Unknown**: Update if there is a new objective or Key Result (OKR) change.
   - **2_Environment**: Update environment-related files here if there is a change in the environment.
   - **3_Simulation**: If the abstract UI is updated, create/generate an image and place/mention it here.
-  - **4_Formula**: If there is a new way of working, recipe, or build logic, document it here.
+  - **4_Formula**: If there is a new way of working, recipe, or build logic, document it here. Also, document a summary of the Large Language Model's thinking phase/reasoning process in this folder after executions.
   - **5_Symbols**: All new source code must be placed here, except for files that must stay in the root folder (e.g., `index.html`, `markdown_renderer.html`).
   - **6_Semblance**: Document all encountered errors, workarounds, and gap analyses here.
   - **7_Testing_Known**: Place testing validation, checklists, and proof of working here.

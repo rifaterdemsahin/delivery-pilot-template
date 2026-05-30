@@ -23,6 +23,7 @@ This folder is the **knowledge base** of the project — the step-by-step reason
 | `decisions.md` | Architecture Decision Records (ADRs) |
 | `docker_setup.md` | Qdrant + Ollama containerised setup |
 | `api_reference.md` | Key API endpoints and usage |
+| `llm_thinking_log.md` | Summaries of the LLM thinking phase/reasoning process after executions |
 
 ## Containerised AI Stack
 
