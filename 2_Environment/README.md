@@ -51,7 +51,7 @@ docker run -p 6333:6333 qdrant/qdrant
 
 ## 🧪 Testing Checklist
 
-<!-- Embed a relevant YouTube video explaining environment setup / Docker basics -->
+[![Docker Basics & Environment Setup](https://img.youtube.com/vi/fqbchv6fWpA/0.jpg)](https://www.youtube.com/watch?v=fqbchv6fWpA)
 
 - [ ] macOS setup guide is complete and tested
 - [ ] Windows setup guide is complete and tested
