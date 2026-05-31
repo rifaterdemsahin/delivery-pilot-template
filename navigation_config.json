@@ -6,6 +6,7 @@
   ],
   "debugMenu": [
     { "label": "1. Real Unknown", "url": "1_Real_Unknown/" },
+    { "label": "   ├─ Kanban Board", "url": "1_Real_Unknown/kanban.md" },
     { "label": "2. Environment", "url": "2_Environment/" },
     { "label": "3. Simulation", "url": "3_Simulation/" },
     { "label": "4. Formula", "url": "4_Formula/" },

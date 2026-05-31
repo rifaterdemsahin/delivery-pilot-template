@@ -18,10 +18,10 @@ This folder is the **honest record** of what went wrong, what was harder than ex
 
 | File | Description |
 |------|-------------|
-| `error_log.md` | Chronological log of significant errors |
-| `workarounds.md` | Active workarounds and their technical debt |
-| `gap_analysis.md` | Plan vs. reality comparison |
-| `lessons_learned.md` | Retrospective insights |
+| [`error_log.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/6_Semblance/error_log.md) | Chronological log of significant errors |
+| [`workarounds.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/6_Semblance/workarounds.md) | Active workarounds and their technical debt |
+| [`gap_analysis.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/6_Semblance/gap_analysis.md) | Plan vs. reality comparison |
+| [`lessons_learned.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/6_Semblance/lessons_learned.md) | Retrospective insights |
 
 ## Error Log Format
 
