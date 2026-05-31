@@ -739,8 +739,17 @@
       return null;
     }
 
+    // Console debugging utility for development
+    function debugLog(message, data = '') {
+      if (getCookie("debug") === "true") {
+        console.log(`%c[Debug Mode] ${message}`, 'color: #06b6d4; font-weight: bold;', data);
+      }
+    }
+
     // 🖥️ UI Handlers
     document.addEventListener("DOMContentLoaded", () => {
+      debugLog("DOM content fully loaded. Initializing debug logs...");
+
       const debugToggle = document.getElementById("debugToggle");
       const debugClose = document.getElementById("debugClose");
       const debugMenuOverlay = document.getElementById("debugMenuOverlay");
@@ -752,6 +761,7 @@
       fetch("navigation_config.json")
         .then(res => res.json())
         .then(data => {
+          debugLog("Dynamic navigation config loaded successfully.", data);
           navigationData = data;
           initMenus();
         })
@@ -761,6 +771,7 @@
         });
 
       function initMenus() {
+        debugLog("Initializing Project and Debug Menus.", navigationData);
         // 1. Build Project Menu
         projectMenuContainer.innerHTML = "";
         navigationData.projectMenu.forEach((item, index) => {
@@ -784,6 +795,7 @@
 
       // Build Debug Menu List Items
       function buildDebugMenu(filterText = "") {
+        debugLog(`Building Debug Menu with filter: "${filterText}"`);
         debugLinksList.innerHTML = "";
         const query = filterText.toLowerCase();
 
@@ -826,6 +838,7 @@
 
       // 4. Persistence of Debug Panel via Cookie
       const debugState = getCookie("debug");
+      debugLog("Initial debug state from cookie:", debugState);
       if (debugState === "true") {
         debugMenuOverlay.classList.add("open");
       }
@@ -834,12 +847,14 @@
       debugToggle.addEventListener("click", () => {
         const isOpen = debugMenuOverlay.classList.toggle("open");
         setCookie("debug", isOpen ? "true" : "false");
+        debugLog("Debug overlay toggled. Active state:", isOpen);
       });
 
       // Close Action
       debugClose.addEventListener("click", () => {
         debugMenuOverlay.classList.remove("open");
         setCookie("debug", "false");
+        debugLog("Debug overlay closed.");
       });
     });
 
