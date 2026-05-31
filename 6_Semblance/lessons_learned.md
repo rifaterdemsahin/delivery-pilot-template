@@ -16,3 +16,12 @@
 
 ### Takeaway for Future AI Agents
 - When completing tasks, make sure to update the status of the tasks in `1_Real_Unknown/kanban.md` using matching commit messages.
+
+## 📅 2026-05-31: Stage 1 Cost Tracker Setup
+
+### What went well
+- Established a unified structure to track both system infrastructure costs and API token consumption in `1_Real_Unknown/costs.md`.
+- Kept navigation fallbacks in sync so that the project menu operates reliably.
+
+### Gaps & Challenges
+- Estimates for Key Vault and container execution can fluctuate. Agents should update the log on every significant run/operation to prevent budget surprises.

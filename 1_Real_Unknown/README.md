@@ -23,6 +23,7 @@ This folder captures everything we **don't yet know** — the questions that dri
 | [`questions.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/questions.md) | Open questions driving the work |
 | [`hypotheses.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/hypotheses.md) | Assumptions to validate |
 | [`kanban.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/kanban.md) | Project Kanban Board for task tracking |
+| [`costs.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/costs.md) | Project Cost Tracker for infrastructure/API expenses |
 
 ## Rules
 
