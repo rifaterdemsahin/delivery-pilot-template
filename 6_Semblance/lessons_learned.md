@@ -34,3 +34,12 @@
 
 ### Gaps & Challenges
 - None. Maintaining step-by-step git push commands helps identify remote changes or conflicts early.
+
+## 📅 2026-05-31: Console Debugging & Debug Menu Sync Update
+
+### What went well
+- Added custom `debugLog` function to output descriptive messages into browser console when debug mode (`debug=true` cookie) is active.
+- Documented Debug Menu synchronization rule across all agent personas to prevent stale menu links when markdown documents are added or updated.
+
+### Gaps & Challenges
+- Since debug console logs only print when the debug cookie is active, it protects console cleanliness for standard users while providing rich instrumentation for developers.
