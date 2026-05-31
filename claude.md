@@ -92,6 +92,7 @@ delivery-pilot-template/
 - **Keep `index.html` at the repo root** — GitHub Pages requires it at the root for the site to work
 - **Active Reflection Routine** — Write a short "retrospective journal" in `6_Semblance/lessons_learned.md` after every milestone.
 - **Keep Debug Menu Config Synchronized** — When markdown files are added, modified, or deleted in any stage, remember to update the debug menu configuration (`navigation_config.json` and the fallback arrays in `index.html` and `markdown_renderer.html`) to reflect these changes immediately.
+- **Architecture Documentation Sync** — When the system architecture changes, immediately update the architecture overview document at `2_Environment/architecture.md` (with updated Mermaid diagrams) to keep it working.
 
 ### Code Standards
 - Use modern CSS (Flexbox/Grid) for responsive design

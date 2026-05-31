@@ -18,16 +18,16 @@ This folder documents the **setup, constraints, and operating context** of the p
 
 | File | Description |
 |------|-------------|
-| `setup_mac.md` | macOS environment setup guide |
-| `setup_windows.md` | Windows environment setup guide |
-| `setup_ai.md` | Ollama + Qdrant + AI client configuration |
+| [`setup_mac.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/setup_mac.md) | macOS environment setup guide |
+| [`setup_windows.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/setup_windows.md) | Windows environment setup guide |
+| [`setup_ai.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/setup_ai.md) | Ollama + Qdrant + AI client configuration |
 | `roadmap.md` | Project roadmap and milestones |
 | `constraints.md` | Known limitations and constraints |
-| `architecture.md` | System architecture with Mermaid diagrams |
-| `cloudflare_workers.md` | Edge compute — auth, routing, caching, rate limiting |
-| `fly_io.md` | Backend hosting — Python APIs, databases, WebSockets |
-| `github_pages.md` | Frontend static hosting — docs, SPAs, landing pages |
-| `navigation.md` | Two-menu system: Project Menu + Debug Menu (bottom-right) |
+| [`architecture.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/architecture.md) | System architecture with Mermaid diagrams |
+| [`cloudflare_workers.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/cloudflare_workers.md) | Edge compute — auth, routing, caching, rate limiting |
+| [`fly_io.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/fly_io.md) | Backend hosting — Python APIs, databases, WebSockets |
+| [`github_pages.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/github_pages.md) | Frontend static hosting — docs, SPAs, landing pages |
+| [`navigation.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/navigation.md) | Two-menu system: Project Menu + Debug Menu (bottom-right) |
 
 ## AI Stack Setup
 
