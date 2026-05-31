@@ -15,7 +15,7 @@ This file defines how AI agents interact with the **Delivery Pilot Template** pr
 
 - Always follow the 7-stage folder structure (`1_Real_Unknown` through `7_Testing_Known`)
 - Never commit secrets — use Azure Key Vault for all sensitive values
-- **After every command, commit and push** — do not batch changes; each step gets its own commit. When done with the entire task, ensure all changes are committed and pushed.
+- **After every command, commit and push** — do not batch changes; each step gets its own commit. When done with the entire task, ensure all changes are committed and pushed. If any git errors occur (e.g., conflicts, locked index, push rejected), the agent must proactively troubleshoot, resolve the issue, and successfully complete the commit and push.
 - Place files in the correct numbered folder based on their stage:
   - **1_Real_Unknown**: Update if there is a new objective or Key Result (OKR) change.
   - **2_Environment**: Update environment-related files here if there is a change in the environment.
