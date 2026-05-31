@@ -434,7 +434,16 @@
       document.cookie = `${name}=${value};path=/;expires=${d.toUTCString()};SameSite=Strict`;
     }
 
+    // Console debugging utility for development
+    function debugLog(message, data = '') {
+      if (getCookie("debug") === "true") {
+        console.log(`%c[Debug Mode] ${message}`, 'color: #06b6d4; font-weight: bold;', data);
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
+      debugLog("DOM content fully loaded. Initializing renderer logs...");
+
       const debugToggle = document.getElementById("debugToggle");
       const debugClose = document.getElementById("debugClose");
       const debugMenuOverlay = document.getElementById("debugMenuOverlay");
@@ -446,6 +455,7 @@
       fetch("navigation_config.json")
         .then(res => res.json())
         .then(data => {
+          debugLog("Dynamic navigation config loaded successfully.", data);
           navigationData = data;
           initDebugMenu();
         })
@@ -455,10 +465,12 @@
         });
 
       function initDebugMenu() {
+        debugLog("Initializing Debug Menu.", navigationData);
         buildDebugMenu();
       }
 
       function buildDebugMenu(filterText = "") {
+        debugLog(`Building Debug Menu with filter: "${filterText}"`);
         debugLinksList.innerHTML = "";
         const query = filterText.toLowerCase();
 
@@ -498,6 +510,7 @@
 
       // Setup Debug toggle actions
       const debugState = getCookie("debug");
+      debugLog("Initial debug state from cookie:", debugState);
       if (debugState === "true") {
         debugMenuOverlay.classList.add("open");
       }
@@ -505,11 +518,13 @@
       debugToggle.addEventListener("click", () => {
         const isOpen = debugMenuOverlay.classList.toggle("open");
         setCookie("debug", isOpen ? "true" : "false");
+        debugLog("Debug overlay toggled. Active state:", isOpen);
       });
 
       debugClose.addEventListener("click", () => {
         debugMenuOverlay.classList.remove("open");
         setCookie("debug", "false");
+        debugLog("Debug overlay closed.");
       });
 
       // 3. Fetch and Parse Markdown File
@@ -521,6 +536,7 @@
       if (fetchPath.endsWith('/')) {
         fetchPath += 'README.md';
       }
+      debugLog(`Parsing query string. Target file: "${filePath}", Fetch path: "${fetchPath}"`);
 
       document.getElementById("filePath").textContent = fetchPath;
       document.title = `📄 ${fetchPath.split('/').pop()}`;
@@ -529,25 +545,32 @@
       const gitHubEditUrl = `https://github.com/rifaterdemsahin/delivery-pilot-template/edit/main/${fetchPath}`;
       editGitHubBtn.href = gitHubEditUrl;
       editGitHubBtn.style.display = "inline-flex";
+      debugLog("Edit on GitHub URL configured:", gitHubEditUrl);
 
+      debugLog(`Fetching markdown file from: "${fetchPath}"`);
       fetch(fetchPath)
         .then(response => {
           if (!response.ok) throw new Error("File not found");
+          debugLog(`Fetched file "${fetchPath}" successfully. Status: ${response.status}`);
           return response.text();
         })
         .then(text => {
+          debugLog(`Parsing markdown content (${text.length} characters)`);
           // Parse Markdown
           const contentDiv = document.getElementById("content");
           contentDiv.innerHTML = marked.parse(text);
 
+          debugLog("Applying syntax highlighting via PrismJS...");
           // Prism syntax highlighting
           Prism.highlightAllUnder(contentDiv);
 
+          debugLog("Initializing Mermaid rendering...");
           // Mermaid setup
           mermaid.initialize({ startOnLoad: true, theme: 'dark' });
           mermaid.run();
         })
         .catch(err => {
+          console.error("[Debug Mode] Error rendering markdown:", err);
           document.getElementById("content").innerHTML = `
             <div class="error-container">
               <i class="fa-solid fa-circle-exclamation error-icon"></i>
