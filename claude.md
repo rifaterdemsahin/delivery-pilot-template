@@ -91,6 +91,7 @@ delivery-pilot-template/
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
 - **Keep `index.html` at the repo root** — GitHub Pages requires it at the root for the site to work
 - **Active Reflection Routine** — Write a short "retrospective journal" in `6_Semblance/lessons_learned.md` after every milestone.
+- **Keep Debug Menu Config Synchronized** — When markdown files are added, modified, or deleted in any stage, remember to update the debug menu configuration (`navigation_config.json` and the fallback arrays in `index.html` and `markdown_renderer.html`) to reflect these changes immediately.
 
 ### Code Standards
 - Use modern CSS (Flexbox/Grid) for responsive design
