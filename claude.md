@@ -85,7 +85,7 @@ delivery-pilot-template/
 ### Behavior Guidelines
 - Always follow the 7-stage structure when creating or organizing content
 - When adding files, place them in the appropriate numbered folder
-- **After every command, commit and push** — do not batch changes; each step gets its own commit
+- **After every command, commit and push** — do not batch changes; each step gets its own commit. If any git errors occur, proactively troubleshoot and resolve them.
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
 - **Record every prompt** in `prompts.md` — log date, agent, and purpose for each prompt given
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
