@@ -25,3 +25,12 @@
 
 ### Gaps & Challenges
 - Estimates for Key Vault and container execution can fluctuate. Agents should update the log on every significant run/operation to prevent budget surprises.
+
+## 📅 2026-05-31: Agent Git Rule & Error Resolution Update
+
+### What went well
+- Clarified the requirement for git error resolution across all core agent documentation (`agents.md`, `gemini.md`, `claude.md`, `copilot.md`, `kilocode.md`).
+- Practiced granular commit-and-push cycles for each file modification.
+
+### Gaps & Challenges
+- None. Maintaining step-by-step git push commands helps identify remote changes or conflicts early.
