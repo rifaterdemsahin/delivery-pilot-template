@@ -16,4 +16,6 @@ Thumbs.db
 qdrant_storage/
 .ollama/
 .claude/
+!4_Formula/.claude/
+!4_Formula/.claude/**
 .antigravitycli/
