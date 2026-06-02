@@ -86,3 +86,16 @@
   - **Assignee:** Gemini
   - **Details:** Created `index.html` and `navigation_config.json` for site entry point.
   - **Stage Reference:** [index.html](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/index.html)
+
+---
+
+## ⚙️ Maintenance
+
+- [ ] Update the environment folder > 1_Real_Unknown
+- [ ] Update the environment folder > 2_Environment
+- [ ] Add new features incoming as visuals folder > 3_Simulation
+- [ ] Add new ways of doing the implementation  to formula folder > 4_Formula
+- [ ] Update the Symbols and pay technical debt > 5_Symbols
+- [ ] Add new errors in semblance  > 6_Semblance
+- [ ] Update the tests folder > 7_Testing_Known
+
