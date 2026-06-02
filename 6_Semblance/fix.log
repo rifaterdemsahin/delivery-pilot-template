@@ -1,0 +1,44 @@
+# 🛠 Fix Log — Delivery Pilot Template
+
+## Format
+Each entry follows: `[DATE] [STAGE] [STATUS] — Fix description`
+
+Status: `APPLIED` | `VERIFIED` | `WORKAROUND` | `PENDING`
+
+---
+
+## Fix Entries
+
+<!-- Add new entries below this line, newest first -->
+
+[2026-06-02] [SETUP] [APPLIED] — fix.log initialized. Linked to error.log for cross-referencing.
+
+---
+
+## How to Use
+
+1. When a fix is applied, log it here with the matching date + stage from `error.log`.
+2. Mark status as `WORKAROUND` if a proper fix is deferred.
+3. Once verified in `7_Testing_Known`, update status to `VERIFIED`.
+
+## Fix → Test Pipeline
+
+```
+error.log entry
+    ↓
+Root cause analysis (gap_analysis.md)
+    ↓
+Fix applied → fix.log entry (APPLIED)
+    ↓
+Validation in 7_Testing_Known
+    ↓
+fix.log entry updated (VERIFIED)
+    ↓
+Lesson captured in lessons_learned.md
+```
+
+## Cross-Reference Index
+
+| Error Date | Stage | Error Summary | Fix Status |
+|------------|-------|---------------|------------|
+| 2026-06-02 | SETUP | Initialization | APPLIED |

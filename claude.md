@@ -118,6 +118,55 @@ delivery-pilot-template/
 
 ---
 
+## 🧠 Required Skills for This Self-Learning System
+
+The following Claude Code skills are needed to operate this project effectively. Invoke them with `/skill-name` in the Claude Code CLI.
+
+### 🔍 Discovery & Search
+| Skill | Purpose |
+|-------|---------|
+| `gdrive-search` | Search Second Brain Google Drive for reference docs, images, and research artifacts |
+
+### ✍️ Content & Publishing
+| Skill | Purpose |
+|-------|---------|
+| `github-blog-post` | Publish milestone write-ups and retrospectives to rifaterdemsahin.com |
+| `image-generation` | Generate stage diagrams, workflow visuals, and documentation images via fal.ai |
+| `video-transcribe` | Transcribe YouTube demos or walkthroughs into markdown for `4_Formula/` |
+
+### 🔬 Code Quality & Review
+| Skill | Purpose |
+|-------|---------|
+| `code-review` | Review diffs for correctness bugs before each stage commit |
+| `simplify` | Refactor HTML/JS/CSS for reuse and clarity after feature completion |
+| `security-review` | Audit changes for secrets exposure, XSS, or misconfigured CI before push |
+| `verify` | Run the app and confirm UI behavior after changes (golden path + edge cases) |
+
+### ⚙️ Configuration & Automation
+| Skill | Purpose |
+|-------|---------|
+| `update-config` | Configure hooks in `settings.json` for automated behaviors (e.g., auto-commit after each stage) |
+| `schedule` | Create recurring agents for automated testing, log rotation, or milestone reminders |
+| `loop` | Poll CI/CD status or run repeated checks during deployment |
+| `keybindings-help` | Customize shortcuts for frequent actions in this project |
+
+### 🤖 AI Integration
+| Skill | Purpose |
+|-------|---------|
+| `claude-api` | Build and debug Anthropic SDK integrations in `5_Symbols/` (prompt caching, tool use, batch) |
+| `run` | Launch the static site locally and verify navigation, debug menu, and markdown rendering |
+
+### 📋 Error Tracking Workflow
+When errors occur, use this skill chain:
+1. Log to `6_Semblance/error.log` → root cause in `gap_analysis.md`
+2. Apply fix → log to `6_Semblance/fix.log` with status `APPLIED`
+3. Run `/verify` to confirm fix in browser
+4. Run `/code-review` on the diff
+5. Commit → update `fix.log` status to `VERIFIED`
+6. Retrospective → append to `lessons_learned.md`
+
+---
+
 ## 🎯 Project Intent
 
 **Goal:** Create a template project that can be used by other projects at start — `delivery-pilot-template` v0.9

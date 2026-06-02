@@ -1,0 +1,31 @@
+# 🐛 Error Log — Delivery Pilot Template
+
+## Format
+Each entry follows: `[DATE] [STAGE] [SEVERITY] — Description`
+
+Severity levels: `CRITICAL` | `ERROR` | `WARNING` | `INFO`
+
+---
+
+## Log Entries
+
+<!-- Add new entries below this line, newest first -->
+
+[2026-06-02] [SETUP] [INFO] — error.log initialized for project tracking.
+
+---
+
+## How to Use
+
+1. When an error occurs during any stage, append an entry here.
+2. Link to the corresponding fix in `fix.log` using the entry date + stage as a key.
+3. After resolving, update `lessons_learned.md` with what was learned.
+
+## Common Error Patterns
+
+| Pattern | Stage | Resolution Link |
+|---------|-------|-----------------|
+| GitHub Actions build failure | CI/CD | See fix.log |
+| Navigation config mismatch | UI | See fix.log |
+| Markdown render 404 | 6_Semblance | See fix.log |
+| Azure Key Vault access denied | Secrets | See fix.log |
