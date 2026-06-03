@@ -20,10 +20,11 @@ This file defines how AI agents interact with the **Delivery Pilot Template** pr
   - **1_Real_Unknown**: Update if there is a new objective or Key Result (OKR) change.
   - **2_Environment**: Update environment-related files here if there is a change in the environment.
   - **3_Simulation**: If the abstract UI is updated, create/generate an image and place/mention it here.
-  - **4_Formula**: If there is a new way of working, recipe, or build logic, document it here. Also, document a summary of the Large Language Model's thinking phase/reasoning process in this folder after executions.
+  - **4_Formula**: This is the **Thinking & Planning stage**. Before writing any code, document the reasoning, approach, and plan here. After execution, log the LLM's thinking/reasoning summary in `llm_thinking_log.md`. Also place new recipes, research, and build logic here. This stage gates entry to `5_Symbols` — thinking comes before coding.
   - **5_Symbols**: All new source code must be placed here, except for files that must stay in the root folder (e.g., `index.html`, `markdown_renderer.html`).
   - **6_Semblance**: Document all encountered errors, workarounds, and gap analyses here.
   - **7_Testing_Known**: Place testing validation, checklists, and proof of working here.
+- **Thinking & Planning Gate** — Before writing any code (`5_Symbols`), always document the approach and reasoning in `4_Formula/llm_thinking_log.md`. After execution, append a summary of the LLM reasoning process. `4_Formula` is the mandatory planning stage that encapsulates thinking before action.
 - **Error & Fix Logging** — When any error occurs, append an entry to `6_Semblance/error.log` (format: `[DATE] [STAGE] [SEVERITY] — Description`). When a fix is applied, append to `6_Semblance/fix.log` (format: `[DATE] [STAGE] [STATUS] — Fix description`) with status `APPLIED`. After validation in `7_Testing_Known`, update the status to `VERIFIED`. Capture learnings in `6_Semblance/lessons_learned.md`.
 - Use emojis for scannability in documentation
 - **Record every prompt** — all prompts given to agents must be logged in `prompts.md` with date, agent name, purpose, and what was done.
@@ -50,4 +51,4 @@ When multiple agents work on the same project:
 1. Read the relevant `*.md` persona file before making changes
 2. Follow the testing checklist in `7_Testing_Known/README.md`
 3. Document any workarounds in `6_Semblance/`
-4. Keep `4_Formula/` updated with step-by-step guides for new patterns
+4. **Before writing any code**, document the plan and reasoning in `4_Formula/llm_thinking_log.md` — `4_Formula` is the mandatory thinking & planning gate before `5_Symbols`

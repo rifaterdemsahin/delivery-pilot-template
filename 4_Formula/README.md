@@ -1,29 +1,49 @@
-# 4️⃣ Formula — The "Recipe"
+# 4️⃣ Formula — The "Thinking & Planning" Stage
 
-> **Stage 4 of 7:** Document the logic before others try to reproduce it.
+> **Stage 4 of 7:** Think and plan before acting. This is the mandatory gate between understanding the problem (`1–3`) and writing code (`5_Symbols`).
 
 ## Purpose
 
-This folder is the **knowledge base** of the project — the step-by-step reasoning, research notes, and implementation logic. If someone needs to understand *why* a decision was made or *how* something was built, the answer is here.
+This folder is the **thinking & planning hub** of the project. Every agent must document their reasoning, approach, and plan here **before** writing any code. After execution, a summary of the LLM reasoning process is logged here too.
+
+The self-learning loop flows through this stage automatically:
+```
+1_Real_Unknown (Why)
+    ↓
+2_Environment (Context)
+    ↓
+3_Simulation (Vision)
+    ↓
+4_Formula (Think & Plan) ← mandatory gate before coding
+    ↓
+5_Symbols (Code)
+    ↓
+6_Semblance (Errors/Fixes)
+    ↓
+7_Testing_Known (Proof)
+```
 
 ## What belongs here
 
+- **LLM thinking log** — Reasoning and approach documented before and after each implementation
 - **Step-by-step guides** — How to implement specific features
 - **Research notes** — Findings, comparisons, and tech evaluations
 - **Decision records** — Why X was chosen over Y (ADRs)
 - **Containerised setup** — Docker/Compose definitions for Qdrant + Ollama
 - **API references** — Key endpoints and integration notes
+- **`.claude/`** — Init template: settings, skills, and commands to bootstrap new projects
 
 ## Files
 
 | File | Description |
 |------|-------------|
+| `llm_thinking_log.md` | **Primary file** — LLM reasoning/thinking logged before and after every implementation |
+| `decisions.md` | Architecture Decision Records (ADRs) — why X over Y |
+| `dsl.md` | Domain-specific language and terminology used in this project |
 | `implementation_guide.md` | Main step-by-step build guide |
 | `research_notes.md` | Technology evaluations and findings |
-| `decisions.md` | Architecture Decision Records (ADRs) |
 | `docker_setup.md` | Qdrant + Ollama containerised setup |
 | `api_reference.md` | Key API endpoints and usage |
-| `llm_thinking_log.md` | Summaries of the LLM thinking phase/reasoning process after executions |
 
 ## Containerised AI Stack
 
@@ -47,6 +67,8 @@ services:
 
 ## Rules
 
+- **Think before you code** — log the plan in `llm_thinking_log.md` before touching `5_Symbols`
+- **Log after execution** — append the LLM reasoning summary to `llm_thinking_log.md` once done
 - Write the *why* not just the *what* — reasoning decays fastest
 - Link research notes to the decisions they informed
 - Move superseded guides to `_obsolete/` 🚮

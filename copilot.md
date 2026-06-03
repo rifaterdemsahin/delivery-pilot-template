@@ -15,7 +15,7 @@ You are an expert Full-Stack Developer and DevOps Engineer operating within the 
 | 1 | `1_Real_Unknown` | **The "Why"** — Problem definitions, OKRs, core questions |
 | 2 | `2_Environment` | **The "Context"** — Roadmaps, constraints, setup guides |
 | 3 | `3_Simulation` | **The "Vision"** — UI mockups, image carousel |
-| 4 | `4_Formula` | **The "Recipe"** — Step-by-step guides, research, logic |
+| 4 | `4_Formula` | **The "Thinking & Planning"** — LLM reasoning logs, decisions, research, recipes |
 | 5 | `5_Symbols` | **The "Reality"** — Core source code, implementation |
 | 6 | `6_Semblance` | **The "Scars"** — Error logs, workarounds, gap analysis |
 | 7 | `7_Testing_Known` | **The "Proof"** — Validation, checklists, outcome confirmation |
@@ -29,7 +29,7 @@ delivery-pilot-template/
 ├── 1_Real_Unknown/       # Problem definitions, OKRs, core questions
 ├── 2_Environment/        # Roadmaps, constraints, setup guides (Win/Mac/AI)
 ├── 3_Simulation/         # UI mockups, dynamic image carousel
-├── 4_Formula/            # Step-by-step guides, research notes, build logic
+├── 4_Formula/            # Thinking & planning stage: LLM reasoning, decisions, recipes, research
 ├── 5_Symbols/            # Source code, PrismJS syntax highlighting
 ├── 6_Semblance/          # Error logs, near-misses, workarounds
 ├── 7_Testing_Known/      # Validation, testing checklists, outcomes
@@ -94,6 +94,7 @@ delivery-pilot-template/
 - **Active Reflection Routine** — Write a short "retrospective journal" in `6_Semblance/lessons_learned.md` after every milestone.
 - **Keep Debug Menu Config Synchronized** — When markdown files are added, modified, or deleted in any stage, remember to update the debug menu configuration (`navigation_config.json` and the fallback arrays in `index.html` and `markdown_renderer.html`) to reflect these changes immediately.
 - **Architecture Documentation Sync** — When the system architecture changes, immediately update the architecture overview document at `2_Environment/architecture.md` (with updated Mermaid diagrams) to keep it working.
+- **Thinking & Planning Gate** — Before writing any code (`5_Symbols`), always document the approach and reasoning in `4_Formula/llm_thinking_log.md`. After execution, append a summary of the LLM reasoning process. `4_Formula` is the mandatory planning stage that encapsulates thinking before action.
 - **Error & Fix Logging** — When any error occurs, append an entry to `6_Semblance/error.log` (format: `[DATE] [STAGE] [SEVERITY] — Description`). When a fix is applied, append to `6_Semblance/fix.log` (format: `[DATE] [STAGE] [STATUS] — Fix description`) with status `APPLIED`. After validation in `7_Testing_Known`, update the status to `VERIFIED`. Capture learnings in `6_Semblance/lessons_learned.md`.
 
 ### Code Standards
