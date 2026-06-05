@@ -16,6 +16,8 @@ This is what end-users see. It contains:
 - Links to the project's own pages and features
 - Project-specific navigation (e.g., dashboard, settings, docs)
 - Nothing related to the delivery-pilot framework
+- Does not use markdown-renderer.html
+- Actual implementation pages
 
 **This menu changes per project.** It is NOT the framework navigation.
 
