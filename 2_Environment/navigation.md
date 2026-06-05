@@ -18,6 +18,9 @@ This is what end-users see. It contains:
 - Nothing related to the delivery-pilot framework
 - Does not use markdown-renderer.html
 - Actual implementation pages
+- Standalone PoC HTML pages
+- Named in the relating to the solution domain. queries.html
+- Real interactive demos
 
 **This menu changes per project.** It is NOT the framework navigation.
 
