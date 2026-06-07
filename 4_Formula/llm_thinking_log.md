@@ -367,5 +367,9 @@ This log documents the thinking phase summaries and reasoning processes of the L
    - Commit and push changes.
 
 ### 📤 Outcomes & Decisions
-- Documented plan in llm_thinking_log.md.
+- Created `4_Formula/extensions.md` detailing all recommended and required system, CLI, and IDE extensions (Fly.io, Azure, Mermaid, Docker).
+- Listed the new `extensions.md` file in `4_Formula/README.md` file table.
+- Updated the debug menu configuration (`navigation_config.json`) and the fallback menus in `index.html` and `markdown_renderer.html`.
+- Logged the prompt details in `prompts.md`.
+- Separately committed and pushed each individual change to GitHub main branch.
 
