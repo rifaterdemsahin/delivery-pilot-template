@@ -81,6 +81,7 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 | 2026-05-31 | Gemini | Add maintenance task section to kanban | Update 1_Real_Unknown/kanban.md to append the ## Maintenance checklist section | Added Maintenance section to kanban.md and committed/pushed |
 | 2026-06-07 | Gemini | Document required extensions | Mention the extensions needed to run this project in the formulas folder (such as fly.io, mermaid, azure, etc.) | Created 4_Formula/extensions.md, updated 4_Formula/README.md, navigation_config.json, index.html, and markdown_renderer.html |
 | 2026-06-07 | Gemini | Share navigation & Supabase setup | Document shared navigation, configure Supabase with project name reflecting repo name, set up Key Vault credentials | Created 4_Formula/navigation.md and database.md, initialized Supabase config, updated .env.example and menu files |
+| 2026-06-07 | Gemini | Add commit review maintenance task | Add maintenance task to review commits, reread, and update Kanban tasks to stay on track | Updated kanban.md to add the maintenance task, mark finished tasks as Done, and add Supabase task |
 
 
 
