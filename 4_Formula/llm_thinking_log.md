@@ -402,5 +402,11 @@ This log documents the thinking phase summaries and reasoning processes of the L
    - Finalize the LLM reasoning log in `4_Formula/llm_thinking_log.md`.
 
 ### 📤 Outcomes & Decisions
-- Documented plan in llm_thinking_log.md.
+- Created `4_Formula/navigation.md` detailing the Shared Navigation pattern to avoid menu code duplication.
+- Initialized local Supabase project named `delivery-pilot-template` using `npx supabase init`.
+- Created `4_Formula/database.md` documenting Supabase config, naming standards, and Azure Key Vault secret injection mappings.
+- Appended both files to the file index in `4_Formula/README.md`.
+- Updated `.env.example` with Supabase credential placeholders (`SUPABASE_URL`, `SUPABASE_ANON_KEY`, etc.).
+- Registered both files in `navigation_config.json` and fallback configurations inside `index.html` and `markdown_renderer.html`.
+- Logged the prompt in `prompts.md` and committed all files to Git main branch.
 
