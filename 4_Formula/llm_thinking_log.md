@@ -330,16 +330,42 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Created `4_Formula/dsl.md` containing glossary definitions.
 - Staged, committed, and pushed changes.
 
+---
 
+## 📅 2026-06-07 — Document Required Extensions in 4_Formula/extensions.md
 
+### 📥 Input / Task
+- Mention the extensions needed to run this project in the formulas folder (such as fly.io, mermaid, azure, etc.).
+- Update navigation config files to include this new markdown file.
+- Log the prompt in `prompts.md` and document the LLM thinking phase here in `4_Formula/llm_thinking_log.md`.
 
+### 💭 Thinking & Reasoning Process
+1. **Analyze the Request**: The user wants a list of extensions/tools needed to run this project, to be placed in `4_Formula/` (the formulas folder). They explicitly mention fly.io, mermaid, azure, etc.
+2. **Determine the Extensions**:
+   - **VS Code / IDE Extensions**:
+     - *Markdown Preview Enhanced* or *Mermaid Previewer* (for viewing mermaid diagrams locally).
+     - *Azure Account* & *Azure Resources* (for Azure Key Vault secrets management).
+     - *Fly.io* (if there's a CLI/extension for fly.io monitoring/deployment).
+     - *YAML* (for docker-compose and fly.toml editing).
+     - *Live Server* or similar (for running the static site locally easily).
+   - **Deployment/Infrastructure Tools & Integrations (Extensions of the platform)**:
+     - *Fly.io CLI (`flyctl`)*: for deploying the Python backend.
+     - *Azure CLI (`az`)*: for Key Vault interaction.
+     - *Git & GitHub CLI*: for repository management and pages deployment.
+     - *Docker*: for local services like Qdrant and Ollama.
+3. **Formulate the Document**: We will create `4_Formula/extensions.md` documenting these extensions and tools, mapping them to their purpose within the Delivery Pilot Template.
+4. **Integration & Navigation Config**:
+   - Register the file in `navigation_config.json` under `debugMenu`. Let's put it under `4. Formula` or as `   ├─ Required Extensions`.
+   - Update `index.html` fallback navigation arrays to match.
+   - Update `markdown_renderer.html` fallback navigation arrays to match.
+5. **Execution Plan**:
+   - Document thinking log (this entry).
+   - Write `4_Formula/extensions.md`.
+   - Update `navigation_config.json`.
+   - Update `index.html` and `markdown_renderer.html`.
+   - Update `prompts.md`.
+   - Commit and push changes.
 
-
-
-
-
-
-
-
-
+### 📤 Outcomes & Decisions
+- Documented plan in llm_thinking_log.md.
 
