@@ -373,3 +373,34 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Logged the prompt details in `prompts.md`.
 - Separately committed and pushed each individual change to GitHub main branch.
 
+---
+
+## 📅 2026-06-07 — Share Navigation & Integrate Supabase Database
+
+### 📥 Input / Task
+- Document that navigation menu code should be shared (no duplication) inside `4_Formula/navigation.md`.
+- Initialize/configure Supabase as the project database (with project name reflecting repository name: `delivery-pilot-template`).
+- Document Supabase credential loading from Azure Key Vault in `4_Formula/database.md`.
+- Update `.env.example`, `navigation_config.json`, fallback arrays, and `prompts.md`.
+- Stage, commit, and push updates.
+
+### 💭 Thinking & Reasoning Process
+1. **Analyze the Navigation Sharing Requirement**: The user wants us to document the "Navigation Reusability Formula" in the formulas stage. The core concept is sharing menu code dynamically through a configuration file (`navigation_config.json`) and client-side rendering scripts in both `index.html` and `markdown_renderer.html`. This keeps configuration in one place and avoids hardcoding/duplicating HTML layouts.
+2. **Analyze the Supabase Requirement**:
+   - We initialized Supabase locally using `npx supabase init`. The created `supabase/config.toml` contains `project_id = "delivery-pilot-template"`, which matches the GitHub repository name.
+   - We must explain how Supabase credentials (URL, Anon Key, Service Role Key) are secured inside Azure Key Vault (dev/staging/prod vaults) and loaded at runtime into the application, rather than stored in the code.
+   - Update `.env.example` to specify the new Supabase keys.
+3. **Execution Plan**:
+   - Log this plan in `4_Formula/llm_thinking_log.md` and commit/push.
+   - Add/commit `supabase/` config folder.
+   - Create `4_Formula/navigation.md` (documents navigation sharing logic).
+   - Create `4_Formula/database.md` (documents Supabase integration, naming conventions, and Key Vault retrieval).
+   - Update `4_Formula/README.md` to include these files.
+   - Update `navigation_config.json`, `index.html`, and `markdown_renderer.html` fallback config structures to add these links.
+   - Update `.env.example` with Supabase placeholder variables.
+   - Update `prompts.md` prompt log.
+   - Finalize the LLM reasoning log in `4_Formula/llm_thinking_log.md`.
+
+### 📤 Outcomes & Decisions
+- Documented plan in llm_thinking_log.md.
+
