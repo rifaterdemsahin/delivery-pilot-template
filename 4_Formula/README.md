@@ -39,8 +39,10 @@ The self-learning loop flows through this stage automatically:
 |------|-------------|
 | `llm_thinking_log.md` | **Primary file** — LLM reasoning/thinking logged before and after every implementation |
 | `decisions.md` | Architecture Decision Records (ADRs) — why X over Y |
+| `database.md` | Supabase integration and secrets configuration guide |
 | `dsl.md` | Domain-specific language and terminology used in this project |
 | `extensions.md` | Required system and IDE extensions/plugins |
+| `navigation.md` | Shared navigation menu design and reusability formula |
 | `implementation_guide.md` | Main step-by-step build guide |
 | `research_notes.md` | Technology evaluations and findings |
 | `docker_setup.md` | Qdrant + Ollama containerised setup |
