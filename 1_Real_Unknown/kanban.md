@@ -32,11 +32,6 @@
 ## 📋 Planned / To Do
 *Tasks scheduled for implementation.*
 
-- [ ] **TSK-004: Configure Navigation & Menus**
-  - **Assignee:** Gemini / Claude
-  - **Details:** Add dynamic JSON configuration loading for navigation menus and ensure persistency via cookies.
-  - **Stage Reference:** [2_Environment/navigation.md](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/navigation.md)
-
 - [ ] **TSK-005: Setup CI/CD Pipeline**
   - **Assignee:** Copilot / DevOps
   - **Details:** Set up GitHub Actions workflow to deploy static content to GitHub Pages.
@@ -57,10 +52,7 @@
 ## 🔄 In Progress
 *Active tasks currently being worked on.*
 
-- [/] **TSK-003: Define Kanban Template**
-  - **Assignee:** Gemini
-  - **Details:** Create `1_Real_Unknown/kanban.md` and define the initial setup tasks.
-  - **Stage Reference:** [1_Real_Unknown/kanban.md](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/kanban.md)
+*No active tasks in progress.*
 
 ---
 
@@ -87,10 +79,26 @@
   - **Details:** Created `index.html` and `navigation_config.json` for site entry point.
   - **Stage Reference:** [index.html](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/index.html)
 
+- [x] **TSK-003: Define Kanban Template**
+  - **Assignee:** Gemini
+  - **Details:** Created `1_Real_Unknown/kanban.md` and define the initial setup tasks.
+  - **Stage Reference:** [1_Real_Unknown/kanban.md](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/kanban.md)
+
+- [x] **TSK-004: Configure Navigation & Menus**
+  - **Assignee:** Gemini / Claude
+  - **Details:** Add dynamic JSON configuration loading for navigation menus and ensure persistency via cookies.
+  - **Stage Reference:** [2_Environment/navigation.md](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/navigation.md)
+
+- [x] **TSK-011: Supabase Database Integration & Setup**
+  - **Assignee:** Gemini
+  - **Details:** Initialize local Supabase CLI config, document database integration, and Azure Key Vault secret mappings.
+  - **Stage Reference:** [4_Formula/database.md](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/4_Formula/database.md)
+
 ---
 
 ## ⚙️ Maintenance
 
+- [ ] Go over git commits periodically, reread changed files, and create/update Kanban tasks to stay on track
 - [ ] Update the environment folder > 1_Real_Unknown
 - [ ] Update the environment folder > 2_Environment
 - [ ] Add new features incoming as visuals folder > 3_Simulation
