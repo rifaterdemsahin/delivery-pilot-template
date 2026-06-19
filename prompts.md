@@ -90,3 +90,4 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 
 
 
+| 2026-06-19 | Claude | Create logging & nightly auto-fix formula | Formula doc to manage frontend logs via footer debug feature + Axiom backend logs, plus a nightly continuous-fix agent that finds and fixes errors when not actively coding | Created 4_Formula/logging_and_autofix.md; updated 4_Formula/README.md, navigation_config.json, index.html, markdown_renderer.html; committed and pushed |

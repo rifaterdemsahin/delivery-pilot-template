@@ -463,3 +463,19 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Axiom is the **single source of truth for server-side logs**; secrets (`AXIOM_TOKEN`, `AXIOM_DATASET`) live in Azure Key Vault.
 - Fly.io framed explicitly as **container-based (Docker) deployments**, the deploy target for backend code.
 - All tool secrets centralized in the Secrets Map within `tools.md` and `.env.example` (placeholders only).
+
+---
+
+## 2026-06-19 — Logging & nightly continuous-fix formula
+
+### 🧠 Thinking & Planning (before action)
+- **Goal:** One formula doc covering (1) frontend logs via the existing footer debug feature, (2) backend logs via Axiom, and (3) a nightly agent that fixes errors when no one is actively coding.
+- **Approach:**
+  1. Grounded the doc in real code: the `debugLog`/`getCookie` utility and bottom-right `#debugToggle` button already in `index.html`/`markdown_renderer.html`. Proposed extending `debugLog` with a ring buffer, a footer "Logs" panel, global `onerror` capture, and backend-forwarding (so the Axiom token never lives in the browser).
+  2. Backend = single writer to Axiom; defined the structured error shape and the tag fields (`trace`, `source`, `path`, `commit`, `count`) the fix agent needs.
+  3. Nightly fix loop via the `/schedule` skill (cron `0 3 * * *`) with an **idle guard** (skip if uncommitted changes / recent commits / wip PR), Axiom→error.log cross-reference, smallest-safe-fix on a branch, `/verify`, fix.log entry, and **PR only — never auto-merge**.
+- **Sync:** Added to `4_Formula/README.md` files table and the debug menu (navigation_config.json + both HTML fallbacks) per the menu-sync rule.
+
+### 📤 Outcomes & Decisions
+- Frontend never holds the Axiom token; errors always forward, debug-level logs only when `debug=true`.
+- Nightly agent is advisory-by-PR, bounded to trace-implicated files, idempotent, and stops on ambiguity (logs `[PENDING]`).

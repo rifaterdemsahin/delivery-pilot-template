@@ -43,6 +43,7 @@ The self-learning loop flows through this stage automatically:
 | `dsl.md` | Domain-specific language and terminology used in this project |
 | `extensions.md` | Required system and IDE extensions/plugins |
 | `navigation.md` | Shared navigation menu design and reusability formula |
+| `logging_and_autofix.md` | Unified logging (footer debug + Axiom) and the nightly continuous-fix agent |
 | `implementation_guide.md` | Main step-by-step build guide |
 | `research_notes.md` | Technology evaluations and findings |
 | `docker_setup.md` | Qdrant + Ollama containerised setup |
