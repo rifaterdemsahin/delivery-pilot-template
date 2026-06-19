@@ -24,10 +24,31 @@ Sets up a new project from `delivery-pilot-template` by:
 
 When the user runs `/init-project`:
 
-### Step 1 — Gather inputs
-- Project name (required)
-- GitHub username (default: rifaterdemsahin)
-- Repo name (used for GitHub Pages URL)
+### Step 1 — Gather inputs (ASK THESE QUESTIONS FIRST)
+
+Before creating or modifying any files, **ask the user the setup questionnaire below** (use the `AskUserQuestion` tool, one batch of questions). Do not assume answers — the whole point of init is to configure the template consciously. Record every answer in `prompts.md` and in `4_Formula/decisions.md`.
+
+#### 🧱 Project basics
+1. **Project name?** (required — used in `CLAUDE.md`, `README.md`, `agents.md`)
+2. **GitHub username?** (default: `rifaterdemsahin`)
+3. **Repo name?** (used for the GitHub Pages URL `https://<user>.github.io/<repo>/`)
+
+#### ☁️ Tooling choices (pick what this project will actually use)
+4. **Backend deployments — use Fly.io?** (container-based Docker deploys) → Yes/No. If No, what hosts the backend, or is it frontend-only?
+5. **Database — use Supabase?** (managed Postgres, auth, realtime, storage) → Yes / No / Other (which?).
+6. **Server-side logs — use Axiom?** (centralized structured logging) → Yes / No / Other.
+7. **Edge compute — use Cloudflare Workers?** (auth/routing/caching) → Yes / No.
+8. **AI / vector — Ollama + Qdrant, Supabase `pgvector`, or none?**
+9. **Secrets — confirm Azure Key Vault** (per env: dev/staging/prod) → Yes / Other vault.
+
+#### 🚀 Delivery
+10. **Environments needed?** (dev / staging / prod — which ones?)
+11. **Custom domain for GitHub Pages?** (Yes → which / No)
+
+After collecting answers:
+- Prune `2_Environment/` docs for tools the project will **not** use (move to `2_Environment/_obsolete/`), and trim their secrets from `.env.example`.
+- Update `2_Environment/tools.md`, `architecture.md` (Mermaid), and the debug-menu config to reflect only the chosen tools.
+- Seed Azure Key Vault names per chosen environment.
 
 ### Step 2 — Create folder structure
 ```
@@ -59,6 +80,9 @@ git push -u origin main
 
 ## Checklist after /init-project
 
+- [ ] Setup questionnaire asked and answers recorded in `prompts.md` + `4_Formula/decisions.md`
+- [ ] Unused tool docs pruned to `2_Environment/_obsolete/` and `.env.example` trimmed
+- [ ] `2_Environment/tools.md` reflects only the chosen tools
 - [ ] All 7 folders exist with README.md
 - [ ] `.claude/settings.json` has git permissions pre-approved
 - [ ] `.claude/commands/` has all 5 command files

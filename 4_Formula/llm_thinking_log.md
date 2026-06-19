@@ -443,3 +443,23 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Created and logged `TSK-011: Supabase Database Integration & Setup` under `## ✅ Done` on the Kanban board.
 - Logged prompt details in `prompts.md` and committed/pushed all files to GitHub.
 
+
+---
+
+## 2026-06-19 — Add Axiom, Supabase, Fly.io tools + tools overview + setup questionnaire
+
+### 🧠 Thinking & Planning (before action)
+- **Goal:** Add three tools to the stack — Axiom (server-side logs), Supabase (database/backend features), Fly.io (container-based deployments) — document them, provide one consolidated tools overview in `2_Environment`, and make `/init-project` ask setup questions.
+- **Approach:**
+  1. Fly.io doc already existed → re-titled to "Container-Based Deployments" and wired Supabase/Axiom into its integration section.
+  2. Created `2_Environment/axiom.md` and `2_Environment/supabase.md` following the existing tool-doc shape (what/use cases/when/integration/setup/pricing/refs).
+  3. Created `2_Environment/tools.md` as the single overview: stack-at-a-glance table, tool-by-tool, secrets map, data-flow diagram.
+  4. Synced `architecture.md` Mermaid + components, `2_Environment/README.md` files table, `.env.example` secrets, and the debug menu (`navigation_config.json` + both HTML fallbacks).
+  5. Updated `claude.md` Infrastructure section to list Deployments/Database/Logs.
+  6. Added a setup questionnaire to `4_Formula/.claude/commands/init-project.md` so new projects choose tools consciously (asked via AskUserQuestion, recorded in prompts.md + decisions.md).
+
+### 📤 Outcomes & Decisions
+- Supabase chosen as the **primary database** (Postgres + auth + realtime + pgvector); Qdrant retained for dedicated vector workloads.
+- Axiom is the **single source of truth for server-side logs**; secrets (`AXIOM_TOKEN`, `AXIOM_DATASET`) live in Azure Key Vault.
+- Fly.io framed explicitly as **container-based (Docker) deployments**, the deploy target for backend code.
+- All tool secrets centralized in the Secrets Map within `tools.md` and `.env.example` (placeholders only).

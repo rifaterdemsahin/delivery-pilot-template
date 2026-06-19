@@ -82,6 +82,7 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 | 2026-06-07 | Gemini | Document required extensions | Mention the extensions needed to run this project in the formulas folder (such as fly.io, mermaid, azure, etc.) | Created 4_Formula/extensions.md, updated 4_Formula/README.md, navigation_config.json, index.html, and markdown_renderer.html |
 | 2026-06-07 | Gemini | Share navigation & Supabase setup | Document shared navigation, configure Supabase with project name reflecting repo name, set up Key Vault credentials | Created 4_Formula/navigation.md and database.md, initialized Supabase config, updated .env.example and menu files |
 | 2026-06-07 | Gemini | Add commit review maintenance task | Add maintenance task to review commits, reread, and update Kanban tasks to stay on track | Updated kanban.md to add the maintenance task, mark finished tasks as Done, and add Supabase task |
+| 2026-06-19 | Claude | Add Axiom, Supabase, Fly.io tools + tools overview + setup questionnaire | Add Axiom (server-side logs), Supabase (database), Fly.io (container deployments) as tools, create one tools overview doc in 2_Environment, and add setup questions to the /init-project template | Created `2_Environment/axiom.md`, `supabase.md`, `tools.md`; updated `fly_io.md`, `architecture.md`, `2_Environment/README.md`, `.env.example`, `navigation_config.json`, `index.html`, `markdown_renderer.html`, `claude.md`, and `init-project.md` (setup questionnaire); committed and pushed |
 
 
 

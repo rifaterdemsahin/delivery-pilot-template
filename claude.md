@@ -55,8 +55,12 @@ delivery-pilot-template/
 - **Static Hosting:** GitHub Pages via GitHub Actions
 - **Secrets Management:** Azure Key Vault (never commit secrets to git)
 - **AI Stack:** Qdrant + Ollama (`nomic-embed-text`, 4096 dimensions)
-- **Backend:** Fly.io for Python services
+- **Deployments:** Fly.io — container-based (Docker) Python service deployments
+- **Database:** Supabase — managed Postgres, auth, realtime, storage, `pgvector`
+- **Server-Side Logs:** Axiom — centralized structured logging, tracing, alerting
 - **CI/CD:** GitHub Actions
+
+> 📋 See [`2_Environment/tools.md`](2_Environment/tools.md) for a single overview of every tool in the stack.
 
 ### Navigation & UI Rules
 

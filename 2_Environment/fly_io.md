@@ -1,8 +1,8 @@
-# Fly.io — Backend Application Hosting
+# Fly.io — Container-Based Deployments
 
 ## What is it?
 
-Fly.io is a platform for running full-stack applications, databases, and services close to users. It deploys Docker containers to edge locations worldwide, giving you persistent compute with global distribution.
+Fly.io is a platform for **container-based deployments** of full-stack applications and services close to users. It deploys **Docker containers** to edge locations worldwide, giving you persistent compute with global distribution. In this project it is the **deployment target for all backend application code**.
 
 ## Use Cases
 
@@ -36,10 +36,11 @@ Fly.io is a platform for running full-stack applications, databases, and service
 
 - **Frontend:** Static site on GitHub Pages
 - **Edge Logic:** Cloudflare Workers for auth, caching, routing
-- **Backend:** Fly.io runs the Python application (FastAPI/Flask)
-- **Database:** Fly.io PostgreSQL or Redis
-- **Vector DB:** Qdrant on Fly.io (or self-hosted)
-- **Secrets:** Azure Key Vault (injected as env vars at deploy time)
+- **Backend:** Fly.io runs the Python application (FastAPI/Flask) as a Docker container
+- **Database:** [Supabase](./supabase.md) (managed Postgres) is the primary data layer; Fly.io Postgres/Redis only for app-local needs
+- **Logs:** Backend ships structured logs to [Axiom](./axiom.md)
+- **Vector DB:** Qdrant on Fly.io, or Supabase `pgvector`
+- **Secrets:** Azure Key Vault (injected as env vars at deploy time via `fly secrets set`)
 
 ## Setup
 

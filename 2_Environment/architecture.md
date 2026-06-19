@@ -14,16 +14,21 @@ graph TD
     User["🌐 End User (Browser)"]
     GitHubPages["📦 GitHub Pages (Frontend)"]
     CloudflareWorkers["⚡ Cloudflare Workers (Edge Auth/Routing)"]
-    FlyIO["🐍 Fly.io (Python API Backend)"]
+    FlyIO["🐳 Fly.io (Container-Based Python API)"]
+    Supabase["🗄️ Supabase (Postgres / Auth / Realtime)"]
+    Axiom["📊 Axiom (Server-Side Logs)"]
     AzureKeyVault["🔒 Azure Key Vault (Secrets Management)"]
     GitHubActions["🤖 GitHub Actions (CI/CD Pipeline)"]
 
     User -->|Access index.html| GitHubPages
     User -->|Dynamic requests| CloudflareWorkers
     CloudflareWorkers -->|Proxy APIs / Cache| FlyIO
+    FlyIO -->|Read/write data, auth| Supabase
+    FlyIO -->|Ship structured logs| Axiom
     FlyIO -->|Retrieve secrets at runtime| AzureKeyVault
-    
+
     GitHubActions -->|Deploy static pages| GitHubPages
+    GitHubActions -->|Deploy containers| FlyIO
     GitHubActions -->|Fetch deploy secrets| AzureKeyVault
 ```
 
@@ -45,12 +50,22 @@ graph TD
 - Provides rate-limiting, security headers, routing, and access control.
 
 ### 3. Backend Services (`2_Environment/fly_io.md`)
-- Hosts backend logic using Python services (FastAPI/Flask) running on Fly.io.
+- **Container-based deployments:** Python services (FastAPI/Flask) run as Docker containers on Fly.io.
 - Hosts vector database integration (Qdrant) and Ollama connections.
 
-### 4. Secrets Management (`2_Environment/setup_azure.md`)
+### 4. Database & Data Layer (`2_Environment/supabase.md`)
+- **Provider:** Supabase (managed PostgreSQL).
+- **Usage:** Primary database plus auth, auto-generated APIs, realtime subscriptions, storage, and `pgvector`. Accessed from the backend via `DATABASE_URL` / `supabase-py`, and optionally from the frontend via the anon key under Row Level Security.
+
+### 5. Server-Side Logs (`2_Environment/axiom.md`)
+- **Provider:** Axiom.
+- **Usage:** Centralized, structured server-side logs from Fly.io and CI. Powers querying (APL), dashboards, and alerting.
+
+### 6. Secrets Management (`2_Environment/setup_azure.md`)
 - **Provider:** Microsoft Azure Key Vault.
 - **Usage:** Stores all API keys, database credentials, and deployment keys. Secrets are loaded at runtime by backend environments or injected during CI/CD steps.
+
+> 📋 For a single reference covering every tool in the stack, see [`tools.md`](./tools.md).
 
 ---
 

@@ -24,8 +24,11 @@ This folder documents the **setup, constraints, and operating context** of the p
 | `roadmap.md` | Project roadmap and milestones |
 | `constraints.md` | Known limitations and constraints |
 | [`architecture.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/architecture.md) | System architecture with Mermaid diagrams |
+| [`tools.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/tools.md) | **Single overview of every tool used** in the project |
 | [`cloudflare_workers.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/cloudflare_workers.md) | Edge compute — auth, routing, caching, rate limiting |
-| [`fly_io.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/fly_io.md) | Backend hosting — Python APIs, databases, WebSockets |
+| [`fly_io.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/fly_io.md) | Container-based deployments — Python APIs, jobs, WebSockets |
+| [`supabase.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/supabase.md) | Database & backend features — Postgres, auth, realtime, storage |
+| [`axiom.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/axiom.md) | Server-side logs — observability, tracing, alerting |
 | [`github_pages.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/github_pages.md) | Frontend static hosting — docs, SPAs, landing pages |
 | [`navigation.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/navigation.md) | Two-menu system: Project Menu + Debug Menu (bottom-right) |
 
