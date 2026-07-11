@@ -39,7 +39,7 @@ Each of the 7 stages has a **dedicated agent** that owns its folder, focuses on 
 | **Simulation Agent** | `3_Simulation/` | Understands requirements and changes from upstream. Creates visual designs, mockups, and flow diagrams with versioning. Always creates new version images. | Environment Agent | Formula Agent |
 | **Formula Agent** | `4_Formula/` | Creates specs from requirements and simulations. Versions specs. Documents reasoning in `llm_thinking_log.md`. Gates entry to code. | Environment Agent, Simulation Agent | Symbols Agent, all agents (via thinking log) |
 | **Symbols Agent** | `5_Symbols/` | Writes code based on Real, Environment, and Formula agents' outputs. Follows coding rules in `5_Symbols/rules/`. | Real Agent, Environment Agent, Formula Agent | Test Agent |
-| **Test Agent** | `7_Testing_Known/` | Tests the codebase against objectives. Runs smoke tests. Documents errors and test outputs. | Symbols Agent | Semblance Agent |
+| **Test Agent** | `7_Testing_Known/` | Tests the codebase against objectives. Runs smoke tests and code reviews. Documents errors and test outputs. | Symbols Agent | Semblance Agent |
 | **Semblance Agent** | `6_Semblance/` | Works with Test Agent to document and resolve errors. Captures lessons learned and feeds them back to Real Agent to close the loop. | Test Agent | Real Agent |
 
 ### Agent Communication
@@ -80,7 +80,7 @@ Semblance Agent ─► llm_thinking_log.md  ──► (feedback loop to Real Age
 | Simulation Agent | Environment Agent output | `image_prompts.md`, `carousel_config.json`, `design_workflow.md` | All `3_Simulation/*` |
 | Formula Agent | Environment + Simulation output | `specs.md`, `decisions.md`, `dsl.md`, `extensions.md` | `llm_thinking_log.md` |
 | Symbols Agent | Real + Environment + Formula output | Source code, Docker configs, CI/CD workflows | `5_Symbols/rules/` |
-| Test Agent | Symbols Agent output | `smoke_tests.md`, `validation_report.md` | `smoke_test_report.md` |
+| Test Agent | Symbols Agent output | `smoke_tests.md`, `validation_report.md`, conducts code reviews | `smoke_test_report.md` |
 | Semblance Agent | Test Agent output | `error.log`, `fix.log`, `lessons_learned.md`, `smoke_test_report.md` | Feedback to Real Agent |
 
 ## Agent Rules
@@ -96,7 +96,7 @@ Semblance Agent ─► llm_thinking_log.md  ──► (feedback loop to Real Age
   4. **3_Simulation — Design New Versions**: Update visual designs and always create new version images. Log image generation prompts in `image_prompts.md`, update `carousel_config.json`. Design artifacts must be current before code enters `5_Symbols`. → **Simulation Agent**
   5. **4_Formula — Specs & Approval**: Follow or update the specs in `specs.md`. Document reasoning in `llm_thinking_log.md`. Get approval (specs + designs reviewed) before implementing in `5_Symbols`. This is the mandatory gating stage. → **Formula Agent**
   6. **5_Symbols — Implement**: Place all new source code here (except root files like `index.html`). Only enter this stage after the `4_Formula` gate approves the plan. Follow coding rules defined in `5_Symbols/rules/`. → **Symbols Agent**
-  7. **7_Testing_Known — Test & Report**: After implementation, test the functionality and report the outputs. **Run smoke tests** that open pages, check for errors, and report failures to GitHub Issues. Use validation checklists and test evidence. If issues are found, create a GitHub Issue and loop back to `6_Semblance`. → **Test Agent**
+  7. **7_Testing_Known — Test & Report**: After implementation, test the functionality and report the outputs. **Run smoke tests** that open pages, check for errors, and report failures to GitHub Issues. **Conduct code reviews** on the implementation. Use validation checklists and test evidence. If issues are found, create a GitHub Issue and loop back to `6_Semblance`. → **Test Agent**
   8. **6_Semblance — Fix & Resolve**: Document all errors, fixes, workarounds, and gap analyses. After testing reveals issues, fix them here and **mention the resolution**. Append to `error.log` and `fix.log`, update statuses, capture lessons learned. Resolve the corresponding GitHub Issues and publish a smoke test report to `6_Semblance/smoke_test_report.md`. → **Semblance Agent**
 - **Thinking & Planning Gate** — Before writing any code (`5_Symbols`), always document the approach and reasoning in `4_Formula/llm_thinking_log.md`. After execution, append a summary of the LLM reasoning process. `4_Formula` is the mandatory planning stage that encapsulates thinking before action.
 - **Specs System** — Technical specifications live in `4_Formula/specs.md`. Before implementing any feature, create or update its spec. When new tasks arrive, check `4_Formula/specs.md` for existing specs that may be affected. If a task changes behavior covered by an active spec, flag it with `[NEEDS UPDATE]` and **warn** before writing code. Specs are validated against code in `5_Symbols`.
