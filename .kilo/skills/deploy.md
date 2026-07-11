@@ -17,6 +17,14 @@ Execute the project's strict commit-push-deploy workflow with zero-batching poli
 - **Fly.io**: Container-based backend deployments
 - **Supabase**: Database migrations and edge functions
 
+## Smoke Test Gate
+**Before deploying**, run smoke tests from `7_Testing_Known/smoke_tests.md`:
+1. Open `index.html` and `markdown_renderer.html` — check console for errors
+2. Report any failures as GitHub Issues
+3. Fix issues in `6_Semblance/` and resolve the GitHub Issues
+4. Publish smoke test report to `6_Semblance/smoke_test_report.md`
+5. Only proceed with deployment if all smoke tests pass
+
 ## Steps
 1. After making a change, verify with `git status`
 2. Stage the specific file(s) changed: `git add <file>`
