@@ -1,19 +1,37 @@
-# Agents
+# Agents — Coordinator
 
-This file defines how AI agents interact with the **Delivery Pilot Template** project.
+`agents.md` is the **coordinator** — the single source of truth for all agent rules, workflows, and the 7-stage execution flow. It stays constant regardless of which LLM you use. Individual agent persona files are **LLM-specific** and generated/updated whenever you switch models.
 
 ## Supported Agents
 
-| Agent | File | Purpose |
-|-------|------|---------|
-| Claude | `claude.md` | Full-stack dev, DevOps, 7-stage framework |
-| Gemini | `gemini.md` | Multimodal analysis, image tasks |
-| GitHub Copilot | `copilot.md` | GitHub-native integrations |
-| Kilo Code | `kilocode.md` | Precision code generation |
+`agents.md` delegates to LLM-specific persona files. Each persona file inherits all coordinator rules and adds model-specific capabilities:
+
+| Agent | File | Model Context |
+|-------|------|---------------|
+| Claude | `claude.md` | Anthropic Claude — skills, API integrations, MCP servers |
+| Gemini | `gemini.md` | Google Gemini — multimodal analysis, image tasks |
+| GitHub Copilot | `copilot.md` | GitHub Copilot — GitHub-native integrations, Actions |
+| Kilo Code | `kilocode.md` | Kilo Code (model-agnostic) — precision code generation |
+
+### Switching LLMs — Generating Persona Files
+
+You constantly change the large language models you use. The code updates to match their standards. When switching:
+
+- **Switching to DeepSeek?** → Generate `deepseek.md` with DeepSeek-specific capabilities
+- **Switching to GPT?** → Generate `gpt.md` with OpenAI-specific instructions
+- **Switching back to Claude?** → Update `claude.md` to match current project state
+
+**How to generate a new persona file:**
+1. Tell the agent which LLM you're now using (e.g., "I'm using DeepSeek now")
+2. The agent reads `agents.md` (coordinator) and generates `<llm>.md` inheriting all 7-stage rules
+3. Add the new file to `navigation_config.json` debug menu and HTML fallback arrays
+4. Register in the Supported Agents table above
+5. Commit and push both `agents.md` (updated table) and the new `<llm>.md`
 
 ## Agent Rules
 
 - Always follow the 7-stage folder structure (`1_Real_Unknown` through `7_Testing_Known`)
+- **LLM Model Switching** — The coordinator (`agents.md`) stays constant while persona files are generated per LLM. When you switch models (Claude → DeepSeek → GPT → etc.), a matching `<llm>.md` file is generated that inherits all coordinator rules. The agent currently in use always reads its own persona file plus `agents.md` as the universal coordinator.
 - Never commit secrets — use Azure Key Vault for all sensitive values
 - **After every command, commit and push** — do not batch changes; each step gets its own commit. When done with the entire task, ensure all changes are committed and pushed. If any git errors occur (e.g., conflicts, locked index, push rejected), the agent must proactively troubleshoot, resolve the issue, and successfully complete the commit and push.
 - **7-Stage Execution Flow** — Every task follows this cycle from start to resolution:
