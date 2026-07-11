@@ -599,3 +599,28 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - `2_Environment/README.md` files table updated with dependencies.md entry.
 - All debug menus synchronized with the new `Dependencies` entry under `2. Environment`.
 - All 8 files committed and pushed individually to GitHub main branch.
+
+---
+
+## 📅 2026-07-11 — Smoke Tests, GitHub Issues Integration & 6_Semblance Reporting
+
+### 📥 Input / Task
+- When building functionality, add smoke tests that open pages and check for errors, then report the errors to GitHub Issues. Resolve them and add a report to `6_Semblance/`.
+
+### 💭 Thinking & Reasoning Process
+1. **Smoke Test Strategy**: Authored `7_Testing_Known/smoke_tests.md` covering the full smoke test lifecycle:
+   - **Test definitions**: Page load, Project Menu, Debug Menu, Markdown Renderer, Image Carousel, GitHub Edit, Navigation Config, Cookie Persistence, Responsive Layout
+   - **GitHub Issues integration**: Template for creating issues, linking them in error.log, resolving with fix.log references
+   - **Report format**: Standardized smoke test report template for `6_Semblance/smoke_test_report.md`
+   - **Automation guide**: GitHub Actions workflow sketch for CI smoke testing
+2. **Agent Rules Update**: Added the "Smoke Tests & GitHub Issues" rule to `agents.md` and all 4 agent persona files. Updated the 7-Stage Execution Flow steps 7-8 to explicitly mention smoke tests, GitHub Issues, and the smoke test report.
+3. **Deploy Gate**: Updated `.kilo/skills/deploy.md` to include a Smoke Test Gate — no deployment proceeds unless all smoke tests pass.
+4. **Navigation Sync**: Added `smoke_tests.md` entry under `7. Testing Known` in `navigation_config.json` and both HTML fallback arrays.
+5. **Stage README**: Updated `7_Testing_Known/README.md` files table to include `smoke_tests.md`.
+
+### 📤 Outcomes & Decisions
+- `7_Testing_Known/smoke_tests.md` provides a complete smoke test strategy with 9 test definitions, GitHub Issues integration, and report template.
+- All 5 agent rule files now include the Smoke Tests & GitHub Issues rule.
+- Deploy skill gated by smoke tests — no deployment without passing smoke tests.
+- Error flow: Code → Smoke Test → GitHub Issue → `6_Semblance/error.log` → Fix → `6_Semblance/fix.log` → `6_Semblance/smoke_test_report.md` → Close Issue.
+- All 10 files committed and pushed individually.
