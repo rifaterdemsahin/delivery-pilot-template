@@ -1,33 +1,85 @@
 # delivery-pilot-template
 
-A template for **self-learning projects using AI**. This project provides a structured 7-stage framework that guides AI agents and humans from problem definition to validated deployment.
+A template for **self-learning projects using AI agents**. This project provides a structured 7-stage framework with 7 dedicated agents that guide the journey from problem definition to validated deployment — with each agent owning its stage and communicating through a shared thinking log.
 
-## What is this?
+## Agentic Workflow
 
-This template is the starting point for any new project that uses AI agents (Claude, Gemini, Copilot, Kilo Code) as collaborative partners. It enforces a disciplined journey through:
+```mermaid
+graph TD
+    USER["User Task"]
+    RA["Real Agent<br/>1_Real_Unknown<br/>Coordinator: OKRs, tasks, risks"]
+    EA["Environment Agent<br/>2_Environment<br/>Blueprints, tools, deps, costs, context"]
+    SA["Simulation Agent<br/>3_Simulation<br/>Visual designs, mockups, versions"]
+    FA["Formula Agent<br/>4_Formula<br/>Specs, approval gate"]
+    SYA["Symbols Agent<br/>5_Symbols<br/>Code implementation"]
+    TA["Test Agent<br/>7_Testing_Known<br/>Smoke tests, code reviews"]
+    SEA["Semblance Agent<br/>6_Semblance<br/>Error fixes, lessons, sub-agents"]
+    LOG["llm_thinking_log.md<br/>Agent Communication Hub"]
 
-1. **Problem Discovery** — Define unknowns, OKRs, and core questions
-2. **Environment Setup** — Establish context, constraints, and tooling
-3. **Simulation** — Visualize the vision with design mockups and diagrams
-4. **Formula** — Research, plan, and spec documents to implement the step-by-step approach
-5. **Symbols** — Write the actual code
-6. **Semblance** — Capture errors, workarounds, and lessons learned
-7. **Testing** — Validate everything against the original unknowns
+    USER --> RA
+    RA -->|dispatches| EA
+    EA -->|blueprints| SA
+    SA -->|designs| FA
+    FA -->|specs + approval| SYA
+    SYA -->|code| TA
+    TA -->|errors found| SEA
+    SEA -->|lessons + fixes| RA
+    RA --> LOG
+    EA --> LOG
+    SA --> LOG
+    FA --> LOG
+    SYA --> LOG
+    TA --> LOG
+    SEA --> LOG
 
-## 🧠 Fitness as a Self-Learning Platform
+    style RA fill:#8b5cf6,color:#fff
+    style EA fill:#06b6d4,color:#fff
+    style SA fill:#10b981,color:#fff
+    style FA fill:#f59e0b,color:#fff
+    style SYA fill:#ef4444,color:#fff
+    style TA fill:#3b82f6,color:#fff
+    style SEA fill:#ec4899,color:#fff
+    style LOG fill:#1e293b,color:#94a3b8
+```
 
-The 7-stage structure is highly suited to self-learning because it mimics the cognitive steps of learning:
+**How the agents communicate**: All 7 agents write their reasoning to `4_Formula/llm_thinking_log.md`. Upstream agents log their decisions; downstream agents read those logs before acting. The Semblance Agent closes the loop by feeding resolved errors and lessons back to the Real Agent.
 
-1. **[1_Real_Unknown](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown)** maps to **Active Ignorance** (recognizing what you do not know).
-2. **[2_Environment](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment)** & **[3_Simulation](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/3_Simulation)** map to **Mental Sandbox** (building context and visualizing the system).
-3. **[4_Formula](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/4_Formula)** maps to **Synthesis** (developing recipes, logic, and planning).
-4. **[5_Symbols](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/5_Symbols)** maps to **Execution** (translating theory to reality).
-5. **[6_Semblance](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/6_Semblance)** maps to **Feedback Loop** (documenting mistakes, debugging, active reflection).
-6. **[7_Testing_Known](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/7_Testing_Known)** maps to **Consolidation** (proving outcomes).
+---
+
+## Why Use This Template? — Self-Learning Through Agentic Feedback
+
+This template is designed as a **self-learning platform** — every project built with it becomes smarter over time. The 7-stage structure with 7 dedicated agents creates closed-loop learning:
+
+| Agent | Learning Mechanism |
+|-------|-------------------|
+| **Real Agent** | Evolves responsibility — scans the status quo, updates `risks.md` with new risks, applies mitigations |
+| **Environment Agent** | Compares models/tools, tracks costs, suggests optimizations — recorded in `costs.md` |
+| **Simulation Agent** | Creates versioned designs — every iteration is preserved for comparison |
+| **Formula Agent** | Specs are versioned and checked against incoming tasks — warns when behavior conflicts |
+| **Symbols Agent** | Coding rules in `5_Symbols/rules/` enforce consistency — lessons become standards |
+| **Test Agent + Semblance Agent** | **Sub-synthesis loop**: Test finds errors → Semblance fixes + analyzes → creates sub-agents to mitigate root causes → lessons fed back to Real Agent |
+
+**The feedback loop**: Every error found in `7_Testing_Known` flows through `6_Semblance/` (as documented fixes and lessons), then back to the Real Agent. The Real Agent uses this to update `risks.md` and adjust task priorities. Over time, the project learns from every mistake — each resolved error makes the system stronger.
+
+---
+
+## 🧠 Cognitive Mapping — 7 Stages to Self-Learning
+
+The framework mimics how humans learn: recognize ignorance, build context, visualize, synthesize, execute, get feedback, and consolidate.
+
+| Stage | Folder | Cognitive Step | Agent |
+|-------|--------|---------------|-------|
+| 1 | `1_Real_Unknown` | **Active Ignorance** — State what you don't know | Real Agent |
+| 2 | `2_Environment` | **Mental Sandbox** — Build context and constraints | Environment Agent |
+| 3 | `3_Simulation` | **Visualization** — Make the invisible visible | Simulation Agent |
+| 4 | `4_Formula` | **Synthesis** — Plan, spec, and decide | Formula Agent |
+| 5 | `5_Symbols` | **Execution** — Turn plans into reality | Symbols Agent |
+| 7 | `7_Testing_Known` | **Validation** — Prove it works | Test Agent |
+| 6 | `6_Semblance` | **Feedback Loop** — Learn from errors, improve | Semblance Agent |
+
+---
 
 ## How to use
-
-
 
 1. Fork or clone this repo
 2. Read `agents.md` for agent coordination rules
