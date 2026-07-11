@@ -724,3 +724,21 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Formula Agent now explicitly responsible for identifying code drift across all 5 agent definition files.
 - SPEC-007 created as an active spec defining the drift detection workflow.
 - 9 files modified, committed and pushed.
+
+---
+
+## 📅 2026-07-11 — Token Usage Monitoring Added to Environment Agent + Fix Agent to Test Agent
+
+### 📥 Input / Task
+- Token usage monitoring and cost spike warnings are the Environment Agent's responsibility.
+- Test Agent is responsible for running the Semblance (fix) Agent for end-to-end testing, fixing errors along the way.
+
+### 💭 Thinking & Reasoning Process
+1. **Environmental Agent**: Added "Monitors token usage, warns on cost spikes and unexpected LLM spend" to the Environment Agent role across 3 locations in AGENTS.md and all 4 persona files. Added monitoring thresholds and spike alert log to `1_Real_Unknown/costs.md`.
+2. **Test Agent**: Changed the error escalation flow from "create GitHub Issue and loop to 6_Semblance" to "activate the Semblance Agent for end-to-end testing — errors are fixed along the way before escalating." Updated the Stage Agents table, Rules Summary, and execution flow step 7 in AGENTS.md, plus all 4 persona files.
+
+### 📤 Outcomes & Decisions
+- Environment Agent now owns token monitoring with defined spike thresholds and alert procedures.
+- Test Agent drives the fix agent inline during testing rather than deferring to a separate loop.
+- Error flow: Test finds issue → drives Semblance to fix → Test re-validates → resolved.
+- All files committed and pushed.

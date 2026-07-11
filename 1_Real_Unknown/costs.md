@@ -94,8 +94,32 @@ Comparison of when to switch from free to paid tiers as the project scales.
 |------|--------|--------------|----------|-------|
 | 2026-07-11 | Kilo Code local indexing replaces Qdrant default | $25/mo (Qdrant Cloud) | $0.00 | $25/mo |
 | 2026-07-11 | DeepSeek used for bulk agent work vs Claude | ~$3/1M input | ~$0.27/1M input | ~90% |
+| 2026-07-11 | DeepSeek used for bulk agent work vs Claude | ~$3/1M input | ~$0.27/1M input | ~90% |
 | 2026-06-19 | Axiom deferred — not needed yet | $25/mo | $0.00 | $25/mo |
 | 2026-05-28 | Azure Key Vault replaces Doppler | ~$5/seat/mo | $0.03/10k ops | ~$5/mo |
+
+---
+
+## 🚨 Token Usage Monitoring & Spike Alerts
+
+The Environment Agent monitors LLM token consumption and warns on cost spikes.
+
+### Alert Thresholds
+- **Daily spike warning**: >$2/day above running 7-day average
+- **Session spike warning**: >$0.50 in a single agent session above normal
+- **Monthly overrun warning**: >80% of projected monthly budget used before day 20
+
+### Monitoring Procedure
+1. After each agent session, log actual tokens/cost in the LLM Token Consumption Log
+2. Compare against the 7-day rolling average
+3. If a spike is detected, log the alert in `costs.md` and flag in `llm_thinking_log.md` with `[COST SPIKE]`
+4. Investigate the cause (model switch, large context, runaway agent loop)
+5. Suggest a mitigation (switch to cheaper model, split context, cap tokens)
+
+### Spike Alert Log
+| Date | Alert | Trigger | Action Taken | Status |
+|------|-------|---------|--------------|--------|
+| — | — | — | — | — |
 
 ---
 
