@@ -17,7 +17,8 @@ Frontend (CDN-hosted)
   └── marked.js (CDN)             # Markdown → HTML parsing
 
 Backend (Docker / Fly.io)
-  ├── Qdrant                      # Vector database (port 6333)
+  ├── Kilo Code local indexing     # Built-in nomic text indexing (default for small projects)
+  ├── Qdrant                      # Vector database — only for big repos (port 6333)
   │     └── Docker runtime
   ├── Ollama                      # LLM runtime (port 11434)
   │     ├── nomic-embed-text      # Embedding model (4096 dims)
