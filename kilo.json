@@ -1,0 +1,12 @@
+{
+  "skills": [
+    ".kilo/skills/navigation.md",
+    ".kilo/skills/planning.md",
+    ".kilo/skills/simulation.md",
+    ".kilo/skills/deploy.md",
+    ".kilo/skills/secrets.md"
+  ],
+  "agents": {
+    "kilocode": ".kilo/agent/kilocode.md"
+  }
+}
