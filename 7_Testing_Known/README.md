@@ -26,6 +26,7 @@ This folder is the **validation layer** of the project. Every hypothesis, OKR, a
 | `checklist_stage_5.md` | Validation checklist for `5_Symbols` |
 | `checklist_stage_6.md` | Validation checklist for `6_Semblance` |
 | `acceptance_criteria.md` | Final go/no-go criteria |
+| `smoke_tests.md` | Smoke test strategy — open pages, check errors, report to GitHub Issues, resolve, publish report to `6_Semblance/` |
 
 ## Validation Mapping Format
 
