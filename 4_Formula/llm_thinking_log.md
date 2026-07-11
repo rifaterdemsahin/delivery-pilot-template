@@ -698,3 +698,34 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - All debug menus now show 3 rule entries under `5. Symbols`.
 - All 5 agent rule files reference `5_Symbols/rules/` in the implementation step.
 - 12 files committed and pushed individually to GitHub main branch.
+
+---
+
+## 📅 2026-07-11 — Error-Fixing Agent Skill with GitHub Token Integration
+
+### 📥 Input / Task
+- Mention in the test docs that there is an agent to find errors and fix them. This is a skill that visits pages, finds errors, opens GitHub Issues, fixes them, and reports them. Uses GitHub tokens. Also mention this in the environment folder.
+
+### 💭 Thinking & Reasoning Process
+1. **Test Documentation Update**: Added a comprehensive "Error-Finding & Fixing Agent (Skill)" section to `7_Testing_Known/smoke_tests.md` covering:
+   - What the agent does (5-step auto-fix loop)
+   - GitHub token setup (scopes: `repo`, `issues:write`, stored in Azure Key Vault)
+   - Agent workflow diagram (Page Visit → Error Scan → GitHub Issue → Fix → PR → Report)
+2. **Environment Documentation**: Created `2_Environment/github_agent.md` as the authoritative doc for the agent setup:
+   - Token requirements (fine-grained PAT with `contents`, `issues`, `pull_requests` scopes)
+   - Token storage via `az keyvault secret set`
+   - Agent capabilities: page visit, error scan, issue creation, fix application, reporting
+   - Full workflow diagram with Azure Key Vault integration
+   - Environment variables table and integration points across all 7 stages
+3. **Skill File**: Created `.kilo/skills/error-fix.md` as a loadable skill containing:
+   - Step-by-step workflow (load token → scan pages → create issues → diagnose → fix → PR → report)
+   - GitHub CLI commands for issue creation and PR management
+   - Guardrails (never auto-merge, smallest fix, deduplication, stop on ambiguity)
+4. **Cross-Reference Sync**: Updated `tools.md` to add the Auto-Fix Agent row in the tools overview table, `2_Environment/README.md` files table, and all debug menu configurations.
+
+### 📤 Outcomes & Decisions
+- Error-fixing agent now documented across 3 locations: test docs (smoke_tests.md), environment docs (github_agent.md), and skill file (.kilo/skills/error-fix.md).
+- GitHub token setup documented with Azure Key Vault integration.
+- Clear separation: agent visits pages and creates issues (token-based), human reviews and merges PRs (never auto-merge).
+- All navigation menus synchronized with the new `GitHub Agent` entry under `2. Environment`.
+- 8 files committed and pushed individually to GitHub main branch.
