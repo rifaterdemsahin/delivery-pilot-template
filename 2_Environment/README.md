@@ -31,6 +31,7 @@ This folder documents the **setup, constraints, and operating context** of the p
 | [`axiom.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/axiom.md) | Server-side logs — observability, tracing, alerting |
 | [`github_pages.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/github_pages.md) | Frontend static hosting — docs, SPAs, landing pages |
 | [`navigation.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/navigation.md) | Two-menu system: Project Menu + Debug Menu (bottom-right) |
+| `dependencies.md` | Dependencies, libraries, packages — how they affect each other in building and delivering the project |
 
 ## AI Stack Setup
 
