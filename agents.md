@@ -34,7 +34,7 @@ Each of the 7 stages has a **dedicated agent** that owns its folder, focuses on 
 
 | Agent | Folder | Role | Receives From | Delivers To |
 |-------|--------|------|---------------|-------------|
-| **Real Agent** | `1_Real_Unknown/` | Scan incoming tasks, map to objectives and key results (OKRs). Defines what needs to be done and why. | User tasks | Environment Agent |
+| **Real Agent** | `1_Real_Unknown/` | Scan incoming tasks, map to objectives and key results (OKRs). Defines what needs to be done and why. Evolves responsibility by going over the current status quo, updating `risks.md` with new risks, and applying necessary mitigations. | User tasks | Environment Agent |
 | **Environment Agent** | `2_Environment/` | Provides architectural requirements, tools, blueprints, and dependencies needed to reach the objectives. Keeps blueprints versioned (Mermaid/Excalidraw). | Real Agent | Simulation Agent, Formula Agent |
 | **Simulation Agent** | `3_Simulation/` | Understands requirements and changes from upstream. Creates visual designs, mockups, and flow diagrams with versioning. Always creates new version images. | Environment Agent | Formula Agent |
 | **Formula Agent** | `4_Formula/` | Creates specs from requirements and simulations. Versions specs. Documents reasoning in `llm_thinking_log.md`. Gates entry to code. | Environment Agent, Simulation Agent | Symbols Agent, all agents (via thinking log) |
@@ -75,7 +75,7 @@ Semblance Agent ─► llm_thinking_log.md  ──► (feedback loop to Real Age
 
 | Agent | Read From | Write To | Key Files |
 |-------|----------|----------|-----------|
-| Real Agent | User input | `problem_statement.md`, `okrs.md`, `questions.md`, `hypotheses.md` | `risks.md` |
+| Real Agent | User input | `problem_statement.md`, `okrs.md`, `questions.md`, `hypotheses.md` | `risks.md` — evolves status quo, updates risks, applies mitigations |
 | Environment Agent | Real Agent output | `architecture.md`, `tools.md`, `toolstack.md`, `dependencies.md`, `mcp.md`, `superskills.md` | All `2_Environment/*.md` |
 | Simulation Agent | Environment Agent output | `image_prompts.md`, `carousel_config.json`, `design_workflow.md` | All `3_Simulation/*` |
 | Formula Agent | Environment + Simulation output | `specs.md`, `decisions.md`, `dsl.md`, `extensions.md` | `llm_thinking_log.md` |
@@ -90,7 +90,7 @@ Semblance Agent ─► llm_thinking_log.md  ──► (feedback loop to Real Age
 - Never commit secrets — use Azure Key Vault for all sensitive values
 - **After every command, commit and push** — do not batch changes; each step gets its own commit. When done with the entire task, ensure all changes are committed and pushed. If any git errors occur (e.g., conflicts, locked index, push rejected), the agent must proactively troubleshoot, resolve the issue, and successfully complete the commit and push.
 - **7-Stage Execution Flow** — Every task follows this cycle from start to resolution:
-  1. **1_Real_Unknown — Scan & Map**: When receiving a new task, scan the project and map to this stage. Ensure there is a clear objective and that it relates to Key Results (OKRs). Update `problem_statement.md`, `okrs.md`, `hypotheses.md`, and `questions.md` as needed. → **Real Agent**
+  1. **1_Real_Unknown — Scan & Map**: When receiving a new task, scan the project and map to this stage. Ensure there is a clear objective and that it relates to Key Results (OKRs). Update `problem_statement.md`, `okrs.md`, `hypotheses.md`, and `questions.md` as needed. Evolve responsibility by going over the current status quo, updating `risks.md` with new risks, and applying necessary mitigations. → **Real Agent**
   2. **2_Environment — Update Blueprints**: Check if the environment needs updating. Update architectural blueprints (Mermaid diagrams in `architecture.md` or Excalidraw diagrams) — always keep them versioned. Update setup guides and tool documentation here when infrastructure or tooling changes. → **Environment Agent**
   3. **Mention Changes & Get Approvals** — When changes happen in `1_Real_Unknown` or `2_Environment`, mention/discuss the changes and get approvals. These approved changes cascade into updates in `3_Simulation` and `4_Formula` before any code is written.
   4. **3_Simulation — Design New Versions**: Update visual designs and always create new version images. Log image generation prompts in `image_prompts.md`, update `carousel_config.json`. Design artifacts must be current before code enters `5_Symbols`. → **Simulation Agent**
