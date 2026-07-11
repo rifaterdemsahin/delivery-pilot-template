@@ -35,6 +35,7 @@ This folder documents the **setup, constraints, and operating context** of the p
 | `github_agent.md` | Error-fixing agent that visits pages, finds errors, opens GitHub Issues, fixes, and reports — uses GitHub tokens |
 | `mcp.md` | MCP server requirements — Model Context Protocol servers for agent tool access |
 | `superskills.md` | Superskills catalog — all loadable skills required for project agents |
+| `toolstack.md` | Full toolstack with rationale — every tool, its purpose, and the decision behind choosing it |
 
 ## AI Stack Setup
 
