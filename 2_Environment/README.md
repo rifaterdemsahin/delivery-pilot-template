@@ -32,6 +32,7 @@ This folder documents the **setup, constraints, and operating context** of the p
 | [`github_pages.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/github_pages.md) | Frontend static hosting — docs, SPAs, landing pages |
 | [`navigation.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/2_Environment/navigation.md) | Two-menu system: Project Menu + Debug Menu (bottom-right) |
 | `dependencies.md` | Dependencies, libraries, packages — how they affect each other in building and delivering the project |
+| `github_agent.md` | Error-fixing agent that visits pages, finds errors, opens GitHub Issues, fixes, and reports — uses GitHub tokens |
 
 ## AI Stack Setup
 
