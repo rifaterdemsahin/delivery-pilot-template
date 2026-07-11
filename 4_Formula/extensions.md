@@ -46,6 +46,19 @@ To ensure a seamless development experience, install the following extensions in
 
 ---
 
+## 🔐 Security & RBAC
+
+Security and Role-Based Access Control (RBAC) are managed by the **Formula Agent**. Policies cover:
+
+- **Authentication**: Azure AD / Microsoft Entra ID for human users; API keys + Azure Key Vault for service-to-service auth
+- **Authorization**: RBAC roles scoped per service (GitHub repo access, Key Vault read/write, Supabase row-level security, Fly.io deployment permissions)
+- **Secrets**: All credentials in Azure Key Vault (never in code, never in git history)
+- **Audit**: External tool calls logged in `2_Environment/llm_tools.md`; cost/access trails in `1_Real_Unknown/costs.md`
+
+Related docs: `2_Environment/setup_azure.md` (Key Vault), `4_Formula/specs.md` (security specs), `2_Environment/architecture.md` (auth flows).
+
+---
+
 ## 📂 Verification & Integration
 
 For environment setups corresponding to these tools, refer to the following resources:
