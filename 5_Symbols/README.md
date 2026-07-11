@@ -23,6 +23,7 @@ This folder contains the **core source code and implementation files**. Everythi
 | `docker-compose.yml` | Multi-service orchestration |
 | `requirements.txt` | Python dependencies |
 | `.github/workflows/` | CI/CD pipeline definitions |
+| `rules/` | **Coding rules** — coding standards, git conventions, file organization |
 
 ## Code Standards
 
