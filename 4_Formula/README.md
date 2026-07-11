@@ -45,6 +45,7 @@ The self-learning loop flows through this stage automatically:
 | `navigation.md` | Shared navigation menu design and reusability formula |
 | `logging_and_autofix.md` | Unified logging (footer debug + Axiom) and the nightly continuous-fix agent |
 | `specs.md` | Technical specifications — all features must be specced here before code |
+| `agent_creation.md` | Agent creation responsibility — who creates which agents and under what conditions |
 | `implementation_guide.md` | Main step-by-step build guide |
 | `research_notes.md` | Technology evaluations and findings |
 | `docker_setup.md` | Qdrant + Ollama containerised setup |
