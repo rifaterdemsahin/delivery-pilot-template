@@ -27,6 +27,7 @@ This folder is the **validation layer** of the project. Every hypothesis, OKR, a
 | `checklist_stage_6.md` | Validation checklist for `6_Semblance` |
 | `acceptance_criteria.md` | Final go/no-go criteria |
 | `smoke_tests.md` | Smoke test strategy — open pages, check errors, report to GitHub Issues, resolve, publish report to `6_Semblance/` |
+| `logic.md` | Premise→conclusion tracker — maps objectives to delivered tasks, reviews LLM decisions iteratively |
 
 ## Validation Mapping Format
 
