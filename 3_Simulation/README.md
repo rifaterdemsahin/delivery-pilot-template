@@ -21,6 +21,7 @@ This folder holds **visual representations** of what the project will look like 
 | `mockup_navigation.png` | Navigation menu mockup |
 | `flow_user_journey.md` | User journey flow diagram |
 | `carousel_config.json` | Image list for the auto-updating carousel |
+| `design_workflow.md` | Design-first workflow — create images before code |
 
 ## Image Carousel
 
