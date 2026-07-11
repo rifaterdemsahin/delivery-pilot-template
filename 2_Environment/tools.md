@@ -16,6 +16,7 @@
 | **Secrets** | Azure Key Vault | Stores all API keys & credentials | [`setup_azure.md`](./setup_azure.md) |
 | **CI/CD** | GitHub Actions | Build, test, deploy pipeline | [`github_pages.md`](./github_pages.md) |
 | **AI / Vector** | Kilo Code (local) / Qdrant (big repos) | Semantic search: Kilo Code built-in nomic text indexing for small projects, Qdrant vector DB for large repos | [`setup_ai.md`](./setup_ai.md) |
+| **Auto-Fix Agent** | Error-Fix Agent (GitHub Token) | Automated error discovery: visits pages, finds errors, opens GitHub Issues, applies fixes, reports to `6_Semblance/`. Uses GitHub PAT from Azure Key Vault. | [`github_agent.md`](./github_agent.md) |
 
 ---
 
