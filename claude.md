@@ -100,6 +100,7 @@ delivery-pilot-template/
 - When adding files, place them in the appropriate numbered folder
 - **After every command, commit and push** — do not batch changes; each step gets its own commit. If any git errors occur, proactively troubleshoot and resolve them.
 - **Confirmation Before Implementation** — Before implementing any change (especially code in `5_Symbols`), ask the user a confirmation question. State your boundaries, explain your rationale, and group the plan into clear sections with emojis. Do not proceed until the user confirms.
+- **Task Resolution** — When resolving a task, mention which agent is involved. For complex tasks spanning multiple agents, describe how the Real Agent coordinates them.
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
 - **Record every prompt** in `prompts.md` — log date, agent, and purpose for each prompt given
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
