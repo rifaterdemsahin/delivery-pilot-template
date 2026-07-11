@@ -28,6 +28,17 @@ You constantly change the large language models you use. The code updates to mat
 4. Register in the Supported Agents table above
 5. Commit and push both `agents.md` (updated table) and the new `<llm>.md`
 
+### Plug & Play — Model Resilience Without Breaking Changes
+
+The delivery pilot framework is designed as a **plug-and-play system** that removes dependency on any specific LLM operator. Switching between models (DeepSeek → Claude → GPT → Gemini) should never result in breaking changes because:
+
+- **Specs hold their ground** — `4_Formula/specs.md` defines what must be built, validated, and considered. Specs stay constant regardless of which LLM reads them. A less capable model can still follow the spec even if it can't generate one from scratch.
+- **Documents reference each other** — Every stage document links to upstream and downstream dependencies. The thinking log records why decisions were made. Cross-references between `1_Real_Unknown` → `2_Environment` → `3_Simulation` → `4_Formula` → `5_Symbols` → `7_Testing_Known` → `6_Semblance` create a knowledge chain that less capable LLMs can follow step-by-step.
+- **Framework provides consistency and memory** — The 7-stage structure, coding rules in `5_Symbols/rules/`, tool governance in `2_Environment/llm_tools.md`, and risk register in `1_Real_Unknown/risks.md` ensure that even if the operator changes, the project state is fully documented and recoverable.
+- **Thinking log as institutional knowledge** — `4_Formula/llm_thinking_log.md` carries every reasoning step, trade-off, and decision. A new LLM can read the log to understand the project history without needing to recompute everything.
+
+> When you switch from a powerful model to a less capable one, the framework doesn't break — it supports. The docs are the bridge.
+
 ## Stage Agents — One Agent Per Folder
 
 Each of the 7 stages has a **dedicated agent** that owns its folder, focuses on its stage's purpose, and communicates with other agents through `4_Formula/llm_thinking_log.md`.
