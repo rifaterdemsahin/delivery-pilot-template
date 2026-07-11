@@ -783,3 +783,36 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - 15 tools documented with decision rationale, covering hosting, database, logging, secrets, CI/CD, AI, and UI.
 - Decision principles provide a framework for evaluating future tool additions.
 - 6 files committed and pushed individually.
+
+---
+
+## 📅 2026-07-11 — Risk Register in 1_Real_Unknown
+
+### 📥 Input / Task
+- In the real folder (`1_Real_Unknown/`), create a document called `risks.md`. With every update, add new risks and mention the ones that are solved.
+
+### 💭 Thinking & Reasoning Process
+1. **Risk Identification**: Surveyed the entire project to identify real, current risks based on what we've encountered and what the project structure exposes:
+   - **R-001** (Critical): Race conditions on parallel git pushes — documented 4+ times in this session
+   - **R-002** (Medium): CDN dependency — FontAwesome, PrismJS, Google Fonts, marked.js are all CDN-hosted
+   - **R-003** (Medium): Navigation config desync — 3 files must be manually kept in sync
+   - **R-004** (Medium): Azure Key Vault unavailability — blocks all authenticated agent operations
+   - **R-005** (Low): nomic-embed-text model upgrade breaking vectors
+   - **R-006** (Low): Error-fix agent auto-merge guardrail bypass
+   - **R-007** (High): Smoke tests not automated — currently manual
+   - **R-008** (Medium): Single LLM dependency for agent persona generation
+2. **Solved Risk Tracking**: Documented 6 risks that were recently solved by work done in this session:
+   - R-S01: No specs system → `4_Formula/specs.md`
+   - R-S02: Errors in production → `7_Testing_Known/smoke_tests.md`
+   - R-S03: Inconsistent code → `5_Symbols/rules/`
+   - R-S04: Full context loading → `.kilo/skills/`
+   - R-S05: Unclear dependencies → `2_Environment/dependencies.md`
+   - R-S06: No tool rationale → `2_Environment/toolstack.md`
+3. **Risk Structure**: Each risk entry includes: Status (🔴🟠🟡🟢), Severity, Likelihood, Impact, Trigger, Mitigation, and Last Updated. The solved section maps each solved risk back to the work that resolved it.
+4. **Integration**: Added to `1_Real_Unknown/README.md` files table and all 3 debug menu configurations.
+
+### 📤 Outcomes & Decisions
+- `1_Real_Unknown/risks.md` serves as the live risk register with 8 active and 6 solved risks.
+- Risk review cadence defined: every project update, every milestone, smoke test failures, tool changes, LLM switches.
+- Risk update log provides an audit trail of when risks were created and resolved.
+- 6 files committed and pushed individually.
