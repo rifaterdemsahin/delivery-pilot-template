@@ -8,8 +8,8 @@ This template is the starting point for any new project that uses AI agents (Cla
 
 1. **Problem Discovery** — Define unknowns, OKRs, and core questions
 2. **Environment Setup** — Establish context, constraints, and tooling
-3. **Simulation** — Visualize the vision with mockups and diagrams
-4. **Formula** — Research, plan, and document the step-by-step approach
+3. **Simulation** — Visualize the vision with design mockups and diagrams
+4. **Formula** — Research, plan, and spec documents to implement the step-by-step approach
 5. **Symbols** — Write the actual code
 6. **Semblance** — Capture errors, workarounds, and lessons learned
 7. **Testing** — Validate everything against the original unknowns
@@ -43,3 +43,12 @@ The 7-stage structure is highly suited to self-learning because it mimics the co
 - **YouTube:** [@RifatErdemSahin](https://www.youtube.com/@RifatErdemSahin)
 
 > Example of a live Pages site: [https://rifaterdemsahin.github.io/proxmox/](https://rifaterdemsahin.github.io/proxmox/)
+
+---
+
+## Refactor 
+```
+Refactor the existing project . use the template from > https://github.com/rifaterdemsahin/delivery-pilot-template
+Replace the codes the necessary folders and fix the broken links > commit push > use this key vault to save and get secrets /vaults/dp-kv-deliverypilot/secrets, do not create a new key vault
+```
+
