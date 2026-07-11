@@ -13,6 +13,7 @@ Multiple agents share the responsibility of creating new agents, each for differ
 | Creator | Type of Agent | Trigger | Requires |
 |---------|--------------|---------|----------|
 | **Real Agent** | Stage Agents | Project initialization or restructuring | Defines roles, folders, and communication patterns for all 7 stage agents |
+| **Real Agent** | Sanity Check Sub-Agent | Validates the correct things are being delivered | Updates `risks.md` with findings |
 | **Any Top Agent** | Task Sub-Agents | Specialized work needed within a stage | User confirmation + spec defining scope, boundaries, and deliverables |
 | **Formula Agent** | Synthesis Sub-Agents | Need to merge upstream outputs (Real, Environment, Simulation) into coherent deliverables | Sim/Env outputs ready for synthesis |
 | **Semblance Agent** | Error Mitigation Sub-Agents | Recurring errors in an existing agent | Root cause analysis showing the agent needs specialized support |
@@ -32,6 +33,15 @@ The Real Agent defines the overall 7-agent architecture:
 - Coordinates the Agent Communication diagram through `llm_thinking_log.md`
 - Validates that all agents are functioning and their outputs meet OKRs
 - Documents the architecture in `agents.md`
+
+### Sanity Check Sub-Agent
+
+The Real Agent has a dedicated sanity check sub-agent:
+
+- **Trigger**: After task completion, before handoff to the Real Agent coordinator
+- **Action**: Reviews delivered work against OKRs and `problem_statement.md` — confirms the right things are being built
+- **Output**: If delivery deviates from objectives, updates `1_Real_Unknown/risks.md` with new risks or mitigation adjustments
+- **Rule**: The Real Agent does not close a task until the sanity check sub-agent has validated it
 
 ### Any Top Agent — Task Sub-Agents
 
@@ -87,6 +97,7 @@ Task arrives
     ↓
 Type of agent needed?
     ├── New stage agent? → Real Agent
+    ├── Sanity check needed? → Real Agent (sanity check sub-agent)
     ├── Task too complex for one agent? → Any top agent (with confirmation)
     ├── Merging upstream outputs? → Formula Agent (synthesis)
     ├── Recurring errors? → Semblance Agent (error mitigation)
