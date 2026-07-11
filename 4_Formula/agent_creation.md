@@ -14,6 +14,7 @@ Multiple agents share the responsibility of creating new agents, each for differ
 |---------|--------------|---------|----------|
 | **Real Agent** | Stage Agents | Project initialization or restructuring | Defines roles, folders, and communication patterns for all 7 stage agents |
 | **Real Agent** | Sanity Check Sub-Agent | Validates the correct things are being delivered | Updates `risks.md` with findings |
+| **Real Agent** | Budget Sub-Agent | Checks all environment, infrastructure, and LLM running costs | Reports findings to `1_Real_Unknown/costs.md` |
 | **Any Top Agent** | Task Sub-Agents | Specialized work needed within a stage | User confirmation + spec defining scope, boundaries, and deliverables |
 | **Formula Agent** | Synthesis Sub-Agents | Need to merge upstream outputs (Real, Environment, Simulation) into coherent deliverables | Sim/Env outputs ready for synthesis |
 | **Semblance Agent** | Error Mitigation Sub-Agents | Recurring errors in an existing agent | Root cause analysis showing the agent needs specialized support |
@@ -42,6 +43,15 @@ The Real Agent has a dedicated sanity check sub-agent:
 - **Action**: Reviews delivered work against OKRs and `problem_statement.md` — confirms the right things are being built
 - **Output**: If delivery deviates from objectives, updates `1_Real_Unknown/risks.md` with new risks or mitigation adjustments
 - **Rule**: The Real Agent does not close a task until the sanity check sub-agent has validated it
+
+### Budget Sub-Agent
+
+The Real Agent has a dedicated budget sub-agent:
+
+- **Trigger**: On project initialization, after any environment change, and on regular intervals (weekly)
+- **Action**: Reviews all cost data — infrastructure (GitHub Pages, Supabase, Fly.io, Axiom), LLM API costs (token consumption per model), and any paid service tiers
+- **Output**: Updates `1_Real_Unknown/costs.md` with actual vs estimated costs, flags any overruns, and suggests cost-saving measures
+- **Alert**: If costs exceed 80% of projected budget, warns the user and logs the finding in `risks.md`
 
 ### Any Top Agent — Task Sub-Agents
 
@@ -98,6 +108,7 @@ Task arrives
 Type of agent needed?
     ├── New stage agent? → Real Agent
     ├── Sanity check needed? → Real Agent (sanity check sub-agent)
+    ├── Budget/cost review needed? → Real Agent (budget sub-agent)
     ├── Task too complex for one agent? → Any top agent (with confirmation)
     ├── Merging upstream outputs? → Formula Agent (synthesis)
     ├── Recurring errors? → Semblance Agent (error mitigation)
