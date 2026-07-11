@@ -35,6 +35,7 @@
     { "label": "   ├─ Coding Standards", "url": "5_Symbols/rules/coding_standards.md" },
     { "label": "   ├─ Git Conventions", "url": "5_Symbols/rules/git_conventions.md" },
     { "label": "   ├─ File Organization", "url": "5_Symbols/rules/file_organization.md" },
+    { "label": "   ├─ Toolbox", "url": "5_Symbols/toolbox/" },
     { "label": "6. Semblance", "url": "6_Semblance/" },
     { "label": "7. Testing Known", "url": "7_Testing_Known/" },
     { "label": "   ├─ Smoke Tests", "url": "7_Testing_Known/smoke_tests.md" },
