@@ -572,3 +572,30 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - `.kilo/skills/planning.md` updated with Approval Cascade Rule section.
 - Logged prompt in `prompts.md` and this reasoning in `llm_thinking_log.md`.
 - All 6 files committed and pushed individually.
+
+---
+
+##  2026-07-11 — SPEC-006 Stage Dependency Chain + Dependencies Doc
+
+###  Input / Task
+- **Task 1:** Add a spec to `4_Formula/specs.md` outlining how `1_Real_Unknown`, `2_Environment`, and `3_Simulation` relate to each other.
+- **Task 2:** Create `2_Environment/dependencies.md` documenting libraries, packages, dependencies, and how they affect each other on building and delivering this project.
+
+###  Thinking & Reasoning Process
+1. **SPEC-006 Stage Dependency Chain**: Modeled the upstream stage relationships as a formal spec. The chain flows: `1_Real_Unknown` (why/OKRs) → `2_Environment` (what tools/blueprints) → `3_Simulation` (visual vision) → `4_Formula` (specs + approval) → `5_Symbols` (code). This makes explicit that stage 1 objective changes ripple through stage 2 tooling and stage 3 designs.
+2. **Dependencies Document**: Created a comprehensive `2_Environment/dependencies.md` covering:
+   - **Dependency chain overview** (Frontend CDN → Backend Docker → Infrastructure)
+   - **Frontend dependencies** (FontAwesome, PrismJS, Google Fonts, marked.js) with upgrade impact assessments
+   - **Backend dependencies** (Qdrant, Ollama, nomic-embed-text, Supabase, Azure SDK, Axiom SDK) with version constraints
+   - **Cross-dependency matrix** showing which tools depend on each other
+   - **Build & delivery flow** showing how dependencies map to the 7-stage structure
+   - **Rules** for adding and upgrading dependencies
+3. **Navigation Sync**: Added `dependencies.md` to `navigation_config.json` under `2. Environment`, and synced both HTML fallback arrays.
+4. **Execution**: Updated `4_Formula/specs.md` (SPEC-006), created `2_Environment/dependencies.md`, updated `2_Environment/README.md`, `navigation_config.json`, `index.html`, `markdown_renderer.html`, `prompts.md`, and this log.
+
+###  Outcomes & Decisions
+- SPEC-006 added to `4_Formula/specs.md` defining the stage dependency chain.
+- `2_Environment/dependencies.md` created with full dependency graph, cross-dependency matrix, and upgrade impact guide.
+- `2_Environment/README.md` files table updated with dependencies.md entry.
+- All debug menus synchronized with the new `Dependencies` entry under `2. Environment`.
+- All 8 files committed and pushed individually to GitHub main branch.
