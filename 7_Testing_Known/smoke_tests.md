@@ -167,3 +167,41 @@ After every smoke test run, create or update `6_Semblance/smoke_test_report.md`:
 | `7_Testing_Known` | Smoke tests run here, verify all pages and features |
 | `6_Semblance` | Failures logged, fixes applied, resolution reported |
 | GitHub Issues | Public tracking of each found error |
+
+---
+
+## 🔧 Error-Finding & Fixing Agent (Skill)
+
+A dedicated agent skill (`error-fix`) automates the error discovery and resolution loop. It uses a **GitHub personal access token** (stored in Azure Key Vault) to interact with GitHub Issues and the repository.
+
+### What It Does
+1. **Visits pages** — Opens `index.html` and `markdown_renderer.html` in a headless browser
+2. **Scans for errors** — Checks browser console for JS errors, 404s, broken CDN resources, layout issues
+3. **Creates GitHub Issues** — For each error found, opens an issue with the error details, stack trace, and reproduction steps (authorized via GitHub token)
+4. **Applies fixes** — Diagnoses the issue from the stack trace, locates the file in `5_Symbols/`, applies the smallest safe fix on a branch
+5. **Reports results** — Publishes findings to `6_Semblance/smoke_test_report.md` and `6_Semblance/error.log`
+
+### GitHub Token Setup
+The error-fixing agent requires a **GitHub personal access token** with these scopes:
+- `repo` — Read/write access to create branches and commits
+- `issues:write` — Create and update GitHub Issues
+
+```
+# Store the token in Azure Key Vault (never in code)
+az keyvault secret set --vault-name delivery-pilot-dev \
+  --name GITHUB_AGENT_TOKEN \
+  --value "ghp_xxxxxxxxxxxxxxxxxxxx"
+```
+
+The agent loads the token at runtime from Azure Key Vault and uses it to authenticate all GitHub API calls. See `2_Environment/github_agent.md` for full setup.
+
+### Agent Workflow
+```
+Page Visit → Console Error Scan → GitHub Issue Created
+    ↓
+Error Diagnosed (stack trace → file:line)
+    ↓
+Fix Applied on Branch → PR Opened (never auto-merge)
+    ↓
+Report Published → 6_Semblance/smoke_test_report.md
+```
