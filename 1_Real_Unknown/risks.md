@@ -1,0 +1,158 @@
+#  Project Risks
+
+> **Stage 1: Real Unknown** — Track active risks, solved risks, and the risk update log. Add new risks with every project update and mention those that are solved.
+
+## Risk Matrix
+
+| Severity | Symbol | Meaning |
+|----------|--------|---------|
+| Critical | 🔴 | Blocks delivery — must resolve immediately |
+| High | 🟠 | Significantly impacts quality or timeline |
+| Medium | 🟡 | Should be addressed in current milestone |
+| Low | 🟢 | Monitor — address when convenient |
+
+---
+
+## ⚠️ Active Risks
+
+### R-001: Race Conditions on Parallel Git Pushes
+- **Status:** 🔴 Active
+- **Severity:** Critical
+- **Likelihood:** High (happens frequently with parallel commits)
+- **Impact:** Push failures, potential commit ordering issues
+- **Trigger:** Multiple `git push` commands executed in parallel (e.g., batch committing multiple files)
+- **Mitigation:** Execute pushes sequentially; on failure, `git pull --rebase` then retry. Consider a push queue or single-commit-single-push workflow enforcement.
+- **Last Updated:** 2026-07-11
+
+### R-002: CDN Dependency — Frontend Degradation
+- **Status:** 🟡 Active
+- **Severity:** Medium
+- **Likelihood:** Low (CDN uptime is high, but outages happen)
+- **Impact:** If CDN goes down, FontAwesome icons, PrismJS highlighting, and Google Fonts break — the site becomes unstyled with missing icons.
+- **Trigger:** CDN outage affecting `cdnjs.cloudflare.com` or `fonts.googleapis.com`
+- **Mitigation:** Create local fallback copies of all CDN assets in `5_Symbols/assets/`. Add `<link>` fallbacks with `onerror` handlers. Track CDN status.
+- **Last Updated:** 2026-07-11
+
+### R-003: Navigation Config Desynchronization
+- **Status:** 🟡 Active
+- **Severity:** Medium
+- **Likelihood:** Medium (requires manual sync across 3 files)
+- **Impact:** Debug menu shows stale or missing entries in `index.html` or `markdown_renderer.html` if fallback arrays aren't updated.
+- **Trigger:** Adding or removing a markdown file without updating all 3 menu locations (`navigation_config.json`, `index.html` fallback, `markdown_renderer.html` fallback)
+- **Mitigation:** Follow the navigation sync rule — always update all 3 files. Use the `navigation` skill. Consider a build step to generate menus from a single source.
+- **Last Updated:** 2026-07-11
+
+### R-004: Azure Key Vault Unavailability
+- **Status:** 🟡 Active
+- **Severity:** Medium
+- **Likelihood:** Low (Azure SLA is high, but network/auth issues can occur)
+- **Impact:** Agents cannot retrieve `GITHUB_AGENT_TOKEN`, `AXIOM_TOKEN`, or other secrets — error-fix agent, deploy skill, and any authenticated operation fail.
+- **Trigger:** Azure outage, expired credentials, network partition, missing `az login` session
+- **Mitigation:** Implement token caching with a configurable TTL (e.g., 1 hour) so short outages don't block work. Use environment-specific vaults in sequence (dev → staging → prod fallback).
+- **Last Updated:** 2026-07-11
+
+### R-005: nomic-embed-text Model Upgrade Breaking Vector Search
+- **Status:** 🟢 Active
+- **Severity:** Low (only affects projects using Ollama/Qdrant Tier 2)
+- **Likelihood:** Low (model changes are infrequent)
+- **Impact:** If the `nomic-embed-text` model is updated with a different dimension or algorithm, all existing vector embeddings become invalid — semantic search breaks until re-indexed.
+- **Trigger:** Running `ollama pull nomic-embed-text` which pulls a newer version
+- **Mitigation:** Pin a specific model version. If upgrading, create a migration plan: export → upgrade → re-index → verify. Document in `2_Environment/dependencies.md`.
+- **Last Updated:** 2026-07-11
+
+### R-006: Error-Fix Agent Auto-Merge (Guardrail Bypass)
+- **Status:** 🟢 Active
+- **Severity:** Low (strict guardrails in place)
+- **Likelihood:** Very Low (policy + code enforcement)
+- **Impact:** If the error-fix agent bypasses the "PR only, never auto-merge" rule, unreviewed code could reach `main`.
+- **Trigger:** Misconfiguration of the agent, missing branch protection rules
+- **Mitigation:** Enforce branch protection on `main` (require PR, require review). Agent opens PRs only. Document the guardrail in all 3 locations (agents.md, github_agent.md, error-fix skill). GitHub Actions check enforces no direct push to main.
+- **Last Updated:** 2026-07-11
+
+### R-007: Smoke Tests Not Automated
+- **Status:** 🟠 Active
+- **Severity:** High
+- **Likelihood:** High (every deployment must be manually tested)
+- **Impact:** Smoke tests are currently manual — a human or agent must remember to run them. Missed smoke tests mean errors can reach production.
+- **Trigger:** Deploying without running `7_Testing_Known/smoke_tests.md` checklist
+- **Mitigation:** Implement GitHub Actions workflow for automated smoke tests (HTML validation, link checking, console error detection). Gate deployment on passing smoke tests. Documented in `smoke_tests.md` but not yet automated.
+- **Last Updated:** 2026-07-11
+
+### R-008: Single LLM Model Dependency for Agent Generation
+- **Status:** 🟡 Active
+- **Severity:** Medium
+- **Likelihood:** Medium (LLMs are switched frequently)
+- **Impact:** If `agents.md` coordinator rules aren't consistently applied when generating persona files for a new LLM, the new agent may miss critical rules.
+- **Trigger:** Switching to a new LLM (e.g., Claude → DeepSeek) without thorough persona file generation
+- **Mitigation:** Follow the documented 5-step persona file generation process in `agents.md`. Always include the full 7-stage execution flow in every persona file. Verify the new persona file against the coordinator.
+- **Last Updated:** 2026-07-11
+
+---
+
+## ✅ Solved Risks
+
+### R-S01: Features Implemented Without Documented Specs
+- **Status:** ✅ Solved (2026-07-11)
+- **Severity:** Was 🟠 High
+- **Risk:** Features were being implemented without documented specifications — no source of truth existed for what features should do. New tasks couldn't check for conflicts with existing behavior.
+- **Resolution:** Created `4_Formula/specs.md` with SPEC-001 through SPEC-006. Encoded the Specs System rule in `agents.md` and all agent persona files. New tasks now check specs, flag `[NEEDS UPDATE]`, and warn before coding.
+- **Verification:** Specs System rule active in all 5 agent files.
+
+### R-S02: Errors Discovered Only in Production
+- **Status:** ✅ Solved (2026-07-11)
+- **Severity:** Was 🟠 High
+- **Risk:** No smoke testing process existed — errors were found only after deployment to GitHub Pages. No formal issue tracking or resolution loop.
+- **Resolution:** Created `7_Testing_Known/smoke_tests.md` with 9 smoke test definitions. Integrated GitHub Issues (one issue per error). Created `.kilo/skills/error-fix.md` for automated discovery. Added smoke test gate to deploy skill.
+- **Verification:** Smoke Tests & GitHub Issues rule active in all 5 agent files. Deploy skill gated by smoke tests.
+
+### R-S03: Inconsistent Code Quality Across Agents
+- **Status:** ✅ Solved (2026-07-11)
+- **Severity:** Was 🟡 Medium
+- **Risk:** Different agents (Claude, Gemini, Kilo Code, Copilot) wrote code with inconsistent styles — formatting, naming, and patterns varied.
+- **Resolution:** Created `5_Symbols/rules/` with `coding_standards.md`, `git_conventions.md`, and `file_organization.md`. Updated 7-stage execution flow to reference the rules folder. All 5 agent files now say "Follow coding rules defined in `5_Symbols/rules/`."
+- **Verification:** Coding rules referenced in all agent persona files.
+
+### R-S04: Full Project Context Loaded Every Agent Run
+- **Status:** ✅ Solved (2026-07-11)
+- **Severity:** Was 🟡 Medium
+- **Risk:** Agents loaded the entire project context (all AGENTS.md rules, all persona files, all stage READMEs) on every run — wasteful and slow.
+- **Resolution:** Created 6 on-demand skill files in `.kilo/skills/` (navigation, planning, simulation, deploy, secrets, error-fix). Created `kilo.json` to register them. Agents now load only the skills relevant to the current task.
+- **Verification:** Skills loadable via the `skill` tool. Documented in `2_Environment/superskills.md`.
+
+### R-S05: Unclear Tool Dependencies and Upgrade Impact
+- **Status:** ✅ Solved (2026-07-11)
+- **Severity:** Was 🟡 Medium
+- **Risk:** No documentation existed for how project tools depend on each other. Upgrading one tool could silently break another with no way to predict impact.
+- **Resolution:** Created `2_Environment/dependencies.md` with full dependency chain, cross-dependency matrix, upgrade impact per tool, and build/delivery flow.
+- **Verification:** Dependencies documented with frontend + backend sections and a cross-dependency matrix.
+
+### R-S06: Tool Selection Without Documented Rationale
+- **Status:** ✅ Solved (2026-07-11)
+- **Severity:** Was 🟢 Low
+- **Risk:** Tools were added to the project without documented reasoning — future contributors couldn't understand trade-offs or evaluate replacements.
+- **Resolution:** Created `2_Environment/toolstack.md` with 15 tools, 5-column rationale table, decision principles, and stack evolution log.
+- **Verification:** Every tool now has a documented "why" in the rationale column.
+
+---
+
+## 📋 Risk Update Log
+
+| Date | Update | Risk ID | Change |
+|------|--------|---------|--------|
+| 2026-07-11 | Initial risk assessment | R-001 → R-008 | 8 active risks identified and documented |
+| 2026-07-11 | Specs system created | R-S01 | Solved: `4_Formula/specs.md` with 6 active specs |
+| 2026-07-11 | Smoke tests implemented | R-S02 | Solved: `7_Testing_Known/smoke_tests.md` with GitHub Issues |
+| 2026-07-11 | Coding standards created | R-S03 | Solved: `5_Symbols/rules/` with 3 rule files |
+| 2026-07-11 | Skills system created | R-S04 | Solved: `.kilo/skills/` with 6 loadable skills |
+| 2026-07-11 | Dependencies documented | R-S05 | Solved: `2_Environment/dependencies.md` |
+| 2026-07-11 | Toolstack rationale created | R-S06 | Solved: `2_Environment/toolstack.md` |
+
+---
+
+## Risk Review Cadence
+
+- **Every project update** — Add new risks, update existing ones, move solved risks to the Solved section
+- **Every milestone completion** — Review all active risks, re-evaluate severity/likelihood
+- **Smoke test failures** — If a smoke test catches a new class of error, create a risk entry
+- **Tool changes** — When adding or removing a tool, evaluate and log new risks
+- **LLM switch** — When switching the LLM model, review R-008 and update mitigation if needed
