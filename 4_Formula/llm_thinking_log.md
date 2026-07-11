@@ -816,3 +816,30 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Risk review cadence defined: every project update, every milestone, smoke test failures, tool changes, LLM switches.
 - Risk update log provides an audit trail of when risks were created and resolved.
 - 6 files committed and pushed individually.
+
+---
+
+## 📅 2026-07-11 — Stage Agents Architecture (7 Dedicated Agents, One Per Folder)
+
+### 📥 Input / Task
+- Define specific agents managed in each folder, communicating through `llm_thinking_log.md`:
+  - **Real Agent**: 1_Real_Unknown, objectives and key results
+  - **Environment Agent**: 2_Environment, architectural requirements
+  - **Simulation Agent**: 3_Simulation, visual designs with versions
+  - **Formula Agent**: 4_Formula, specs from requirements + simulations, versioned
+  - **Symbols Agent**: 5_Symbols, writes code based on Real, Environment, Formula agents
+  - **Test Agent**: 7_Testing_Known, tests codebase, documents errors
+  - **Semblance Agent**: 6_Semblance, works with Test to resolve errors, feeds back to Real
+
+### 💭 Thinking & Reasoning Process
+1. **Multi-Agent Architecture**: Encoded a full 7-agent architecture in `agents.md`, where each stage folder has a dedicated agent with clear responsibilities: each agent owns its folder, reads from upstream agents, writes to downstream agents. Defined in a detailed table with columns: Agent, Folder, Role, Receives From, Delivers To.
+2. **Agent Communication Protocol**: All agents communicate exclusively through `4_Formula/llm_thinking_log.md`. Created a flow diagram showing how each agent writes to and reads from the thinking log, plus an Agent Rules Summary table showing what each agent reads/writes and key files.
+3. **Execution Flow Integration**: Updated the 7-Stage Execution Flow in `agents.md` and all 4 persona files to include `→ [Agent Name]` references at the end of each step, making it clear which stage agent owns which step.
+4. **Agent Chain**: `User Task → Real Agent (OKRs) → Environment Agent (blueprints) → Simulation Agent (designs) → Formula Agent (specs + approval) → Symbols Agent (code) → Test Agent (smoke tests) → Semblance Agent (fixes + lessons) → (feedback loop to Real Agent)`.
+
+### 📤 Outcomes & Decisions
+- `agents.md` now contains the "Stage Agents" section with 7-agent table, communication diagram, and rules summary.
+- 7-Stage Execution Flow in all 5 agent files now includes agent name references.
+- Clear separation: LLM persona files handle model-specific capabilities; stage agents handle folder-specific responsibilities.
+- Agent communication channel is `llm_thinking_log.md` — the single log where every agent documents its reasoning.
+- 5 files committed and pushed individually to GitHub main branch.
