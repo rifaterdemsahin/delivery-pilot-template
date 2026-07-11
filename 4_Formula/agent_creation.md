@@ -16,6 +16,7 @@ Multiple agents share the responsibility of creating new agents, each for differ
 | **Any Top Agent** | Task Sub-Agents | Specialized work needed within a stage | User confirmation + spec defining scope, boundaries, and deliverables |
 | **Formula Agent** | Synthesis Sub-Agents | Need to merge upstream outputs (Real, Environment, Simulation) into coherent deliverables | Sim/Env outputs ready for synthesis |
 | **Semblance Agent** | Error Mitigation Sub-Agents | Recurring errors in an existing agent | Root cause analysis showing the agent needs specialized support |
+| **Semblance Agent** | Bottleneck & Theory of Constraints Sub-Agent | System bottlenecks detected during testing | Updates `risks.md` and warns the user |
 | **Environment Agent** | Context-Based Sub-Agents | LLM context size exceeds manageable limits | Monitors context consumption and decides when to split work |
 
 ---
@@ -58,6 +59,15 @@ The Semblance Agent creates sub-agents for existing agents to:
 - Mitigate root causes discovered through the Test → Semblance feedback loop
 - Target specific agents (e.g., a formatting sub-agent for Symbols Agent, a tool-doc sub-agent for Environment Agent)
 - Prevent future errors by addressing the systemic cause
+
+### Bottleneck & Theory of Constraints Sub-Agent
+
+The Semblance Agent has a dedicated bottleneck & theory of constraints sub-agent:
+
+- **Trigger**: When system bottlenecks are detected during testing or runtime monitoring (slow builds, long test runs, resource contention, queue build-up)
+- **Action**: Identifies the constraint, applies theory of constraints (TOC) to determine the limiting factor
+- **Output**: Updates `1_Real_Unknown/risks.md` with the bottleneck as an active risk, including severity, impact, and proposed mitigation
+- **Alert**: Warns the user via a `[BOTTLENECK]` entry in `error.log` and mentions it in the handoff to the Real Agent
 
 ### Environment Agent — Context-Based Sub-Agents
 
