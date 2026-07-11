@@ -53,6 +53,20 @@ Each of the 7 stages has a **dedicated agent** that owns its folder, focuses on 
 | **Test Agent** | `7_Testing_Known/` | Tests the codebase against objectives. Runs smoke tests and code reviews. Documents errors and test outputs. If errors are found, activates the Semblance Agent as a sub-synthesis partner to resolve them before escalating. | Symbols Agent | Semblance Agent |
 | **Semblance Agent** | `6_Semblance/` | Works with Test Agent as a sub-synthesis pair to document and resolve errors completely before handing off to the Real Agent coordinator. Captures lessons learned and feeds resolved outcomes back to Real Agent to close the loop. Treats errors as opportunities — creates sub-agents for existing agents to mitigate recurring issues and prevent future errors. | Test Agent | Real Agent |
 
+### Agent Colors — Terminal Differentiation
+
+Each agent has a distinct color for terminal output so they can be easily differentiated at a glance. Colors are configured in `kilo.json`.
+
+| Agent | Color | Hex |
+|-------|-------|-----|
+| Real Agent | 🟣 Violet | `#8b5cf6` |
+| Environment Agent | 🔵 Cyan | `#06b6d4` |
+| Simulation Agent | 🟢 Green | `#10b981` |
+| Formula Agent | 🟠 Amber | `#f59e0b` |
+| Symbols Agent | 🔴 Red | `#ef4444` |
+| Test Agent | 🔷 Blue | `#3b82f6` |
+| Semblance Agent | 🩷 Pink | `#ec4899` |
+
 ### Agent Communication
 
 All agents talk to each other through `4_Formula/llm_thinking_log.md`. Each agent writes its reasoning, decisions, and outputs there. Each agent reads the logs of upstream agents to understand the context before acting.
