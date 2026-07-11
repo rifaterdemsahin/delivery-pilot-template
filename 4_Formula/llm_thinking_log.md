@@ -624,3 +624,25 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Deploy skill gated by smoke tests — no deployment without passing smoke tests.
 - Error flow: Code → Smoke Test → GitHub Issue → `6_Semblance/error.log` → Fix → `6_Semblance/fix.log` → `6_Semblance/smoke_test_report.md` → Close Issue.
 - All 10 files committed and pushed individually.
+
+---
+
+## 📅 2026-07-11 — Kilo Code Local Nomic Text Indexing vs Qdrant Guidance
+
+### 📥 Input / Task
+- In the environment docs, mention: if Qdrant is not being used, use Kilo Code's built-in nomic text indexing. Only use Qdrant with big repos. Use Kilo Code local indexing for semantic search for smaller projects when using the delivery-pilot-template.
+
+### 💭 Thinking & Reasoning Process
+1. **Two-Tier AI Stack**: Restructured `setup_ai.md` to present a clear two-tier architecture:
+   - **Tier 1 — Kilo Code Local Nomic Text Indexing (Default):** Built-in, zero-setup semantic search. No Docker, no external services. Recommended default for all small/mid-size projects using delivery-pilot-template.
+   - **Tier 2 — Qdrant Vector Database (Big Repos Only):** Full Docker-hosted vector database. Only deploy when the project outgrows local indexing (large codebases, multi-team projects).
+2. **Decision Flow**: Added a visual decision tree in `setup_ai.md` to help developers choose the right tier at a glance.
+3. **Tool Overview Sync**: Updated `tools.md` stack table and Tool-by-Tool section to reflect Kilo Code local indexing as the primary AI/Vector tool, with Qdrant as the big-repo alternative.
+4. **Dependency Chain Update**: Updated `dependencies.md` to include Kilo Code local indexing in the backend dependency chain, positioned before Qdrant with a note about its default status.
+5. **Verification Checklist**: Updated the verification checklist in `setup_ai.md` to reflect that Kilo Code local indexing needs no verification (built-in), while Qdrant verification is conditional.
+
+### 📤 Outcomes & Decisions
+- `2_Environment/setup_ai.md` now presents a two-tier AI stack with Kilo Code local indexing as the default for small projects.
+- Clear decision flow: small project → Kilo Code local indexing; big repo → Qdrant.
+- `2_Environment/tools.md` and `2_Environment/dependencies.md` updated to reflect the new guidance.
+- All 3 files committed and pushed individually to GitHub main branch.
