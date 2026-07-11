@@ -28,6 +28,61 @@ You constantly change the large language models you use. The code updates to mat
 4. Register in the Supported Agents table above
 5. Commit and push both `agents.md` (updated table) and the new `<llm>.md`
 
+## Stage Agents — One Agent Per Folder
+
+Each of the 7 stages has a **dedicated agent** that owns its folder, focuses on its stage's purpose, and communicates with other agents through `4_Formula/llm_thinking_log.md`.
+
+| Agent | Folder | Role | Receives From | Delivers To |
+|-------|--------|------|---------------|-------------|
+| **Real Agent** | `1_Real_Unknown/` | Scan incoming tasks, map to objectives and key results (OKRs). Defines what needs to be done and why. | User tasks | Environment Agent |
+| **Environment Agent** | `2_Environment/` | Provides architectural requirements, tools, blueprints, and dependencies needed to reach the objectives. Keeps blueprints versioned (Mermaid/Excalidraw). | Real Agent | Simulation Agent, Formula Agent |
+| **Simulation Agent** | `3_Simulation/` | Understands requirements and changes from upstream. Creates visual designs, mockups, and flow diagrams with versioning. Always creates new version images. | Environment Agent | Formula Agent |
+| **Formula Agent** | `4_Formula/` | Creates specs from requirements and simulations. Versions specs. Documents reasoning in `llm_thinking_log.md`. Gates entry to code. | Environment Agent, Simulation Agent | Symbols Agent, all agents (via thinking log) |
+| **Symbols Agent** | `5_Symbols/` | Writes code based on Real, Environment, and Formula agents' outputs. Follows coding rules in `5_Symbols/rules/`. | Real Agent, Environment Agent, Formula Agent | Test Agent |
+| **Test Agent** | `7_Testing_Known/` | Tests the codebase against objectives. Runs smoke tests. Documents errors and test outputs. | Symbols Agent | Semblance Agent |
+| **Semblance Agent** | `6_Semblance/` | Works with Test Agent to document and resolve errors. Captures lessons learned and feeds them back to Real Agent to close the loop. | Test Agent | Real Agent |
+
+### Agent Communication
+
+All agents talk to each other through `4_Formula/llm_thinking_log.md`. Each agent writes its reasoning, decisions, and outputs there. Each agent reads the logs of upstream agents to understand the context before acting.
+
+```
+User Task
+    │
+    ▼
+Real Agent ──────► llm_thinking_log.md
+    │
+    ▼
+Environment Agent ► llm_thinking_log.md
+    │
+    ▼
+Simulation Agent ► llm_thinking_log.md
+    │
+    ▼
+Formula Agent ───► llm_thinking_log.md  ◄── Specs + Approval Gate
+    │
+    ▼
+Symbols Agent ───► llm_thinking_log.md
+    │
+    ▼
+Test Agent ──────► llm_thinking_log.md
+    │
+    ▼
+Semblance Agent ─► llm_thinking_log.md  ──► (feedback loop to Real Agent)
+```
+
+### Agent Rules Summary
+
+| Agent | Read From | Write To | Key Files |
+|-------|----------|----------|-----------|
+| Real Agent | User input | `problem_statement.md`, `okrs.md`, `questions.md`, `hypotheses.md` | `risks.md` |
+| Environment Agent | Real Agent output | `architecture.md`, `tools.md`, `toolstack.md`, `dependencies.md`, `mcp.md`, `superskills.md` | All `2_Environment/*.md` |
+| Simulation Agent | Environment Agent output | `image_prompts.md`, `carousel_config.json`, `design_workflow.md` | All `3_Simulation/*` |
+| Formula Agent | Environment + Simulation output | `specs.md`, `decisions.md`, `dsl.md`, `extensions.md` | `llm_thinking_log.md` |
+| Symbols Agent | Real + Environment + Formula output | Source code, Docker configs, CI/CD workflows | `5_Symbols/rules/` |
+| Test Agent | Symbols Agent output | `smoke_tests.md`, `validation_report.md` | `smoke_test_report.md` |
+| Semblance Agent | Test Agent output | `error.log`, `fix.log`, `lessons_learned.md`, `smoke_test_report.md` | Feedback to Real Agent |
+
 ## Agent Rules
 
 - Always follow the 7-stage folder structure (`1_Real_Unknown` through `7_Testing_Known`)
@@ -35,14 +90,14 @@ You constantly change the large language models you use. The code updates to mat
 - Never commit secrets — use Azure Key Vault for all sensitive values
 - **After every command, commit and push** — do not batch changes; each step gets its own commit. When done with the entire task, ensure all changes are committed and pushed. If any git errors occur (e.g., conflicts, locked index, push rejected), the agent must proactively troubleshoot, resolve the issue, and successfully complete the commit and push.
 - **7-Stage Execution Flow** — Every task follows this cycle from start to resolution:
-  1. **1_Real_Unknown — Scan & Map**: When receiving a new task, scan the project and map to this stage. Ensure there is a clear objective and that it relates to Key Results (OKRs). Update `problem_statement.md`, `okrs.md`, `hypotheses.md`, and `questions.md` as needed.
-  2. **2_Environment — Update Blueprints**: Check if the environment needs updating. Update architectural blueprints (Mermaid diagrams in `architecture.md` or Excalidraw diagrams) — always keep them versioned. Update setup guides and tool documentation here when infrastructure or tooling changes.
+  1. **1_Real_Unknown — Scan & Map**: When receiving a new task, scan the project and map to this stage. Ensure there is a clear objective and that it relates to Key Results (OKRs). Update `problem_statement.md`, `okrs.md`, `hypotheses.md`, and `questions.md` as needed. → **Real Agent**
+  2. **2_Environment — Update Blueprints**: Check if the environment needs updating. Update architectural blueprints (Mermaid diagrams in `architecture.md` or Excalidraw diagrams) — always keep them versioned. Update setup guides and tool documentation here when infrastructure or tooling changes. → **Environment Agent**
   3. **Mention Changes & Get Approvals** — When changes happen in `1_Real_Unknown` or `2_Environment`, mention/discuss the changes and get approvals. These approved changes cascade into updates in `3_Simulation` and `4_Formula` before any code is written.
-  4. **3_Simulation — Design New Versions**: Update visual designs and always create new version images. Log image generation prompts in `image_prompts.md`, update `carousel_config.json`. Design artifacts must be current before code enters `5_Symbols`.
-  5. **4_Formula — Specs & Approval**: Follow or update the specs in `specs.md`. Document reasoning in `llm_thinking_log.md`. Get approval (specs + designs reviewed) before implementing in `5_Symbols`. This is the mandatory gating stage.
-  6. **5_Symbols — Implement**: Place all new source code here (except root files like `index.html`). Only enter this stage after the `4_Formula` gate approves the plan. Follow coding rules defined in `5_Symbols/rules/`.
-  7. **7_Testing_Known — Test & Report**: After implementation, test the functionality and report the outputs. **Run smoke tests** that open pages, check for errors, and report failures to GitHub Issues. Use validation checklists and test evidence. If issues are found, create a GitHub Issue and loop back to `6_Semblance`.
-  8. **6_Semblance — Fix & Resolve**: Document all errors, fixes, workarounds, and gap analyses. After testing reveals issues, fix them here and **mention the resolution**. Append to `error.log` and `fix.log`, update statuses, capture lessons learned. Resolve the corresponding GitHub Issues and publish a smoke test report to `6_Semblance/smoke_test_report.md`.
+  4. **3_Simulation — Design New Versions**: Update visual designs and always create new version images. Log image generation prompts in `image_prompts.md`, update `carousel_config.json`. Design artifacts must be current before code enters `5_Symbols`. → **Simulation Agent**
+  5. **4_Formula — Specs & Approval**: Follow or update the specs in `specs.md`. Document reasoning in `llm_thinking_log.md`. Get approval (specs + designs reviewed) before implementing in `5_Symbols`. This is the mandatory gating stage. → **Formula Agent**
+  6. **5_Symbols — Implement**: Place all new source code here (except root files like `index.html`). Only enter this stage after the `4_Formula` gate approves the plan. Follow coding rules defined in `5_Symbols/rules/`. → **Symbols Agent**
+  7. **7_Testing_Known — Test & Report**: After implementation, test the functionality and report the outputs. **Run smoke tests** that open pages, check for errors, and report failures to GitHub Issues. Use validation checklists and test evidence. If issues are found, create a GitHub Issue and loop back to `6_Semblance`. → **Test Agent**
+  8. **6_Semblance — Fix & Resolve**: Document all errors, fixes, workarounds, and gap analyses. After testing reveals issues, fix them here and **mention the resolution**. Append to `error.log` and `fix.log`, update statuses, capture lessons learned. Resolve the corresponding GitHub Issues and publish a smoke test report to `6_Semblance/smoke_test_report.md`. → **Semblance Agent**
 - **Thinking & Planning Gate** — Before writing any code (`5_Symbols`), always document the approach and reasoning in `4_Formula/llm_thinking_log.md`. After execution, append a summary of the LLM reasoning process. `4_Formula` is the mandatory planning stage that encapsulates thinking before action.
 - **Specs System** — Technical specifications live in `4_Formula/specs.md`. Before implementing any feature, create or update its spec. When new tasks arrive, check `4_Formula/specs.md` for existing specs that may be affected. If a task changes behavior covered by an active spec, flag it with `[NEEDS UPDATE]` and **warn** before writing code. Specs are validated against code in `5_Symbols`.
 - **Design-First Rule** — Before delivering implementation (`5_Symbols`), always create image-based designs in `3_Simulation/` (mockups, wireframes, flow diagrams) and document specs in `4_Formula/`. Design files and spec documents must be updated whenever the feature changes. Design before code — `3_Simulation` + `4_Formula` gate `5_Symbols`.
