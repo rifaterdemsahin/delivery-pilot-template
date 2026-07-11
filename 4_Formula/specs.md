@@ -7,6 +7,7 @@
 2. **New tasks arriving** — check this file for affected specs, flag changes with `[NEEDS UPDATE]`
 3. **Warn on mismatch** — if a task would alter behavior covered by an existing spec, flag and warn before coding
 4. **Post-implementation** — update the spec to reflect final decisions
+5. **Code drift detection** — After implementation in `5_Symbols`, diff the code against active specs. Flag deviations with `[DRIFT]` and document in `llm_thinking_log.md`
 
 ---
 
@@ -80,6 +81,18 @@
   - When a dependency changes in stage 2 (e.g., a new library or tool), stage 3 designs must be reviewed for compatibility and updated if needed.
   - Stage 1 OKR changes ripple through stage 2 (do we need new tools?) and stage 3 (does the design still match the objective?).
 - **Related Files:** `1_Real_Unknown/problem_statement.md`, `1_Real_Unknown/okrs.md`, `2_Environment/architecture.md`, `2_Environment/dependencies.md`, `2_Environment/tools.md`, `3_Simulation/design_workflow.md`, `4_Formula/specs.md`
+- **Last Updated:** 2026-07-11
+
+### SPEC-007: Code Drift Detection
+- **Status:** Active
+- **Description:** Formula Agent identifies when code in `5_Symbols` deviates from active specs in `specs.md`
+- **Key Behaviors:**
+  - After `5_Symbols` implementation, compare code behavior against the active spec
+  - Any deviation is flagged with `[DRIFT]` in the relevant spec entry
+  - Drift is documented in `llm_thinking_log.md` with the gap analysis
+  - Drift must be resolved before the spec gate passes (spec + designs reviewed)
+  - If drift is intentional, update the spec first to capture the new behavior, then flag drift as resolved
+- **Related Files:** `4_Formula/specs.md`, `4_Formula/llm_thinking_log.md`, `5_Symbols/*`
 - **Last Updated:** 2026-07-11
 
 ---

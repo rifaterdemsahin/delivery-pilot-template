@@ -18,6 +18,7 @@ Specifications live in `4_Formula/specs.md`. This is the living document that de
 - When a new task arrives, check `4_Formula/specs.md` for existing specs that may be affected
 - If the task changes behavior covered by an existing spec, flag it with `[NEEDS UPDATE]` and warn
 - Specs are the source of truth that code in `5_Symbols` is validated against
+- **Code drift detection** — After implementation, diff the code in `5_Symbols` against the active spec. Flag any deviation with `[DRIFT]` and document the gap in `llm_thinking_log.md`
 
 ## Approval Cascade Rule
 Changes in `1_Real_Unknown` or `2_Environment` must be mentioned, discussed, and approved before cascading into updates in `3_Simulation` and `4_Formula`. The approval chain:
