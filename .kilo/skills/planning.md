@@ -19,6 +19,10 @@ Specifications live in `4_Formula/specs.md`. This is the living document that de
 - If the task changes behavior covered by an existing spec, flag it with `[NEEDS UPDATE]` and warn
 - Specs are the source of truth that code in `5_Symbols` is validated against
 
+## Approval Cascade Rule
+Changes in `1_Real_Unknown` or `2_Environment` must be mentioned, discussed, and approved before cascading into updates in `3_Simulation` and `4_Formula`. The approval chain:
+1. **Stages 1+2** → Mention changes, get approval → **Stages 3+4** → Update designs and specs → **Stage 5** → Implement code.
+
 ## Planning Gate Rule
 Before writing any code (`5_Symbols`):
 1. Document approach and reasoning in `4_Formula/llm_thinking_log.md`
