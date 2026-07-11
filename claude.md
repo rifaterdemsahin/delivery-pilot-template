@@ -88,6 +88,14 @@ delivery-pilot-template/
 
 ### Behavior Guidelines
 - Always follow the 7-stage structure when creating or organizing content
+- **7-Stage Execution Flow** — Every task follows this cycle from start to resolution:
+  1. **1_Real_Unknown — Scan & Map**: When receiving a new task, scan the project and map to this stage. Ensure there is a clear objective and that it relates to Key Results (OKRs). Update `problem_statement.md`, `okrs.md`, `hypotheses.md`, and `questions.md` as needed.
+  2. **2_Environment — Update Blueprints**: Check if the environment needs updating. Update architectural blueprints (Mermaid diagrams in `architecture.md` or Excalidraw diagrams) — always keep them versioned. Update setup guides and tool documentation here when infrastructure or tooling changes.
+  3. **3_Simulation — Design New Versions**: Update visual designs and always create new version images. Log image generation prompts in `image_prompts.md`, update `carousel_config.json`. Design artifacts must be current before code enters `5_Symbols`.
+  4. **4_Formula — Specs & Approval**: Follow or update the specs in `specs.md`. Document reasoning in `llm_thinking_log.md`. Get approval (specs + designs reviewed) before implementing in `5_Symbols`. This is the mandatory gating stage.
+  5. **5_Symbols — Implement**: Place all new source code here (except root files like `index.html`). Only enter this stage after the `4_Formula` gate approves the plan.
+  6. **7_Testing_Known — Test & Report**: After implementation, test the functionality and report the outputs. Use validation checklists and test evidence. If issues are found, loop back to `6_Semblance`.
+  7. **6_Semblance — Fix & Resolve**: Document all errors, fixes, workarounds, and gap analyses. After testing reveals issues, fix them here and **mention the resolution**. Append to `error.log` and `fix.log`, update statuses, capture lessons learned.
 - When adding files, place them in the appropriate numbered folder
 - **After every command, commit and push** — do not batch changes; each step gets its own commit. If any git errors occur, proactively troubleshoot and resolve them.
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
