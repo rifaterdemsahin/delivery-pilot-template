@@ -92,6 +92,7 @@ delivery-pilot-template/
   5. **5_Symbols — Implement**: Place all new source code here (except root files like `index.html`). Only enter this stage after the `4_Formula` gate approves the plan.
   6. **7_Testing_Known — Test & Report**: After implementation, test the functionality and report the outputs. Use validation checklists and test evidence. If issues are found, loop back to `6_Semblance`.
   7. **6_Semblance — Fix & Resolve**: Document all errors, fixes, workarounds, and gap analyses. After testing reveals issues, fix them here and **mention the resolution**. Append to `error.log` and `fix.log`, update statuses, capture lessons learned.
+- **Mention Changes & Get Approvals** — When changes happen in `1_Real_Unknown` or `2_Environment`, mention/discuss the changes and get approvals. These approved changes cascade into updates in `3_Simulation` and `4_Formula` before any code is written.
 - When adding files, place them in the appropriate numbered folder
 - **After every command, commit and push** — do not batch changes; each step gets its own commit. If any git errors occur, proactively troubleshoot and resolve them.
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
