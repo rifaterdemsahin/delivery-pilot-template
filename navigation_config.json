@@ -18,6 +18,7 @@
     { "label": "   ├─ GitHub Agent", "url": "2_Environment/github_agent.md" },
     { "label": "   ├─ MCP Servers", "url": "2_Environment/mcp.md" },
     { "label": "   ├─ Superskills", "url": "2_Environment/superskills.md" },
+    { "label": "   ├─ Toolstack & Rationale", "url": "2_Environment/toolstack.md" },
     { "label": "3. Simulation", "url": "3_Simulation/" },
     { "label": "   ├─ Design Workflow", "url": "3_Simulation/design_workflow.md" },
     { "label": "4. Formula", "url": "4_Formula/" },
