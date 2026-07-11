@@ -15,7 +15,7 @@
 | **Server-side logs** | Axiom | Centralized logging, tracing, alerting, dashboards | [`axiom.md`](./axiom.md) |
 | **Secrets** | Azure Key Vault | Stores all API keys & credentials | [`setup_azure.md`](./setup_azure.md) |
 | **CI/CD** | GitHub Actions | Build, test, deploy pipeline | [`github_pages.md`](./github_pages.md) |
-| **AI / Vector** | Ollama + Qdrant | Embeddings (`nomic-embed-text`) + vector search | [`setup_ai.md`](./setup_ai.md) |
+| **AI / Vector** | Kilo Code (local) / Qdrant (big repos) | Semantic search: Kilo Code built-in nomic text indexing for small projects, Qdrant vector DB for large repos | [`setup_ai.md`](./setup_ai.md) |
 
 ---
 
@@ -39,8 +39,11 @@ The **single source of truth for server-side logs**. Fly.io services and CI ship
 ### 6. Azure Key Vault — Secrets
 All credentials for every tool above are stored here and injected as env vars at deploy time. Never commit secrets to git. → [`setup_azure.md`](./setup_azure.md)
 
-### 7. Ollama + Qdrant — AI Stack
-Local/edge embeddings via Ollama (`nomic-embed-text`, 4096 dims) and vector search via Qdrant. Supabase `pgvector` is an alternative for smaller workloads. → [`setup_ai.md`](./setup_ai.md)
+### 7. AI Stack — Semantic Search
+Two-tier approach for semantic search and embeddings:
+
+- **Kilo Code Local Nomic Text Indexing (default for small projects):** Built-in, zero-setup semantic search using nomic text indexing. The recommended default when using the delivery-pilot-template for smaller repos. No Docker, no external services.
+- **Qdrant Vector Database (big repos only):** Full vector database via Docker for large codebases and multi-team projects. Only deploy Qdrant when the project outgrows Kilo Code local indexing.
 
 ---
 
