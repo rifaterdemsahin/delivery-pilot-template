@@ -551,3 +551,24 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - `2_Environment` blueprints now explicitly mention Mermaid and Excalidraw diagrams, versioned.
 - Logged prompt in `prompts.md` and this reasoning in `llm_thinking_log.md`.
 - All 5 files committed and pushed individually to GitHub main branch.
+
+---
+
+## 📅 2026-07-11 — Add Approval Cascade Rule (1+2 Gates 3+4)
+
+### 📥 Input / Task
+- Mention the changes and get approvals when they happen in `1_Real_Unknown` or `2_Environment`. These approved changes cascade into updates in `3_Simulation` and `4_Formula`. Encode this in `agents.md`.
+
+### 💭 Thinking & Reasoning Process
+1. **Understanding the Chain**: The user clarified the stage gating mechanism. Stages 1 and 2 are the upstream planning stages. Changes there must be mentioned (documented) and approved before they propagate downstream into stages 3 (designs) and 4 (specs).
+2. **Encoding the Rule**: Added a new step 3 in the 7-Stage Execution Flow: "Mention Changes & Get Approvals". Also added a standalone bullet "Mention Changes & Get Approvals" in all agent persona files.
+3. **Cascade Logic**: `1_Real_Unknown` + `2_Environment` → mention changes → get approvals → update `3_Simulation` designs → update `4_Formula` specs → gate to `5_Symbols` code.
+4. **Skill Sync**: Updated `.kilo/skills/planning.md` to include the Approval Cascade Rule section.
+5. **Execution**: Applied changes to `agents.md`, `claude.md`, `gemini.md`, `kilocode.md`, `copilot.md`, and `.kilo/skills/planning.md`. Committed and pushed each individually.
+
+### 📤 Outcomes & Decisions
+- `agents.md` 7-Stage Execution Flow now contains 8 steps with the new "Mention Changes & Get Approvals" step.
+- All 4 agent persona files include the standalone "Mention Changes & Get Approvals" rule.
+- `.kilo/skills/planning.md` updated with Approval Cascade Rule section.
+- Logged prompt in `prompts.md` and this reasoning in `llm_thinking_log.md`.
+- All 6 files committed and pushed individually.
