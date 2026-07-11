@@ -7,6 +7,15 @@
     ".kilo/skills/secrets.md"
   ],
   "agents": {
-    "kilocode": ".kilo/agent/kilocode.md"
+    "kilocode": ".kilo/agent/kilocode.md",
+    "colors": {
+      "real": "#8b5cf6",
+      "environment": "#06b6d4",
+      "simulation": "#10b981",
+      "formula": "#f59e0b",
+      "symbols": "#ef4444",
+      "test": "#3b82f6",
+      "semblance": "#ec4899"
+    }
   }
 }
