@@ -729,3 +729,31 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Clear separation: agent visits pages and creates issues (token-based), human reviews and merges PRs (never auto-merge).
 - All navigation menus synchronized with the new `GitHub Agent` entry under `2. Environment`.
 - 8 files committed and pushed individually to GitHub main branch.
+
+---
+
+## 📅 2026-07-11 — MCP Servers & Superskills Requirements in Environment
+
+### 📥 Input / Task
+- Mention in the environment folder the requirements for MCP servers and the superskills needed.
+
+### 💭 Thinking & Reasoning Process
+1. **MCP Server Documentation**: Created `2_Environment/mcp.md` cataloging all Model Context Protocol servers the project agents need:
+   - **Required**: GitHub (Issues/PRs/repo), Azure Key Vault (secrets), File System (file ops), Browser/Playwright (page testing)
+   - **Recommended**: Supabase (DB), Axiom (logs), Fly.io (deploy), Qdrant (vectors)
+   - Each server documented with purpose, required-for column, configuration snippet, and token storage location
+   - MCP → Stage mapping table showing which servers are used in each of the 7 stages
+2. **Superskills Catalog**: Created `2_Environment/superskills.md` documenting every loadable skill:
+   - **6 project skills**: navigation, planning, simulation, deploy, secrets, error-fix (from `.kilo/skills/`)
+   - **System skills**: code-review, verify, security-review, run, image-generation, github-blog-post (from `.claude/skills.md`)
+   - Skill dependencies table: which skills depend on which other skills and MCP servers
+   - Skill → Stage mapping showing which skills apply to each of the 7 stages
+   - Skill loading workflow and creation guide
+3. **Project-Wide Sync**: Updated `2_Environment/README.md` (files table: +2 rows), `2_Environment/tools.md` (tools overview: +2 rows for MCP and Superskills), and all 3 debug menu configurations.
+
+### 📤 Outcomes & Decisions
+- `2_Environment/mcp.md` documents 8 MCP servers with stage-by-stage mapping.
+- `2_Environment/superskills.md` catalogs 12 skills with dependencies and stage mapping.
+- Clear separation: MCP servers handle external tool access; superskills encapsulate agent workflows.
+- Both files registered in `tools.md` overview and `README.md` files table.
+- 9 files committed and pushed individually to GitHub main branch.
