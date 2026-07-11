@@ -14,6 +14,7 @@
     { "label": "   ├─ Fly.io (Deployments)", "url": "2_Environment/fly_io.md" },
     { "label": "   ├─ Supabase (Database)", "url": "2_Environment/supabase.md" },
     { "label": "   ├─ Axiom (Logs)", "url": "2_Environment/axiom.md" },
+    { "label": "   ├─ Dependencies", "url": "2_Environment/dependencies.md" },
     { "label": "3. Simulation", "url": "3_Simulation/" },
     { "label": "   ├─ Design Workflow", "url": "3_Simulation/design_workflow.md" },
     { "label": "4. Formula", "url": "4_Formula/" },
