@@ -83,6 +83,37 @@ Semblance Agent ─► llm_thinking_log.md  ──► (feedback loop to Real Age
 | Test Agent | Symbols Agent output | `smoke_tests.md`, `validation_report.md`, conducts code reviews | `smoke_test_report.md` |
 | Semblance Agent | Test Agent output | `error.log`, `fix.log`, `lessons_learned.md`, `smoke_test_report.md` | Feedback to Real Agent |
 
+### Complex Task Coordination
+
+For tasks that span multiple stages or require multiple agents, the **Real Agent** acts as the coordinator. It defines the scope, dispatches work to the appropriate agents in sequence, and validates the final result against the OKRs.
+
+**Coordination Pattern:**
+```
+Real Agent (Receives task, defines scope, assigns agents)
+    │
+    ├─► Environment Agent (Provides tools, blueprints, dependencies)
+    │       │
+    │       ▼
+    ├─► Simulation Agent (Creates visual designs if needed)
+    │       │
+    │       ▼
+    ├─► Formula Agent (Creates/updates specs, gates approval)
+    │       │
+    │       ▼
+    ├─► Symbols Agent (Implements the code)
+    │       │
+    │       ▼
+    ├─► Test Agent (Runs smoke tests, code reviews, validates)
+    │       │
+    │       ▼
+    └─► Semblance Agent (Logs errors, applies fixes, captures lessons)
+            │
+            ▼
+        Feedback → Real Agent (Verifies OKRs met, updates risks.md)
+```
+
+**When resolving tasks, mention which agent is involved.** For a simple single-agent task, state: "TSK-XXX — Symbols Agent implements the spec." For complex multi-agent tasks, describe the coordination: "Real Agent coordinates TSK-XXX across Environment (tools), Formula (specs), Symbols (code), and Test (validation)."
+
 ### Decision Boundaries
 
 Each agent operates within defined boundaries. Agents must **confirm with the user before crossing into implementation** — ask a confirmation question, state their boundaries, and explain their rationale.
@@ -131,6 +162,7 @@ Before any agent implements a change (especially `5_Symbols` code), it must ask 
 - Never commit secrets — use Azure Key Vault for all sensitive values
 - **After every command, commit and push** — do not batch changes; each step gets its own commit. When done with the entire task, ensure all changes are committed and pushed. If any git errors occur (e.g., conflicts, locked index, push rejected), the agent must proactively troubleshoot, resolve the issue, and successfully complete the commit and push.
 - **Confirmation Before Implementation** — Before any agent implements a change (especially `5_Symbols` code), it must ask the user a confirmation question. State the agent's boundaries (see Decision Boundaries table), explain the rationale, and group the implementation plan into clear sections. Use emojis for scannability. Do not proceed until the user confirms.
+- **Task Resolution** — When resolving a task, always mention which agent is involved. For single-agent tasks: "TSK-XXX — [Agent Name] handles [what]." For complex tasks spanning multiple agents: "Real Agent coordinates TSK-XXX across [Agent A] ([role]), [Agent B] ([role]), [Agent C] ([role])." The Real Agent validates the final result against OKRs.
 - **7-Stage Execution Flow** — Every task follows this cycle from start to resolution:
   1. **1_Real_Unknown — Scan & Map**: When receiving a new task, scan the project and map to this stage. Ensure there is a clear objective and that it relates to Key Results (OKRs). Update `problem_statement.md`, `okrs.md`, `hypotheses.md`, and `questions.md` as needed. Divide the project into phases and tasks, and manage `tasks.md`. Evolve responsibility by going over the current status quo, updating `risks.md` with new risks, and applying necessary mitigations. → **Real Agent** (coordinator — receives tasks and runs through the other agents)
   2. **2_Environment — Update Blueprints**: Check if the environment needs updating. Update architectural blueprints (Mermaid diagrams in `architecture.md` or Excalidraw diagrams) — always keep them versioned. Update setup guides and tool documentation here when infrastructure or tooling changes. Manage semantic search (Kilo Code local indexing for small projects, Qdrant for big repos) and report its operational status. Maintain `llm_tools.md` with tool rationale and security boundaries for LLM tool usage. → **Environment Agent**
