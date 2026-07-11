@@ -757,3 +757,29 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Clear separation: MCP servers handle external tool access; superskills encapsulate agent workflows.
 - Both files registered in `tools.md` overview and `README.md` files table.
 - 9 files committed and pushed individually to GitHub main branch.
+
+---
+
+## 📅 2026-07-11 — Toolstack & Rationale Document
+
+### 📥 Input / Task
+- In `2_Environment/`, create a `toolstack.md` that explains each tool and the rationale in a markdown table.
+
+### 💭 Thinking & Reasoning Process
+1. **Toolstack Structure**: Created a comprehensive `2_Environment/toolstack.md` with 4 major sections:
+   - **Full Toolstack Table**: 15 tools across 5 columns — Tool, Category, Purpose, and Rationale (the "why" behind each choice). Each rationale entry explains the trade-off considered (e.g., Qdrant chosen over Pinecone for avoiding vendor lock-in, Fly.io chosen over Heroku for pricing and AWS ECS for complexity).
+   - **Decision Principles Table**: 6 principles guiding tool selection — no vendor lock-in, free/low-cost first, config-as-code, minimal infrastructure, GitHub-native, Azure for secrets.
+   - **Stack Evolution Log**: 5 dated entries tracking tool changes over time (Doppler→Azure, Supabase addition, Axiom addition, Fly.io clarification, Kilo Code local indexing as default).
+   - **Adding a Tool Workflow**: 8-step checklist for adding future tools.
+2. **Key Rationale Examples**:
+   - **Kilo Code over Qdrant for small projects**: Zero setup, no Docker, built-in — minimizes infrastructure overhead
+   - **Supabase over Firebase**: Open-source, no vendor lock-in, managed Postgres with pgvector
+   - **Axiom over ELK/Datadog**: Purpose-built structured log querying without operational complexity or high cost
+   - **Mermaid over Excalidraw**: Markdown-native, version-controllable, no binary files
+3. **Integration**: Added to `2_Environment/README.md` and all debug menus.
+
+### 📤 Outcomes & Decisions
+- `2_Environment/toolstack.md` is the definitive "why" document for every tool choice.
+- 15 tools documented with decision rationale, covering hosting, database, logging, secrets, CI/CD, AI, and UI.
+- Decision principles provide a framework for evaluating future tool additions.
+- 6 files committed and pushed individually.
