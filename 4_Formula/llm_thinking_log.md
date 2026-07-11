@@ -525,3 +525,29 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - All agent persona files updated with Specs System and Design-First rules.
 - All debug menu configurations synchronized across `navigation_config.json`, `index.html`, and `markdown_renderer.html`.
 - All changes committed and pushed to GitHub main branch.
+
+---
+
+## 📅 2026-07-11 — Encode 7-Stage Execution Flow in All Agent Files
+
+### 📥 Input / Task
+- When getting tasks: scan and map to `1_Real_Unknown` (OKRs) → update `2_Environment` blueprints (Mermaid/Excalidraw, always versioned) → design new versions in `3_Simulation` → specs and approval in `4_Formula` → implement in `5_Symbols` → test in `7_Testing_Known` → fix and resolve in `6_Semblance` (mention the resolution).
+
+### 💭 Thinking & Reasoning Process
+1. **Encoding the Full Cycle**: The user requested that the entire 7-stage lifecycle be explicitly encoded in `agents.md` and all agent persona files. Each stage now carries a clear action verb and purpose:
+   - 1_Real_Unknown: Scan & Map (OKR alignment)
+   - 2_Environment: Update Blueprints (Mermaid/Excalidraw, versioned)
+   - 3_Simulation: Design New Versions (always new version images)
+   - 4_Formula: Specs & Approval (mandatory gate)
+   - 5_Symbols: Implement (only after approval)
+   - 7_Testing_Known: Test & Report (loop back to 6 on failure)
+   - 6_Semblance: Fix & Resolve (mention the resolution)
+2. **Architectural Blueprints**: Added specific mention of Mermaid diagrams in `architecture.md` and Excalidraw diagrams, with the requirement to always keep them versioned.
+3. **Execution**: Updated `agents.md` (restructured the stage descriptions into a numbered flow), then applied the same 7-stage execution flow block to all four agent persona files (`claude.md`, `gemini.md`, `kilocode.md`, `copilot.md`).
+
+### 📤 Outcomes & Decisions
+- `agents.md` stage descriptions replaced with numbered 7-stage execution flow.
+- All 4 agent persona files now include the same execution flow in their Behavior Guidelines.
+- `2_Environment` blueprints now explicitly mention Mermaid and Excalidraw diagrams, versioned.
+- Logged prompt in `prompts.md` and this reasoning in `llm_thinking_log.md`.
+- All 5 files committed and pushed individually to GitHub main branch.
