@@ -160,6 +160,7 @@ Before any agent implements a change (especially `5_Symbols` code), it must ask 
 ## Agent Rules
 
 - Always follow the 7-stage folder structure (`1_Real_Unknown` through `7_Testing_Known`)
+- **Continuous Evolution** — Every LLM response is an opportunity to update and iterate on the project. The delivery pilot framework places each output in its related stage folder and evolves with the outputs. Nothing is throwaway — every reasoning log, error fix, spec update, and design iteration is stored in its stage and makes the project smarter over time.
 - **LLM Model Switching** — The coordinator (`agents.md`) stays constant while persona files are generated per LLM. When you switch models (Claude → DeepSeek → GPT → etc.), a matching `<llm>.md` file is generated that inherits all coordinator rules. The agent currently in use always reads its own persona file plus `agents.md` as the universal coordinator.
 - Never commit secrets — use Azure Key Vault for all sensitive values
 - **After every command, commit and push** — do not batch changes; each step gets its own commit. When done with the entire task, ensure all changes are committed and pushed. If any git errors occur (e.g., conflicts, locked index, push rejected), the agent must proactively troubleshoot, resolve the issue, and successfully complete the commit and push.
