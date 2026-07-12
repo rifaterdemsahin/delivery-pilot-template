@@ -8,14 +8,14 @@ This project uses **Supabase** (hosted Postgres, Auth, and Realtime platform) as
 
 To ensure consistency across the development lifecycle, the Supabase project name reflects the GitHub repository name:
 * **Project Name / ID:** `delivery-pilot-template`
-* **Local config project_id:** Configured in `supabase/config.toml` as `delivery-pilot-template`.
+* **Local config project_id:** Configured in `2_Environment/supabase/config.toml` as `delivery-pilot-template`.
 
 ---
 
 ## 🎛️ Local Development Setup
 
 For local testing and migrations, a local containerized Supabase instance is initialized:
-* **Configuration directory:** `supabase/`
+* **Configuration directory:** `2_Environment/supabase/` — note: the Supabase CLI expects `supabase/` at the working directory root, so run CLI commands with `--workdir 2_Environment` (e.g. `supabase --workdir 2_Environment start`)
 * **Initialization command:**
   ```bash
   npx supabase init
