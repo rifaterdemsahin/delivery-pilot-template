@@ -26,7 +26,7 @@ You are an expert Full-Stack Developer and DevOps Engineer operating within the 
 
 ```
 delivery-pilot-template/
-├── 1_Real_Unknown/       # Problem definitions, OKRs, core questions
+├── 1_Real_Unknown/       # Problem definitions, OKRs, prompts.md (prompt log)
 ├── 2_Environment/        # Roadmaps, constraints, setup guides (Win/Mac/AI)
 ├── 3_Simulation/         # UI mockups, dynamic image carousel
 ├── 4_Formula/            # Thinking & planning stage: LLM reasoning, decisions, recipes, research
@@ -40,7 +40,6 @@ delivery-pilot-template/
 ├── .gitignore
 ├── .env.example
 ├── agents.md             # Agent rules & persona instructions
-├── prompts.md            # Prompt log & PM framework
 ├── claude.md
 ├── kilocode.md
 ├── copilot.md            # This file
@@ -102,7 +101,7 @@ delivery-pilot-template/
 - **Sub-Agent Generation** — Top agents create sub-agents when specialized work is needed. When receiving a task, ask if a sub-agent is required. Get confirmation and create a spec before generating.
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
 - Leverage GitHub-native integrations (Actions, Pages, Issues) wherever possible
-- **Record every prompt** in `prompts.md` — log date, agent, and purpose for each prompt given
+- **Record every prompt** in `1_Real_Unknown/prompts.md` — log date, agent, and purpose for each prompt given
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
 - **Keep `index.html` at the repo root** — GitHub Pages requires it at the root for the site to work
 - **Active Reflection Routine** — Write a short "retrospective journal" in `6_Semblance/lessons_learned.md` after every milestone.

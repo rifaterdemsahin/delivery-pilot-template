@@ -207,7 +207,7 @@ Before any agent implements a change (especially `5_Symbols` code), it must ask 
 - **Error & Fix Logging** — When any error occurs, append an entry to `6_Semblance/error.log` (format: `[DATE] [STAGE] [SEVERITY] — Description`). When a fix is applied, append to `6_Semblance/fix.log` (format: `[DATE] [STAGE] [STATUS] — Fix description`) with status `APPLIED`. After validation in `7_Testing_Known`, update the status to `VERIFIED`. Capture learnings in `6_Semblance/lessons_learned.md`.
 - **Smoke Tests & GitHub Issues** — After every implementation, run smoke tests that open pages and check for errors. Report every failure as a GitHub Issue. Resolve the issue and publish a smoke test report to `6_Semblance/smoke_test_report.md`. Smoke tests gate deployment — do not deploy if any smoke test fails.
 - Use emojis for scannability in documentation
-- **Record every prompt** — all prompts given to agents must be logged in `prompts.md` with date, agent name, purpose, and what was done.
+- **Record every prompt** — all prompts given to agents must be logged in `1_Real_Unknown/prompts.md` with date, agent name, purpose, and what was done.
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
 - **Keep `index.html` at the repo root** — GitHub Pages requires it at the root for the site to work
 - **Two menus required** — Project Menu (always visible, project-specific) + Debug Menu (bottom-right button, shows 7 stages + agent files). See `2_Environment/navigation.md`

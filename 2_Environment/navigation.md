@@ -30,7 +30,7 @@ This is the delivery-pilot framework navigation. It contains:
 
 - Links to all 7 stages (`1_Real_Unknown` through `7_Testing_Known`)
 - Agent instruction files (`claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`)
-- Framework tools (`agents.md`, `prompts.md`)
+- Framework tools (`agents.md`, `1_Real_Unknown/prompts.md`)
 - Search with autocomplete
 
 ### Debug Button
@@ -54,7 +54,7 @@ This is the delivery-pilot framework navigation. It contains:
     { "label": "7. Testing Known", "url": "7_Testing_Known/" },
     { "label": "---", "url": "---" },
     { "label": "agents.md", "url": "agents.md" },
-    { "label": "prompts.md", "url": "prompts.md" },
+    { "label": "1_Real_Unknown/prompts.md", "url": "1_Real_Unknown/prompts.md" },
     { "label": "claude.md", "url": "claude.md" },
     { "label": "gemini.md", "url": "gemini.md" },
     { "label": "copilot.md", "url": "copilot.md" },

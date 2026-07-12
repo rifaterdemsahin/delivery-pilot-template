@@ -26,7 +26,7 @@ When the user runs `/init-project`:
 
 ### Step 1 — Gather inputs (ASK THESE QUESTIONS FIRST)
 
-Before creating or modifying any files, **ask the user the setup questionnaire below** (use the `AskUserQuestion` tool, one batch of questions). Do not assume answers — the whole point of init is to configure the template consciously. Record every answer in `prompts.md` and in `4_Formula/decisions.md`.
+Before creating or modifying any files, **ask the user the setup questionnaire below** (use the `AskUserQuestion` tool, one batch of questions). Do not assume answers — the whole point of init is to configure the template consciously. Record every answer in `1_Real_Unknown/prompts.md` and in `4_Formula/decisions.md`.
 
 #### 🧱 Project basics
 1. **Project name?** (required — used in `CLAUDE.md`, `README.md`, `agents.md`)
@@ -69,7 +69,7 @@ After collecting answers:
 - Create `6_Semblance/error.log` with header template
 - Create `6_Semblance/fix.log` with header template
 - Create `6_Semblance/lessons_learned.md` with init entry
-- Create `prompts.md` with header
+- Create `1_Real_Unknown/prompts.md` with header
 
 ### Step 5 — First commit
 ```
@@ -80,7 +80,7 @@ git push -u origin main
 
 ## Checklist after /init-project
 
-- [ ] Setup questionnaire asked and answers recorded in `prompts.md` + `4_Formula/decisions.md`
+- [ ] Setup questionnaire asked and answers recorded in `1_Real_Unknown/prompts.md` + `4_Formula/decisions.md`
 - [ ] Unused tool docs pruned to `2_Environment/_obsolete/` and `.env.example` trimmed
 - [ ] `2_Environment/tools.md` reflects only the chosen tools
 - [ ] All 7 folders exist with README.md

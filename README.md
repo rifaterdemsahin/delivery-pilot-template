@@ -85,7 +85,7 @@ The framework mimics how humans learn: recognize ignorance, build context, visua
 
 1. Fork or clone this repo
 2. Read `agents.md` for agent coordination rules
-3. Read `prompts.md` for the project management framework
+3. Read `1_Real_Unknown/prompts.md` for the project management framework
 4. Start with `1_Real_Unknown/` — define your problem
 5. Let AI agents guide you through each stage
 
