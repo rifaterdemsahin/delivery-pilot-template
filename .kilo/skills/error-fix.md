@@ -28,7 +28,7 @@ Use the token as `GITHUB_TOKEN` env var for all `gh` CLI commands.
 ```
 # Open pages in browser or headless
 open index.html
-open "markdown_renderer.html?file=1_Real_Unknown/README.md"
+open "5_Symbols/markdown_renderer.html?file=1_Real_Unknown/README.md"
 
 # Check console (capture via browser automation)
 document.querySelectorAll errors, 404 fetch failures, CDN load errors

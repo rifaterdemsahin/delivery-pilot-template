@@ -19,7 +19,7 @@ Execute the project's strict commit-push-deploy workflow with zero-batching poli
 
 ## Smoke Test Gate
 **Before deploying**, run smoke tests from `7_Testing_Known/smoke_tests.md`:
-1. Open `index.html` and `markdown_renderer.html` — check console for errors
+1. Open `index.html` and `5_Symbols/markdown_renderer.html` — check console for errors
 2. Report any failures as GitHub Issues
 3. Fix issues in `6_Semblance/` and resolve the GitHub Issues
 4. Publish smoke test report to `6_Semblance/smoke_test_report.md`

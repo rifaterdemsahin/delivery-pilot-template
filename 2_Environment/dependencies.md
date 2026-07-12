@@ -42,15 +42,15 @@ Infrastructure
 
 | Package | Version | CDN/Import | Purpose | Affected By |
 |---------|---------|------------|---------|-------------|
-| FontAwesome | 6.4.0 | CDN | Menus and UI icons | `index.html`, `markdown_renderer.html` |
-| PrismJS | 1.29.0 | CDN | Syntax highlighting | `markdown_renderer.html`, `5_Symbols/` code files |
+| FontAwesome | 6.4.0 | CDN | Menus and UI icons | `index.html`, `5_Symbols/markdown_renderer.html` |
+| PrismJS | 1.29.0 | CDN | Syntax highlighting | `5_Symbols/markdown_renderer.html`, `5_Symbols/` code files |
 | Prism theme | tomorow | CDN | Dark code theme | Combined with PrismJS |
-| Google Fonts | latest | CDN | Typography (Inter, Outfit) | `index.html`, `markdown_renderer.html` |
-| marked.js | latest | CDN | Markdown → HTML | `markdown_renderer.html` |
+| Google Fonts | latest | CDN | Typography (Inter, Outfit) | `index.html`, `5_Symbols/markdown_renderer.html` |
+| marked.js | latest | CDN | Markdown → HTML | `5_Symbols/markdown_renderer.html` |
 
 ### Upgrade Impact
 - **FontAwesome bump**: Minor — icon names rarely change. Unlikely to break anything but test menus render correctly.
-- **PrismJS bump**: Medium — new language plugins may change, theme CSS may shift syntax colors. Test all code blocks in `markdown_renderer.html`.
+- **PrismJS bump**: Medium — new language plugins may change, theme CSS may shift syntax colors. Test all code blocks in `5_Symbols/markdown_renderer.html`.
 - **marked.js bump**: High — markdown parsing rules can change. Test all `.md` file rendering before deploying.
 
 ## Backend Dependencies

@@ -1,6 +1,6 @@
 # 🗺️ Reusable Navigation Formula
 
-To ensure consistency and avoid code duplication across different pages (e.g., `index.html` and `markdown_renderer.html`), this project utilizes a **Shared Navigation Design Pattern**.
+To ensure consistency and avoid code duplication across different pages (e.g., `index.html` and `5_Symbols/markdown_renderer.html`), this project utilizes a **Shared Navigation Design Pattern**.
 
 ---
 
@@ -13,7 +13,7 @@ Instead of hardcoding the navigation menus in HTML across multiple files, the me
                               │
                ┌──────────────┴──────────────┐
                ▼                             ▼
-        [ index.html ]            [ markdown_renderer.html ]
+        [ index.html ]            [ 5_Symbols/markdown_renderer.html ]
    (Loads configuration via JS)  (Loads configuration via JS)
                │                             │
                ▼                             ▼
@@ -34,7 +34,7 @@ The central menu configuration specifies array maps for both menus:
 {
   "projectMenu": [
     { "label": "Home", "url": "index.html" },
-    { "label": "Docs", "url": "markdown_renderer.html?file=2_Environment/README.md" }
+    { "label": "Docs", "url": "5_Symbols/markdown_renderer.html?file=2_Environment/README.md" }
   ],
   "debugMenu": [
     { "label": "1. Real Unknown", "url": "1_Real_Unknown/" },
@@ -49,7 +49,7 @@ The central menu configuration specifies array maps for both menus:
 
 ## 💻 Shared Loading & Compilation Code
 
-Both `index.html` and `markdown_renderer.html` execute matching client-side logic to initialize menus. Below is the simplified javascript logic used to parse the configuration:
+Both `index.html` and `5_Symbols/markdown_renderer.html` execute matching client-side logic to initialize menus. Below is the simplified javascript logic used to parse the configuration:
 
 ```javascript
 // Fetch central navigation config or fallback if local

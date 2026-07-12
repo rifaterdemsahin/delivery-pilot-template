@@ -12,7 +12,7 @@ After every implementation in `5_Symbols`, run smoke tests to validate that the 
 5_Symbols (Code built)
     ↓
 Run Smoke Tests
-    ├── Open pages (index.html, markdown_renderer.html, API endpoints)
+    ├── Open pages (index.html, 5_Symbols/markdown_renderer.html, API endpoints)
     ├── Check console for errors
     ├── Verify navigation menus render
     ├── Validate markdown rendering
@@ -29,10 +29,10 @@ Report Results → 6_Semblance/smoke_test_report.md
 
 | Test | What It Checks | When It Fails |
 |------|---------------|---------------|
-| **Page Load** | `index.html` and `markdown_renderer.html` load without JS errors | Console errors, blank page, 404 |
+| **Page Load** | `index.html` and `5_Symbols/markdown_renderer.html` load without JS errors | Console errors, blank page, 404 |
 | **Project Menu** | Always-visible top navigation renders correctly | Missing links, layout break on mobile |
 | **Debug Menu** | Bottom-right button toggles debug overlay | No toggle, cookie not persisting, search broken |
-| **Markdown Renderer** | `markdown_renderer.html?file=1_Real_Unknown/` renders content | marked.js fails, PrismJS not highlighting |
+| **Markdown Renderer** | `5_Symbols/markdown_renderer.html?file=1_Real_Unknown/` renders content | marked.js fails, PrismJS not highlighting |
 | **Image Carousel** | Carousel on `index.html` cycles through images | Images broken, config not loading |
 | **GitHub Edit Button** | Edit-on-GitHub button links to correct file | Wrong URL, button missing |
 | **Navigation Config** | Both menus load from `navigation_config.json` | Fallback arrays used, file not found |
@@ -47,7 +47,7 @@ Report Results → 6_Semblance/smoke_test_report.md
 open index.html
 
 # Open markdown renderer with a test file
-open "markdown_renderer.html?file=1_Real_Unknown/README.md"
+open "5_Symbols/markdown_renderer.html?file=1_Real_Unknown/README.md"
 
 # Check browser console (Chrome: Cmd+Option+J, Firefox: Cmd+Option+K)
 # Look for: JS errors, 404s, CORS issues, missing CDN resources
@@ -64,7 +64,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validate HTML
-        run: npx html-validate index.html markdown_renderer.html
+        run: npx html-validate index.html 5_Symbols/markdown_renderer.html
       - name: Check navigation config
         run: node scripts/validate-nav-config.js
       - name: Link checker
@@ -175,7 +175,7 @@ After every smoke test run, create or update `6_Semblance/smoke_test_report.md`:
 A dedicated agent skill (`error-fix`) automates the error discovery and resolution loop. It uses a **GitHub personal access token** (stored in Azure Key Vault) to interact with GitHub Issues and the repository.
 
 ### What It Does
-1. **Visits pages** — Opens `index.html` and `markdown_renderer.html` in a headless browser
+1. **Visits pages** — Opens `index.html` and `5_Symbols/markdown_renderer.html` in a headless browser
 2. **Scans for errors** — Checks browser console for JS errors, 404s, broken CDN resources, layout issues
 3. **Creates GitHub Issues** — For each error found, opens an issue with the error details, stack trace, and reproduction steps (authorized via GitHub token)
 4. **Applies fixes** — Diagnoses the issue from the stack trace, locates the file in `5_Symbols/`, applies the smallest safe fix on a branch

@@ -83,7 +83,7 @@ This is the delivery-pilot framework navigation. It contains:
 - Menus read from JSON config (reusable across pages)
 - Debug menu is rendered but hidden (`display: none`) until toggled
 - Cookie `debug=true` persists debug state across page loads
-- No direct link to `markdown_renderer.html` in either menu
+- No direct link to `5_Symbols/markdown_renderer.html` in either menu
 
 ## Rules
 

@@ -38,7 +38,7 @@ GitHub Pages is a free static site hosting service that serves HTML, CSS, and Ja
 
 - **Frontend:** GitHub Pages hosts the static site (index.html, CSS, JS)
 - **Deployment:** GitHub Actions builds and deploys on push to `main`
-- **Content:** Markdown files rendered via `markdown_renderer.html`
+- **Content:** Markdown files rendered via `5_Symbols/markdown_renderer.html`
 - **Backend API:** Calls go to Cloudflare Workers or Fly.io
 - **Secrets:** No secrets on GitHub Pages — all sensitive logic is in the backend
 

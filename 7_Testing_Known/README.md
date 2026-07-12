@@ -68,7 +68,7 @@ This folder is the **validation layer** of the project. Every hypothesis, OKR, a
 
 ### Content & Structure
 - [ ] All 7 folders exist with populated READMEs
-- [ ] All markdown files accessible via `markdown_renderer.html`
+- [ ] All markdown files accessible via `5_Symbols/markdown_renderer.html`
 - [ ] Image carousel in `3_Simulation` auto-loads new images
 - [ ] Each folder has a Testing Checklist with YouTube embed
 

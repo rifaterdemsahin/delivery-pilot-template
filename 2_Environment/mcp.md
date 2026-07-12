@@ -43,7 +43,7 @@ The Model Context Protocol (MCP) is an open standard for connecting agents to ex
 ### Browser / Playwright MCP
 ```
 # Opens pages in headless mode for smoke tests
-# Target URLs: index.html, markdown_renderer.html
+# Target URLs: index.html, 5_Symbols/markdown_renderer.html
 # Used by: error-fix skill, smoke test workflow
 ```
 
