@@ -60,14 +60,6 @@
 - **Mitigation:** Enforce branch protection on `main` (require PR, require review). Agent opens PRs only. Document the guardrail in all 3 locations (agents.md, github_agent.md, error-fix skill). GitHub Actions check enforces no direct push to main.
 - **Last Updated:** 2026-07-11
 
-### R-007: Smoke Tests Not Gating Deployment
-- **Status:** 🟡 Active (downgraded from 🟠 High — runner now exists)
-- **Severity:** Medium
-- **Likelihood:** Medium (deploys happen on every push; the gate is one workflow job away)
-- **Impact:** `.github/workflows/static.yml` deploys to Pages on every push without running smoke tests first — a breaking change can reach production between manual runs.
-- **Trigger:** Pushing to `main` with a regression the runner would have caught
-- **Mitigation:** Runner implemented 2026-07-12 (`5_Symbols/toolbox/smoke_test.py`, SPEC-008) — runs locally and against the deployed site (`--base-url`), CI-compatible exit codes, and already caught+resolved issue #1. Remaining step: add a smoke-test job to `static.yml` so failures block the deploy job.
-- **Last Updated:** 2026-07-12
 
 ### R-008: Single LLM Model Dependency for Agent Generation
 - **Status:** 🟡 Active
@@ -81,6 +73,13 @@
 ---
 
 ## ✅ Solved Risks
+
+### R-S09: Smoke Tests Not Gating Deployment (was R-007)
+- **Status:** ✅ Solved (2026-07-12)
+- **Severity:** Was 🟠 High
+- **Risk:** Deploys ran unconditionally; a regression could reach production between manual smoke test runs.
+- **Resolution:** `.github/workflows/static.yml` now has a `smoke` job running the SPEC-008 runner; the `deploy` job requires it (`needs: smoke`). The smoke test report uploads as a CI artifact on every run. Pipeline owned by the Formula Agent (CI → Continuous Delivery → Continuous Deployment).
+- **Verification:** First gated pipeline run on the restructure push (2026-07-12).
 
 ### R-S08: No GitHub Actions Workflow (was R-009)
 - **Status:** ✅ Solved (2026-07-12)
@@ -156,6 +155,7 @@
 | 2026-07-12 | Pages workflow added (`static.yml`) | R-S08 | Solved: GitHub Pages now deploys via Actions; site live |
 | 2026-07-12 | Debug menu backfill + SPEC-008 runner | R-S07 | Solved: all stage docs in menu; desync now auto-detected by smoke tests |
 | 2026-07-12 | Smoke test runner implemented | R-007 | Downgraded High → Medium and reframed: runner exists (caught issue #1); remaining step is wiring it into `static.yml` as a deploy gate |
+| 2026-07-12 | Smoke gate wired into `static.yml` | R-S09 | Solved: `deploy` job requires the `smoke` job (SPEC-008 runner); Formula Agent owns the CI/CD pipeline |
 
 ---
 
