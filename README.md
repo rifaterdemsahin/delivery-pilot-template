@@ -1,5 +1,7 @@
 # delivery-pilot-template
 
+> https://rifaterdemsahin.github.io/delivery-pilot-template/index.html
+
 A template for **self-learning projects using AI agents**. This project provides a structured 7-stage framework with 7 dedicated agents that guide the journey from problem definition to validated deployment — with each agent owning its stage and communicating through a shared thinking log.
 
 ## Agentic Workflow
