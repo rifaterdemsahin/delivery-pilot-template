@@ -30,11 +30,10 @@ delivery-pilot-template/
 ├── 2_Environment/        # Roadmaps, constraints, setup guides (Win/Mac/AI)
 ├── 3_Simulation/         # UI mockups, dynamic image carousel
 ├── 4_Formula/            # Thinking & planning stage: LLM reasoning, decisions, recipes, research
-├── 5_Symbols/            # Source code, PrismJS syntax highlighting
+├── 5_Symbols/            # Source code, markdown_renderer.html, toolbox scripts
 ├── 6_Semblance/          # Error logs, near-misses, workarounds
 ├── 7_Testing_Known/      # Validation, testing checklists, outcomes
 ├── index.html            # Main entry point with unified navigation
-├── markdown_renderer.html
 ├── robots.txt
 ├── sitemap.xml
 ├── .gitignore
@@ -108,7 +107,7 @@ delivery-pilot-template/
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
 - **Keep `index.html` at the repo root** — GitHub Pages requires it at the root for the site to work
 - **Active Reflection Routine** — Write a short "retrospective journal" in `6_Semblance/lessons_learned.md` after every milestone.
-- **Keep Debug Menu Config Synchronized** — When markdown files are added, modified, or deleted in any stage, remember to update the debug menu configuration (`navigation_config.json` and the fallback arrays in `index.html` and `markdown_renderer.html`) to reflect these changes immediately.
+- **Keep Debug Menu Config Synchronized** — When markdown files are added, modified, or deleted in any stage, remember to update the debug menu configuration (`navigation_config.json` and the fallback arrays in `index.html` and `5_Symbols/markdown_renderer.html` — or run `python3 5_Symbols/toolbox/nav_sync.py`) to reflect these changes immediately.
 - **Architecture Documentation Sync** — When the system architecture changes, immediately update the architecture overview document at `2_Environment/architecture.md` (with updated Mermaid diagrams) to keep it working.
 - **Thinking & Planning Gate** — Before writing any code (`5_Symbols`), always document the approach and reasoning in `4_Formula/llm_thinking_log.md`. After execution, append a summary of the LLM reasoning process. `4_Formula` is the mandatory planning stage that encapsulates thinking before action.
 - **Specs System** — Technical specifications live in `4_Formula/specs.md`. Before implementing any feature, create or update its spec. When new tasks arrive, check `4_Formula/specs.md` for existing specs that may be affected. If a task changes behavior covered by an active spec, flag it with `[NEEDS UPDATE]` and **warn** before writing code. Specs are validated against code in `5_Symbols`.
@@ -120,7 +119,7 @@ delivery-pilot-template/
 - Use modern CSS (Flexbox/Grid) for responsive design
 - Implement PrismJS for syntax highlighting in `5_Symbols`
 - Use Mermaid for architecture diagrams
-- All markdown files must be accessible via `markdown_renderer.html`
+- All markdown files must be accessible via `5_Symbols/markdown_renderer.html`
 
 ### Lifecycle Management
 - Move obsolete files to `_obsolete/` sub-folder within their directory 🚮
@@ -204,7 +203,50 @@ When errors occur, use this skill chain:
 - [ ] Debug Menu (bottom-right button) shows all 7 stages + agent files
 - [ ] Debug mode toggles via cookie
 - [ ] Search autocomplete functional
-- [ ] All markdown files render via `markdown_renderer.html`
+- [ ] All markdown files render via `5_Symbols/markdown_renderer.html`
 - [ ] Secrets managed via Azure Key Vault (not in git)
 - [ ] `index.html` links to GitHub, LinkedIn, YouTube
 - [ ] README.md contains GitHub Pages URL
+
+---
+
+## 🚀 Using This Template (for Consumer LLM Agents)
+
+`delivery-pilot-template` is a **starter template** — other projects begin by copying it ("Use this template" on GitHub or `gh repo create <name> --template rifaterdemsahin/delivery-pilot-template`). If you are an LLM agent bootstrapping a new project from this template, follow these steps (see **SPEC-010** in `4_Formula/specs.md`):
+
+### 1️⃣ Replace the Placeholders
+
+Search the repository for the current template values and replace them with the consumer project's values. The six standard placeholders:
+
+| Placeholder | Template Value (replace this) | Where It Appears |
+|-------------|-------------------------------|------------------|
+| `{{PROJECT_NAME}}` | `delivery-pilot-template` | `README.md`, `index.html` (title, hero), `2_Environment/supabase/config.toml` (project id) |
+| `{{GITHUB_USER}}` | `rifaterdemsahin` | `README.md`, `index.html` (GitHub link), renderer local fallback |
+| `{{REPO_NAME}}` | `delivery-pilot-template` | `README.md` Pages URL, `sitemap.xml`, `robots.txt` |
+| `{{PAGES_URL}}` | `https://rifaterdemsahin.github.io/delivery-pilot-template/` | `README.md`, `sitemap.xml`, `robots.txt` |
+| `{{LINKEDIN_URL}}` | `https://www.linkedin.com/in/rifaterdemsahin/` | `index.html` social links |
+| `{{YOUTUBE_URL}}` | `https://www.youtube.com/@RifatErdemSahin` | `index.html` social links |
+
+Runtime code needs **no** replacement: the renderer derives `{user}/{repo}` from the Pages URL, and the toolbox scripts read `navigation_config.json` — they are template-neutral by design.
+
+### 2️⃣ Reset the Stage Content (keep the structure)
+
+- Keep all 7 stage folders, READMEs, rules, and toolbox scripts.
+- Reset to project-specific content: `1_Real_Unknown/` (problem statement, OKRs, tasks, risks, prompts), `4_Formula/specs.md` (keep SPEC template + framework specs, remove project-specific ones), `6_Semblance/` logs (start empty), `6_Semblance/smoke_test_report.md` (regenerate).
+- Keep `agents.md` + persona files — they are the framework contract; only this section's placeholder table values change.
+
+### 3️⃣ Rebuild Navigation & Validate
+
+```bash
+python3 5_Symbols/toolbox/nav_sync.py     # regenerate the debug menu (edit MENU first)
+python3 5_Symbols/toolbox/smoke_test.py   # validate structure, links, sync, secrets
+```
+
+### 4️⃣ Deploy
+
+- Enable GitHub Pages (Settings → Pages → Source: GitHub Actions). `.github/workflows/static.yml` runs the smoke test gate and deploys on every push to `main` — CI/CD is owned by the **Formula Agent**.
+- Verify the live site: `python3 5_Symbols/toolbox/smoke_test.py --base-url <PAGES_URL>`.
+
+### 5️⃣ Adopt the Persona
+
+Read `agents.md` (coordinator) plus the persona file matching your model (`claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`), then start the 7-stage execution flow from `1_Real_Unknown`.
