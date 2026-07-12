@@ -344,7 +344,7 @@
 
   <header class="renderer-header">
     <div class="header-container">
-      <a href="index.html" class="back-btn">
+      <a href="../index.html" class="back-btn">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Home</span>
       </a>
@@ -398,8 +398,8 @@
     let navigationData = {
       projectMenu: [
         { label: "Home", url: "index.html" },
-        { label: "Docs", url: "markdown_renderer.html?file=2_Environment/README.md" },
-        { label: "API", url: "markdown_renderer.html?file=4_Formula/README.md" }
+        { label: "Docs", url: "5_Symbols/markdown_renderer.html?file=2_Environment/README.md" },
+        { label: "API", url: "5_Symbols/markdown_renderer.html?file=4_Formula/README.md" }
       ],
       debugMenu: [
         { label: "1. Real Unknown", url: "1_Real_Unknown/README.md" },
@@ -412,6 +412,7 @@
         { label: "   ├─ Cost Tracker", url: "1_Real_Unknown/costs.md" },
         { label: "   ├─ Risks", url: "1_Real_Unknown/risks.md" },
         { label: "   ├─ Sanity Check Report", url: "1_Real_Unknown/sanity_check_report.md" },
+        { label: "   ├─ Prompt Log", url: "1_Real_Unknown/prompts.md" },
         { label: "2. Environment", url: "2_Environment/README.md" },
         { label: "   ├─ Architecture", url: "2_Environment/architecture.md" },
         { label: "   ├─ Tools Overview", url: "2_Environment/tools.md" },
@@ -461,7 +462,6 @@
         { label: "   ├─ Sanity Data Source", url: "7_Testing_Known/sanity_check_report.md" },
         { label: "---", url: "divider" },
         { label: "agents.md", url: "agents.md" },
-        { label: "prompts.md", url: "prompts.md" },
         { label: "claude.md", url: "claude.md" },
         { label: "gemini.md", url: "gemini.md" },
         { label: "copilot.md", url: "copilot.md" },
@@ -499,8 +499,8 @@
       const debugLinksList = document.getElementById("debugLinksList");
       const editGitHubBtn = document.getElementById("editGitHubBtn");
 
-      // Load config dynamically
-      fetch("navigation_config.json")
+      // Load config dynamically (site root is one level up from 5_Symbols/)
+      fetch("../navigation_config.json")
         .then(res => res.json())
         .then(data => {
           debugLog("Dynamic navigation config loaded successfully.", data);
@@ -536,12 +536,18 @@
             
             const a = document.createElement("a");
             
-            // Route relative URLs dynamically through the renderer
+            // Route relative URLs dynamically through the renderer.
+            // Config URLs are root-relative; this page lives in 5_Symbols/, so
+            // .html pages get a ../ prefix and .md files stay on this renderer.
             let finalUrl = item.url;
-            if (finalUrl !== "index.html" && finalUrl !== "divider" && !finalUrl.startsWith("http")) {
-              finalUrl = `markdown_renderer.html?file=${finalUrl}`;
+            if (finalUrl !== "divider" && !finalUrl.startsWith("http")) {
+              if (finalUrl.includes(".html")) {
+                finalUrl = `../${finalUrl}`;
+              } else {
+                finalUrl = `markdown_renderer.html?file=${finalUrl}`;
+              }
             }
-            
+
             a.href = finalUrl;
             a.className = "debug-link";
             a.innerHTML = `<span>${item.label}</span><i class="fa-solid fa-chevron-right" style="font-size:0.8rem;opacity:0.5;"></i>`;
@@ -589,14 +595,22 @@
       document.getElementById("filePath").textContent = fetchPath;
       document.title = `📄 ${fetchPath.split('/').pop()}`;
 
-      // Show and configure Edit on GitHub button
-      const gitHubEditUrl = `https://github.com/rifaterdemsahin/delivery-pilot-template/edit/main/${fetchPath}`;
+      // Show and configure Edit on GitHub button.
+      // On GitHub Pages, derive {user}/{repo} from the URL so the template
+      // works for any consumer project without editing this file.
+      let gitHubRepo = "rifaterdemsahin/delivery-pilot-template"; // local fallback
+      if (location.hostname.endsWith(".github.io")) {
+        const user = location.hostname.split(".")[0];
+        const repo = location.pathname.split("/").filter(Boolean)[0] || "";
+        if (user && repo) gitHubRepo = `${user}/${repo}`;
+      }
+      const gitHubEditUrl = `https://github.com/${gitHubRepo}/edit/main/${fetchPath}`;
       editGitHubBtn.href = gitHubEditUrl;
       editGitHubBtn.style.display = "inline-flex";
       debugLog("Edit on GitHub URL configured:", gitHubEditUrl);
 
-      debugLog(`Fetching markdown file from: "${fetchPath}"`);
-      fetch(fetchPath)
+      debugLog(`Fetching markdown file from: "../${fetchPath}"`);
+      fetch(`../${fetchPath}`)
         .then(response => {
           if (!response.ok) throw new Error("File not found");
           debugLog(`Fetched file "${fetchPath}" successfully. Status: ${response.status}`);

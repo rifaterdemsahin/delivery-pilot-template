@@ -1,8 +1,8 @@
 {
   "projectMenu": [
     {"label": "Home", "url": "index.html"},
-    {"label": "Docs", "url": "markdown_renderer.html?file=2_Environment/README.md"},
-    {"label": "API", "url": "markdown_renderer.html?file=4_Formula/README.md"}
+    {"label": "Docs", "url": "5_Symbols/markdown_renderer.html?file=2_Environment/README.md"},
+    {"label": "API", "url": "5_Symbols/markdown_renderer.html?file=4_Formula/README.md"}
   ],
   "debugMenu": [
     {"label": "1. Real Unknown", "url": "1_Real_Unknown/README.md"},
@@ -15,6 +15,7 @@
     {"label": "   ├─ Cost Tracker", "url": "1_Real_Unknown/costs.md"},
     {"label": "   ├─ Risks", "url": "1_Real_Unknown/risks.md"},
     {"label": "   ├─ Sanity Check Report", "url": "1_Real_Unknown/sanity_check_report.md"},
+    {"label": "   ├─ Prompt Log", "url": "1_Real_Unknown/prompts.md"},
     {"label": "2. Environment", "url": "2_Environment/README.md"},
     {"label": "   ├─ Architecture", "url": "2_Environment/architecture.md"},
     {"label": "   ├─ Tools Overview", "url": "2_Environment/tools.md"},
@@ -64,7 +65,6 @@
     {"label": "   ├─ Sanity Data Source", "url": "7_Testing_Known/sanity_check_report.md"},
     {"label": "---", "url": "divider"},
     {"label": "agents.md", "url": "agents.md"},
-    {"label": "prompts.md", "url": "prompts.md"},
     {"label": "claude.md", "url": "claude.md"},
     {"label": "gemini.md", "url": "gemini.md"},
     {"label": "copilot.md", "url": "copilot.md"},

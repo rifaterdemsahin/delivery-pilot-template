@@ -25,7 +25,8 @@ import urllib.request
 
 CONFIG_FILE = "navigation_config.json"
 REPORT_FILE = os.path.join("6_Semblance", "smoke_test_report.md")
-REQUIRED_ROOT_FILES = ["index.html", "markdown_renderer.html", "README.md", "robots.txt", "sitemap.xml"]
+RENDERER = "5_Symbols/markdown_renderer.html"
+REQUIRED_ROOT_FILES = ["index.html", RENDERER, "README.md", "robots.txt", "sitemap.xml"]
 REQUIRED_INDEX_LINKS = ["github.com", "linkedin.com", "youtube.com"]
 STAGE_GLOB = re.compile(r"^[1-7]_[A-Za-z_]+$")
 MD_URL_PATTERN = re.compile(r"[0-9A-Za-z_]+/[0-9A-Za-z_/.\-]*\.md")
@@ -94,7 +95,7 @@ def run_checks(root, base_url=None):
     for section, label, url in menu_urls(config):
         target = url.split("?file=")[-1] if "?file=" in url else url.split("?")[0]
         if base_url:
-            page = url if url.endswith((".html", "/")) else "markdown_renderer.html?file=" + url
+            page = url if ".html" in url or url.endswith("/") else RENDERER + "?file=" + url
             full = base_url.rstrip("/") + "/" + page
             try:
                 status, _ = fetch(full)
@@ -111,15 +112,15 @@ def run_checks(root, base_url=None):
     results.append(Result("Project Menu", bool(config.get("projectMenu")), ""))
     results.append(Result("Debug Menu", bool(config.get("debugMenu")), ""))
 
-    # 5. 3-way navigation sync: config = index.html fallback = markdown_renderer.html fallback
-    if os.path.exists("index.html") and os.path.exists("markdown_renderer.html"):
+    # 5. 3-way navigation sync: config = index.html fallback = renderer fallback
+    if os.path.exists("index.html") and os.path.exists(RENDERER):
         cfg_md = set(MD_URL_PATTERN.findall(read(CONFIG_FILE)))
         idx_md = set(MD_URL_PATTERN.findall(read("index.html")))
-        ren_md = set(MD_URL_PATTERN.findall(read("markdown_renderer.html")))
+        ren_md = set(MD_URL_PATTERN.findall(read(RENDERER)))
         drift = (cfg_md ^ idx_md) | (cfg_md ^ ren_md)
         results.append(Result("Nav 3-Way Sync", not drift, f"drift: {sorted(drift)[:8]}" if drift else ""))
     else:
-        results.append(Result("Nav 3-Way Sync", False, "index.html or markdown_renderer.html missing"))
+        results.append(Result("Nav 3-Way Sync", False, f"index.html or {RENDERER} missing"))
 
     # 6. No stage markdown file orphaned from the menus
     stage_docs = set()

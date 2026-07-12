@@ -4,8 +4,8 @@
 > Latest run overwrites this file; one report per test run.
 
 ## Run Info
-- **Date:** 2026-07-12 08:40
-- **Trigger:** Fix for issue #1 — stage folder links now point at stage READMEs
+- **Date:** 2026-07-12 09:10
+- **Trigger:** Renderer + prompts.md relocation (SPEC-002 rev)
 - **Mode:** Local filesystem
 - **Tester:** smoke_test.py (automated)
 - **Verdict:** ✅ ALL PASS
