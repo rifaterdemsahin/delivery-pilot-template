@@ -40,7 +40,8 @@
 - **Impact:** Debug menu shows stale or missing entries in `index.html` or `markdown_renderer.html` if fallback arrays aren't updated.
 - **Trigger:** Adding or removing a markdown file without updating all 3 menu locations (`navigation_config.json`, `index.html` fallback, `markdown_renderer.html` fallback)
 - **Mitigation:** Follow the navigation sync rule — always update all 3 files. Use the `navigation` skill. Consider a build step to generate menus from a single source.
-- **Last Updated:** 2026-07-11
+- **Evidence (2026-07-12 sanity check):** The 3 sources are consistent with each other, but ~27 stage docs (incl. `okrs.md`, `problem_statement.md`, `hypotheses.md`, `questions.md`, setup guides, `llm_thinking_log.md`) are missing from all of them — see `sanity_check_report.md` F-003.
+- **Last Updated:** 2026-07-12
 
 ### R-004: Azure Key Vault Unavailability
 - **Status:** 🟡 Active
@@ -86,6 +87,15 @@
 - **Trigger:** Switching to a new LLM (e.g., Claude → DeepSeek) without thorough persona file generation
 - **Mitigation:** Follow the documented 5-step persona file generation process in `agents.md`. Always include the full 7-stage execution flow in every persona file. Verify the new persona file against the coordinator.
 - **Last Updated:** 2026-07-11
+
+### R-009: No GitHub Actions Workflow — CI/CD and Deployment Guardrails Missing
+- **Status:** 🔴 Active
+- **Severity:** Critical
+- **Likelihood:** Certain (confirmed by 2026-07-12 sanity check — no `.github/` directory exists)
+- **Impact:** GitHub Pages is not deployed "via GitHub Actions" as required; smoke tests cannot gate deployment (R-007 mitigation blocked); the "no direct push to main" Actions check cited in R-006 mitigation does not exist. Deployment correctness is unverifiable from the repo.
+- **Trigger:** Any deploy — there is no pipeline to build, validate, or gate it.
+- **Mitigation:** Formula Agent specs `.github/workflows/deploy-pages.yml` (Pages build + smoke test gate) in `4_Formula/specs.md`, gets approval, then Symbols Agent implements. Enable Pages via Actions in repo settings. See `sanity_check_report.md` F-001.
+- **Last Updated:** 2026-07-12
 
 ---
 
@@ -146,6 +156,8 @@
 | 2026-07-11 | Skills system created | R-S04 | Solved: `.kilo/skills/` with 6 loadable skills |
 | 2026-07-11 | Dependencies documented | R-S05 | Solved: `2_Environment/dependencies.md` |
 | 2026-07-11 | Toolstack rationale created | R-S06 | Solved: `2_Environment/toolstack.md` |
+| 2026-07-12 | Sanity check sub-agent full scan | R-009 | New critical risk: no GitHub Actions workflow (`.github/` absent) — CI/CD requirement unmet |
+| 2026-07-12 | Sanity check sub-agent full scan | R-003 | Confirmed active with evidence: ~27 stage docs missing from all 3 menu sources (see `sanity_check_report.md` F-003) |
 
 ---
 
