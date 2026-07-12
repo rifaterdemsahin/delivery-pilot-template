@@ -61,3 +61,15 @@
 
 ### Gaps & Challenges
 - None. Having this checklist helps ensure each stage directory is systematically maintained during development runs.
+
+## 📅 2026-07-12: Smoke Test Runner, Menu Backfill & the 7→1 Sanity Loop
+
+### What went well
+- The SPEC-008 runner (`5_Symbols/toolbox/smoke_test.py`) proved its worth on its very first cloud run: it caught a real production bug (stage folder links 404 on GitHub Pages) that local checks could not see. The full error workflow was exercised end-to-end — GitHub Issue #1 → fix → error.log/fix.log → VERIFIED → issue closed.
+- Making the runner template-adapted (driven by `navigation_config.json`, stdlib only) means every project bootstrapped from this template inherits working smoke tests with zero changes.
+- Regenerating all 3 navigation sources from one script eliminated the manual 3-way sync problem that caused R-003; the runner now guards it automatically.
+
+### Gaps & Challenges
+- A parallel push race (R-001) occurred mid-cycle when `static.yml` landed on the remote — resolved with `git pull --rebase`, exactly as the documented mitigation prescribes. The mitigation works; keep pushes sequential.
+- The deploy workflow (`static.yml`) still deploys unconditionally — wiring the smoke runner in as a gate is the single remaining step to close R-007.
+- Lesson: local-only testing gave a false "all green" — the folder-link bug was only visible against the deployed site. Always run both modes, as the Test Agent rule requires.
