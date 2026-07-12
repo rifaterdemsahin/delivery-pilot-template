@@ -33,16 +33,6 @@
 - **Mitigation:** Create local fallback copies of all CDN assets in `5_Symbols/assets/`. Add `<link>` fallbacks with `onerror` handlers. Track CDN status.
 - **Last Updated:** 2026-07-11
 
-### R-003: Navigation Config Desynchronization
-- **Status:** 🟡 Active
-- **Severity:** Medium
-- **Likelihood:** Medium (requires manual sync across 3 files)
-- **Impact:** Debug menu shows stale or missing entries in `index.html` or `markdown_renderer.html` if fallback arrays aren't updated.
-- **Trigger:** Adding or removing a markdown file without updating all 3 menu locations (`navigation_config.json`, `index.html` fallback, `markdown_renderer.html` fallback)
-- **Mitigation:** Follow the navigation sync rule — always update all 3 files. Use the `navigation` skill. Consider a build step to generate menus from a single source.
-- **Evidence (2026-07-12 sanity check):** The 3 sources are consistent with each other, but ~27 stage docs (incl. `okrs.md`, `problem_statement.md`, `hypotheses.md`, `questions.md`, setup guides, `llm_thinking_log.md`) are missing from all of them — see `sanity_check_report.md` F-003.
-- **Last Updated:** 2026-07-12
-
 ### R-004: Azure Key Vault Unavailability
 - **Status:** 🟡 Active
 - **Severity:** Medium
@@ -70,14 +60,14 @@
 - **Mitigation:** Enforce branch protection on `main` (require PR, require review). Agent opens PRs only. Document the guardrail in all 3 locations (agents.md, github_agent.md, error-fix skill). GitHub Actions check enforces no direct push to main.
 - **Last Updated:** 2026-07-11
 
-### R-007: Smoke Tests Not Automated
-- **Status:** 🟠 Active
-- **Severity:** High
-- **Likelihood:** High (every deployment must be manually tested)
-- **Impact:** Smoke tests are currently manual — a human or agent must remember to run them. Missed smoke tests mean errors can reach production.
-- **Trigger:** Deploying without running `7_Testing_Known/smoke_tests.md` checklist
-- **Mitigation:** Implement GitHub Actions workflow for automated smoke tests (HTML validation, link checking, console error detection). Gate deployment on passing smoke tests. Documented in `smoke_tests.md` but not yet automated.
-- **Last Updated:** 2026-07-11
+### R-007: Smoke Tests Not Gating Deployment
+- **Status:** 🟡 Active (downgraded from 🟠 High — runner now exists)
+- **Severity:** Medium
+- **Likelihood:** Medium (deploys happen on every push; the gate is one workflow job away)
+- **Impact:** `.github/workflows/static.yml` deploys to Pages on every push without running smoke tests first — a breaking change can reach production between manual runs.
+- **Trigger:** Pushing to `main` with a regression the runner would have caught
+- **Mitigation:** Runner implemented 2026-07-12 (`5_Symbols/toolbox/smoke_test.py`, SPEC-008) — runs locally and against the deployed site (`--base-url`), CI-compatible exit codes, and already caught+resolved issue #1. Remaining step: add a smoke-test job to `static.yml` so failures block the deploy job.
+- **Last Updated:** 2026-07-12
 
 ### R-008: Single LLM Model Dependency for Agent Generation
 - **Status:** 🟡 Active
@@ -88,18 +78,23 @@
 - **Mitigation:** Follow the documented 5-step persona file generation process in `agents.md`. Always include the full 7-stage execution flow in every persona file. Verify the new persona file against the coordinator.
 - **Last Updated:** 2026-07-11
 
-### R-009: No GitHub Actions Workflow — CI/CD and Deployment Guardrails Missing
-- **Status:** 🔴 Active
-- **Severity:** Critical
-- **Likelihood:** Certain (confirmed by 2026-07-12 sanity check — no `.github/` directory exists)
-- **Impact:** GitHub Pages is not deployed "via GitHub Actions" as required; smoke tests cannot gate deployment (R-007 mitigation blocked); the "no direct push to main" Actions check cited in R-006 mitigation does not exist. Deployment correctness is unverifiable from the repo.
-- **Trigger:** Any deploy — there is no pipeline to build, validate, or gate it.
-- **Mitigation:** Formula Agent specs `.github/workflows/deploy-pages.yml` (Pages build + smoke test gate) in `4_Formula/specs.md`, gets approval, then Symbols Agent implements. Enable Pages via Actions in repo settings. See `sanity_check_report.md` F-001.
-- **Last Updated:** 2026-07-12
-
 ---
 
 ## ✅ Solved Risks
+
+### R-S08: No GitHub Actions Workflow (was R-009)
+- **Status:** ✅ Solved (2026-07-12)
+- **Severity:** Was 🔴 Critical
+- **Risk:** No `.github/` directory existed — GitHub Pages was not deployed via Actions, and no pipeline could gate deployment.
+- **Resolution:** `.github/workflows/static.yml` added (commit `f149662`) — deploys the site to GitHub Pages on every push to `main`. Deployed site verified live (HTTP 200) by the cloud smoke test.
+- **Verification:** `smoke_test.py --base-url` run 2026-07-12: Deployed Site Reachable ✅. Remaining smoke-test gate tracked as R-007.
+
+### R-S07: Navigation Config Desynchronization (was R-003)
+- **Status:** ✅ Solved (2026-07-12)
+- **Severity:** Was 🟡 Medium
+- **Risk:** Debug menu required manual sync across 3 files; ~27 stage docs were missing from all menu sources.
+- **Resolution:** Full backfill — every stage markdown file now listed (64 entries, identical across `navigation_config.json`, `index.html`, `markdown_renderer.html`). The SPEC-008 smoke runner checks "Nav 3-Way Sync" and "Stage Docs In Menu" on every run, so future desync is detected automatically instead of relying on discipline.
+- **Verification:** Smoke tests 2026-07-12: both checks ✅ (10/10 local, 11/11 cloud).
 
 ### R-S01: Features Implemented Without Documented Specs
 - **Status:** ✅ Solved (2026-07-11)
@@ -158,6 +153,9 @@
 | 2026-07-11 | Toolstack rationale created | R-S06 | Solved: `2_Environment/toolstack.md` |
 | 2026-07-12 | Sanity check sub-agent full scan | R-009 | New critical risk: no GitHub Actions workflow (`.github/` absent) — CI/CD requirement unmet |
 | 2026-07-12 | Sanity check sub-agent full scan | R-003 | Confirmed active with evidence: ~27 stage docs missing from all 3 menu sources (see `sanity_check_report.md` F-003) |
+| 2026-07-12 | Pages workflow added (`static.yml`) | R-S08 | Solved: GitHub Pages now deploys via Actions; site live |
+| 2026-07-12 | Debug menu backfill + SPEC-008 runner | R-S07 | Solved: all stage docs in menu; desync now auto-detected by smoke tests |
+| 2026-07-12 | Smoke test runner implemented | R-007 | Downgraded High → Medium and reframed: runner exists (caught issue #1); remaining step is wiring it into `static.yml` as a deploy gate |
 
 ---
 

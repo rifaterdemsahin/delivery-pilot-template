@@ -43,3 +43,4 @@ Lesson captured in lessons_learned.md
 |------------|-------|---------------|------------|
 | 2026-06-02 | SETUP | Initialization | APPLIED |
 [2026-07-12] [6_Semblance] [APPLIED] — Fix for smoke test failure #1: stage folder header links in the debug menu now point at each stage README.md instead of bare directory URLs (which 404 on GitHub Pages); redundant Overview entries and bare toolbox dir link removed. Synced across navigation_config.json, index.html, markdown_renderer.html. Verified: 10/10 local + 11/11 cloud smoke tests pass.
+[2026-07-12] [6_Semblance] [VERIFIED] — Fix for smoke test failure #1 validated in 7_Testing_Known: SPEC-008 runner passes 10/10 local and 11/11 against the deployed GitHub Pages site. Issue #1 closed.
