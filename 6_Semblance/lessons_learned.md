@@ -73,3 +73,14 @@
 - A parallel push race (R-001) occurred mid-cycle when `static.yml` landed on the remote — resolved with `git pull --rebase`, exactly as the documented mitigation prescribes. The mitigation works; keep pushes sequential.
 - The deploy workflow (`static.yml`) still deploys unconditionally — wiring the smoke runner in as a gate is the single remaining step to close R-007.
 - Lesson: local-only testing gave a false "all green" — the folder-link bug was only visible against the deployed site. Always run both modes, as the Test Agent rule requires.
+
+## 📅 2026-07-12: Template Restructure — Moves, Placeholders, Skills, CI/CD Gate
+
+### What went well
+- All three file moves (`supabase/`, `prompts.md`, `markdown_renderer.html`) landed with zero broken links because the smoke runner validated every step — the renderer move (the risky one) worked first try by keeping `?file=` parameters root-relative and adding a single `../` fetch base.
+- The CI/CD gate is now real: `static.yml` runs the smoke job before deploy, and the first gated pipeline went green in 26 seconds. Formula Agent owns the pipeline end to end.
+- Template-reuse hardening: the GitHub edit URL now derives user/repo from the Pages URL, and SPEC-010 enumerates exactly which six values a consumer project replaces.
+
+### Gaps & Challenges
+- Blind search-and-replace on `prompts.md` mangled the folder-tree diagrams in the persona files — caught immediately and fixed. Lesson: path renames in prose need per-context review, not one regex.
+- The Supabase CLI expects `supabase/` at the repo root; after the move, CLI commands need `--workdir 2_Environment` (documented in `4_Formula/database.md`). Moving conventional-location folders trades tidiness for tool friction — acceptable here, but worth flagging to consumers.
