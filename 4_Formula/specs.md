@@ -17,14 +17,16 @@
 - **Status:** Active
 - **Description:** Project Menu (always visible) + Debug Menu (toggle via bottom-right button, persisted via cookie)
 - **Key Behaviors:**
-  - Debug button always visible at bottom-right
-  - Click toggles debug menu overlay
-  - Cookie `debug=true` persists state
-  - Both menus read from `navigation_config.json`
-  - Fallback arrays in `index.html` and `markdown_renderer.html` must stay in sync
+  - **Project Menu** — always visible, shows project-specific links (Home, Docs, API). End-user facing. Every project HTML output must include this menu.
+  - **Debug Menu** — hidden by default, toggled via bottom-right debug button. Shows the delivery pilot framework: all 7 stages, agent files, config files. Developer-facing.
+  - Both menus read from `navigation_config.json` as a single source of truth
+  - Fallback arrays in `index.html` and `5_Symbols/markdown_renderer.html` must stay in sync
   - Search with autocomplete in debug menu
-- **Related Files:** `index.html`, `markdown_renderer.html`, `navigation_config.json`
-- **Last Updated:** 2026-05-30
+  - `index.html` (root, GitHub Pages entry point) is a **project page** → gets Project Menu + Debug Menu (for developers)
+  - `5_Symbols/markdown_renderer.html` renders markdown files → gets both menus so any doc page has full navigation
+  - New HTML outputs created by the project should use the shared menu loading code so menus stay consistent
+- **Related Files:** `index.html`, `5_Symbols/markdown_renderer.html`, `navigation_config.json`, `4_Formula/navigation.md`
+- **Last Updated:** 2026-07-12
 
 ### SPEC-002: Markdown Renderer with GitHub Edit
 - **Status:** Active
