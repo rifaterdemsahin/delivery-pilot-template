@@ -742,3 +742,26 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Test Agent drives the fix agent inline during testing rather than deferring to a separate loop.
 - Error flow: Test finds issue → drives Semblance to fix → Test re-validates → resolved.
 - All files committed and pushed.
+
+---
+
+## 📅 2026-07-12 — Smoke Test Runner, Debug Menu Backfill, Sanity Report Loop (7 → 1)
+
+### 📥 Input / Task
+- Task 1: Create a template-adapted smoke test that scans the pages, runs the checks, and generates a sample `6_Semblance/smoke_test_report.md`.
+- Task 2: Add the absent markdown files (found by the 2026-07-12 sanity check) to the debug menu.
+- Task 3: Make `1_Real_Unknown` the canonical sanity report location — it consumes data from `7_Testing_Known` and returns to Stage 1, completing the loop.
+- Task 4: Update `1_Real_Unknown/sanity_check_report.md` to reflect the fixes.
+
+### 💭 Thinking & Reasoning Process
+1. **Template adaptation**: The smoke test must not hardcode this project's file list — it reads `navigation_config.json` as the single source of truth, so any project bootstrapped from the template inherits working smoke tests. Python stdlib only (no npm/pip installs), so it runs anywhere and in CI.
+2. **Local + cloud**: Default mode checks the local filesystem; `--base-url` mode fetches the deployed GitHub Pages site over HTTP — matching the Test Agent rule to test in both environments.
+3. **Placement**: Runner goes to `5_Symbols/toolbox/` (source code belongs in 5_Symbols; toolbox already hosts `count.sh`). Report output goes to `6_Semblance/smoke_test_report.md` per the Smoke Tests & GitHub Issues rule. Specced as SPEC-008 before implementation.
+4. **Debug menu backfill**: 27 absent files added to all 3 nav sources (`navigation_config.json`, `index.html` fallback, `markdown_renderer.html` fallback) in one pass; stage READMEs listed as "Overview" entries. This resolves sanity finding F-003 and downgrades risk R-003 (the smoke test now detects future desync automatically).
+5. **Loop design (SPEC-009)**: Stage 7 produces test evidence; the Real Agent's sanity sub-agent consumes it and publishes the verdict in Stage 1 against the OKRs — 1 → … → 7 → 1. The outdated 2026-05-30 Stage-7 report moves to `_obsolete/` per the lifecycle rule, and `7_Testing_Known/sanity_check_report.md` becomes the data-source pointer doc.
+
+### 📤 Outcomes & Decisions
+- SPEC-008 (smoke test runner) and SPEC-009 (sanity report loop) added as active specs.
+- `5_Symbols/toolbox/smoke_test.py` implemented; first run generated `6_Semblance/smoke_test_report.md`.
+- Debug menu synchronized across all 3 sources with the full stage inventory.
+- Sanity report loop documented; Stage-1 report updated with resolved findings (F-002, F-003).
