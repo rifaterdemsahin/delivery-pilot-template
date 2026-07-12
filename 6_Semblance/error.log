@@ -29,3 +29,4 @@ Severity levels: `CRITICAL` | `ERROR` | `WARNING` | `INFO`
 | Navigation config mismatch | UI | See fix.log |
 | Markdown render 404 | 6_Semblance | See fix.log |
 | Azure Key Vault access denied | Secrets | See fix.log |
+[2026-07-12] [7_Testing_Known] [ERROR] — Smoke test failure: Menu Links Resolve (cloud mode). 8 stage folder header links 404 on GitHub Pages (bare directory URLs, no index.html in stage folders). GitHub Issue: https://github.com/rifaterdemsahin/delivery-pilot-template/issues/1
