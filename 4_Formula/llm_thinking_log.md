@@ -765,3 +765,24 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - `5_Symbols/toolbox/smoke_test.py` implemented; first run generated `6_Semblance/smoke_test_report.md`.
 - Debug menu synchronized across all 3 sources with the full stage inventory.
 - Sanity report loop documented; Stage-1 report updated with resolved findings (F-002, F-003).
+
+---
+
+## 📅 2026-07-12 — Template Restructure: File Moves, Placeholders, Skills, CI/CD Gate
+
+### 📥 Input / Task
+- Move `supabase/` → `2_Environment/supabase/`; move `prompts.md` → `1_Real_Unknown/`; move `markdown_renderer.html` → `5_Symbols/` and fix links.
+- Document template consumption (placeholders + bootstrap steps for consumer LLM agents) in all 5 agent files.
+- Add Claude Code skills to the project.
+- Check and fix reference/template-reuse issues; commit, push, deploy; make CI/CD (smoke gate in `static.yml`) the Formula Agent's responsibility.
+
+### 💭 Thinking & Reasoning Process
+1. **Renderer move is the risky one**: the renderer fetches `navigation_config.json` and the `?file=` target relative to its own location. Decision: keep `?file=` parameters root-relative everywhere and prefix all internal fetches/links inside the renderer with `../`. `index.html` routes md links through `5_Symbols/markdown_renderer.html?file=…`. SPEC-002 updated.
+2. **Template reuse**: the GitHub edit URL was hardcoded — now derived from `location.hostname`/`pathname` on `*.github.io`, with the configured repo as local fallback. Placeholder convention specced as SPEC-010; project-specific values enumerated so consumers know exactly what to replace.
+3. **Supabase caveat**: the Supabase CLI conventionally expects `supabase/` at the repo root; after the move to `2_Environment/supabase/`, CLI use requires `--workdir 2_Environment` (documented in `4_Formula/database.md`).
+4. **Skills**: `.claude/skills/` (unignored via `.gitignore` exception) with smoke-test, nav-sync, and sanity-check skills wrapping the SPEC-008 runner and the menu regeneration script (`5_Symbols/toolbox/nav_sync.py`, promoted from scratchpad so the skill has a stable target).
+5. **CI/CD ownership**: `static.yml` gains a `smoke` job (SPEC-008 runner, CI-compatible exit code) that gates the `deploy` job — closing risk R-007. The Formula Agent owns this pipeline per its "Manage CI/CD" mandate (Continuous Integration = smoke gate, Continuous Delivery = artifact upload, Continuous Deployment = Pages deploy on every green main push).
+
+### 📤 Outcomes & Decisions
+- SPEC-002 revised (renderer in `5_Symbols`, root-relative `?file=`, derived edit URL); SPEC-010 added (template consumption); smoke gate wired into `static.yml`.
+- All moves executed with `git mv`; references fixed; local + cloud smoke tests green before completion.

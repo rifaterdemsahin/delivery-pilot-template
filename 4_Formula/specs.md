@@ -28,14 +28,15 @@
 
 ### SPEC-002: Markdown Renderer with GitHub Edit
 - **Status:** Active
-- **Description:** `markdown_renderer.html` renders any markdown file via URL query parameter, with Edit on GitHub button
+- **Description:** `5_Symbols/markdown_renderer.html` renders any markdown file via URL query parameter, with Edit on GitHub button. Lives in `5_Symbols` (it is source code, not a root entry point); only `index.html` stays at the root for GitHub Pages.
 - **Key Behaviors:**
-  - Loads markdown from `?file=` query parameter
+  - Loads markdown from `?file=` query parameter; the parameter is always a **root-relative** path (e.g. `1_Real_Unknown/risks.md`)
+  - All internal fetches/links inside the renderer are prefixed with `../` (site root is one level up from the renderer)
   - Renders via marked.js + PrismJS syntax highlighting
-  - Shows "Edit on GitHub" button linking to `edit/main/{filePath}`
+  - "Edit on GitHub" button derives `{user}/{repo}` from `location.hostname`/`pathname` on `*.github.io` (template-reusable); falls back to the configured repo when served locally
   - Debug menu toggle available in renderer
-- **Related Files:** `markdown_renderer.html`
-- **Last Updated:** 2026-05-30
+- **Related Files:** `5_Symbols/markdown_renderer.html`, `index.html`, `navigation_config.json`
+- **Last Updated:** 2026-07-12
 
 ### SPEC-003: Image Carousel
 - **Status:** Active
@@ -116,6 +117,19 @@
   - Every sanity check run updates `1_Real_Unknown/risks.md` (new risks added, solved risks moved)
   - Loop: 1 (objectives) → … → 7 (test evidence) → 1 (sanity verdict against objectives)
 - **Related Files:** `1_Real_Unknown/sanity_check_report.md`, `1_Real_Unknown/risks.md`, `7_Testing_Known/sanity_check_report.md`, `6_Semblance/smoke_test_report.md`
+- **Last Updated:** 2026-07-12
+
+### SPEC-010: Template Consumption by Downstream Projects
+- **Status:** Active
+- **Description:** This repository is a **template** — other projects start from it. Every consumer-facing file must be reusable without manual archaeology: placeholders are explicit, project-specific values are concentrated, and each agent persona file tells the consumer LLM agent how to bootstrap.
+- **Key Behaviors:**
+  - All 5 agent files (`agents.md`, `claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`) carry a "Using This Template" section with the placeholder table and bootstrap steps for consumer LLM agents
+  - Standard placeholders: `{{PROJECT_NAME}}`, `{{GITHUB_USER}}`, `{{REPO_NAME}}`, `{{PAGES_URL}}`, `{{LINKEDIN_URL}}`, `{{YOUTUBE_URL}}` — consumers search-and-replace these six values
+  - Project-specific values live in: `navigation_config.json` (projectMenu), `index.html` (social links, titles), `README.md` (Pages URL), `sitemap.xml`/`robots.txt` (absolute URLs), `supabase/config.toml` under `2_Environment/` (project id)
+  - Runtime code must not hardcode the repo where it can derive it (e.g. renderer's GitHub edit URL derives user/repo from the Pages URL)
+  - Bootstrap validation: run `python3 5_Symbols/toolbox/smoke_test.py` after replacing placeholders — it is config-driven and needs no adaptation
+  - CI/CD is owned by the **Formula Agent**: `.github/workflows/static.yml` runs the smoke test gate, then deploys to GitHub Pages (Continuous Integration → Continuous Delivery → Continuous Deployment)
+- **Related Files:** `agents.md`, `claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`, `.github/workflows/static.yml`, `5_Symbols/toolbox/smoke_test.py`
 - **Last Updated:** 2026-07-12
 
 ---
