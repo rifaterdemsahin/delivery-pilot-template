@@ -15,7 +15,8 @@ Thumbs.db
 # Vector DB storage / local caches
 qdrant_storage/
 .ollama/
-.claude/
+.claude/*
+!.claude/skills/
 !4_Formula/.claude/
 !4_Formula/.claude/**
 .antigravitycli/
