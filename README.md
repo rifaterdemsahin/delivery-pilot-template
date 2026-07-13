@@ -106,3 +106,8 @@ Refactor the existing project . use the template from > https://github.com/rifat
 Replace the codes the necessary folders and fix the broken links > commit push > use this key vault to save and get secrets /vaults/dp-kv-deliverypilot/secrets, do not create a new key vault
 ```
 
+## Init 
+```
+Init this  project . use the template from > https://github.com/rifaterdemsahin/delivery-pilot-template
+Replace the codes the necessary folders and fix the broken links > commit push > use this key vault to save and get secrets /vaults/dp-kv-deliverypilot/secrets, do not create a new key vault
+```
