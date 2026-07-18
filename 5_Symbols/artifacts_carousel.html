@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artifacts Carousel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: rgba(22, 28, 45, 0.7);
+      --bg-glass: rgba(15, 23, 42, 0.6);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(139, 92, 246, 0.2);
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-violet: #8b5cf6;
+      --accent-violet-glow: rgba(139, 92, 246, 0.4);
+      --accent-cyan: #06b6d4;
+      --accent-green: #10b981;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 50%);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+
+    .renderer-header {
+      backdrop-filter: blur(12px);
+      background-color: var(--bg-glass);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .back-btn:hover {
+      color: var(--accent-cyan);
+      transform: translateX(-2px);
+    }
+
+    .file-path-badge {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-violet);
+    }
+
+    .carousel-layout {
+      max-width: 1200px;
+      margin: 2rem auto 4rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .glass-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+    }
+
+    .artifact-viewer {
+      min-height: 400px;
+      position: relative;
+    }
+
+    .artifact-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-image {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--accent-green);
+    }
+
+    .badge-markdown {
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: var(--accent-violet);
+    }
+
+    .badge-html {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: var(--accent-cyan);
+    }
+
+    .artifact-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .artifact-filename {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+
+    .artifact-index {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .artifact-content {
+      min-height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .artifact-content img {
+      max-width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .artifact-content .md-preview {
+      width: 100%;
+      padding: 1.5rem;
+      overflow-y: auto;
+      max-height: 480px;
+    }
+
+    .artifact-content .md-preview h1,
+    .artifact-content .md-preview h2,
+    .artifact-content .md-preview h3 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .artifact-content .md-preview h1 { font-size: 1.3rem; }
+    .artifact-content .md-preview h2 { font-size: 1.1rem; }
+    .artifact-content .md-preview h3 { font-size: 1rem; }
+    .artifact-content .md-preview p { color: #cbd5e1; margin-bottom: 0.8rem; font-size: 0.9rem; }
+    .artifact-content .md-preview ul, .artifact-content .md-preview ol { color: #cbd5e1; padding-left: 1.5rem; margin-bottom: 0.8rem; font-size: 0.9rem; }
+    .artifact-content .md-preview code {
+      font-family: var(--font-mono);
+      background: rgba(255,255,255,0.08);
+      padding: 0.15rem 0.3rem;
+      border-radius: 3px;
+      font-size: 0.85em;
+    }
+    .artifact-content .md-preview pre {
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .artifact-content .md-preview pre code { background: transparent; padding: 0; }
+
+    .artifact-content .html-preview-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .html-preview-link i { font-size: 3.5rem; color: var(--accent-cyan); }
+    .html-preview-link p { color: var(--text-muted); font-size: 0.9rem; }
+    .html-preview-link a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .html-preview-link a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.3);
+    }
+
+    .artifact-content .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+    .artifact-content .empty-state i { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      gap: 1rem;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-body);
+    }
+
+    .nav-btn:hover {
+      background: rgba(6, 182, 212, 0.1);
+      border-color: rgba(6, 182, 212, 0.3);
+      color: var(--accent-cyan);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .nav-progress {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .notes-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .notes-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .notes-saved {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      max-height: 180px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    .notes-saved:empty {
+      display: none;
+    }
+
+    .notes-textbox {
+      width: 100%;
+      min-height: 140px;
+      padding: 0.9rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      resize: vertical;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .notes-textbox:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
+    }
+
+    .notes-textbox::placeholder {
+      color: #475569;
+    }
+
+    .save-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.5rem;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-body);
+      align-self: flex-start;
+    }
+
+    .save-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
+    }
+
+    .save-btn:active {
+      transform: translateY(0);
+    }
+
+    .save-feedback {
+      font-size: 0.8rem;
+      color: var(--accent-green);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .save-feedback.show {
+      opacity: 1;
+    }
+
+    .clear-notes-btn {
+      background: none;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-body);
+      margin-left: auto;
+    }
+
+    .clear-notes-btn:hover {
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .notes-header-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Debug toggle */
+    .debug-toggle-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .debug-toggle-btn:hover {
+      transform: scale(1.1) rotate(15deg);
+    }
+
+    .debug-menu-overlay {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      height: 100vh;
+      background-color: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--border-color);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .debug-menu-overlay.open { right: 0; }
+
+    .debug-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+
+    .debug-menu-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .debug-links-list {
+      list-style: none;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    .debug-item { margin-bottom: 0.5rem; }
+
+    .debug-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      color: var(--text-primary);
+    }
+
+    .debug-link:hover {
+      background-color: rgba(6, 182, 212, 0.08);
+      border-color: rgba(6, 182, 212, 0.2);
+      color: var(--accent-cyan);
+      transform: translateX(4px);
+    }
+
+    .debug-divider { height: 1px; background-color: var(--border-color); margin: 1rem 0; }
+
+    @media (max-width: 968px) {
+      .carousel-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .debug-menu-overlay { width: 100vw; right: -100vw; }
+      .header-container { padding: 0.75rem 1rem; }
+      .carousel-layout { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="renderer-header">
+    <div class="header-container">
+      <a href="../index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Home</span>
+      </a>
+      <span class="file-path-badge" id="currentBadge">Artifacts Carousel</span>
+    </div>
+  </header>
+
+  <main class="carousel-layout">
+    <!-- LEFT: Artifact Viewer -->
+    <section class="glass-card artifact-viewer">
+      <div class="artifact-header">
+        <div>
+          <span class="artifact-type-badge" id="artifactTypeBadge">loading</span>
+          <span style="margin-left: 0.75rem;" class="artifact-index" id="artifactIndex">0 / 0</span>
+        </div>
+        <div class="artifact-filename" id="artifactFilename">—</div>
+      </div>
+
+      <div class="artifact-content" id="artifactContent">
+        <div class="empty-state">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <p>Loading artifacts...</p>
+        </div>
+      </div>
+
+      <div class="carousel-nav">
+        <button class="nav-btn" id="prevBtn">
+          <i class="fa-solid fa-chevron-left"></i> Previous
+        </button>
+        <span class="nav-progress" id="navProgress">—</span>
+        <button class="nav-btn" id="nextBtn">
+          Next <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- RIGHT: Notes -->
+    <section class="glass-card notes-section">
+      <div class="notes-header-row">
+        <span class="notes-label"><i class="fa-regular fa-pen-to-square"></i> Notes & Feedback</span>
+        <button class="clear-notes-btn" id="clearNotesBtn" title="Clear notes for this file">
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </div>
+
+      <div class="notes-saved" id="notesSaved"></div>
+
+      <textarea class="notes-textbox" id="notesTextbox" placeholder="Write your review or feedback for this artifact... How could it evolve? What's missing?"></textarea>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="save-btn" id="saveNotesBtn">
+          <i class="fa-regular fa-floppy-disk"></i> Save Notes
+        </button>
+        <span class="save-feedback" id="saveFeedback">Saved!</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Debug Menu -->
+  <button class="debug-toggle-btn" id="debugToggle"><i class="fa-solid fa-bug"></i></button>
+
+  <div class="debug-menu-overlay" id="debugMenuOverlay">
+    <div class="debug-menu-header">
+      <h2 class="debug-menu-title"><i class="fa-solid fa-terminal"></i> Debug Menu</h2>
+      <button id="debugClose" style="background:none; border:none; color:white; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="search-wrapper" style="position: relative; margin-bottom: 1.5rem;">
+      <i class="fa-solid fa-magnifying-glass search-icon" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+      <input type="text" class="search-input" id="debugSearch" placeholder="Search stages or agents..." style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 8px; color: white; font-family: var(--font-body); outline: none; transition: var(--transition);">
+    </div>
+    <ul class="debug-links-list" id="debugLinksList"></ul>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  <script>
+    // ─── Navigation Config ─────────────────────────────────────────────────
+    let navigationData = {
+      projectMenu: [
+        { label: "Home", url: "index.html" },
+        { label: "Docs", url: "5_Symbols/markdown_renderer.html?file=2_Environment/README.md" },
+        { label: "API", url: "5_Symbols/markdown_renderer.html?file=4_Formula/README.md" }
+      ],
+      debugMenu: [
+        { label: "1. Real Unknown", url: "1_Real_Unknown/README.md" },
+        { label: "   ├─ Problem Statement", url: "1_Real_Unknown/problem_statement.md" },
+        { label: "   ├─ OKRs", url: "1_Real_Unknown/okrs.md" },
+        { label: "   ├─ Hypotheses", url: "1_Real_Unknown/hypotheses.md" },
+        { label: "   ├─ Questions", url: "1_Real_Unknown/questions.md" },
+        { label: "   ├─ Kanban Board", url: "1_Real_Unknown/kanban.md" },
+        { label: "   ├─ Tasks & Phases", url: "1_Real_Unknown/tasks.md" },
+        { label: "   ├─ Cost Tracker", url: "1_Real_Unknown/costs.md" },
+        { label: "   ├─ Risks", url: "1_Real_Unknown/risks.md" },
+        { label: "   ├─ Sanity Check Report", url: "1_Real_Unknown/sanity_check_report.md" },
+        { label: "   ├─ Prompt Log", url: "1_Real_Unknown/prompts.md" },
+        { label: "2. Environment", url: "2_Environment/README.md" },
+        { label: "   ├─ Architecture", url: "2_Environment/architecture.md" },
+        { label: "   ├─ Tools Overview", url: "2_Environment/tools.md" },
+        { label: "   ├─ Toolstack & Rationale", url: "2_Environment/toolstack.md" },
+        { label: "   ├─ Dependencies", url: "2_Environment/dependencies.md" },
+        { label: "   ├─ Setup — Mac", url: "2_Environment/setup_mac.md" },
+        { label: "   ├─ Setup — Windows", url: "2_Environment/setup_windows.md" },
+        { label: "   ├─ Setup — AI Stack", url: "2_Environment/setup_ai.md" },
+        { label: "   ├─ Setup — Azure", url: "2_Environment/setup_azure.md" },
+        { label: "   ├─ GitHub Pages", url: "2_Environment/github_pages.md" },
+        { label: "   ├─ Cloudflare Workers", url: "2_Environment/cloudflare_workers.md" },
+        { label: "   ├─ Fly.io (Deployments)", url: "2_Environment/fly_io.md" },
+        { label: "   ├─ Supabase (Database)", url: "2_Environment/supabase.md" },
+        { label: "   ├─ Axiom (Logs)", url: "2_Environment/axiom.md" },
+        { label: "   ├─ GitHub Agent", url: "2_Environment/github_agent.md" },
+        { label: "   ├─ MCP Servers", url: "2_Environment/mcp.md" },
+        { label: "   ├─ Superskills", url: "2_Environment/superskills.md" },
+        { label: "   ├─ LLM Tools", url: "2_Environment/llm_tools.md" },
+        { label: "   ├─ Navigation", url: "2_Environment/navigation.md" },
+        { label: "3. Simulation", url: "3_Simulation/README.md" },
+        { label: "   ├─ Design Workflow", url: "3_Simulation/design_workflow.md" },
+        { label: "   ├─ Image Prompts", url: "3_Simulation/image_prompts.md" },
+        { label: "4. Formula", url: "4_Formula/README.md" },
+        { label: "   ├─ Specs", url: "4_Formula/specs.md" },
+        { label: "   ├─ Decisions", url: "4_Formula/decisions.md" },
+        { label: "   ├─ LLM Thinking Log", url: "4_Formula/llm_thinking_log.md" },
+        { label: "   ├─ DSL", url: "4_Formula/dsl.md" },
+        { label: "   ├─ Database", url: "4_Formula/database.md" },
+        { label: "   ├─ Extensions", url: "4_Formula/extensions.md" },
+        { label: "   ├─ Navigation", url: "4_Formula/navigation.md" },
+        { label: "   ├─ Logging & Auto-Fix", url: "4_Formula/logging_and_autofix.md" },
+        { label: "   ├─ Agent Creation", url: "4_Formula/agent_creation.md" },
+        { label: "5. Symbols", url: "5_Symbols/README.md" },
+        { label: "   ├─ Coding Standards", url: "5_Symbols/rules/coding_standards.md" },
+        { label: "   ├─ Git Conventions", url: "5_Symbols/rules/git_conventions.md" },
+        { label: "   ├─ File Organization", url: "5_Symbols/rules/file_organization.md" },
+        { label: "6. Semblance", url: "6_Semblance/README.md" },
+        { label: "   ├─ Error Log", url: "6_Semblance/error_log.md" },
+        { label: "   ├─ Gap Analysis", url: "6_Semblance/gap_analysis.md" },
+        { label: "   ├─ Lessons Learned", url: "6_Semblance/lessons_learned.md" },
+        { label: "   ├─ Workarounds", url: "6_Semblance/workarounds.md" },
+        { label: "   ├─ Smoke Test Report", url: "6_Semblance/smoke_test_report.md" },
+        { label: "7. Testing Known", url: "7_Testing_Known/README.md" },
+        { label: "   ├─ Smoke Tests", url: "7_Testing_Known/smoke_tests.md" },
+        { label: "   ├─ Logic Tracker", url: "7_Testing_Known/logic.md" },
+        { label: "   ├─ Validation Report", url: "7_Testing_Known/validation_report.md" },
+        { label: "   ├─ Sanity Data Source", url: "7_Testing_Known/sanity_check_report.md" },
+        { label: "---", url: "divider" },
+        { label: "agents.md", url: "agents.md" },
+        { label: "claude.md", url: "claude.md" },
+        { label: "gemini.md", url: "gemini.md" },
+        { label: "copilot.md", url: "copilot.md" },
+        { label: "kilocode.md", url: "kilocode.md" }
+      ]
+    };
+
+    function getCookie(name) {
+      const v = `; ${document.cookie}`;
+      const parts = v.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
+
+    function setCookie(name, value, days = 365) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = `${name}=${value};path=/;expires=${d.toUTCString()};SameSite=Strict`;
+    }
+
+    // ─── Artifact Registry ─────────────────────────────────────────────────
+    const ARTIFACTS = [
+      { file: "3_Simulation/agentic_workflow.svg",          label: "Agentic Workflow",          type: "image" },
+      { file: "3_Simulation/README.md",                     label: "Simulation Overview",        type: "markdown" },
+      { file: "3_Simulation/design_workflow.md",            label: "Design Workflow",            type: "markdown" },
+      { file: "3_Simulation/image_prompts.md",              label: "Image Prompts",              type: "markdown" },
+      { file: "2_Environment/architecture.md",              label: "Architecture Blueprint",     type: "markdown" },
+      { file: "2_Environment/navigation.md",                label: "Navigation Formula",         type: "markdown" },
+      { file: "4_Formula/specs.md",                         label: "Specs",                      type: "markdown" },
+      { file: "4_Formula/decisions.md",                     label: "Decision Log",               type: "markdown" },
+      { file: "4_Formula/llm_thinking_log.md",              label: "LLM Thinking Log",           type: "markdown" },
+      { file: "5_Symbols/markdown_renderer.html",            label: "Markdown Renderer",          type: "html" },
+      { file: "1_Real_Unknown/okrs.md",                     label: "OKRs",                       type: "markdown" },
+      { file: "1_Real_Unknown/risks.md",                    label: "Risk Register",             type: "markdown" },
+      { file: "6_Semblance/lessons_learned.md",              label: "Lessons Learned",            type: "markdown" },
+      { file: "6_Semblance/smoke_test_report.md",            label: "Smoke Test Report",          type: "markdown" },
+      { file: "7_Testing_Known/validation_report.md",        label: "Validation Report",          type: "markdown" },
+      { file: "index.html",                                 label: "Landing Page (index.html)",  type: "html" },
+    ];
+
+    // ─── State ─────────────────────────────────────────────────────────────
+    let currentIndex = 0;
+    const notesCookieName = "artifact_notes";
+
+    // ─── DOM refs ──────────────────────────────────────────────────────────
+    const artifactContent = document.getElementById("artifactContent");
+    const artifactTypeBadge = document.getElementById("artifactTypeBadge");
+    const artifactFilename = document.getElementById("artifactFilename");
+    const artifactIndex = document.getElementById("artifactIndex");
+    const navProgress = document.getElementById("navProgress");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const notesTextbox = document.getElementById("notesTextbox");
+    const notesSaved = document.getElementById("notesSaved");
+    const saveNotesBtn = document.getElementById("saveNotesBtn");
+    const saveFeedback = document.getElementById("saveFeedback");
+    const clearNotesBtn = document.getElementById("clearNotesBtn");
+
+    // ─── Cookie Notes ──────────────────────────────────────────────────────
+    function getAllNotes() {
+      try { return JSON.parse(getCookie(notesCookieName) || "{}"); } catch { return {}; }
+    }
+
+    function saveAllNotes(notes) {
+      setCookie(notesCookieName, JSON.stringify(notes));
+    }
+
+    function getNoteForFile(file) {
+      return getAllNotes()[file] || "";
+    }
+
+    function appendNoteForFile(file, newText) {
+      const notes = getAllNotes();
+      const existing = notes[file] || "";
+      if (existing) {
+        const now = new Date();
+        const ts = now.toISOString().slice(0, 16).replace("T", " ");
+        notes[file] = existing + `\n\n--- ${ts} ---\n` + newText;
+      } else {
+        notes[file] = newText;
+      }
+      saveAllNotes(notes);
+      return notes[file];
+    }
+
+    function clearNoteForFile(file) {
+      const notes = getAllNotes();
+      delete notes[file];
+      saveAllNotes(notes);
+    }
+
+    // ─── Render Artifact ───────────────────────────────────────────────────
+    function renderArtifact(index) {
+      const art = ARTIFACTS[index];
+      if (!art) return;
+
+      document.getElementById("currentBadge").textContent = art.label;
+      artifactIndex.textContent = `${index + 1} / ${ARTIFACTS.length}`;
+      navProgress.textContent = `${index + 1} of ${ARTIFACTS.length}`;
+      artifactFilename.textContent = art.file;
+
+      // Type badge
+      const badgeMap = { image: "badge-image", markdown: "badge-markdown", html: "badge-html" };
+      const iconMap = { image: "fa-regular fa-image", markdown: "fa-brands fa-markdown", html: "fa-regular fa-file-code" };
+      artifactTypeBadge.className = `artifact-type-badge ${badgeMap[art.type] || "badge-markdown"}`;
+      artifactTypeBadge.innerHTML = `<i class="${iconMap[art.type] || "fa-regular fa-file"}"></i> ${art.type}`;
+
+      // Nav buttons
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === ARTIFACTS.length - 1;
+
+      // Load notes
+      loadNotesForFile(art.file);
+
+      // Render content
+      const path = `../${art.file}`;
+
+      if (art.type === "image") {
+        artifactContent.innerHTML = `<img src="${path}" alt="${art.label}" loading="lazy">`;
+      } else if (art.type === "html") {
+        artifactContent.innerHTML = `
+          <div class="html-preview-link">
+            <i class="fa-regular fa-file-code"></i>
+            <p>${art.file}</p>
+            <a href="${path}" target="_blank">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Page
+            </a>
+          </div>`;
+      } else if (art.type === "markdown") {
+        artifactContent.innerHTML = `<div class="md-preview"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</div>`;
+        const previewDiv = artifactContent.querySelector(".md-preview");
+        fetch(path)
+          .then(r => { if (!r.ok) throw new Error("Not found"); return r.text(); })
+          .then(text => {
+            previewDiv.innerHTML = marked.parse(text);
+            if (typeof Prism !== "undefined") Prism.highlightAllUnder(previewDiv);
+          })
+          .catch(err => {
+            previewDiv.innerHTML = `<div class="empty-state">
+              <i class="fa-regular fa-file-lines"></i>
+              <p>Could not load: ${err.message}</p>
+            </div>`;
+          });
+      }
+    }
+
+    // ─── Notes ─────────────────────────────────────────────────────────────
+    function loadNotesForFile(file) {
+      const note = getNoteForFile(file);
+      notesSaved.textContent = note || "";
+      notesSaved.style.display = note ? "block" : "none";
+      notesTextbox.value = "";
+    }
+
+    function handleSave() {
+      const art = ARTIFACTS[currentIndex];
+      if (!art) return;
+      const text = notesTextbox.value.trim();
+      if (!text) return;
+
+      const updated = appendNoteForFile(art.file, text);
+      notesSaved.textContent = updated;
+      notesSaved.style.display = "block";
+      notesTextbox.value = "";
+
+      saveFeedback.classList.add("show");
+      setTimeout(() => saveFeedback.classList.remove("show"), 2000);
+    }
+
+    function handleClear() {
+      const art = ARTIFACTS[currentIndex];
+      if (!art) return;
+      if (!getNoteForFile(art.file)) return;
+      clearNoteForFile(art.file);
+      notesSaved.textContent = "";
+      notesSaved.style.display = "none";
+      notesTextbox.value = "";
+    }
+
+    // ─── Navigation ────────────────────────────────────────────────────────
+    function goTo(index) {
+      if (index < 0 || index >= ARTIFACTS.length) return;
+      currentIndex = index;
+      renderArtifact(currentIndex);
+    }
+
+    prevBtn.addEventListener("click", () => goTo(currentIndex - 1));
+    nextBtn.addEventListener("click", () => goTo(currentIndex + 1));
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") goTo(currentIndex - 1);
+      if (e.key === "ArrowRight") goTo(currentIndex + 1);
+    });
+
+    saveNotesBtn.addEventListener("click", handleSave);
+    clearNotesBtn.addEventListener("click", handleClear);
+
+    // ─── Debug Menu Init ───────────────────────────────────────────────────
+    document.addEventListener("DOMContentLoaded", () => {
+      const debugToggle = document.getElementById("debugToggle");
+      const debugClose = document.getElementById("debugClose");
+      const debugMenuOverlay = document.getElementById("debugMenuOverlay");
+      const debugSearch = document.getElementById("debugSearch");
+      const debugLinksList = document.getElementById("debugLinksList");
+
+      fetch("../navigation_config.json")
+        .then(res => res.json())
+        .then(data => { navigationData = data; buildDebugMenu(); })
+        .catch(() => { buildDebugMenu(); });
+
+      function buildDebugMenu(filterText = "") {
+        debugLinksList.innerHTML = "";
+        const query = filterText.toLowerCase();
+        navigationData.debugMenu.forEach(item => {
+          if (query && item.label === "---") return;
+          if (query && !item.label.toLowerCase().includes(query)) return;
+          if (item.label === "---") {
+            const d = document.createElement("li"); d.className = "debug-divider";
+            debugLinksList.appendChild(d);
+          } else {
+            const li = document.createElement("li"); li.className = "debug-item";
+            const a = document.createElement("a");
+            let finalUrl = item.url;
+            if (finalUrl !== "divider" && !finalUrl.startsWith("http")) {
+              if (finalUrl.includes(".html")) finalUrl = `../${finalUrl}`;
+              else finalUrl = `markdown_renderer.html?file=${finalUrl}`;
+            }
+            a.href = finalUrl; a.className = "debug-link";
+            a.innerHTML = `<span>${item.label}</span><i class="fa-solid fa-chevron-right" style="font-size:0.8rem;opacity:0.5;"></i>`;
+            li.appendChild(a); debugLinksList.appendChild(li);
+          }
+        });
+      }
+
+      debugSearch.addEventListener("input", (e) => buildDebugMenu(e.target.value));
+
+      const debugState = getCookie("debug");
+      if (debugState === "true") debugMenuOverlay.classList.add("open");
+
+      debugToggle.addEventListener("click", () => {
+        const isOpen = debugMenuOverlay.classList.toggle("open");
+        setCookie("debug", isOpen ? "true" : "false");
+      });
+
+      debugClose.addEventListener("click", () => {
+        debugMenuOverlay.classList.remove("open");
+        setCookie("debug", "false");
+      });
+
+      // Init first artifact
+      goTo(0);
+    });
+  </script>
+</body>
+</html>
