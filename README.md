@@ -104,6 +104,7 @@ The framework mimics how humans learn: recognize ignorance, build context, visua
 ```
 Refactor the existing project . use the template from > https://github.com/rifaterdemsahin/delivery-pilot-template
 Replace the codes the necessary folders and fix the broken links > commit push > use this key vault to save and get secrets /vaults/dp-kv-deliverypilot/secrets, do not create a new key vault
+get the necessary skills for this project from the popular github repos
 ```
 
 ## Init 
@@ -115,4 +116,5 @@ objective  is ...
 key result is ...
 environment is ...
 sources are ...
+get the necessary skills for this project from the popular github repos
 ```
