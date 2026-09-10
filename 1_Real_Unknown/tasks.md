@@ -43,6 +43,7 @@
 |----|------|-------|------|
 | TSK-016 | Create coding rules (5_Symbols/rules/ — 3 files) | Symbols Agent | [x] |
 | TSK-027 | Add agent operating rules (spec what you did into Formula + commit/push) | Symbols Agent | Real Agent coordinates: Formula specs (SPEC-011) → Symbols writes `agent_operating_rules.md` → coordinator/personas point at it | [x] |
+| TSK-028 | RULE-003/004: Fly.io vs Workers deploy, Key Vault creds, Azure project storage | Symbols Agent | Real Agent coordinates: Formula SPEC-012 → Symbols rules → Environment architecture/tools | [x] |
 | TSK-017 | Document risk register (risks.md) | Real Agent | [x] |
 | TSK-018 | Document stage dependency chain (SPEC-006) | Formula Agent | [x] |
 
