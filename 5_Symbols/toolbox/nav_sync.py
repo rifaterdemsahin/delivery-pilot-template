@@ -53,6 +53,7 @@ MENU = [
     ("   ├─ Agent Creation", "4_Formula/agent_creation.md"),
     ("   ├─ TOGAF Gap Analysis", "4_Formula/togaf_gap_analysis.md"),
     ("5. Symbols", "5_Symbols/README.md"),
+    ("   ├─ Agent Operating Rules", "5_Symbols/rules/agent_operating_rules.md"),
     ("   ├─ Coding Standards", "5_Symbols/rules/coding_standards.md"),
     ("   ├─ Git Conventions", "5_Symbols/rules/git_conventions.md"),
     ("   ├─ File Organization", "5_Symbols/rules/file_organization.md"),
