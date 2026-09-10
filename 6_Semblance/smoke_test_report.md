@@ -4,8 +4,8 @@
 > Latest run overwrites this file; one report per test run.
 
 ## Run Info
-- **Date:** 2026-07-18 22:35
-- **Trigger:** Manual run
+- **Date:** 2026-09-10 05:39
+- **Trigger:** add agent operating rules
 - **Mode:** Local filesystem
 - **Tester:** smoke_test.py (automated)
 - **Verdict:** ✅ ALL PASS

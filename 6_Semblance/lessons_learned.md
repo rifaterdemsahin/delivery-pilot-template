@@ -84,3 +84,16 @@
 ### Gaps & Challenges
 - Blind search-and-replace on `prompts.md` mangled the folder-tree diagrams in the persona files — caught immediately and fixed. Lesson: path renames in prose need per-context review, not one regex.
 - The Supabase CLI expects `supabase/` at the repo root; after the move, CLI commands need `--workdir 2_Environment` (documented in `4_Formula/database.md`). Moving conventional-location folders trades tidiness for tool friction — acceptable here, but worth flagging to consumers.
+
+## 📅 2026-09-10: Agent Operating Rules (spec what you did + commit/push)
+
+### What went well
+- Put standing orders in `5_Symbols/rules/` next to coding/git/file rules so agents have one folder to load.
+- RULE-001 closes the gap between "spec before code" and "record what was actually delivered" in Formula.
+- RULE-002 restates commit-and-push as a numbered standing order instead of only a buried coordinator bullet.
+
+### Gaps & Challenges
+- Specs-before-code already existed; agents still skipped the after-work spec. A dedicated file with two numbered rules is easier to load than re-reading all of `agents.md`.
+
+### Takeaway for Future AI Agents
+- Load `5_Symbols/rules/agent_operating_rules.md` at session start. After work: write the spec in `4_Formula/specs.md`, then commit and push.

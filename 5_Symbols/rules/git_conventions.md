@@ -33,10 +33,11 @@ remove: delete obsolete docker-compose v1 config
 
 ## Push Rules
 
-- **After every command, commit and push** — do not batch changes.
+- **After every command, commit and push (RULE-002)** — do not batch changes. Standing order: [`agent_operating_rules.md`](agent_operating_rules.md).
 - Each logical change gets its own commit.
 - Verify with `git status` before committing.
 - Descriptive messages — the "why" should be clear from the message.
+- After the work is done, formulate it as a spec in `4_Formula/specs.md` (RULE-001) before considering the change complete.
 
 ## Conflict Resolution
 

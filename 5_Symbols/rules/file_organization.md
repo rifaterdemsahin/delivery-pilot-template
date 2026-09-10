@@ -6,7 +6,8 @@
 
 ```
 5_Symbols/
-├── rules/                  # Coding rules (this folder)
+├── rules/                  # Coding + standing operating rules (this folder)
+│   ├── agent_operating_rules.md
 │   ├── coding_standards.md
 │   ├── git_conventions.md
 │   └── file_organization.md

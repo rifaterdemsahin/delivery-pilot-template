@@ -27,3 +27,4 @@ When a conclusion is `🔄 Iterating`, the next row continues with the updated p
 
 | # | Premise | Objective | Task Delivered | LLM Decision | Conclusion | Status |
 |---|---------|-----------|----------------|--------------|------------|--------|
+| 1 | Agents forget to spec delivered work and leave changes unpushed | Template agents share one standing-orders file | TSK-027 / SPEC-011 — `5_Symbols/rules/agent_operating_rules.md` | Put RULE-001 (spec as delivered into Formula) and RULE-002 (commit and push) in `5_Symbols/rules/`, pointed from `agents.md` | Premise holds: one loadable file + Formula spec of the work | ✅ Confirmed |
