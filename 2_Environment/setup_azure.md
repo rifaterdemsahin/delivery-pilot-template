@@ -54,6 +54,23 @@ To pull secrets into GitHub workflows, the repository needs Azure Service Princi
 
 ---
 
+## 📁 Azure project-based storage (default)
+
+The project **default storage** is Azure Storage scoped to this project (RULE-004 / SPEC-012): one Storage account, blob containers for uploads, artifacts, and files. Account keys and connection strings live in this Key Vault — never in git.
+
+```bash
+# Example: create a project-scoped storage account (name must be globally unique)
+az storage account create --name <project>stor --resource-group dg-pilot-rg --location westeurope --sku Standard_LRS
+
+# Store the connection string in Key Vault
+az keyvault secret set --vault-name dg-pilot-kv --name "AZURE-STORAGE-CONNECTION-STRING" \
+  --value "$(az storage account show-connection-string --name <project>stor --resource-group dg-pilot-rg -o tsv)"
+```
+
+Fly volumes, Cloudflare R2, local disk, and git LFS are not the default. Structured data may still use Supabase.
+
+---
+
 ## 🧪 Verification Checklist
 - [ ] Azure CLI successfully authenticated
 - [ ] Active subscription is verified

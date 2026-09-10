@@ -2,7 +2,7 @@
 
 ## What is it?
 
-Fly.io is a platform for **container-based deployments** of full-stack applications and services close to users. It deploys **Docker containers** to edge locations worldwide, giving you persistent compute with global distribution. In this project it is the **deployment target for all backend application code**.
+Fly.io is a platform for **container-based deployments** of full-stack applications and services close to users. It deploys **Docker containers** to edge locations worldwide, giving you persistent compute with global distribution. In this project it is the **deployment target for backends with heavy container requirements** (RULE-003 / SPEC-012). Lightweight, stateless backends go to Cloudflare Workers instead. Both platforms take credentials from **Azure Key Vault**.
 
 ## Use Cases
 
@@ -40,7 +40,8 @@ Fly.io is a platform for **container-based deployments** of full-stack applicati
 - **Database:** [Supabase](./supabase.md) (managed Postgres) is the primary data layer; Fly.io Postgres/Redis only for app-local needs
 - **Logs:** Backend ships structured logs to [Axiom](./axiom.md)
 - **Vector DB:** Qdrant on Fly.io, or Supabase `pgvector`
-- **Secrets:** Azure Key Vault (injected as env vars at deploy time via `fly secrets set`)
+- **Secrets:** Azure Key Vault (injected as env vars at deploy time via `fly secrets set`) — same vault as Cloudflare Workers
+- **Storage:** Azure project-based storage is the default for files/blobs (RULE-004); Fly volumes are not the default
 
 ## Setup
 

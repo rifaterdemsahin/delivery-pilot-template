@@ -9,9 +9,10 @@
 | Layer | Tool | Role | Detail Doc |
 |-------|------|------|------------|
 | **Frontend hosting** | GitHub Pages | Static site (`index.html`, docs, mockups) | [`github_pages.md`](./github_pages.md) |
-| **Edge compute** | Cloudflare Workers | Auth, routing, caching, rate limiting | [`cloudflare_workers.md`](./cloudflare_workers.md) |
-| **Backend deployments** | Fly.io | Container-based Python API hosting (Docker) | [`fly_io.md`](./fly_io.md) |
-| **Database & data layer** | Supabase | Managed Postgres, auth, realtime, storage, pgvector | [`supabase.md`](./supabase.md) |
+| **Light backend / edge** | Cloudflare Workers | Stateless backends + auth, routing, caching (RULE-003) | [`cloudflare_workers.md`](./cloudflare_workers.md) |
+| **Heavy container backend** | Fly.io | Docker / persistent / GPU / long-running jobs (RULE-003) | [`fly_io.md`](./fly_io.md) |
+| **Default file/blob storage** | Azure project storage | Project-scoped Storage account / blobs (RULE-004) | [`setup_azure.md`](./setup_azure.md) |
+| **Database & data layer** | Supabase | Managed Postgres, auth, realtime, pgvector | [`supabase.md`](./supabase.md) |
 | **Server-side logs** | Axiom | Centralized logging, tracing, alerting, dashboards | [`axiom.md`](./axiom.md) |
 | **Secrets** | Azure Key Vault | Stores all API keys & credentials | [`setup_azure.md`](./setup_azure.md) |
 | **CI/CD** | GitHub Actions | Build, test, deploy pipeline | [`github_pages.md`](./github_pages.md) |
@@ -27,11 +28,11 @@
 ### 1. GitHub Pages — Frontend Hosting
 Serves the static site directly from the repo root. `index.html` **must** stay at the root. Deployed via GitHub Actions. → [`github_pages.md`](./github_pages.md)
 
-### 2. Cloudflare Workers — Edge Compute (optional)
-Lightweight edge logic for auth, routing, caching, and rate limiting in front of the backend. → [`cloudflare_workers.md`](./cloudflare_workers.md)
+### 2. Cloudflare Workers — Light backend / edge
+Deployment target for **lightweight, stateless** backends and edge logic (auth, routing, caching, rate limiting). Credentials from Azure Key Vault. → [`cloudflare_workers.md`](./cloudflare_workers.md)
 
-### 3. Fly.io — Container-Based Deployments
-Runs the backend as **Docker containers** deployed globally close to users. Hosts Python APIs (FastAPI/Flask), background jobs, and WebSocket servers with persistent processes. This is where backend application code is deployed. → [`fly_io.md`](./fly_io.md)
+### 3. Fly.io — Heavy container backends
+Deployment target for **heavy container** backends: Docker, persistent processes, filesystems, WebSockets, GPU, long-running jobs. Credentials from Azure Key Vault. → [`fly_io.md`](./fly_io.md)
 
 ### 4. Supabase — Database & Backend Features
 The **primary database**: managed Postgres plus auth, auto-generated APIs, realtime, storage, and `pgvector`. Backend connects via `DATABASE_URL` / `supabase-py`; the frontend may use the anon key under Row Level Security. → [`supabase.md`](./supabase.md)
@@ -60,6 +61,8 @@ Every secret below lives in **Azure Key Vault** (one vault per environment: dev/
 | Supabase | `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL` | Backend only |
 | Axiom | `AXIOM_TOKEN`, `AXIOM_DATASET` | Backend / CI only |
 | Fly.io | `FLY_API_TOKEN` | CI / deploy only |
+| Cloudflare Workers | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | CI / deploy only |
+| Azure Storage | `AZURE_STORAGE_CONNECTION_STRING` | Backend only (default blobs) |
 | Azure | `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` | CI / runtime |
 | AI | `AI_PROVIDER_API_KEY` | Backend only |
 
@@ -70,11 +73,11 @@ Every secret below lives in **Azure Key Vault** (one vault per environment: dev/
 ```
 Browser
   → GitHub Pages (static UI)
-  → Cloudflare Workers (edge auth/routing)
-      → Fly.io (Python API, in Docker)
-          → Supabase  (read/write data, auth)
+  → Cloudflare Workers (light backend / edge)  ── secrets from Azure Key Vault
+  → Fly.io (heavy containers)                 ── secrets from Azure Key Vault
+          → Azure project storage (default files/blobs)
+          → Supabase  (structured data, auth)
           → Axiom     (emit structured logs)
-          → Azure Key Vault (pull secrets at runtime)
 ```
 
 ---

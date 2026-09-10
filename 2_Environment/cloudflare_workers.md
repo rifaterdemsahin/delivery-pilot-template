@@ -2,7 +2,7 @@
 
 ## What is it?
 
-Cloudflare Workers is a serverless execution environment that runs at the edge — on Cloudflare's global network of 300+ data centers. Code executes close to users, reducing latency.
+Cloudflare Workers is a serverless execution environment that runs at the edge — on Cloudflare's global network of 300+ data centers. Code executes close to users, reducing latency. In this project it is the **deployment target for lightweight, stateless backends** and edge logic (RULE-003 / SPEC-012). Heavy container workloads go to Fly.io. Both platforms take credentials from **Azure Key Vault**.
 
 ## Use Cases
 
@@ -36,7 +36,8 @@ Cloudflare Workers is a serverless execution environment that runs at the edge �
 - **Frontend:** Static site on GitHub Pages
 - **Edge Logic:** Cloudflare Workers handles auth, routing, caching
 - **Backend:** Fly.io runs the Python application
-- **Secrets:** Azure Key Vault (Workers access via API)
+- **Secrets:** Azure Key Vault (Workers access via API) — same vault as Fly.io; never commit Worker secrets
+- **Storage:** Azure project-based storage is the default for files/blobs (RULE-004); not Workers KV or R2 unless Formula records an exception
 
 ## Setup
 
