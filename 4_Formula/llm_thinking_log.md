@@ -805,3 +805,21 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - `5_Symbols/rules/agent_operating_rules.md` is the standing-orders file (RULE-001 spec-as-delivered, RULE-002 commit and push).
 - SPEC-011 added; Spec System Rules item 6 added.
 - Coordinator and persona files point at the rules file. Debug menu lists it under Stage 5.
+
+---
+
+## 📅 2026-09-10 — RULE-003/004: backend deploy + Azure project storage
+
+### 📥 Input / Task
+- Mention in the rules: apps with a backend deploy to Fly.io or Cloudflare Workers based on requirements; heavy container requirements go to Fly.io; both take credentials from Azure Key Vault.
+- Rule: the project default storage is Azure project-based storage.
+
+### 💭 Thinking & Reasoning Process
+1. Existing Environment docs treated Fly.io as *the* backend and Workers as optional edge. The new standing order is a **choice**: lightweight/stateless → Workers; heavy containers → Fly.io. Architecture and fly_io/cloudflare pages must match or agents will follow the old "all backends on Fly.io" line.
+2. Credentials stay on SPEC-004 (Key Vault). RULE-003 only makes it explicit that **both** deploy targets pull from the vault.
+3. "Azure project-based storage" = one Azure Storage account (blob) scoped to the project, as the default for files/blobs. Supabase remains the structured-data option; Fly volumes / R2 are exceptions, not defaults.
+
+### 📤 Outcomes & Decisions
+- RULE-003 and RULE-004 added to `agent_operating_rules.md`.
+- SPEC-012 records the delivered deploy + storage contract; SPEC-004 notes Workers + Azure Storage keys in the vault.
+- Architecture diagram updated so Workers can be a backend (not only a proxy to Fly.io) and Azure Storage is the default blob store.

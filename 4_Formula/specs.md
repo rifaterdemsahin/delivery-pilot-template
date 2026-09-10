@@ -59,9 +59,10 @@
   - `.env.example` lists required variables with empty values
   - Secrets loaded via Azure SDK or GitHub Actions
   - One Key Vault per environment (dev/staging/prod)
-  - Supabase keys, Axiom tokens, Fly.io tokens all in Key Vault
-- **Related Files:** `.env.example`, `2_Environment/setup_azure.md`
-- **Last Updated:** 2026-06-19
+  - Supabase keys, Axiom tokens, Fly.io tokens, Cloudflare tokens, and Azure Storage keys all in Key Vault
+  - Fly.io and Cloudflare Workers both take credentials from Key Vault (SPEC-012 / RULE-003)
+- **Related Files:** `.env.example`, `2_Environment/setup_azure.md`, `5_Symbols/rules/agent_operating_rules.md`
+- **Last Updated:** 2026-09-10
 
 ### SPEC-005: Specs System (this file)
 - **Status:** Active
@@ -138,13 +139,25 @@
 
 ### SPEC-011: Agent Operating Rules (Spec What You Did + Commit/Push)
 - **Status:** Active
-- **Description:** All agents load `5_Symbols/rules/agent_operating_rules.md` at session start. Two non-negotiable standing orders: (1) formulate what was done as a spec in the Formula folder; (2) commit and push after each logical change.
+- **Description:** All agents load `5_Symbols/rules/agent_operating_rules.md` at session start. Standing orders include formulate-as-spec, commit/push, backend deploy target, and default Azure storage.
 - **Key Behaviors:**
   - **RULE-001** — After completing work, write or update a `SPEC-XXX` in `4_Formula/specs.md` that describes the behavior as delivered (not only as planned). Docs-only and process work still get a spec or spec update. Reasoning goes in `4_Formula/llm_thinking_log.md`.
   - **RULE-002** — After every logical change, commit and push. Do not batch unrelated changes. If git errors occur, troubleshoot until the push succeeds. Never force-push `main`. Never commit secrets. Follow `5_Symbols/rules/git_conventions.md`.
+  - **RULE-003 / RULE-004** — Backend deploy and default storage are specified in SPEC-012.
   - Agents read the operating-rules file together with `agents.md` and the LLM persona file. The coordinator (`agents.md`) points at this file; it does not replace the 7-stage flow.
   - Debug menu lists the operating-rules file under Stage 5 (`5_Symbols/rules/`).
 - **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/git_conventions.md`, `4_Formula/specs.md`, `4_Formula/llm_thinking_log.md`, `agents.md`
+- **Last Updated:** 2026-09-10
+
+### SPEC-012: Backend Deploy Target + Azure Project Storage
+- **Status:** Active
+- **Description:** Apps with a backend deploy to Fly.io or Cloudflare Workers based on requirements. Heavy container workloads go to Fly.io. Both platforms take credentials from Azure Key Vault. Default file/blob storage is Azure project-based storage.
+- **Key Behaviors:**
+  - Static frontends stay on GitHub Pages. Backend services choose **Cloudflare Workers** (lightweight, stateless, edge) or **Fly.io** (Docker / persistent / heavy containers).
+  - Heavy container requirements (Docker, filesystem, WebSockets, GPU, long-running jobs) **must** deploy to Fly.io.
+  - Fly.io and Cloudflare Workers load all credentials from **Azure Key Vault** — never from git, Worker source, Docker images, or committed config.
+  - **Default storage** is Azure project-based storage (Storage account / blob containers scoped to this project). Fly volumes, Cloudflare R2, local disk, and git LFS are not the default. Structured data may still use Supabase; exceptions go in `4_Formula/decisions.md`.
+- **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `2_Environment/fly_io.md`, `2_Environment/cloudflare_workers.md`, `2_Environment/setup_azure.md`, `2_Environment/architecture.md`, `4_Formula/specs.md` (SPEC-004)
 - **Last Updated:** 2026-09-10
 
 ---
