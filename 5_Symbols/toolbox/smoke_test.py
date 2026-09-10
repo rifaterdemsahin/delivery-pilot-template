@@ -29,6 +29,34 @@ RENDERER = "5_Symbols/markdown_renderer.html"
 REQUIRED_ROOT_FILES = ["index.html", RENDERER, "README.md", "robots.txt", "sitemap.xml"]
 REQUIRED_INDEX_LINKS = ["github.com", "linkedin.com", "youtube.com"]
 STAGE_GLOB = re.compile(r"^[1-7]_[A-Za-z_]+$")
+PERSONA_MD = re.compile(r"^[a-z][a-z0-9-]*\.md$")
+ALLOWED_ROOT_DIRS = {
+    ".claude",
+    ".github",
+    ".kilo",
+    "1_Real_Unknown",
+    "2_Environment",
+    "3_Simulation",
+    "4_Formula",
+    "5_Symbols",
+    "6_Semblance",
+    "7_Testing_Known",
+}
+ALLOWED_ROOT_FILES = {
+    "index.html",
+    "README.md",
+    "robots.txt",
+    "sitemap.xml",
+    ".gitignore",
+    ".env.example",
+    "navigation_config.json",
+    "agents.md",
+    "claude.md",
+    "gemini.md",
+    "copilot.md",
+    "kilocode.md",
+}
+IGNORED_ROOT_NAMES = {".git", ".antigravitycli", "node_modules", ".venv", "__pycache__", ".DS_Store"}
 MD_URL_PATTERN = re.compile(r"[0-9A-Za-z_]+/[0-9A-Za-z_/.\-]*\.md")
 SECRET_PATTERN = re.compile(
     r"""(ghp_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9\-]{10,}|AKIA[0-9A-Z]{16}|sk-[A-Za-z0-9]{32,}|xaat-[A-Za-z0-9\-]{20,})"""
@@ -167,7 +195,26 @@ def run_checks(root, base_url=None):
                     continue
     results.append(Result("Secrets Scan", not leaks, "; ".join(leaks[:5])))
 
-    # 10. Deployed site reachable (cloud mode only)
+    # 10. RULE-005 — only allowed folders/files at repo root
+    extra_root = []
+    for name in sorted(os.listdir(".")):
+        if name in IGNORED_ROOT_NAMES or name.startswith(".env"):
+            continue
+        path = os.path.join(".", name)
+        if os.path.isdir(path):
+            if name not in ALLOWED_ROOT_DIRS:
+                extra_root.append(name + "/")
+        elif name not in ALLOWED_ROOT_FILES and not PERSONA_MD.match(name):
+            extra_root.append(name)
+    results.append(
+        Result(
+            "Root Layout (RULE-005)",
+            not extra_root,
+            f"move into a stage/skill/workflow folder: {', '.join(extra_root[:12])}" if extra_root else "",
+        )
+    )
+
+    # 11. Deployed site reachable (cloud mode only)
     if base_url:
         try:
             status, body = fetch(base_url)
