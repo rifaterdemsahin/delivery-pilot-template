@@ -55,7 +55,7 @@ Each of the 7 stages has a **dedicated agent** that owns its folder, focuses on 
 
 ### Agent Colors — Terminal Differentiation
 
-Each agent has a distinct color for terminal output so they can be easily differentiated at a glance. Colors are configured in `kilo.json`.
+Each agent has a distinct color for terminal output so they can be easily differentiated at a glance. Colors are configured in `.kilo/kilo.json`.
 
 | Agent | Color | Hex |
 |-------|-------|-----|

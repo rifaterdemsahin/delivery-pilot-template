@@ -79,7 +79,7 @@ When an agent needs to perform a task:
    - **Key Files**: Files the skill needs to reference
    - **Workflow**: Step-by-step instructions
    - **Rules**: Guardrails and policies specific to this skill
-3. Register in `kilo.json` under the `skills` array
+3. Register in `.kilo/kilo.json` under the `skills` array
 4. Add to the Required Superskills table above
 5. Update this file's Skill → Stage Mapping
 6. Commit and push the new skill file
