@@ -64,6 +64,58 @@ Pick one backend target per service (static frontends stay on GitHub Pages):
 - Connection strings and account keys live in **Azure Key Vault**, not in code.
 - Structured app data can still use Supabase (Postgres) when a database is the right tool; Azure project storage is the default for **files and blobs**. Record exceptions in `4_Formula/decisions.md`.
 
+### RULE-005 — Allowed root folders; move everything else into them
+
+> The only **root folders** in this repo are the 7 stages plus the skill/workflow dirs. Anything else at the root must be **moved into the related subfolder**.
+
+**Allowed root folders**
+
+```
+.claude/skills
+.github/workflows
+.kilo/skills
+1_Real_Unknown
+2_Environment
+3_Simulation
+4_Formula
+5_Symbols
+6_Semblance
+7_Testing_Known
+```
+
+(`.git` is the VCS directory — do not treat it as a project folder.)
+
+**Move extras here**
+
+| If it is… | Move it to |
+|-----------|------------|
+| Problems, OKRs, tasks, prompts, risks, costs | `1_Real_Unknown/` |
+| Architecture, setup, tools, env, MCP | `2_Environment/` |
+| Designs, mockups, image prompts, carousel | `3_Simulation/` |
+| Specs, decisions, thinking log, Formula commands | `4_Formula/` |
+| Source code, toolbox, coding rules, app HTML | `5_Symbols/` |
+| Error/fix logs, lessons, workarounds | `6_Semblance/` |
+| Tests, validation, logic tracker | `7_Testing_Known/` |
+| Claude skills | `.claude/skills/` |
+| GitHub Actions workflows | `.github/workflows/` |
+| Kilo skills | `.kilo/skills/` |
+
+- Do **not** create a new top-level folder. If a tool wants its own root dir, put its files under the matching allowed folder (e.g. Kilo config under `.kilo/`, extra Claude files under `.claude/skills/`).
+- When you find a stray root file or folder, **move it** (`git mv`), update references, run `python3 5_Symbols/toolbox/nav_sync.py` if a markdown path changed, then commit and push (RULE-002).
+
+**Root files that must stay** (not folders — GitHub Pages / git / coordinator require them at the repo root):
+
+| File | Why it stays |
+|------|----------------|
+| `index.html` | GitHub Pages entry point |
+| `README.md` | GitHub + Pages URL |
+| `robots.txt`, `sitemap.xml` | SEO at site root |
+| `.gitignore`, `.env.example` | Git and secrets template |
+| `navigation_config.json` | Loaded by root `index.html` |
+| `agents.md` + LLM persona files (`claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`, …) | Coordinator contract |
+
+Do not park new docs, scripts, or tool caches next to these. Tool caches (`.antigravitycli/`, `node_modules/`, `.env`) stay gitignored, not in a stage folder.
+
 ---
 
 ## Session checklist
@@ -92,6 +144,7 @@ These live in the coordinator (`agents.md`) and the rest of this folder. This fi
 | Secrets never in git | Azure Key Vault; `.env.example` only |
 | Backend host (Workers vs Fly.io) | RULE-003; `2_Environment/fly_io.md`, `2_Environment/cloudflare_workers.md` |
 | Default file/blob storage | RULE-004; Azure project-based storage |
+| Allowed root folders; move extras | RULE-005; `file_organization.md` |
 
 ---
 

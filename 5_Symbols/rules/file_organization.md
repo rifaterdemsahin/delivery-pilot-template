@@ -20,7 +20,6 @@
 │   ├── js/
 │   └── images/
 ├── config/                # Non-secret configuration
-├── .github/workflows/     # CI/CD pipelines
 ├── Dockerfile             # Container build
 ├── docker-compose.yml     # Multi-service orchestration
 ├── requirements.txt       # Python dependencies
@@ -29,19 +28,32 @@
 
 ## File Placement Rules
 
-### Root-Level Files
-Only files required at the repository root go outside `5_Symbols/`:
+### Root folders (RULE-005)
+
+The only allowed **root folders** are:
+
+`.claude/skills` · `.github/workflows` · `.kilo/skills` · `1_Real_Unknown` · `2_Environment` · `3_Simulation` · `4_Formula` · `5_Symbols` · `6_Semblance` · `7_Testing_Known`
+
+Move any other root file or folder into the related subfolder of those (see `agent_operating_rules.md` RULE-005). Do not add new top-level directories.
+
+### Root-Level Files (exceptions only)
+
+These **files** stay at the repo root because GitHub Pages, git, or the coordinator require them. They are not an invitation to add more root files:
+
 - `index.html` — GitHub Pages entry point
-- `markdown_renderer.html` — Shared markdown viewer
+- `README.md` — GitHub + Pages URL
 - `robots.txt`, `sitemap.xml` — SEO
 - `.env.example`, `.gitignore` — Config
-- `navigation_config.json` — Shared menu config
+- `navigation_config.json` — Shared menu config (loaded by root `index.html`)
+- `agents.md` + LLM persona files — coordinator contract
+
+`5_Symbols/markdown_renderer.html` is source code — it lives in Stage 5, not at the root.
 
 ### Stage 5 Files
 Everything else that is code/implementation belongs here:
 - Source code → `5_Symbols/src/`
 - Config files → `5_Symbols/config/`
-- Workflow definitions → `5_Symbols/.github/`
+- Workflow definitions → `.github/workflows/` (repo root, RULE-005 — not inside `5_Symbols/`)
 - Docker definitions → `5_Symbols/` root
 
 ## Module Organization
