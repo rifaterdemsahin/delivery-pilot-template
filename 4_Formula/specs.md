@@ -144,6 +144,7 @@
   - **RULE-001** — After completing work, write or update a `SPEC-XXX` in `4_Formula/specs.md` that describes the behavior as delivered (not only as planned). Docs-only and process work still get a spec or spec update. Reasoning goes in `4_Formula/llm_thinking_log.md`.
   - **RULE-002** — After every logical change, commit and push. Do not batch unrelated changes. If git errors occur, troubleshoot until the push succeeds. Never force-push `main`. Never commit secrets. Follow `5_Symbols/rules/git_conventions.md`.
   - **RULE-003 / RULE-004** — Backend deploy and default storage are specified in SPEC-012.
+  - **RULE-005** — Allowed root folders and move-extras are specified in SPEC-013.
   - Agents read the operating-rules file together with `agents.md` and the LLM persona file. The coordinator (`agents.md`) points at this file; it does not replace the 7-stage flow.
   - Debug menu lists the operating-rules file under Stage 5 (`5_Symbols/rules/`).
 - **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/git_conventions.md`, `4_Formula/specs.md`, `4_Formula/llm_thinking_log.md`, `agents.md`
@@ -158,6 +159,18 @@
   - Fly.io and Cloudflare Workers load all credentials from **Azure Key Vault** — never from git, Worker source, Docker images, or committed config.
   - **Default storage** is Azure project-based storage (Storage account / blob containers scoped to this project). Fly volumes, Cloudflare R2, local disk, and git LFS are not the default. Structured data may still use Supabase; exceptions go in `4_Formula/decisions.md`.
 - **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `2_Environment/fly_io.md`, `2_Environment/cloudflare_workers.md`, `2_Environment/setup_azure.md`, `2_Environment/architecture.md`, `4_Formula/specs.md` (SPEC-004)
+- **Last Updated:** 2026-09-10
+
+### SPEC-013: Allowed Root Folders (Move Extras Into Stages)
+- **Status:** Active
+- **Description:** The only allowed root folders are `.claude/skills`, `.github/workflows`, `.kilo/skills`, and the seven stage folders. Agents must move any other root file or folder into the related subfolder of those. A small set of root *files* stays for GitHub Pages, git, and the coordinator.
+- **Key Behaviors:**
+  - **RULE-005** — Do not create new top-level project folders. Place new work inside the matching allowed folder.
+  - Placement: OKRs/tasks → `1_Real_Unknown/`; architecture/tools → `2_Environment/`; designs → `3_Simulation/`; specs → `4_Formula/`; code → `5_Symbols/`; errors/lessons → `6_Semblance/`; tests → `7_Testing_Known/`; Claude skills → `.claude/skills/`; Actions → `.github/workflows/`; Kilo skills → `.kilo/skills/`.
+  - After a move: `git mv`, update references, run `nav_sync.py` if a markdown path changed, commit and push.
+  - Root **files** that stay: `index.html`, `README.md`, `robots.txt`, `sitemap.xml`, `.gitignore`, `.env.example`, `navigation_config.json`, `agents.md` + LLM persona files. `markdown_renderer.html` stays in `5_Symbols/`.
+  - Tool caches (`.antigravitycli/`, `node_modules/`, `.env`) are gitignored, not stage folders.
+- **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/file_organization.md`, `agents.md`
 - **Last Updated:** 2026-09-10
 
 ---

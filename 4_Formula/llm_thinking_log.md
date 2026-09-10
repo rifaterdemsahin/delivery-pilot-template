@@ -823,3 +823,19 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - RULE-003 and RULE-004 added to `agent_operating_rules.md`.
 - SPEC-012 records the delivered deploy + storage contract; SPEC-004 notes Workers + Azure Storage keys in the vault.
 - Architecture diagram updated so Workers can be a backend (not only a proxy to Fly.io) and Azure Storage is the default blob store.
+
+---
+
+## 📅 2026-09-10 — RULE-005: allowed root folders; move extras
+
+### 📥 Input / Task
+- Root folders are: `.claude/skills`, `.github/workflows`, `.kilo/skills`, and the seven stages.
+- Create a rule to move anything else into related subfolders of those.
+
+### 💭 Thinking & Reasoning Process
+1. The user listed **folders**, not a bare root. GitHub Pages still requires `index.html` (and related SEO/config files) at the repo root; the coordinator personas live at root by contract. Those stay as **files**, not extra folders.
+2. Workflows were previously described as living under `5_Symbols/.github/` in `file_organization.md` — that contradicts `.github/workflows` as an allowed root folder. Updated the placement rule so CI stays at repo-root `.github/workflows/`.
+3. Agents must `git mv` strays, update refs, nav-sync if paths change — not invent new top-level dirs.
+
+### 📤 Outcomes & Decisions
+- RULE-005 + SPEC-013. `file_organization.md` restated to match. Coordinator/personas point at RULE-005.
