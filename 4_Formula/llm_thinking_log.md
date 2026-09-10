@@ -839,3 +839,20 @@ This log documents the thinking phase summaries and reasoning processes of the L
 
 ### 📤 Outcomes & Decisions
 - RULE-005 + SPEC-013. `file_organization.md` restated to match. Coordinator/personas point at RULE-005.
+
+---
+
+## 📅 2026-09-10 — Refactor/Init prompts + apply RULE-005 to this repo
+
+### 📥 Input / Task
+- Update the Refactor command in README.md to reflect the standing rules.
+- Fix this project properly using those rules.
+
+### 💭 Thinking & Reasoning Process
+1. The README Refactor/Init blocks are the prompts consumer agents paste. They had "place files logically" and commit/push, but not RULE-001–005, allowed root folders, Workers vs Fly.io, Azure storage, or nav-sync/smoke-test. Those belong in the pasteable prompt so a weaker model still follows them.
+2. This repo itself violated RULE-005: `kilo.json` sat at the root. Move to `.kilo/kilo.json` and retarget references.
+3. Enforce layout with a smoke check so CI fails if someone parks a new top-level folder again. SPEC-008 and SPEC-010 updated.
+
+### 📤 Outcomes & Decisions
+- README Refactor + Init prompts encode RULE-001–005, Key Vault `/vaults/dp-kv-deliverypilot/secrets` (do not create a new vault), then nav-sync + smoke-test.
+- `kilo.json` → `.kilo/kilo.json`. Smoke test **Root Layout (RULE-005)** added.

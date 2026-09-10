@@ -106,12 +106,12 @@
 - **Description:** A dependency-free Python script (`5_Symbols/toolbox/smoke_test.py`) that scans the project's pages and structure, runs the smoke test suite, and generates `6_Semblance/smoke_test_report.md`. Template-adapted: it reads `navigation_config.json` as its source of truth, so any project bootstrapped from this template gets working smoke tests without code changes.
 - **Key Behaviors:**
   - Reads `navigation_config.json` (projectMenu + debugMenu) and derives the page/file inventory from it — no hardcoded file lists
-  - Checks: config JSON validity, every menu URL resolves to an existing file/folder, required root files exist (`index.html`, `markdown_renderer.html`, `README.md`, `robots.txt`, `sitemap.xml`), social links present in `index.html`, GitHub Pages URL present in `README.md`, 3-way navigation sync (config = `index.html` fallback = `markdown_renderer.html` fallback), stage markdown files not orphaned from the debug menu, no committed secrets patterns
+  - Checks: config JSON validity, every menu URL resolves to an existing file/folder, required root files exist (`index.html`, `markdown_renderer.html`, `README.md`, `robots.txt`, `sitemap.xml`), social links present in `index.html`, GitHub Pages URL present in `README.md`, 3-way navigation sync (config = `index.html` fallback = `markdown_renderer.html` fallback), stage markdown files not orphaned from the debug menu, no committed secrets patterns, **Root Layout (RULE-005)** — no extra top-level folders/files outside the allowed set
   - Optional `--base-url` mode fetches the deployed site over HTTP and verifies pages return 200 (cloud smoke test); default mode is local filesystem
   - Writes results to `6_Semblance/smoke_test_report.md` in the report format defined in `7_Testing_Known/smoke_tests.md`; exit code 0 = all pass, 1 = failures (CI gate compatible)
   - Failures must be raised as GitHub Issues per the Smoke Tests & GitHub Issues rule
 - **Related Files:** `5_Symbols/toolbox/smoke_test.py`, `6_Semblance/smoke_test_report.md`, `7_Testing_Known/smoke_tests.md`, `navigation_config.json`
-- **Last Updated:** 2026-07-12
+- **Last Updated:** 2026-09-10
 
 ### SPEC-009: Sanity Check Report Loop (7 → 1)
 - **Status:** Active
@@ -134,8 +134,9 @@
   - Runtime code must not hardcode the repo where it can derive it (e.g. renderer's GitHub edit URL derives user/repo from the Pages URL)
   - Bootstrap validation: run `python3 5_Symbols/toolbox/smoke_test.py` after replacing placeholders — it is config-driven and needs no adaptation
   - CI/CD is owned by the **Formula Agent**: `.github/workflows/static.yml` runs the smoke test gate, then deploys to GitHub Pages (Continuous Integration → Continuous Delivery → Continuous Deployment)
-- **Related Files:** `agents.md`, `claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`, `.github/workflows/static.yml`, `5_Symbols/toolbox/smoke_test.py`
-- **Last Updated:** 2026-07-12
+  - **Refactor / Init prompts** live in `README.md` and must tell the consumer agent to follow RULE-001–005, use Key Vault `/vaults/dp-kv-deliverypilot/secrets` (do not create a new vault), place files in allowed root folders, then nav-sync + smoke-test + commit/push
+- **Related Files:** `agents.md`, `claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`, `.github/workflows/static.yml`, `5_Symbols/toolbox/smoke_test.py`, `README.md`
+- **Last Updated:** 2026-09-10
 
 ### SPEC-011: Agent Operating Rules (Spec What You Did + Commit/Push)
 - **Status:** Active
@@ -170,7 +171,8 @@
   - After a move: `git mv`, update references, run `nav_sync.py` if a markdown path changed, commit and push.
   - Root **files** that stay: `index.html`, `README.md`, `robots.txt`, `sitemap.xml`, `.gitignore`, `.env.example`, `navigation_config.json`, `agents.md` + LLM persona files. `markdown_renderer.html` stays in `5_Symbols/`.
   - Tool caches (`.antigravitycli/`, `node_modules/`, `.env`) are gitignored, not stage folders.
-- **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/file_organization.md`, `agents.md`
+  - Kilo config lives at `.kilo/kilo.json` (not the repo root). Smoke test **Root Layout (RULE-005)** fails if extra root files or folders appear.
+- **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/file_organization.md`, `agents.md`, `5_Symbols/toolbox/smoke_test.py`, `README.md`
 - **Last Updated:** 2026-09-10
 
 ---

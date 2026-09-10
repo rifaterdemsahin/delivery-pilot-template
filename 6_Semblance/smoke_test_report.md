@@ -4,8 +4,8 @@
 > Latest run overwrites this file; one report per test run.
 
 ## Run Info
-- **Date:** 2026-09-10 05:39
-- **Trigger:** add agent operating rules
+- **Date:** 2026-09-10 06:12
+- **Trigger:** RULE-005 root layout + nav backfill
 - **Mode:** Local filesystem
 - **Tester:** smoke_test.py (automated)
 - **Verdict:** ✅ ALL PASS
@@ -23,6 +23,7 @@
 | Social Links | ✅ Pass | — |
 | README Pages URL | ✅ Pass | — |
 | Secrets Scan | ✅ Pass | — |
+| Root Layout (RULE-005) | ✅ Pass | — |
 
 ## Failures
 

@@ -38,6 +38,7 @@ Report Results → 6_Semblance/smoke_test_report.md
 | **Navigation Config** | Both menus load from `navigation_config.json` | Fallback arrays used, file not found |
 | **Cookie Persistence** | Debug toggle state survives page reload | Cookie not set, toggle resets |
 | **Responsive Layout** | Mobile viewport (375px) renders menus correctly | Overflow, hidden content, broken grid |
+| **Root Layout (RULE-005)** | Only allowed folders/files at repo root | Extra top-level dir or file (move into a stage/skill/workflow folder) |
 
 ## Running Smoke Tests
 
