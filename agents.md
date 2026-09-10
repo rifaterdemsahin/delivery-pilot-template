@@ -184,7 +184,7 @@ Before any agent implements a change (especially `5_Symbols` code), it must ask 
 
 ## Agent Rules
 
-- **Standing operating rules** — Load and follow [`5_Symbols/rules/agent_operating_rules.md`](5_Symbols/rules/agent_operating_rules.md) on every task. Two non-negotiables: **RULE-001** formulate what you did as a spec and add it to the Formula folder (`4_Formula/specs.md`); **RULE-002** commit and push after each logical change.
+- **Standing operating rules** — Load and follow [`5_Symbols/rules/agent_operating_rules.md`](5_Symbols/rules/agent_operating_rules.md) on every task. **RULE-001** formulate what you did as a spec and add it to the Formula folder (`4_Formula/specs.md`). **RULE-002** commit and push after each logical change. **RULE-003** backends deploy to Fly.io or Cloudflare Workers (heavy containers → Fly.io); both take credentials from Azure Key Vault. **RULE-004** default storage is Azure project-based storage.
 - Always follow the 7-stage folder structure (`1_Real_Unknown` through `7_Testing_Known`)
 - **Continuous Evolution** — Every LLM response is an opportunity to update and iterate on the project. The delivery pilot framework places each output in its related stage folder and evolves with the outputs. Nothing is throwaway — every reasoning log, error fix, spec update, and design iteration is stored in its stage and makes the project smarter over time.
 - **LLM Model Switching** — The coordinator (`agents.md`) stays constant while persona files are generated per LLM. When you switch models (Claude → DeepSeek → GPT → etc.), a matching `<llm>.md` file is generated that inherits all coordinator rules. The agent currently in use always reads its own persona file plus `agents.md` as the universal coordinator.

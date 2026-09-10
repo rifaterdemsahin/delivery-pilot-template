@@ -81,7 +81,7 @@ delivery-pilot-template/
 ## 🤖 Kilo Code-Specific Instructions
 
 ### Behavior Guidelines
-- **Standing operating rules** — Load and follow `5_Symbols/rules/agent_operating_rules.md` on every task. **RULE-001:** formulate what you did as a spec and add it to the Formula folder (`4_Formula/specs.md`). **RULE-002:** commit and push after each logical change.
+- **Standing operating rules** — Load and follow `5_Symbols/rules/agent_operating_rules.md` on every task. **RULE-001:** formulate what you did as a spec and add it to the Formula folder (`4_Formula/specs.md`). **RULE-002:** commit and push after each logical change. **RULE-003:** backends deploy to Fly.io or Cloudflare Workers (heavy containers → Fly.io); both take credentials from Azure Key Vault. **RULE-004:** default storage is Azure project-based storage.
 - Always follow the 7-stage structure when creating or organizing content
 - **Continuous Evolution** — Every LLM response is an opportunity to update and iterate on the project. Place each output in its related stage folder — nothing is throwaway. The framework evolves with the outputs, making the project smarter over time.
 - **Plug & Play Resilience** — The framework removes dependency on any specific LLM. Specs, cross-references, and the thinking log ensure switching models never causes breaking changes.
