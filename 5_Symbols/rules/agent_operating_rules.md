@@ -42,6 +42,28 @@ Coordinator: [`agents.md`](../../agents.md) · Specs: [`4_Formula/specs.md`](../
 - [ ] No secrets in the diff
 - [ ] Debug menu synced if a markdown file was added, renamed, or deleted
 
+### RULE-003 — Backend deploy: Fly.io or Cloudflare Workers
+
+> Apps with a backend deploy to **Fly.io** or **Cloudflare Workers**, chosen from the app's requirements. Heavy container requirements go to **Fly.io**. Both take credentials from **Azure Key Vault**.
+
+Pick one backend target per service (static frontends stay on GitHub Pages):
+
+| Requirement | Deploy to |
+|-------------|-----------|
+| Lightweight, stateless, edge (auth, routing, caching, short request/response) | **Cloudflare Workers** |
+| Heavy containers — Docker, persistent processes, filesystems, WebSockets, GPU, long-running jobs | **Fly.io** |
+
+- Do not invent a third backend host unless Environment Agent documents it and Formula specs it.
+- **Credentials:** Fly.io and Cloudflare Workers load secrets from **Azure Key Vault** at deploy or runtime. Never bake keys into Worker code, Docker images, `wrangler.toml`, `fly.toml`, or git. See [`2_Environment/setup_azure.md`](../../2_Environment/setup_azure.md), [`2_Environment/fly_io.md`](../../2_Environment/fly_io.md), [`2_Environment/cloudflare_workers.md`](../../2_Environment/cloudflare_workers.md).
+
+### RULE-004 — Default storage is Azure project-based storage
+
+> The project default storage is **Azure project-based storage** (one Azure Storage account / blob container set scoped to this project).
+
+- Use that Azure storage for blobs, uploads, artifacts, and files the app must persist. Do not default to Fly volumes, Cloudflare R2, local disk, or git LFS.
+- Connection strings and account keys live in **Azure Key Vault**, not in code.
+- Structured app data can still use Supabase (Postgres) when a database is the right tool; Azure project storage is the default for **files and blobs**. Record exceptions in `4_Formula/decisions.md`.
+
 ---
 
 ## Session checklist
@@ -68,6 +90,8 @@ These live in the coordinator (`agents.md`) and the rest of this folder. This fi
 | Commit message format | `git_conventions.md` |
 | Two-menu navigation + nav sync | `4_Formula/navigation.md`, `5_Symbols/toolbox/nav_sync.py` |
 | Secrets never in git | Azure Key Vault; `.env.example` only |
+| Backend host (Workers vs Fly.io) | RULE-003; `2_Environment/fly_io.md`, `2_Environment/cloudflare_workers.md` |
+| Default file/blob storage | RULE-004; Azure project-based storage |
 
 ---
 
