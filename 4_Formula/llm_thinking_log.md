@@ -786,3 +786,22 @@ This log documents the thinking phase summaries and reasoning processes of the L
 ### 📤 Outcomes & Decisions
 - SPEC-002 revised (renderer in `5_Symbols`, root-relative `?file=`, derived edit URL); SPEC-010 added (template consumption); smoke gate wired into `static.yml`.
 - All moves executed with `git mv`; references fixed; local + cloud smoke tests green before completion.
+
+---
+
+## 📅 2026-09-10 — Agent Operating Rules (spec what you did + commit/push)
+
+### 📥 Input / Task
+- Add a rules file agents can use.
+- Mention standing rules: always formulate as a spec on what you have done and add it to the Formula folder; commit and push.
+
+### 💭 Thinking & Reasoning Process
+1. **Where it lives:** Coding rules already sit in `5_Symbols/rules/` (`coding_standards.md`, `git_conventions.md`, `file_organization.md`). A new `agent_operating_rules.md` in that folder is the file agents load, without splitting "rules" across random folders.
+2. **What was missing:** Specs existed as a *before-code* gate (SPEC-005). The user asked for the *after-work* habit: formulate **what you did** as a spec in Formula. Commit-and-push already lived in `agents.md` and `git_conventions.md` but was not a scannable standing order next to the spec habit.
+3. **Coordinator vs rules file:** `agents.md` stays the coordinator. It now points at the operating-rules file. Persona files get a short pointer so every LLM inherits the same two non-negotiables (RULE-001, RULE-002).
+4. **Spec of the work:** SPEC-011 records the delivered behavior. Spec System Rules gain item 6 so Formula itself encodes "spec what you did."
+
+### 📤 Outcomes & Decisions
+- `5_Symbols/rules/agent_operating_rules.md` is the standing-orders file (RULE-001 spec-as-delivered, RULE-002 commit and push).
+- SPEC-011 added; Spec System Rules item 6 added.
+- Coordinator and persona files point at the rules file. Debug menu lists it under Stage 5.

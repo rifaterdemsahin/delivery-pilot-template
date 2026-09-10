@@ -44,7 +44,7 @@ The self-learning loop flows through this stage automatically:
 | `extensions.md` | Required system and IDE extensions/plugins |
 | `navigation.md` | Shared navigation menu design and reusability formula |
 | `logging_and_autofix.md` | Unified logging (footer debug + Axiom) and the nightly continuous-fix agent |
-| `specs.md` | Technical specifications — all features must be specced here before code |
+| `specs.md` | Technical specifications — spec before code, then formulate what you did as a spec after delivery (SPEC-011 / RULE-001) |
 | `agent_creation.md` | Agent creation responsibility — who creates which agents and under what conditions |
 | `implementation_guide.md` | Main step-by-step build guide |
 | `research_notes.md` | Technology evaluations and findings |

@@ -8,6 +8,7 @@
 3. **Warn on mismatch** — if a task would alter behavior covered by an existing spec, flag and warn before coding
 4. **Post-implementation** — update the spec to reflect final decisions
 5. **Code drift detection** — After implementation in `5_Symbols`, diff the code against active specs. Flag deviations with `[DRIFT]` and document in `llm_thinking_log.md`
+6. **Formulate what you did** — After completing work, always write or update a spec in this file that describes the behavior **as delivered**, then add it to the Formula folder. Standing orders: `5_Symbols/rules/agent_operating_rules.md` (RULE-001). Then commit and push (RULE-002).
 
 ---
 
@@ -70,8 +71,9 @@
   - New tasks check for affected specs
   - `[NEEDS UPDATE]` flag for specs requiring changes
   - Warning emitted when a task contradicts an active spec
-- **Related Files:** `4_Formula/specs.md`, `AGENTS.md`, all agent persona files
-- **Last Updated:** 2026-07-11
+  - After delivery, formulate what was done as a spec in this file (RULE-001 / SPEC-011)
+- **Related Files:** `4_Formula/specs.md`, `AGENTS.md`, all agent persona files, `5_Symbols/rules/agent_operating_rules.md`
+- **Last Updated:** 2026-09-10
 
 ### SPEC-006: Stage Dependency Chain (1 → 2 → 3)
 - **Status:** Active
@@ -133,6 +135,17 @@
   - CI/CD is owned by the **Formula Agent**: `.github/workflows/static.yml` runs the smoke test gate, then deploys to GitHub Pages (Continuous Integration → Continuous Delivery → Continuous Deployment)
 - **Related Files:** `agents.md`, `claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`, `.github/workflows/static.yml`, `5_Symbols/toolbox/smoke_test.py`
 - **Last Updated:** 2026-07-12
+
+### SPEC-011: Agent Operating Rules (Spec What You Did + Commit/Push)
+- **Status:** Active
+- **Description:** All agents load `5_Symbols/rules/agent_operating_rules.md` at session start. Two non-negotiable standing orders: (1) formulate what was done as a spec in the Formula folder; (2) commit and push after each logical change.
+- **Key Behaviors:**
+  - **RULE-001** — After completing work, write or update a `SPEC-XXX` in `4_Formula/specs.md` that describes the behavior as delivered (not only as planned). Docs-only and process work still get a spec or spec update. Reasoning goes in `4_Formula/llm_thinking_log.md`.
+  - **RULE-002** — After every logical change, commit and push. Do not batch unrelated changes. If git errors occur, troubleshoot until the push succeeds. Never force-push `main`. Never commit secrets. Follow `5_Symbols/rules/git_conventions.md`.
+  - Agents read the operating-rules file together with `agents.md` and the LLM persona file. The coordinator (`agents.md`) points at this file; it does not replace the 7-stage flow.
+  - Debug menu lists the operating-rules file under Stage 5 (`5_Symbols/rules/`).
+- **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/git_conventions.md`, `4_Formula/specs.md`, `4_Formula/llm_thinking_log.md`, `agents.md`
+- **Last Updated:** 2026-09-10
 
 ---
 
