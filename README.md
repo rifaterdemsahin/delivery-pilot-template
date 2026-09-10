@@ -101,21 +101,78 @@ The framework mimics how humans learn: recognize ignorance, build context, visua
 
 ---
 
-## Refactor 
+## Refactor
+
+Copy-paste this prompt into an agent working in an **existing** repo. It must follow the template standing orders (`5_Symbols/rules/agent_operating_rules.md`).
+
 ```
-Refactor the existing project . use the template from > https://github.com/rifaterdemsahin/delivery-pilot-template
-Replace the codes the necessary folders and fix the broken links > commit push > use this key vault to save and get secrets /vaults/dp-kv-deliverypilot/secrets, do not create a new key vault
-get the necessary skills for this project from the popular github repos skills, place the existing files into their logical places groupped rationally 
+Refactor this existing project onto the delivery-pilot-template:
+https://github.com/rifaterdemsahin/delivery-pilot-template
+
+Read first: agents.md and 5_Symbols/rules/agent_operating_rules.md (RULE-001 through RULE-005).
+
+RULE-001 — After each change, formulate what you did as a spec in 4_Formula/specs.md. Log reasoning in 4_Formula/llm_thinking_log.md.
+RULE-002 — After every logical change, commit and push. Do not batch unrelated work. Never commit secrets.
+RULE-003 — Apps with a backend deploy to Cloudflare Workers (lightweight, stateless) or Fly.io (heavy containers). Both take credentials from Azure Key Vault. Static frontends stay on GitHub Pages.
+RULE-004 — Default storage is Azure project-based storage (project-scoped blobs). Do not default to Fly volumes, R2, or git LFS.
+RULE-005 — Allowed root folders only:
+  .claude/skills
+  .github/workflows
+  .kilo/skills
+  1_Real_Unknown
+  2_Environment
+  3_Simulation
+  4_Formula
+  5_Symbols
+  6_Semblance
+  7_Testing_Known
+Move every other root file or folder into the related subfolder of those (git mv, then fix references).
+Keep at repo root only: index.html, README.md, robots.txt, sitemap.xml, .gitignore, .env.example, navigation_config.json, agents.md + LLM persona files.
+
+Replace template placeholders. Map existing files into those folders. Fix broken links.
+
+Secrets: use this Key Vault and do NOT create a new one:
+  /vaults/dp-kv-deliverypilot/secrets
+Save and load all credentials there (Fly.io, Cloudflare Workers, Azure Storage, APIs).
+
+Pull needed skills from popular GitHub skill repos. Place Claude skills in .claude/skills, Kilo skills in .kilo/skills, workflows in .github/workflows.
+
+Then:
+  python3 5_Symbols/toolbox/nav_sync.py
+  python3 5_Symbols/toolbox/smoke_test.py
+Commit and push each logical step (RULE-002).
 ```
 
-## Init 
+## Init
+
+Copy-paste this prompt to **start** a project from the template. Fill in the goal lines.
+
 ```
-Init this  project . use the template from > https://github.com/rifaterdemsahin/delivery-pilot-template
-Replace the codes the necessary folders and > commit push > use this key vault to save and get secrets
-/vaults/dp-kv-deliverypilot/secrets, do not create a new key vault > goal of this project :
-objective  is ...
-key result is ...
-environment is ...
-sources are ...
-get the necessary skills for this project from the popular github repos
+Init this project from the delivery-pilot-template:
+https://github.com/rifaterdemsahin/delivery-pilot-template
+
+Read first: agents.md and 5_Symbols/rules/agent_operating_rules.md (RULE-001 through RULE-005).
+
+RULE-001 — Formulate what you did as a spec in 4_Formula/specs.md. Log reasoning in 4_Formula/llm_thinking_log.md.
+RULE-002 — After every logical change, commit and push. Never commit secrets.
+RULE-003 — Backends: Cloudflare Workers (light) or Fly.io (heavy containers). Credentials from Azure Key Vault.
+RULE-004 — Default storage is Azure project-based storage.
+RULE-005 — Allowed root folders only: .claude/skills, .github/workflows, .kilo/skills, 1_Real_Unknown … 7_Testing_Known. Move extras into those. Keep index.html (and the other listed root files) at the repo root.
+
+Replace placeholders. Create the 7-stage folders. Commit and push each step.
+
+Secrets: use this Key Vault and do NOT create a new one:
+  /vaults/dp-kv-deliverypilot/secrets
+
+Goal of this project:
+  objective is ...
+  key result is ...
+  environment is ...
+  sources are ...
+
+Pull needed skills from popular GitHub skill repos into .claude/skills and .kilo/skills.
+
+Then:
+  python3 5_Symbols/toolbox/nav_sync.py
+  python3 5_Symbols/toolbox/smoke_test.py
 ```
