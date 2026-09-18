@@ -72,7 +72,7 @@ fly secrets set DATABASE_URL="postgresql://..." API_KEY="..."
 | Persistent Volume (1GB) | ~$0.15/month |
 | Free tier | 3 shared-CPU VMs, 256MB RAM each |
 
-## 🛡️ How to Prevent This in the Future (6-Pillar Prevention Playbook)
+## 🛡️ How to Prevent Extra Cost In Fly.io in the Future (6-Pillar Prevention Playbook)
 -> Implement these and show it in the logs that you have implemented it.
 
 Pillar 1: Configure Fly.io Auto-Stop & Scale-to-Zero on Launch
