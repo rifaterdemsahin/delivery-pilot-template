@@ -50,6 +50,7 @@ ALLOWED_ROOT_FILES = {
     ".gitignore",
     ".env.example",
     "navigation_config.json",
+    "calendar_config.json",
     "agents.md",
     "claude.md",
     "gemini.md",
