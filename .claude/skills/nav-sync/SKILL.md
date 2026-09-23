@@ -10,9 +10,11 @@ The debug menu lives in **three places** that must stay identical: `navigation_c
 ## Steps
 
 1. Edit the `MENU` list in `5_Symbols/toolbox/nav_sync.py`:
+   - **Every label must include a relevant leading emoji** (Product Rule 1)
    - Stage section headers link to the stage `README.md` (never a bare directory — those 404 on GitHub Pages; see issue #1).
    - Entries use root-relative paths (e.g. `1_Real_Unknown/risks.md`); each page adapts them at render time.
    - Sub-items use the `   ├─ Label` prefix convention.
+   - Example: `("🎯 1. Real Unknown", "1_Real_Unknown/README.md")`
 2. Run:
    ```bash
    python3 5_Symbols/toolbox/nav_sync.py
