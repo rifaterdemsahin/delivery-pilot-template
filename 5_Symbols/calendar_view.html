@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📅 Project Calendar</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: rgba(22, 28, 45, 0.7);
+      --bg-glass: rgba(15, 23, 42, 0.6);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(139, 92, 246, 0.2);
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-violet: #8b5cf6;
+      --accent-cyan: #06b6d4;
+      --accent-green: #10b981;
+      --accent-yellow: #f59e0b;
+      --accent-red: #ef4444;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.15) 0px, transparent 50%);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .calendar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .calendar-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .calendar-controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .view-toggle {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      padding: 0.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .view-btn {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .view-btn.active {
+      background: var(--accent-violet);
+      color: white;
+    }
+
+    .view-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+    }
+
+    .month-nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .nav-btn:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.1);
+    }
+
+    .current-month {
+      font-size: 1.1rem;
+      font-weight: 600;
+      min-width: 150px;
+      text-align: center;
+    }
+
+    .calendar-grid {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(16px);
+    }
+
+    .weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .weekday {
+      text-align: center;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+    }
+
+    .day-cell {
+      aspect-ratio: 1;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .day-cell:hover {
+      background: rgba(6, 182, 212, 0.08);
+      border-color: var(--accent-cyan);
+    }
+
+    .day-cell.other-month {
+      opacity: 0.3;
+    }
+
+    .day-cell.today {
+      border-color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.1);
+    }
+
+    .day-cell.has-event {
+      border-color: var(--accent-violet);
+    }
+
+    .day-number {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+    }
+
+    .event-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 2px;
+    }
+
+    .event-dot.milestone {
+      background: var(--accent-violet);
+    }
+
+    .event-dot.deadline {
+      background: var(--accent-red);
+    }
+
+    .event-dot.review {
+      background: var(--accent-yellow);
+    }
+
+    .event-dot.deploy {
+      background: var(--accent-green);
+    }
+
+    .legend {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .event-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 2rem;
+      backdrop-filter: blur(16px);
+    }
+
+    .event-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .event-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .event-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: var(--transition);
+    }
+
+    .event-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--border-glow);
+    }
+
+    .event-date {
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .event-date-day {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .event-date-month {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .event-info {
+      flex: 1;
+    }
+
+    .event-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      font-size: 1.05rem;
+    }
+
+    .event-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .event-type {
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .event-type.milestone {
+      background: rgba(139, 92, 246, 0.2);
+      color: var(--accent-violet);
+    }
+
+    .event-type.deadline {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--accent-red);
+    }
+
+    .event-type.review {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--accent-yellow);
+    }
+
+    .event-type.deploy {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-green);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .back-link:hover {
+      color: var(--accent-cyan);
+      transform: translateX(-4px);
+    }
+
+    .config-note {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .config-note strong {
+      color: var(--accent-yellow);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      .calendar-title {
+        font-size: 1.5rem;
+      }
+
+      .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .day-cell {
+        padding: 0.25rem;
+        font-size: 0.85rem;
+      }
+
+      .weekday {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+      }
+
+      .legend {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calendar-container">
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i>
+      <span>Back to Home</span>
+    </a>
+
+    <div class="calendar-header">
+      <h1 class="calendar-title">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Project Calendar</span>
+      </h1>
+      
+      <div class="calendar-controls">
+        <div class="view-toggle">
+          <button class="view-btn active" data-view="month">Month</button>
+          <button class="view-btn" data-view="list">List</button>
+        </div>
+        
+        <div class="month-nav">
+          <button class="nav-btn" id="prevMonth">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="current-month" id="currentMonth"></div>
+          <button class="nav-btn" id="nextMonth">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="monthView">
+      <div class="calendar-grid">
+        <div class="weekdays">
+          <div class="weekday">Sun</div>
+          <div class="weekday">Mon</div>
+          <div class="weekday">Tue</div>
+          <div class="weekday">Wed</div>
+          <div class="weekday">Thu</div>
+          <div class="weekday">Fri</div>
+          <div class="weekday">Sat</div>
+        </div>
+        <div class="days-grid" id="daysGrid"></div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--accent-violet);"></div>
+          <span>Milestone</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--accent-red);"></div>
+          <span>Deadline</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--accent-yellow);"></div>
+          <span>Review</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--accent-green);"></div>
+          <span>Deploy</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="listView" style="display: none;">
+      <div class="event-panel">
+        <h3>
+          <i class="fas fa-list"></i>
+          <span>Upcoming Events</span>
+        </h3>
+        <div class="event-list" id="eventList"></div>
+      </div>
+    </div>
+
+    <div class="config-note">
+      <strong>📝 Configuration:</strong> Edit calendar events in <code>calendar_config.json</code> (or customize this component to pull from your project's task/schedule files). Each event supports: date, title, description, and type (milestone, deadline, review, deploy).
+    </div>
+  </div>
+
+  <script>
+    let currentDate = new Date();
+    let currentView = 'month';
+
+    const sampleEvents = [
+      {
+        date: '2026-09-25',
+        title: 'Stage 1 Completion',
+        description: 'Complete Real Unknown documentation and OKRs',
+        type: 'milestone'
+      },
+      {
+        date: '2026-09-28',
+        title: 'Environment Setup Review',
+        description: 'Review all tools and dependencies are configured',
+        type: 'review'
+      },
+      {
+        date: '2026-09-30',
+        title: 'Design Mockups Due',
+        description: 'Finalize all Stage 3 simulation designs',
+        type: 'deadline'
+      },
+      {
+        date: '2026-10-05',
+        title: 'Formula Specs Approved',
+        description: 'Get stakeholder sign-off on all specs',
+        type: 'milestone'
+      },
+      {
+        date: '2026-10-10',
+        title: 'First Deploy',
+        description: 'Deploy initial prototype to GitHub Pages',
+        type: 'deploy'
+      },
+      {
+        date: '2026-10-15',
+        title: 'Code Review',
+        description: 'Review Stage 5 implementation',
+        type: 'review'
+      },
+      {
+        date: '2026-10-20',
+        title: 'Testing Complete',
+        description: 'All Stage 7 smoke tests passing',
+        type: 'milestone'
+      },
+      {
+        date: '2026-10-25',
+        title: 'Production Deploy',
+        description: 'Final deployment to production',
+        type: 'deploy'
+      }
+    ];
+
+    let events = [];
+
+    async function loadEvents() {
+      try {
+        const response = await fetch('calendar_config.json');
+        if (response.ok) {
+          const data = await response.json();
+          events = data.events || sampleEvents;
+        } else {
+          events = sampleEvents;
+        }
+      } catch (error) {
+        console.log('Using sample events');
+        events = sampleEvents;
+      }
+      renderCalendar();
+      renderEventList();
+    }
+
+    function renderCalendar() {
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+      
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                          'July', 'August', 'September', 'October', 'November', 'December'];
+      
+      document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year}`;
+      
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const daysInPrevMonth = new Date(year, month, 0).getDate();
+      
+      const daysGrid = document.getElementById('daysGrid');
+      daysGrid.innerHTML = '';
+      
+      const today = new Date();
+      const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
+      const todayDate = today.getDate();
+      
+      for (let i = firstDay - 1; i >= 0; i--) {
+        const dayCell = createDayCell(daysInPrevMonth - i, true, year, month - 1);
+        daysGrid.appendChild(dayCell);
+      }
+      
+      for (let day = 1; day <= daysInMonth; day++) {
+        const isToday = isCurrentMonth && day === todayDate;
+        const dayCell = createDayCell(day, false, year, month, isToday);
+        daysGrid.appendChild(dayCell);
+      }
+      
+      const remainingCells = 42 - (firstDay + daysInMonth);
+      for (let day = 1; day <= remainingCells; day++) {
+        const dayCell = createDayCell(day, true, year, month + 1);
+        daysGrid.appendChild(dayCell);
+      }
+    }
+
+    function createDayCell(day, isOtherMonth, year, month, isToday = false) {
+      const cell = document.createElement('div');
+      cell.className = 'day-cell';
+      if (isOtherMonth) cell.classList.add('other-month');
+      if (isToday) cell.classList.add('today');
+      
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const dayEvents = events.filter(e => e.date === dateStr);
+      
+      if (dayEvents.length > 0) {
+        cell.classList.add('has-event');
+      }
+      
+      const dayNumber = document.createElement('div');
+      dayNumber.className = 'day-number';
+      dayNumber.textContent = day;
+      cell.appendChild(dayNumber);
+      
+      dayEvents.forEach(event => {
+        const dot = document.createElement('div');
+        dot.className = `event-dot ${event.type}`;
+        dot.title = event.title;
+        cell.appendChild(dot);
+      });
+      
+      return cell;
+    }
+
+    function renderEventList() {
+      const eventList = document.getElementById('eventList');
+      eventList.innerHTML = '';
+      
+      const sortedEvents = [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
+      
+      sortedEvents.forEach(event => {
+        const eventDate = new Date(event.date);
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+        const item = document.createElement('div');
+        item.className = 'event-item';
+        item.innerHTML = `
+          <div class="event-date">
+            <div class="event-date-day">${eventDate.getDate()}</div>
+            <div class="event-date-month">${monthNames[eventDate.getMonth()]}</div>
+          </div>
+          <div class="event-info">
+            <div class="event-title">${event.title}</div>
+            <div class="event-desc">${event.description}</div>
+          </div>
+          <span class="event-type ${event.type}">${event.type}</span>
+        `;
+        eventList.appendChild(item);
+      });
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar();
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar();
+    });
+
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const view = btn.dataset.view;
+        currentView = view;
+        
+        if (view === 'month') {
+          document.getElementById('monthView').style.display = 'block';
+          document.getElementById('listView').style.display = 'none';
+        } else {
+          document.getElementById('monthView').style.display = 'none';
+          document.getElementById('listView').style.display = 'block';
+        }
+      });
+    });
+
+    loadEvents();
+  </script>
+</body>
+</html>
