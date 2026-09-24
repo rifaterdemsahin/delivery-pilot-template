@@ -1,0 +1,52 @@
+{
+  "events": [
+    {
+      "date": "2026-09-25",
+      "title": "Stage 1 Completion",
+      "description": "Complete Real Unknown documentation and OKRs",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-09-28",
+      "title": "Environment Setup Review",
+      "description": "Review all tools and dependencies are configured",
+      "type": "review"
+    },
+    {
+      "date": "2026-09-30",
+      "title": "Design Mockups Due",
+      "description": "Finalize all Stage 3 simulation designs",
+      "type": "deadline"
+    },
+    {
+      "date": "2026-10-05",
+      "title": "Formula Specs Approved",
+      "description": "Get stakeholder sign-off on all specs",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-10-10",
+      "title": "First Deploy",
+      "description": "Deploy initial prototype to GitHub Pages",
+      "type": "deploy"
+    },
+    {
+      "date": "2026-10-15",
+      "title": "Code Review",
+      "description": "Review Stage 5 implementation",
+      "type": "review"
+    },
+    {
+      "date": "2026-10-20",
+      "title": "Testing Complete",
+      "description": "All Stage 7 smoke tests passing",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Production Deploy",
+      "description": "Final deployment to production",
+      "type": "deploy"
+    }
+  ]
+}

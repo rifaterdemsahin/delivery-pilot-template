@@ -111,7 +111,8 @@ Pick one backend target per service (static frontends stay on GitHub Pages):
 | `README.md` | GitHub + Pages URL |
 | `robots.txt`, `sitemap.xml` | SEO at site root |
 | `.gitignore`, `.env.example` | Git and secrets template |
-| `navigation_config.json` | Loaded by root `index.html` |
+| `navigation_config.json` | Loaded by root `index.html` and renderer |
+| `calendar_config.json` | Loaded by calendar view component |
 | `agents.md` + LLM persona files (`claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`, …) | Coordinator contract |
 
 Do not park new docs, scripts, or tool caches next to these. Tool caches (`.antigravitycli/`, `node_modules/`, `.env`) stay gitignored, not in a stage folder.

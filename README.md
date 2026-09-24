@@ -86,8 +86,42 @@ The framework mimics how humans learn: recognize ignorance, build context, visua
 1. Fork or clone this repo
 2. Read `agents.md` for agent coordination rules
 3. Read `1_Real_Unknown/prompts.md` for the project management framework
-4. Start with `1_Real_Unknown/` — define your problem
-5. Let AI agents guide you through each stage
+4. Start with `1_Real_Unknown/` — define your problem and OKRs
+5. Customize the **project menu** with your OKRs and outcomes (not template plumbing)
+6. Update `calendar_config.json` with your project's milestones and deadlines
+7. Let AI agents guide you through each stage
+
+## Product Rules (All Forks Must Follow)
+
+### 1. 🎯 Emojis Required on All Menu Items
+
+Every menu label (both top menu and debug menu) must have a relevant leading emoji. This makes navigation more visual and easier to scan.
+
+### 2. 🎯 Project Menu = OKRs & Outcomes
+
+The **project menu** (always visible top menu) must surface your project's Objectives and Key Results (OKRs) and outcomes — NOT template plumbing. When users land on your live site, they should immediately see:
+- What you're trying to achieve (OKRs)
+- Progress tracking (Dashboard, Kanban)
+- Timeline (Calendar)
+- Project-specific features
+
+**Do NOT put** delivery-pilot stage folders (1_Real_Unknown, 2_Environment, etc.) or template infrastructure in the project menu. Those belong in the Debug Menu.
+
+### 3. 🔧 Template Infrastructure is Background
+
+The delivery-pilot template (debug menu, delivery-template chrome, toolbox/nav sync internals) stays available but secondary. Keep debug/delivery-template items in a secondary/background area:
+- Footer link
+- Collapsed Debug section
+- Clearly labeled secondary menu (bottom-right debug button)
+
+The primary focus when live: **showing that the project is reaching its OKRs**.
+
+### 4. 📅 Calendar View for Schedules
+
+This template includes a **reusable calendar view component** (`5_Symbols/calendar_view.html`) with month/week visual digest. Projects should:
+- Edit `calendar_config.json` to add their milestones, deadlines, reviews, and deploys
+- Include the calendar in their project menu for easy timeline visibility
+- Use calendar types: milestone, deadline, review, deploy
 
 ## Links
 
