@@ -886,3 +886,19 @@ This log documents the thinking phase summaries and reasoning processes of the L
 
 ### 📤 Outcomes & Decisions
 - SPEC-015 + `.claude/skills/harness/SKILL.md` + validator + report. TSK-035 closed. Nav 72 entries, smoke 11/11 green.
+
+---
+
+## 📅 2026-10-08 — Slice 3 live golden runs (TSK-032–034) + bot-branch guard
+
+### 📥 Input / Task
+- "continue" → Slice 3: live golden runs on real bot/* branches with real PRs, guard CI, widen verifier only if needed.
+
+### 💭 Thinking & Reasoning Process
+1. Golden-1's lasting diff couldn't be net-zero (GitHub won't open an empty PR), so the fix commit lands the genuinely useful `.github/workflows/harness.yml` guard — the PR both proves red→green history and delivers the enforcement. Merging it first means the guard checks golden-2's PR.
+2. Golden-2's red came from the orphan check (unsynced page), confirming the smoke gate already covers nav-sync discipline — no new check needed.
+3. Golden-3 needed no branch: refusal + untouched tree IS the pass. The honest boundary from Slice 2 stands — supervised-session runs demonstrate mechanics; detached-runner proof stays pending.
+4. Live finding: thinking-log writes fall outside typical allowed paths. Documented as packet guidance in harness.md; validator left untouched mid-test (don't move the goalposts during the game).
+
+### 📤 Outcomes & Decisions
+- PR #3 (TSK-032) + PR #4 (TSK-033) open, human merges in order. TSK-034 closed by refusal. Verifier unchanged. Bot-ready intake opens after both merges.

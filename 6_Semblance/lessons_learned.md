@@ -107,3 +107,8 @@
 - **Went well:** A tiny ACCEPT/REFUSE script made the skill testable without a live runner; the report rode the nav-sync flow, proving golden-task-2 mechanics incidentally.
 - **Boundary kept:** Dry-run evidence is not live proof — TSK-032–034 still need a real detached runner before `bot-ready` intake. Saying what a chat session cannot validate is part of the harness honesty.
 - **Next:** Slice 3 — live golden runs, then widen the verifier before widening the bot.
+
+## 📅 2026-10-08: Harness Slice 3 — the loop runs, humans merge
+- **Went well:** Both goldens show real red→green history on real branches; the guard workflow turns today's lesson (PR body fields) into tomorrow's enforcement. Churn discipline (restoring the generated smoke report) kept both diffs reviewable.
+- **Finding:** Thinking-gate writes need packet permission — added as guidance, validator hardening deferred so the gate never moves mid-test.
+- **Remaining:** You merge PR #3 then PR #4. After both are green, `bot-ready` intake opens and the harness is fully operational.

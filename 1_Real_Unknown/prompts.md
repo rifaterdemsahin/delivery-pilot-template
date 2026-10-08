@@ -128,3 +128,10 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Prompt:** "continue" (after Slice 1) → build the harness skill + packet validator with dry-run proof.
 - **Purpose:** Give the harness a machine-runnable front door without opening live bot intake.
 - **Done:** SPEC-015, `.claude/skills/harness/SKILL.md`, `5_Symbols/toolbox/harness_packet.py` (3 fixtures: ACCEPT/REFUSE/REFUSE), `7_Testing_Known/harness_slice2_report.md`, nav-sync (72 entries), smoke 11/11 green. Live golden runs stay the Slice 3 gate.
+
+---
+
+## 2026-10-08 — Harness Slice 3 (Real Agent coordinating Test/Symbols/Semblance)
+- **Prompt:** "continue" (after Slice 2) → live golden runs + branch guard.
+- **Purpose:** Prove the harness loop on real branches/PRs, enforce it in CI.
+- **Done:** PR #3 (TSK-032: red 10/11 → green 11/11 + harness.yml guard), PR #4 (TSK-033: red 10/11 → green 11/11 + golden report), TSK-034 refusal live with clean tree. SPEC-014 Slice-3 status, PR-body template + thinking-log guidance in harness.md. Verifier not widened — existing checks decided all three.

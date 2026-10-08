@@ -38,8 +38,17 @@ Optional: `spec id` (which SPEC may change), `budget` (token/time cap from the b
 4. Change **only** files inside `allowed paths`. Touching anything else = stop.
 5. Run the verifier: `python3 5_Symbols/toolbox/smoke_test.py`. Red means fix (max 3 attempts on the same error) or stop. **Never open a PR on red.**
 6. Update the spec to match what shipped (RULE-001) — only if the packet's `spec id` permits it.
-7. Open **one PR** with branch `bot/<task-id>` → `main`. Body must contain: task id, spec id, smoke-test result, files touched.
+7. Open **one PR** with branch `bot/<task-id>` → `main`. Body must contain these five lines (the `harness.yml` CI guard enforces them):
+   ```
+   Task: TSK-XXX — <outcome>
+   Spec: SPEC-XXX (contract; state whether spec text changed)
+   Smoke: <red proof> → <green result, e.g. 11/11>
+   Files: <touched files>
+   Runner: <schedule job / workflow_dispatch / supervised session>
+   ```
 8. Stop. A person merges. Never auto-merge.
+
+> Packets covering `5_Symbols` edits must list `4_Formula/llm_thinking_log.md` in `allowed paths` — the thinking gate writes there, and touching unlisted paths is a stop (Slice-3 finding).
 
 ## 4. Stop conditions (all mandatory)
 

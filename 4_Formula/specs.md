@@ -185,6 +185,7 @@
   - One verifier: `python3 5_Symbols/toolbox/smoke_test.py` (SPEC-008), same gate as CI. New checks extend the verifier before the bot widens (Slice 3).
   - The nightly autofix loop (`4_Formula/logging_and_autofix.md` §3) follows this contract with the packet filled from the top Axiom error.
   - Golden tasks gate widening: fix a broken menu link, add a markdown page + nav-sync, refuse a secret commit.
+- **Slice-3 status (2026-10-08):** live runs complete on supervised branches — TSK-032 (PR #3, red 10/11 → green 11/11, lands `harness.yml` guard), TSK-033 (PR #4, red 10/11 → green 11/11), TSK-034 refusal with untouched tree. Evidence: `7_Testing_Known/harness_golden_report.md`. Verifier widening **not needed** (existing checks decided all three). `bot-ready` intake opens after both PRs merge green.
 - **Related Files:** `4_Formula/harness.md`, `4_Formula/decisions.md` (ADR-002), `4_Formula/logging_and_autofix.md`, `2_Environment/github_agent.md`, `1_Real_Unknown/tasks.md`, `5_Symbols/toolbox/smoke_test.py`, `.github/workflows/static.yml`
 - **Last Updated:** 2026-10-08
 
