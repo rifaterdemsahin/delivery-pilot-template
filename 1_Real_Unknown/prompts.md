@@ -135,3 +135,10 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Prompt:** "continue" (after Slice 2) → live golden runs + branch guard.
 - **Purpose:** Prove the harness loop on real branches/PRs, enforce it in CI.
 - **Done:** PR #3 (TSK-032: red 10/11 → green 11/11 + harness.yml guard), PR #4 (TSK-033: red 10/11 → green 11/11 + golden report), TSK-034 refusal live with clean tree. SPEC-014 Slice-3 status, PR-body template + thinking-log guidance in harness.md. Verifier not widened — existing checks decided all three.
+
+---
+
+## 2026-10-08 — Harness completion (Real Agent)
+- **Prompt:** "merge it all to the main brain and complete" → merge golden PRs, close out.
+- **Purpose:** Land the proven harness on main and open bot-ready intake.
+- **Done:** PR #3 + PR #4 merged (merge commits, branches deleted), post-merge smoke 11/11 green, TSK-032/033 closed, SPEC-014 intake OPEN.

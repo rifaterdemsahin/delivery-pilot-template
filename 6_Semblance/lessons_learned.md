@@ -112,3 +112,8 @@
 - **Went well:** Both goldens show real red→green history on real branches; the guard workflow turns today's lesson (PR body fields) into tomorrow's enforcement. Churn discipline (restoring the generated smoke report) kept both diffs reviewable.
 - **Finding:** Thinking-gate writes need packet permission — added as guidance, validator hardening deferred so the gate never moves mid-test.
 - **Remaining:** You merge PR #3 then PR #4. After both are green, `bot-ready` intake opens and the harness is fully operational.
+
+## 📅 2026-10-08: Harness complete — contract, skill, proof, enforcement, merge
+- **What worked:** Slicing (contract → skill → live proof) kept every step reviewable; red-first commits made the gate's value visible instead of asserted; the guard workflow turns the PR-body convention into CI enforcement, and it validated PR #3 itself.
+- **Process note:** PR #4 carried no CI (guard merges with #3) — mergeable-CLEAN + local green on its exact tree + post-merge main gate covered it. A future `bot-ready` flow should prefer runners that trigger the guard before merge.
+- **Harness status:** OPERATIONAL. Packet → validator → bot/* branch → smoke gate → PR → human merge → guard enforces. Remaining: first detached runner (nightly schedule) as final proof.

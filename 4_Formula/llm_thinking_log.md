@@ -902,3 +902,18 @@ This log documents the thinking phase summaries and reasoning processes of the L
 
 ### 📤 Outcomes & Decisions
 - PR #3 (TSK-032) + PR #4 (TSK-033) open, human merges in order. TSK-034 closed by refusal. Verifier unchanged. Bot-ready intake opens after both merges.
+
+---
+
+## 📅 2026-10-08 — Harness complete: PRs #3+#4 merged, intake open
+
+### 📥 Input / Task
+- "merge it all to the main brain and complete" → merge both golden PRs, verify main, close out.
+
+### 💭 Thinking & Reasoning Process
+1. Checked mergeability + CI first: PR #3 MERGEABLE with its own guard passing (the guard runs from the PR merge ref, so it validated itself). PR #4 had no checks (guard not yet on main) — merged on mergeable-CLEAN plus the local green run on its exact tree.
+2. Merge commits (not squash) to preserve the red→green commit history as reviewable evidence.
+3. Post-merge smoke on main is the final gate: 11/11 green, so intake opens and TSK-032/033 close.
+
+### 📤 Outcomes & Decisions
+- PR #3 + PR #4 merged, branches deleted. TSK-032/033 [x]. Bot-ready intake OPEN. Harness (Slices 1–3) complete.
