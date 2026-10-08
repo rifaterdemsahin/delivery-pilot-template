@@ -102,3 +102,8 @@
 - **Went well:** SPEC-014 + runbook + ADR-002 landed as docs only; nav-sync and smoke gate caught the new page automatically (11/11 green, 70 menu entries).
 - **Gap it closed:** Confirmation-per-change and RULE-002 assumed a human in chat; ADR-002 gives bots a separate lane (confirm once on packet, branch + PR, human merges).
 - **Next:** Slice 2 — one harness skill, proven on golden tasks TSK-032–034 before any `bot-ready` intake. Verifier widens before the bot does.
+
+## 📅 2026-10-08: Harness Slice 2 — validator before runner
+- **Went well:** A tiny ACCEPT/REFUSE script made the skill testable without a live runner; the report rode the nav-sync flow, proving golden-task-2 mechanics incidentally.
+- **Boundary kept:** Dry-run evidence is not live proof — TSK-032–034 still need a real detached runner before `bot-ready` intake. Saying what a chat session cannot validate is part of the harness honesty.
+- **Next:** Slice 3 — live golden runs, then widen the verifier before widening the bot.

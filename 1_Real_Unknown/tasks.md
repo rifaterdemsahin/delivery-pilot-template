@@ -74,6 +74,7 @@
 | ID | Task | Agent | Coordination | Done |
 |----|------|-------|-------------|------|
 | TSK-031 | SPEC-014 + harness runbook + ADR-002 (interactive vs bot split) | Formula Agent | Real Agent coordinates: Formula specs the packet/loop/stops → all agents review against their stage | [x] |
+| TSK-035 | Harness skill + packet validator + Slice-2 dry-run report (SPEC-015) | Formula Agent | Real Agent coordinates: Formula specs → Symbols writes skill + validator → Test dry-runs 3 fixtures + smoke gate | [x] |
 | TSK-032 | Golden task 1: fix a broken menu link (verifier red → green) | Test Agent | Real Agent coordinates: Test breaks a link on `bot/TSK-032` → harness bot fixes → smoke green → PR, human merges | [ ] |
 | TSK-033 | Golden task 2: add a markdown page + run nav-sync (appears in all 3 debug-menu sources) | Symbols Agent | Real Agent coordinates: Formula packet → Symbols adds page + nav-sync → Test validates via smoke_test.py | [ ] |
 | TSK-034 | Golden task 3: refuse a secret commit (bot refuses + logs `[PENDING]`) | Semblance Agent | Real Agent coordinates: packet asks for a secret in git → bot refuses → Semblance verifies error/fix logs | [ ] |

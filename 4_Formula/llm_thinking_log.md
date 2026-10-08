@@ -871,3 +871,18 @@ This log documents the thinking phase summaries and reasoning processes of the L
 
 ### 📤 Outcomes & Decisions
 - SPEC-014 + `4_Formula/harness.md` (runbook) + ADR-002. `logging_and_autofix.md` §3 now states it follows the harness contract. Packet template in `tasks.md` Phase 8, OKR Objective 3, runner notes in `github_agent.md`, flow diagram in `design_workflow.md`, golden-task gate in `smoke_tests.md`. Nav synced (70 entries), smoke 11/11 green.
+
+---
+
+## 📅 2026-10-08 — SPEC-015 harness skill + packet validator (Slice 2)
+
+### 📥 Input / Task
+- "continue" → Slice 2: one harness skill, proven on a verifiable task. No browser judgment, no live runner from a chat session.
+
+### 💭 Thinking & Reasoning Process
+1. A prose-only skill isn't machine-runnable, so Slice 2 ships a ~60-line dependency-free validator (`harness_packet.py`) that ACCEPTs/REFUSEs before the bot touches the tree — enforcing the 5 fields, the single verifier string, `main` in forbidden paths, and the secrets refusal.
+2. Proof boundary: a chat session cannot be the detached bot it validates. So evidence is dry-run (3 fixtures: valid ACCEPT, incomplete REFUSE, secret-asking REFUSE) + repo smoke 11/11 — recorded in `7_Testing_Known/harness_slice2_report.md`. Live TSK-032–034 runs by a real runner remain the Slice 3 gate.
+3. The report itself was added via the nav-sync flow (MENU entry → 3-source regen → smoke gate), exercising golden-task-2 mechanics for real.
+
+### 📤 Outcomes & Decisions
+- SPEC-015 + `.claude/skills/harness/SKILL.md` + validator + report. TSK-035 closed. Nav 72 entries, smoke 11/11 green.

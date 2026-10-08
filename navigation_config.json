@@ -67,6 +67,7 @@
     {"label": "   ├─ 🧪 Smoke Test Report", "url": "6_Semblance/smoke_test_report.md"},
     {"label": "✅ 7. Testing Known", "url": "7_Testing_Known/README.md"},
     {"label": "   ├─ 🧪 Smoke Tests", "url": "7_Testing_Known/smoke_tests.md"},
+    {"label": "   ├─ 🤖 Harness Slice-2 Report", "url": "7_Testing_Known/harness_slice2_report.md"},
     {"label": "   ├─ 🧩 Logic Tracker", "url": "7_Testing_Known/logic.md"},
     {"label": "   ├─ ✅ Validation Report", "url": "7_Testing_Known/validation_report.md"},
     {"label": "   ├─ 📋 Sanity Data Source", "url": "7_Testing_Known/sanity_check_report.md"},

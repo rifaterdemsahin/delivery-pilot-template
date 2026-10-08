@@ -121,3 +121,10 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Prompt:** "implement these updates" (harness advice: SPEC-014, harness.md, nightly-autofix alignment — Slice 1 contract only).
 - **Purpose:** Make bot-driven development machine-runnable: packet → branch → verifier → PR → human merge.
 - **Done:** SPEC-014, `4_Formula/harness.md`, ADR-002, packet template + Phase 8 tasks (TSK-031–034), OKR Objective 3, runner notes, flow diagram, golden-task gate, nav-sync (70 entries), smoke 11/11 green.
+
+---
+
+## 2026-10-08 — Harness Slice 2 (Formula Agent)
+- **Prompt:** "continue" (after Slice 1) → build the harness skill + packet validator with dry-run proof.
+- **Purpose:** Give the harness a machine-runnable front door without opening live bot intake.
+- **Done:** SPEC-015, `.claude/skills/harness/SKILL.md`, `5_Symbols/toolbox/harness_packet.py` (3 fixtures: ACCEPT/REFUSE/REFUSE), `7_Testing_Known/harness_slice2_report.md`, nav-sync (72 entries), smoke 11/11 green. Live golden runs stay the Slice 3 gate.
