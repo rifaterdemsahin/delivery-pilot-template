@@ -175,6 +175,19 @@
 - **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/file_organization.md`, `agents.md`, `5_Symbols/toolbox/smoke_test.py`, `README.md`
 - **Last Updated:** 2026-09-10
 
+### SPEC-014: AI Harness — Bot-Driven Development Contract
+- **Status:** Active
+- **Description:** The machine-runnable contract for bot-driven development. One bot run consumes one task packet and produces one pull request. The bot runs as a Symbols Agent with a Test Agent exit gate — not a new agent system. Runbook: `4_Formula/harness.md`. Interactive chat keeps today's rules; the harness bot uses the ADR-002 split (confirm once on the packet, branch + verifier + PR, human merges to `main`).
+- **Key Behaviors:**
+  - Task packet has 5 mandatory fields: `id`, `outcome` (one sentence), `allowed paths`, `forbidden paths`, `verifier`. Missing field = bot refuses to start. Packet lives in `1_Real_Unknown/tasks.md` or a `bot-ready` GitHub issue.
+  - Loop: read `agents.md` + operating rules + named specs → plan in `llm_thinking_log.md` before editing `5_Symbols/` → branch `bot/<task-id>` from clean `main` → touch only `allowed paths` → run `python3 5_Symbols/toolbox/smoke_test.py` → update spec per RULE-001 (only if packet permits) → open one PR (`bot/<task-id>` → `main`, body = task id + spec id + smoke result + files) → stop, human merges.
+  - Stop conditions (mandatory): verifier green or 3 failed attempts; touch outside allowed paths; spec change without packet permission; secrets / force-push / write to `main`; budget exceeded (`1_Real_Unknown/costs.md`); nightly idle guard (uncommitted changes, recent `main` commit, open `wip` PR → skip). Early stop = leave branch, `[PENDING]` in `6_Semblance/fix.log`, error in `6_Semblance/error.log`, bullet in `lessons_learned.md`. Never guess, never auto-merge, never PR on red.
+  - One verifier: `python3 5_Symbols/toolbox/smoke_test.py` (SPEC-008), same gate as CI. New checks extend the verifier before the bot widens (Slice 3).
+  - The nightly autofix loop (`4_Formula/logging_and_autofix.md` §3) follows this contract with the packet filled from the top Axiom error.
+  - Golden tasks gate widening: fix a broken menu link, add a markdown page + nav-sync, refuse a secret commit.
+- **Related Files:** `4_Formula/harness.md`, `4_Formula/decisions.md` (ADR-002), `4_Formula/logging_and_autofix.md`, `2_Environment/github_agent.md`, `1_Real_Unknown/tasks.md`, `5_Symbols/toolbox/smoke_test.py`, `.github/workflows/static.yml`
+- **Last Updated:** 2026-10-08
+
 ---
 
 ## Spec Template

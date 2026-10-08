@@ -106,6 +106,8 @@ Every error event must carry enough context for an agent to act:
 
 ## 3️⃣ Continuous Fix — Nightly Agent
 
+> This loop **follows the AI harness contract** (`4_Formula/harness.md`, SPEC-014) with the task packet filled from the top Axiom error. Same branch rule (`bot/` or `autofix/`), same verifier, same stop conditions, same never-auto-merge gate. What follows is the repair-specific instantiation — not a second harness.
+
 A scheduled agent that runs **when no one is actively coding** (overnight), finds errors, fixes them, and leaves a reviewable PR by morning. Set it up with the `/schedule` skill (a cron-based cloud agent).
 
 ### Trigger & "not actively coding" guard
