@@ -917,3 +917,18 @@ This log documents the thinking phase summaries and reasoning processes of the L
 
 ### 📤 Outcomes & Decisions
 - PR #3 + PR #4 merged, branches deleted. TSK-032/033 [x]. Bot-ready intake OPEN. Harness (Slices 1–3) complete.
+
+---
+
+## 📅 2026-10-08 — Grocery bot spec catalogued in Formula
+
+### 📥 Input / Task
+- Add the Grocery bot spec (v1.0, Grok Bot agent) to the Formula folder.
+
+### 💭 Thinking & Reasoning Process
+1. Placed at `4_Formula/grocery_bot_spec.md` (specs live in Formula; RULE-005 compliant). Body kept intact; only a stage breadcrumb header added for consistency with sibling docs.
+2. Kept separate from the normative `specs.md` numbering — it records an external agent's contract, not template behavior. Promote to SPEC-016 only if it starts governing template code.
+3. Secrets check: content carries placeholders only (`<WEBHOOK_URL>`, `<API_KEY>`), consistent with its own operating rules — smoke secrets scan green.
+
+### 📤 Outcomes & Decisions
+- File added, MENU entry after Agent Creation, nav synced (74 entries), smoke 11/11 green.

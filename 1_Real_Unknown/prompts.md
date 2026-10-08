@@ -142,3 +142,10 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Prompt:** "merge it all to the main brain and complete" → merge golden PRs, close out.
 - **Purpose:** Land the proven harness on main and open bot-ready intake.
 - **Done:** PR #3 + PR #4 merged (merge commits, branches deleted), post-merge smoke 11/11 green, TSK-032/033 closed, SPEC-014 intake OPEN.
+
+---
+
+## 2026-10-08 — Grocery bot spec (Symbols/Formula Agent)
+- **Prompt:** "add this to generic bot spec to the formula folder" (Grocery specs v1.0).
+- **Purpose:** Catalogue the external Grocery bot contract in Stage 4.
+- **Done:** `4_Formula/grocery_bot_spec.md`, MENU entry, nav-sync (74 entries), smoke 11/11 green.

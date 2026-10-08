@@ -55,6 +55,7 @@ MENU = [
     ("   ├─ 📊 Logging & Auto-Fix", "4_Formula/logging_and_autofix.md"),
     ("   ├─ 🤖 Harness (Bot Contract)", "4_Formula/harness.md"),
     ("   ├─ 🤖 Agent Creation", "4_Formula/agent_creation.md"),
+    ("   ├─ 🛒 Grocery Bot Spec", "4_Formula/grocery_bot_spec.md"),
     ("   ├─ 📊 TOGAF Gap Analysis", "4_Formula/togaf_gap_analysis.md"),
     ("💻 5. Symbols", "5_Symbols/README.md"),
     ("   ├─ 📜 Agent Operating Rules", "5_Symbols/rules/agent_operating_rules.md"),
