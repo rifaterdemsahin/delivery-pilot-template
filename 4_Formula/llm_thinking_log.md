@@ -947,3 +947,17 @@ This log documents the thinking phase summaries and reasoning processes of the L
 
 ### 📤 Outcomes & Decisions
 - Generic `bot_spec.md`, menu label `🤖 Bot Spec (Template)`, 74 entries, smoke 11/11 green.
+
+---
+
+## 📅 2026-10-08 — README Refactor/Init prompts carry harness + bot-spec
+
+### 📥 Input / Task
+- "commit push deploy and update the readme init and refactor > push" → update both pasteable prompts, commit, push, verify Pages deploy.
+
+### 💭 Thinking & Reasoning Process
+1. Both prompts already encoded RULE-001–005, Key Vault, nav-sync + smoke-test. The gap: neither mentioned the harness (SPEC-014/015) nor the generic bot spec — a consumer agent bootstrapping today would miss the whole bot-driven lane.
+2. Added the minimal lines: harness loop + guard (Refactor) / packets + PR-per-task (Init), plus copy-`bot_spec.md`-per-agent. SPEC-010 bullet updated so the spec still describes the prompts (RULE-001).
+
+### 📤 Outcomes & Decisions
+- README Refactor + Init updated, SPEC-010 in sync. Commit → push → Pages deploy verified below.

@@ -134,7 +134,7 @@
   - Runtime code must not hardcode the repo where it can derive it (e.g. renderer's GitHub edit URL derives user/repo from the Pages URL)
   - Bootstrap validation: run `python3 5_Symbols/toolbox/smoke_test.py` after replacing placeholders — it is config-driven and needs no adaptation
   - CI/CD is owned by the **Formula Agent**: `.github/workflows/static.yml` runs the smoke test gate, then deploys to GitHub Pages (Continuous Integration → Continuous Delivery → Continuous Deployment)
-  - **Refactor / Init prompts** live in `README.md` and must tell the consumer agent to follow RULE-001–005, use Key Vault `/vaults/dp-kv-deliverypilot/secrets` (do not create a new vault), place files in allowed root folders, then nav-sync + smoke-test + commit/push
+  - **Refactor / Init prompts** live in `README.md` and must tell the consumer agent to follow RULE-001–005, use Key Vault `/vaults/dp-kv-deliverypilot/secrets` (do not create a new vault), place files in allowed root folders, use the AI harness for bot-driven work (SPEC-014/SPEC-015: packet → validator → `bot/<id>` branch → smoke gate → one PR), copy `4_Formula/bot_spec.md` per bot agent, then nav-sync + smoke-test + commit/push
 - **Related Files:** `agents.md`, `claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`, `.github/workflows/static.yml`, `5_Symbols/toolbox/smoke_test.py`, `README.md`
 - **Last Updated:** 2026-09-10
 

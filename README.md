@@ -171,6 +171,10 @@ Save and load all credentials there (Fly.io, Cloudflare Workers, Azure Storage, 
 
 Pull needed skills from popular GitHub skill repos. Place Claude skills in .claude/skills, Kilo skills in .kilo/skills, workflows in .github/workflows.
 
+Bot-driven work uses the AI harness (SPEC-014/SPEC-015, runbook 4_Formula/harness.md): one task packet (id, outcome, allowed/forbidden paths, verifier) → validate with 5_Symbols/toolbox/harness_packet.py → branch bot/<id> → implement → smoke_test.py green → one PR, human merges. Bot PRs are CI-guarded (.github/workflows/harness.yml).
+
+Per-bot specs: copy 4_Formula/bot_spec.md to 4_Formula/bot_spec_<agent>.md and fill in that bot's values.
+
 Then:
   python3 5_Symbols/toolbox/nav_sync.py
   python3 5_Symbols/toolbox/smoke_test.py
@@ -205,6 +209,10 @@ Goal of this project:
   sources are ...
 
 Pull needed skills from popular GitHub skill repos into .claude/skills and .kilo/skills.
+
+Bot-driven work uses the AI harness (SPEC-014/SPEC-015, runbook 4_Formula/harness.md): task packets in 1_Real_Unknown/tasks.md → validate with 5_Symbols/toolbox/harness_packet.py → branch bot/<id> → smoke_test.py green → one PR per task, human merges.
+
+Per-bot specs: copy 4_Formula/bot_spec.md to 4_Formula/bot_spec_<agent>.md per agent and fill in its values.
 
 Then:
   python3 5_Symbols/toolbox/nav_sync.py

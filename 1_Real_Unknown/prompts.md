@@ -156,3 +156,10 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Prompt:** "dont call it grocery_bot_spec, make it generic… scan the project and do the updates, commit and push".
 - **Purpose:** Template-first naming: generic format, Grocery as worked example.
 - **Done:** `git mv` → `4_Formula/bot_spec.md` + template note, MENU relabeled, rescan clean, nav-sync (74 entries), smoke 11/11 green.
+
+---
+
+## 2026-10-08 — README Init/Refactor update + deploy (Formula Agent)
+- **Prompt:** "commit push deploy and update the readme init and refactor > push".
+- **Purpose:** Consumer prompts must teach the harness lane and per-bot specs.
+- **Done:** README Refactor/Init carry harness + bot_spec lines, SPEC-010 synced, pushed, Pages deploy green.
