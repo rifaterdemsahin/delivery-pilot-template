@@ -188,6 +188,16 @@
 - **Related Files:** `4_Formula/harness.md`, `4_Formula/decisions.md` (ADR-002), `4_Formula/logging_and_autofix.md`, `2_Environment/github_agent.md`, `1_Real_Unknown/tasks.md`, `5_Symbols/toolbox/smoke_test.py`, `.github/workflows/static.yml`
 - **Last Updated:** 2026-10-08
 
+### SPEC-015: Harness Skill + Packet Validator (Slice 2)
+- **Status:** Active
+- **Description:** The executable front door of the harness. `.claude/skills/harness/SKILL.md` runs the six-step contract (validate → branch → implement → smoke gate → spec update → one PR); `5_Symbols/toolbox/harness_packet.py` ACCEPTs or REFUSEs the packet before the bot touches the tree. Dry-run evidence in `7_Testing_Known/harness_slice2_report.md`. Live bot-run proof of TSK-032–034 (Slice 3 gate) still requires a real runner — a chat session cannot validate the detached bot.
+- **Key Behaviors:**
+  - Packet validation runs first; REFUSE = no tree changes, `[PENDING]` in `6_Semblance/fix.log`, stop.
+  - Validator enforces the 5 mandatory fields, `TSK-NNN` id, the single verifier string, `main` in forbidden paths, and the secrets-in-git refusal.
+  - Skill never duplicates rules — it points at `4_Formula/harness.md` and SPEC-014.
+- **Related Files:** `.claude/skills/harness/SKILL.md`, `5_Symbols/toolbox/harness_packet.py`, `7_Testing_Known/harness_slice2_report.md`, `4_Formula/harness.md`
+- **Last Updated:** 2026-10-08
+
 ---
 
 ## Spec Template
