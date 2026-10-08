@@ -4,11 +4,11 @@
 > Latest run overwrites this file; one report per test run.
 
 ## Run Info
-- **Date:** 2026-10-08 20:28
-- **Trigger:** harness TSK-033 (red proof)
+- **Date:** 2026-10-08 20:26
+- **Trigger:** harness slice-2 (SPEC-015)
 - **Mode:** Local filesystem
 - **Tester:** smoke_test.py (automated)
-- **Verdict:** ❌ 1 FAILURE(S)
+- **Verdict:** ✅ ALL PASS
 
 ## Results Summary
 | Test | Result | Detail |
@@ -19,7 +19,7 @@
 | Project Menu | ✅ Pass | — |
 | Debug Menu | ✅ Pass | — |
 | Nav 3-Way Sync | ✅ Pass | — |
-| Stage Docs In Menu | ❌ Fail | orphaned: ['7_Testing_Known/harness_golden_report.md'] |
+| Stage Docs In Menu | ✅ Pass | — |
 | Social Links | ✅ Pass | — |
 | README Pages URL | ✅ Pass | — |
 | Secrets Scan | ✅ Pass | — |
@@ -27,10 +27,7 @@
 
 ## Failures
 
-### #1 — Stage Docs In Menu
-- **Error:** orphaned: ['7_Testing_Known/harness_golden_report.md']
-- **GitHub Issue:** _create per the Smoke Tests & GitHub Issues rule_
-- **Status:** Open
+None — all smoke tests passed. ✨
 
 ## Rules Applied
 - Every failure gets a GitHub Issue (`[SMOKE-FAIL] <test> — <description>`)
