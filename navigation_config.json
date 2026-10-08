@@ -8,7 +8,7 @@
   "debugMenu": [
     {"label": "🎯 1. Real Unknown", "url": "1_Real_Unknown/README.md"},
     {"label": "   ├─ 📋 Problem Statement", "url": "1_Real_Unknown/problem_statement.md"},
-    {"label": "   ├─ 🎯 OKRs", "url": "1_Real_Unknown/okrs.md"},
+    {"label": "   ├─ 🎯 OKRs", "url": "1_Real_Unknown/okrs_missing.md"},
     {"label": "   ├─ 💡 Hypotheses", "url": "1_Real_Unknown/hypotheses.md"},
     {"label": "   ├─ ❓ Questions", "url": "1_Real_Unknown/questions.md"},
     {"label": "   ├─ 📊 Kanban Board", "url": "1_Real_Unknown/kanban.md"},
