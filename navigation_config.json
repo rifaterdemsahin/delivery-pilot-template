@@ -51,6 +51,7 @@
     {"label": "   ├─ 🔌 Extensions", "url": "4_Formula/extensions.md"},
     {"label": "   ├─ 🧭 Navigation", "url": "4_Formula/navigation.md"},
     {"label": "   ├─ 📊 Logging & Auto-Fix", "url": "4_Formula/logging_and_autofix.md"},
+    {"label": "   ├─ 🤖 Harness (Bot Contract)", "url": "4_Formula/harness.md"},
     {"label": "   ├─ 🤖 Agent Creation", "url": "4_Formula/agent_creation.md"},
     {"label": "   ├─ 📊 TOGAF Gap Analysis", "url": "4_Formula/togaf_gap_analysis.md"},
     {"label": "💻 5. Symbols", "url": "5_Symbols/README.md"},

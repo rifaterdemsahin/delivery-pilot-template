@@ -114,3 +114,10 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 | 2026-09-10 | Grok | Add deploy + storage rules | Backends deploy to Fly.io or Cloudflare Workers by requirements; heavy containers → Fly.io; both take Key Vault credentials; default storage is Azure project-based storage | RULE-003/004 in agent_operating_rules.md; SPEC-012; architecture, fly_io, cloudflare_workers, tools, setup_azure aligned |
 | 2026-09-10 | Grok | Add root-folder rule | Root folders are .claude/skills, .github/workflows, .kilo/skills, and the 7 stages; move others into related subfolders | RULE-005 + SPEC-013; file_organization.md aligned; coordinator/personas updated |
 | 2026-09-10 | Grok | Update README refactor command and fix project using the rules | Refactor prompt must reflect RULE-001–005; fix this repo (kilo.json at root) | README Refactor/Init rewritten; kilo.json → .kilo/kilo.json; smoke Root Layout check; SPEC-008/010/013 updated |
+
+---
+
+## 2026-10-08 — AI harness Slice 1 (Formula Agent)
+- **Prompt:** "implement these updates" (harness advice: SPEC-014, harness.md, nightly-autofix alignment — Slice 1 contract only).
+- **Purpose:** Make bot-driven development machine-runnable: packet → branch → verifier → PR → human merge.
+- **Done:** SPEC-014, `4_Formula/harness.md`, ADR-002, packet template + Phase 8 tasks (TSK-031–034), OKR Objective 3, runner notes, flow diagram, golden-task gate, nav-sync (70 entries), smoke 11/11 green.

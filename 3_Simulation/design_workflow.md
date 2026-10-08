@@ -49,3 +49,24 @@ Designs here in `3_Simulation/` and specs in `4_Formula/specs.md` work together:
 | `feature_mockup.png` | `SPEC-XXX` in `4_Formula/specs.md` |
 
 When a spec changes, the corresponding design should be updated. When a design is revised, check that the spec still matches.
+
+## Harness flow (SPEC-014)
+
+Bot-driven runs follow the packet → branch → verifier → PR → human merge flow. Mermaid source of truth (rendered wherever Mermaid is available):
+
+```mermaid
+flowchart LR
+    P["📦 Task packet<br/>id · outcome · allowed/forbidden paths · verifier"]
+    B["🌿 bot/task-id<br/>from clean main"]
+    I["🛠 Implement<br/>allowed paths only"]
+    V{"🧪 smoke_test.py<br/>green?"}
+    R["🔀 One PR<br/>task + spec + smoke result + files"]
+    H["🧑 Human merges<br/>never auto-merge"]
+    S["🩷 Semblance<br/>[PENDING] + error/fix logs"]
+    P --> B --> I --> V
+    V -- "red (≤3 tries)" --> I
+    V -- "green" --> R --> H
+    V -- "stop condition" --> S
+```
+
+Related: `4_Formula/harness.md`, SPEC-014, `1_Real_Unknown/tasks.md` Phase 8.

@@ -109,6 +109,11 @@ The token is **never** stored in code, config files, or git history. It lives ex
 | `6_Semblance/` | error.log, fix.log, and smoke_test_report.md updated by the agent |
 | `4_Formula/logging_and_autofix.md` | Nightly continuous-fix recipe that orchestrates the agent |
 | GitHub Issues | Errors opened as issues, fixes linked via PRs |
+| `4_Formula/harness.md` (SPEC-014) | **The harness contract this agent follows** — packet in, one PR out, `smoke_test.py` as the exit gate, mandatory stops |
+
+## Harness runners
+
+The contract is runner-neutral. Repair runs use the Cursor `/schedule` nightly job or a GitHub Action `workflow_dispatch`; feature tasks use a `bot-ready` issue as the packet. All runners load `GITHUB_AGENT_TOKEN` (and `AXIOM_TOKEN` for repair) from Azure Key Vault at runtime — same rule as §Token Setup. Branch per run: `bot/<task-id>` (or `autofix/nightly-YYYY-MM-DD` for repair). See `4_Formula/harness.md` §5.
 
 ## Rules
 

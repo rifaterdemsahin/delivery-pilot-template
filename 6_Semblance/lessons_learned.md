@@ -97,3 +97,8 @@
 
 ### Takeaway for Future AI Agents
 - Load `5_Symbols/rules/agent_operating_rules.md` at session start. After work: write the spec in `4_Formula/specs.md`, then commit and push.
+
+## 📅 2026-10-08: Harness Slice 1 — contract before runtime
+- **Went well:** SPEC-014 + runbook + ADR-002 landed as docs only; nav-sync and smoke gate caught the new page automatically (11/11 green, 70 menu entries).
+- **Gap it closed:** Confirmation-per-change and RULE-002 assumed a human in chat; ADR-002 gives bots a separate lane (confirm once on packet, branch + PR, human merges).
+- **Next:** Slice 2 — one harness skill, proven on golden tasks TSK-032–034 before any `bot-ready` intake. Verifier widens before the bot does.

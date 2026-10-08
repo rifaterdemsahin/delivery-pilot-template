@@ -4,8 +4,8 @@
 > Latest run overwrites this file; one report per test run.
 
 ## Run Info
-- **Date:** 2026-09-23 17:02
-- **Trigger:** Manual run
+- **Date:** 2026-10-08 20:24
+- **Trigger:** harness slice-1 (SPEC-014, rebased)
 - **Mode:** Local filesystem
 - **Tester:** smoke_test.py (automated)
 - **Verdict:** ✅ ALL PASS

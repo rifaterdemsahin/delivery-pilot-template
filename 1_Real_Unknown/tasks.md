@@ -67,6 +67,28 @@
 | TSK-025 | Deploy to GitHub Pages and verify | Symbols Agent | Real Agent coordinates: Symbols pushes → Test Agent runs smoke tests → Semblance reports → Real Agent verifies OKRs met | [ ] |
 | TSK-026 | Publish retrospective in 6_Semblance/lessons_learned.md | Semblance Agent | Real Agent coordinates: gathers lessons from all agents → Semblance compiles → feeds back to Real Agent for next cycle | [ ] |
 
+## Phase 8: AI Harness — Bot-Driven Development (Slice 1: contract)
+
+> Slice 1 is **contract only** — SPEC-014 + `4_Formula/harness.md` + ADR-002. No new runtime. Slices 2–3 (harness skill, golden-task proof, `bot-ready` issues) follow after this contract is reviewed.
+
+| ID | Task | Agent | Coordination | Done |
+|----|------|-------|-------------|------|
+| TSK-031 | SPEC-014 + harness runbook + ADR-002 (interactive vs bot split) | Formula Agent | Real Agent coordinates: Formula specs the packet/loop/stops → all agents review against their stage | [x] |
+| TSK-032 | Golden task 1: fix a broken menu link (verifier red → green) | Test Agent | Real Agent coordinates: Test breaks a link on `bot/TSK-032` → harness bot fixes → smoke green → PR, human merges | [ ] |
+| TSK-033 | Golden task 2: add a markdown page + run nav-sync (appears in all 3 debug-menu sources) | Symbols Agent | Real Agent coordinates: Formula packet → Symbols adds page + nav-sync → Test validates via smoke_test.py | [ ] |
+| TSK-034 | Golden task 3: refuse a secret commit (bot refuses + logs `[PENDING]`) | Semblance Agent | Real Agent coordinates: packet asks for a secret in git → bot refuses → Semblance verifies error/fix logs | [ ] |
+
+### Task packet template (SPEC-014 — bot refuses to start if any field is missing)
+
+```markdown
+- id: TSK-XXX
+- outcome: [one sentence — done means what]
+- allowed paths: [files/dirs the bot may touch]
+- forbidden paths: [never touch — e.g. main branch, .env, Key Vault secrets]
+- verifier: python3 5_Symbols/toolbox/smoke_test.py
+- spec id (optional): [which SPEC may change, if any]
+```
+
 ## Task Management Rules
 
 1. **Real Agent owns this file** — breaks the project into phases and tasks, assigns agents, coordinates complex tasks

@@ -856,3 +856,18 @@ This log documents the thinking phase summaries and reasoning processes of the L
 ### 📤 Outcomes & Decisions
 - README Refactor + Init prompts encode RULE-001–005, Key Vault `/vaults/dp-kv-deliverypilot/secrets` (do not create a new vault), then nav-sync + smoke-test.
 - `kilo.json` → `.kilo/kilo.json`. Smoke test **Root Layout (RULE-005)** added.
+
+---
+
+## 📅 2026-10-08 — SPEC-014 AI harness contract (Slice 1)
+
+### 📥 Input / Task
+- Implement the harness advice as Slice 1 (contract only): task packet, branch rule, verifier, stop conditions. Nightly autofix follows the same contract. No new runtime.
+
+### 💭 Thinking & Reasoning Process
+1. The template already had every harness part but written for a person steering chat — the missing piece was a machine-runnable contract with a refusal rule (missing packet field = refuse) and a single exit gate (`smoke_test.py`).
+2. Two standing orders blocked bots: per-change confirmation and RULE-002 pushing on the working branch. ADR-002 splits them: interactive chat keeps today's rules; the harness bot confirms once on the packet, works on `bot/<task-id>`, opens one PR, human merges.
+3. Deliberately no new runtime in Slice 1: the harness skill and `bot-ready` issue intake are Slice 2, proven by three golden tasks (TSK-032–034) before widening. Verifier widens first (Slice 3), bot second.
+
+### 📤 Outcomes & Decisions
+- SPEC-014 + `4_Formula/harness.md` (runbook) + ADR-002. `logging_and_autofix.md` §3 now states it follows the harness contract. Packet template in `tasks.md` Phase 8, OKR Objective 3, runner notes in `github_agent.md`, flow diagram in `design_workflow.md`, golden-task gate in `smoke_tests.md`. Nav synced (70 entries), smoke 11/11 green.
