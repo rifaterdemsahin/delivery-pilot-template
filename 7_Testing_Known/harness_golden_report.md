@@ -15,8 +15,8 @@
 
 ## Golden 2 — Add a markdown page + nav-sync (TSK-033, this branch)
 
-- Packet `ACCEPT`, exit 0. This file was added **without** a MENU entry first: verifier **red** (orphaned stage doc — see red output below). Then MENU entry + nav-sync regen: verifier **green, 11/11** on all 3 debug-menu sources.
-- Red output: *recorded at red commit — see branch history.*
+- Packet `ACCEPT`, exit 0. This file was added **without** a MENU entry first: verifier **red, 10/11** —
+  `FAIL Stage Docs In Menu orphaned: ['7_Testing_Known/harness_golden_report.md']`. Then MENU entry + nav-sync regen: verifier **green, 11/11** on all 3 debug-menu sources.
 - Status: PR open, awaiting human merge (after PR #3).
 
 ## Golden 3 — Refuse a secret commit (no branch, by design)

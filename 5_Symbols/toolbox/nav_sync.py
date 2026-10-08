@@ -70,6 +70,7 @@ MENU = [
     ("✅ 7. Testing Known", "7_Testing_Known/README.md"),
     ("   ├─ 🧪 Smoke Tests", "7_Testing_Known/smoke_tests.md"),
     ("   ├─ 🤖 Harness Slice-2 Report", "7_Testing_Known/harness_slice2_report.md"),
+    ("   ├─ 🏅 Golden Task Report", "7_Testing_Known/harness_golden_report.md"),
     ("   ├─ 🧩 Logic Tracker", "7_Testing_Known/logic.md"),
     ("   ├─ ✅ Validation Report", "7_Testing_Known/validation_report.md"),
     ("   ├─ 📋 Sanity Data Source", "7_Testing_Known/sanity_check_report.md"),
