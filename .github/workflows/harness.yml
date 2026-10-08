@@ -1,0 +1,29 @@
+# Harness bot-branch guard (SPEC-014 / SPEC-015).
+# Enforces the contract on PRs from bot/* branches:
+#   1. smoke gate (SPEC-008) must be green on the PR head
+#   2. PR body must carry the contract fields (see 4_Formula/harness.md §3)
+name: Harness guard
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  guard:
+    if: startsWith(github.head_ref, 'bot/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Run smoke gate (SPEC-008)
+        run: python3 5_Symbols/toolbox/smoke_test.py --trigger "harness guard (PR ${{ github.event.pull_request.number }})"
+      - name: Check PR body carries the contract fields
+        env:
+          BODY: ${{ github.event.pull_request.body }}
+        run: |
+          for field in "Task:" "Spec:" "Smoke:" "Files:" "Runner:"; do
+            echo "$BODY" | grep -q "$field" || { echo "PR body missing '$field' (see 4_Formula/harness.md §3)"; exit 1; }
+          done
+          echo "Harness contract fields present."

@@ -4,18 +4,18 @@
 > Latest run overwrites this file; one report per test run.
 
 ## Run Info
-- **Date:** 2026-10-08 20:26
-- **Trigger:** harness slice-2 (SPEC-015)
+- **Date:** 2026-10-08 20:27
+- **Trigger:** harness TSK-032 (red proof)
 - **Mode:** Local filesystem
 - **Tester:** smoke_test.py (automated)
-- **Verdict:** ✅ ALL PASS
+- **Verdict:** ❌ 1 FAILURE(S)
 
 ## Results Summary
 | Test | Result | Detail |
 |------|--------|--------|
 | Navigation Config | ✅ Pass | — |
 | Page Load (root files) | ✅ Pass | — |
-| Menu Links Resolve | ✅ Pass | — |
+| Menu Links Resolve | ❌ Fail | debugMenu: '├─ 🎯 OKRs' → 1_Real_Unknown/okrs_missing.md |
 | Project Menu | ✅ Pass | — |
 | Debug Menu | ✅ Pass | — |
 | Nav 3-Way Sync | ✅ Pass | — |
@@ -27,7 +27,10 @@
 
 ## Failures
 
-None — all smoke tests passed. ✨
+### #1 — Menu Links Resolve
+- **Error:** debugMenu: '├─ 🎯 OKRs' → 1_Real_Unknown/okrs_missing.md
+- **GitHub Issue:** _create per the Smoke Tests & GitHub Issues rule_
+- **Status:** Open
 
 ## Rules Applied
 - Every failure gets a GitHub Issue (`[SMOKE-FAIL] <test> — <description>`)

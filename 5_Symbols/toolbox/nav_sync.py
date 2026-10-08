@@ -10,7 +10,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 MENU = [
     ("🎯 1. Real Unknown", "1_Real_Unknown/README.md"),
     ("   ├─ 📋 Problem Statement", "1_Real_Unknown/problem_statement.md"),
-    ("   ├─ 🎯 OKRs", "1_Real_Unknown/okrs_missing.md"),
+    ("   ├─ 🎯 OKRs", "1_Real_Unknown/okrs.md"),
     ("   ├─ 💡 Hypotheses", "1_Real_Unknown/hypotheses.md"),
     ("   ├─ ❓ Questions", "1_Real_Unknown/questions.md"),
     ("   ├─ 📊 Kanban Board", "1_Real_Unknown/kanban.md"),
