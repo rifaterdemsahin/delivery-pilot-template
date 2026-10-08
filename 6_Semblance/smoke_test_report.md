@@ -4,8 +4,8 @@
 > Latest run overwrites this file; one report per test run.
 
 ## Run Info
-- **Date:** 2026-10-08 20:34
-- **Trigger:** grocery bot spec added
+- **Date:** 2026-10-08 20:35
+- **Trigger:** bot spec genericized
 - **Mode:** Local filesystem
 - **Tester:** smoke_test.py (automated)
 - **Verdict:** ✅ ALL PASS

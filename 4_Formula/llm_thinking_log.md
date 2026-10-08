@@ -932,3 +932,18 @@ This log documents the thinking phase summaries and reasoning processes of the L
 
 ### 📤 Outcomes & Decisions
 - File added, MENU entry after Agent Creation, nav synced (74 entries), smoke 11/11 green.
+
+---
+
+## 📅 2026-10-08 — Bot spec genericized (template-first rename)
+
+### 📥 Input / Task
+- Don't call it grocery_bot_spec — make it generic; reflect in related content; scan project; commit + push.
+
+### 💭 Thinking & Reasoning Process
+1. `git mv` to `4_Formula/bot_spec.md`; reframed as the generic bot-spec format with Grocery kept intact as the worked example, plus a SPEC-010 consumer note (copy per bot, replace values, nav-sync + smoke + push).
+2. Project scan: live references existed only in nav sources (MENU + 3 regens) — all updated. Historical entries in prompts.md / thinking log left untouched as audit trail.
+3. No SPEC-016 created — still an external-agent record, not template behavior.
+
+### 📤 Outcomes & Decisions
+- Generic `bot_spec.md`, menu label `🤖 Bot Spec (Template)`, 74 entries, smoke 11/11 green.

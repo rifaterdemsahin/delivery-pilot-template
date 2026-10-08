@@ -1,6 +1,14 @@
-# Grocery — Specs
+# 🤖 Bot Spec (Template)
 
-> **Stage 4: Formula** — External agent spec catalogued in the template. Normative template specs live in `specs.md`; this file records the Grocery bot's contract.
+> **Stage 4: Formula** — The generic bot-spec format for this template. Normative template specs live in `specs.md`; this file defines how any bot agent is catalogued, with the Grocery bot as the worked example.
+
+## Template note (consumer projects, SPEC-010)
+
+- Copy this file to `4_Formula/bot_spec_<agent>.md` for each additional bot.
+- Replace the example values below (display name, agent id, Drive folder, destinations) with the consumer bot's own.
+- Run `python3 5_Symbols/toolbox/nav_sync.py` + `python3 5_Symbols/toolbox/smoke_test.py`, then commit and push (RULE-002).
+
+## Worked example: Grocery — Specs
 
 Version: 1.0
 

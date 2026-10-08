@@ -149,3 +149,10 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Prompt:** "add this to generic bot spec to the formula folder" (Grocery specs v1.0).
 - **Purpose:** Catalogue the external Grocery bot contract in Stage 4.
 - **Done:** `4_Formula/grocery_bot_spec.md`, MENU entry, nav-sync (74 entries), smoke 11/11 green.
+
+---
+
+## 2026-10-08 — Genericize bot spec (Formula Agent)
+- **Prompt:** "dont call it grocery_bot_spec, make it generic… scan the project and do the updates, commit and push".
+- **Purpose:** Template-first naming: generic format, Grocery as worked example.
+- **Done:** `git mv` → `4_Formula/bot_spec.md` + template note, MENU relabeled, rescan clean, nav-sync (74 entries), smoke 11/11 green.
