@@ -41,7 +41,8 @@ Move any other root file or folder into the related subfolder of those (see `age
 These **files** stay at the repo root because GitHub Pages, git, or the coordinator require them. They are not an invitation to add more root files:
 
 - `index.html` — GitHub Pages entry point
-- `README.md` — GitHub + Pages URL
+- `_README.md` (and `README.md` symlink) — GitHub + Pages URL, directory overview (SPEC-018)
+- `LICENSE` / `LICENCE` — Project open-source license
 - `robots.txt`, `sitemap.xml` — SEO
 - `.env.example`, `.gitignore` — Config
 - `navigation_config.json` — Shared menu config (loaded by root `index.html`)

@@ -1,5 +1,12 @@
 [
   {
+    "path": "1_Real_Unknown/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 3371,
+    "category": "Documentation"
+  },
+  {
     "path": "1_Real_Unknown/costs.md",
     "name": "costs.md",
     "ext": ".md",
@@ -10,7 +17,14 @@
     "path": "1_Real_Unknown/How/mindmap.md",
     "name": "mindmap.md",
     "ext": ".md",
-    "size": 7666,
+    "size": 7720,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/How/patterns.md",
+    "name": "patterns.md",
+    "ext": ".md",
+    "size": 5436,
     "category": "Documentation"
   },
   {
@@ -45,7 +59,7 @@
     "path": "1_Real_Unknown/prompts.md",
     "name": "prompts.md",
     "ext": ".md",
-    "size": 28909,
+    "size": 29761,
     "category": "Documentation"
   },
   {
@@ -53,13 +67,6 @@
     "name": "questions.md",
     "ext": ".md",
     "size": 1106,
-    "category": "Documentation"
-  },
-  {
-    "path": "1_Real_Unknown/README.md",
-    "name": "README.md",
-    "ext": ".md",
-    "size": 3371,
     "category": "Documentation"
   },
   {
@@ -87,7 +94,7 @@
     "path": "1_Real_Unknown/tasks.md",
     "name": "tasks.md",
     "ext": ".md",
-    "size": 9786,
+    "size": 10005,
     "category": "Documentation"
   },
   {
@@ -95,6 +102,13 @@
     "name": "todos.md",
     "ext": ".md",
     "size": 1229,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 4654,
     "category": "Documentation"
   },
   {
@@ -189,13 +203,6 @@
     "category": "Documentation"
   },
   {
-    "path": "2_Environment/README.md",
-    "name": "README.md",
-    "ext": ".md",
-    "size": 4654,
-    "category": "Documentation"
-  },
-  {
     "path": "2_Environment/setup_ai.md",
     "name": "setup_ai.md",
     "ext": ".md",
@@ -266,6 +273,13 @@
     "category": "Documentation"
   },
   {
+    "path": "3_Simulation/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 2879,
+    "category": "Documentation"
+  },
+  {
     "path": "3_Simulation/agentic_workflow.svg",
     "name": "agentic_workflow.svg",
     "ext": ".svg",
@@ -298,13 +312,6 @@
     "name": "menu_design.md",
     "ext": ".md",
     "size": 286,
-    "category": "Documentation"
-  },
-  {
-    "path": "3_Simulation/README.md",
-    "name": "README.md",
-    "ext": ".md",
-    "size": 2879,
     "category": "Documentation"
   },
   {
@@ -364,6 +371,13 @@
     "category": "Documentation"
   },
   {
+    "path": "4_Formula/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 3868,
+    "category": "Documentation"
+  },
+  {
     "path": "4_Formula/agent_creation.md",
     "name": "agent_creation.md",
     "ext": ".md",
@@ -409,7 +423,7 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 76549,
+    "size": 78188,
     "category": "Documentation"
   },
   {
@@ -427,17 +441,10 @@
     "category": "Documentation"
   },
   {
-    "path": "4_Formula/README.md",
-    "name": "README.md",
-    "ext": ".md",
-    "size": 3868,
-    "category": "Documentation"
-  },
-  {
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 24999,
+    "size": 27112,
     "category": "Documentation"
   },
   {
@@ -448,10 +455,17 @@
     "category": "Documentation"
   },
   {
+    "path": "5_Symbols/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 2899,
+    "category": "Documentation"
+  },
+  {
     "path": "5_Symbols/artifacts_carousel.html",
     "name": "artifacts_carousel.html",
     "ext": ".html",
-    "size": 34378,
+    "size": 34387,
     "category": "Pages"
   },
   {
@@ -460,6 +474,13 @@
     "ext": ".html",
     "size": 18104,
     "category": "Pages"
+  },
+  {
+    "path": "5_Symbols/deliverypilot/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 877,
+    "category": "Documentation"
   },
   {
     "path": "5_Symbols/deliverypilot/master_review/app.js",
@@ -483,31 +504,17 @@
     "category": "Styles"
   },
   {
-    "path": "5_Symbols/deliverypilot/README.md",
-    "name": "README.md",
-    "ext": ".md",
-    "size": 877,
-    "category": "Documentation"
-  },
-  {
     "path": "5_Symbols/markdown_renderer.html",
     "name": "markdown_renderer.html",
     "ext": ".html",
-    "size": 25768,
+    "size": 25879,
     "category": "Pages"
   },
   {
-    "path": "5_Symbols/project/README.md",
-    "name": "README.md",
+    "path": "5_Symbols/project/_README.md",
+    "name": "_README.md",
     "ext": ".md",
     "size": 935,
-    "category": "Documentation"
-  },
-  {
-    "path": "5_Symbols/README.md",
-    "name": "README.md",
-    "ext": ".md",
-    "size": 2899,
     "category": "Documentation"
   },
   {
@@ -528,7 +535,7 @@
     "path": "5_Symbols/rules/file_organization.md",
     "name": "file_organization.md",
     "ext": ".md",
-    "size": 3537,
+    "size": 3651,
     "category": "Rules"
   },
   {
@@ -563,15 +570,22 @@
     "path": "5_Symbols/toolbox/nav_sync.py",
     "name": "nav_sync.py",
     "ext": ".py",
-    "size": 6886,
+    "size": 6976,
     "category": "Toolbox"
   },
   {
     "path": "5_Symbols/toolbox/smoke_test.py",
     "name": "smoke_test.py",
     "ext": ".py",
-    "size": 12274,
+    "size": 12292,
     "category": "Toolbox"
+  },
+  {
+    "path": "6_Semblance/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 2317,
+    "category": "Documentation"
   },
   {
     "path": "6_Semblance/error.log",
@@ -609,13 +623,6 @@
     "category": "Documentation"
   },
   {
-    "path": "6_Semblance/README.md",
-    "name": "README.md",
-    "ext": ".md",
-    "size": 2317,
-    "category": "Documentation"
-  },
-  {
     "path": "6_Semblance/smoke_test_report.md",
     "name": "smoke_test_report.md",
     "ext": ".md",
@@ -637,6 +644,13 @@
     "category": "Documentation"
   },
   {
+    "path": "7_Testing_Known/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 3583,
+    "category": "Documentation"
+  },
+  {
     "path": "7_Testing_Known/harness_golden_report.md",
     "name": "harness_golden_report.md",
     "ext": ".md",
@@ -655,13 +669,6 @@
     "name": "logic.md",
     "ext": ".md",
     "size": 2187,
-    "category": "Documentation"
-  },
-  {
-    "path": "7_Testing_Known/README.md",
-    "name": "README.md",
-    "ext": ".md",
-    "size": 3583,
     "category": "Documentation"
   },
   {
@@ -819,6 +826,13 @@
     "category": "Other"
   },
   {
+    "path": "_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 11129,
+    "category": "Documentation"
+  },
+  {
     "path": "agents.md",
     "name": "agents.md",
     "ext": ".md",
@@ -857,7 +871,7 @@
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 32416,
+    "size": 32524,
     "category": "Pages"
   },
   {
@@ -878,7 +892,7 @@
     "path": "navigation_config.json",
     "name": "navigation_config.json",
     "ext": ".json",
-    "size": 7028,
+    "size": 7134,
     "category": "Config"
   },
   {

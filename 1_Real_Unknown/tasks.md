@@ -85,6 +85,7 @@
 | TSK-040 | Partition 5_Symbols into project/ and deliverypilot/ subfolders | Symbols Agent | Symbols Agent creates project/ and deliverypilot/, moves master_review, updates relative paths and nav-sync | [x] |
 | TSK-041 | Move extensions.md to 2_Environment/ and document Excalidraw & Mermaid extensions | Environment Agent | Environment Agent moves extensions.md, adds Excalidraw/Mermaid installation, updates nav-sync & READMEs | [x] |
 | TSK-042 | Create 1_Real_Unknown/How/mindmap.md lineage & add Markdown authoring extensions | Real Agent | Real Agent creates lineage mindmap & connection matrix; Environment Agent adds Markdown preview tools | [x] |
+| TSK-043 | Adopt _README.md leading underscore convention & create 1_Real_Unknown/How/patterns.md (SPEC-018) | Real Agent | Real Agent coordinates: Symbols renames stage READMEs to _README.md & updates nav/smoke tests → Real documents patterns.md → Formula updates SPEC-018 → Test validates | [x] |
 
 
 

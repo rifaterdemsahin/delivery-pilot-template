@@ -223,6 +223,18 @@
 - **Related Files:** `5_Symbols/deliverypilot/master_review/index.html`, `5_Symbols/deliverypilot/master_review/styles.css`, `5_Symbols/deliverypilot/master_review/app.js`, `5_Symbols/deliverypilot/master_review/repo_files.json`, `5_Symbols/toolbox/gen_repo_files.py`, `5_Symbols/project/README.md`, `5_Symbols/deliverypilot/README.md`, `4_Formula/specs.md`, `navigation_config.json`
 - **Last Updated:** 2026-10-14
 
+### SPEC-018: Leading Underscore Directory Overview Pattern (_README.md)
+- **Status:** Active
+- **Description:** Stage directories and primary subfolders throughout the repository use `_README.md` (leading underscore) instead of standard `README.md` as their directory overview and entry-point document. The leading underscore guarantees alphabetical sort priority across file systems, IDEs, and GitHub browsers, while distinguishing folder index guides from content files. Root directory maintains `_README.md` with a `README.md -> _README.md` symlink for GitHub homepage compatibility.
+- **Key Behaviors:**
+  - **Directory Pinned Sorting**: In ASCII/Unicode collation (`_` < `a-z`), `_README.md` automatically pins to the top of file trees in VS Code, terminal listings (`ls`), and GitHub file trees, allowing human reviewers and LLM agents to immediately locate folder guides.
+  - **Stage-Wide Adoption**: Applied consistently across all stages (`1_Real_Unknown/_README.md`, `2_Environment/_README.md`, `3_Simulation/_README.md`, `4_Formula/_README.md`, `5_Symbols/_README.md`, `5_Symbols/project/_README.md`, `5_Symbols/deliverypilot/_README.md`, `6_Semblance/_README.md`, `7_Testing_Known/_README.md`).
+  - **Root Symlink Dual-Compatibility**: The repository root maintains `_README.md` as the canonical document while providing a symlink `README.md -> _README.md` so that the GitHub web interface natively displays the repository overview.
+  - **Navigation & Renderer Integration**: `5_Symbols/toolbox/nav_sync.py` and `navigation_config.json` target `_README.md` for stage parent items. `5_Symbols/markdown_renderer.html` resolves `_README.md` by default when directory paths or empty file queries are supplied.
+  - **Patterns Reference**: Documented in `1_Real_Unknown/How/patterns.md` as Pattern 1 of the delivery-pilot framework.
+- **Related Files:** `1_Real_Unknown/_README.md`, `1_Real_Unknown/How/patterns.md`, `5_Symbols/toolbox/nav_sync.py`, `5_Symbols/toolbox/smoke_test.py`, `5_Symbols/markdown_renderer.html`, `navigation_config.json`, `_README.md`, `README.md`
+- **Last Updated:** 2026-10-14
+
 ---
 
 ## Spec Template
@@ -237,3 +249,4 @@
 - **Related Files:** `path/to/file`
 - **Last Updated:** YYYY-MM-DD
 ```
+

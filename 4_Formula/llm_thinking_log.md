@@ -1090,6 +1090,39 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Extensions documented in `2_Environment/extensions.md`.
 - 11/11 smoke tests passed. Committed and pushed to `main`.
 
+---
+
+## 📅 2026-10-14 — Adopt _README.md Convention & Architectural Patterns in How/ (TSK-043 / SPEC-018)
+
+### 📥 Input / Task
+- "make the README.md files names as _README.md > in the how folder have a patterns.md mention that > push"
+
+### 💭 Thinking & Reasoning Process
+1. **Underscore Prefix Convention (`_README.md`)**:
+   - In file systems and code editors (VS Code, JetBrains, GitHub web trees), files starting with an underscore (`_`, ASCII 95) sort ahead of alphanumeric lowercase characters (`a-z`).
+   - Naming stage guides `_README.md` pins the overview to the very top of each directory, making navigation instantaneous for developers and LLM agents.
+   - Stage folders updated: `1_Real_Unknown/`, `2_Environment/`, `3_Simulation/`, `4_Formula/`, `5_Symbols/` (plus `project/` and `deliverypilot/`), `6_Semblance/`, `7_Testing_Known/`.
+   - Root compatibility: Root contains `_README.md` as canonical overview, with a symlink `README.md -> _README.md` so the GitHub repository landing page continues to render the README seamlessly.
+2. **Architectural Patterns in `1_Real_Unknown/How/patterns.md`**:
+   - Documented Pattern 1: Pinned Leading Underscore Directory Overview (`_README.md`).
+   - Documented Pattern 2: Golden Circle Directory Taxonomy (Why / How / What).
+   - Documented Pattern 3: Decoupled Implementation Structure (`5_Symbols/project/` vs `5_Symbols/deliverypilot/`).
+   - Documented Pattern 4: Per-Project Storage Isolation (Dedicated Azure containers for feedback).
+   - Documented Pattern 5: Design-First Simulation Gate (`SPEC-016` Excalidraw wireframes).
+   - Documented Pattern 6: Closed-Loop Error Resolution & Self-Learning.
+3. **Specs, Tools, & Nav Synchronization**:
+   - Formulated `SPEC-018` in `4_Formula/specs.md`.
+   - Updated `5_Symbols/toolbox/nav_sync.py` with `_README.md` targets and added `1_Real_Unknown/How/patterns.md`. Synced 81 entries across `navigation_config.json`, `index.html`, and `markdown_renderer.html`.
+   - Updated `5_Symbols/toolbox/smoke_test.py` to allow `_README.md` in `ALLOWED_ROOT_FILES` and accept either `_README.md` or `README.md`.
+   - Updated `5_Symbols/markdown_renderer.html` to default fallback to `_README.md`.
+   - Re-generated `repo_files.json` (131 files cataloged).
+
+### 📤 Outcomes & Decisions
+- All stage directory overviews now adhere to `_README.md`.
+- `1_Real_Unknown/How/patterns.md` published and integrated into framework lineage.
+- 11/11 smoke tests passed. Ready for commit and push.
+
+
 
 
 

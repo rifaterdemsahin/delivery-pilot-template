@@ -204,7 +204,15 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 ## 2026-10-14 — Mindmap Lineage in 1_Real_Unknown/How/ & Markdown Preview Extensions (Real & Environment Agents)
 - **Prompt:** "in the real how folder have a mindmap to show how all files connect to each other in a mindmap and the rationale" + "include extension such as markdown preview pro or others that enables this template commit and push"
 - **Purpose:** Provide an end-to-end Mermaid lineage mindmap and connection rationale matrix in `1_Real_Unknown/How/mindmap.md`, and document Markdown Preview Enhanced / All-in-One / GitHub Preview in `2_Environment/extensions.md`.
-- **Done:** Created `1_Real_Unknown/How/mindmap.md`, updated `2_Environment/extensions.md` with Markdown authoring extensions, updated `1_Real_Unknown/README.md`, synced menus with `nav_sync.py`, regenerated catalog, verified with smoke test, committed and pushed.
+- **Done:** Created `1_Real_Unknown/How/mindmap.md`, updated `2_Environment/extensions.md` with Markdown authoring extensions, updated `1_Real_Unknown/_README.md`, synced menus with `nav_sync.py`, regenerated catalog, verified with smoke test, committed and pushed.
+
+---
+
+## 2026-10-14 — Adopt _README.md Convention & Architectural Patterns in How/ (Real / Symbols / Formula Agents)
+- **Prompt:** "make the README.md files names as _README.md > in the how folder have a patterns.md mention that > push"
+- **Purpose:** Rename all stage folder READMEs to `_README.md` to ensure alphabetical sort priority and distinct metadata demarcation, maintain root `_README.md` with a `README.md` symlink for GitHub homepage rendering, document this and broader design patterns in `1_Real_Unknown/How/patterns.md`, and formulate SPEC-018.
+- **Done:** Renamed stage folder READMEs to `_README.md`, created root symlink `README.md -> _README.md`, created `1_Real_Unknown/How/patterns.md`, updated `4_Formula/specs.md` with SPEC-018, updated `nav_sync.py` and synced menus, updated `smoke_test.py` root rules, updated `artifacts_carousel.html` and `markdown_renderer.html`, regenerated Master Review catalog (131 files), verified with 11/11 smoke tests, committed and pushed.
+
 
 
 

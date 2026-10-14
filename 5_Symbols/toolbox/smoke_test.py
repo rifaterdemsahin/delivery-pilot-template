@@ -45,6 +45,7 @@ ALLOWED_ROOT_DIRS = {
 ALLOWED_ROOT_FILES = {
     "index.html",
     "README.md",
+    "_README.md",
     "robots.txt",
     "sitemap.xml",
     ".gitignore",
