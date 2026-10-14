@@ -38,6 +38,7 @@ This folder documents the **setup, constraints, and operating context** of the p
 | `superskills.md` | Superskills catalog — all loadable skills required for project agents |
 | `llm_tools.md` | LLM tool governance — rationale and security boundaries for every tool available to LLMs |
 | `toolstack.md` | Full toolstack with rationale — every tool, its purpose, and the decision behind choosing it |
+| [`extensions.md`](extensions.md) | Required system, CLI, and IDE extensions (Excalidraw, Mermaid, Azure, Docker) |
 
 ## AI Stack Setup
 

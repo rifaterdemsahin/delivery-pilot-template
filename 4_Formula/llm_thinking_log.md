@@ -1042,5 +1042,29 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Master Review relocated to `5_Symbols/deliverypilot/master_review/index.html`.
 - 11/11 smoke tests green. Changes committed and pushed.
 
+---
+
+## 📅 2026-10-14 — Move extensions.md to 2_Environment/ & Add Excalidraw / Mermaid (TSK-041)
+
+### 📥 Input / Task
+- "in the environment folder have the extensions.md and mention extensions such as excalidraw or mermaid to be installed there . commit and push"
+
+### 💭 Thinking & Reasoning Process
+1. **Stage 2: Environment Ownership**: In the 7-stage architecture, `2_Environment/` documents system tooling, platform context, and IDE setup. Housing `extensions.md` in `2_Environment/` aligns with the Environment Agent's core responsibility.
+2. **Visual Tooling Extensions**:
+   - Added **Excalidraw Editor** (`pomdtr.excalidraw-editor`): critical for rapid wireframing in `3_Simulation/` synced with `1_Real_Unknown/` (SPEC-016).
+   - Added **Markdown Preview Mermaid Support** (`bierner.markdown-mermaid`) and **Mermaid Chart** (`mermaid-chart.mermaid-chart`): essential for previewing and editing architecture diagrams in `2_Environment/architecture.md`.
+3. **Execution & Path Updates**:
+   - `git mv 4_Formula/extensions.md 2_Environment/extensions.md`.
+   - Updated `2_Environment/README.md` and `4_Formula/README.md`.
+   - Updated `5_Symbols/toolbox/nav_sync.py` to move the debug menu item under `🛠️ 2. Environment`.
+   - Re-synced 79 entries across `navigation_config.json`, `index.html`, and `markdown_renderer.html`.
+   - Re-generated `repo_files.json` via `gen_repo_files.py`.
+
+### 📤 Outcomes & Decisions
+- `2_Environment/extensions.md` live with Excalidraw and Mermaid extension guides.
+- 11/11 smoke tests passed. Committed and pushed to `main`.
+
+
 
 

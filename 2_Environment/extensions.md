@@ -21,13 +21,22 @@ To build and deploy services in this template, the following CLI extensions and 
 
 To ensure a seamless development experience, install the following extensions inside your IDE (configured for Visual Studio Code):
 
-### 1. Visualization & Diagramming
+### 1. Visualization & Diagramming (Wireframes & Architecture)
+
+* **Excalidraw Editor** (by *Pomdtr*)
+  * **Purpose:** Create, edit, and view `.excalidraw` and `.excalidraw.svg` wireframes natively within VS Code. Essential for `3_Simulation/` UI prototyping and ensuring visual designs remain synchronized with `1_Real_Unknown/` problem statements and OKRs (see **SPEC-016**).
+  * **Marketplace ID:** `pomdtr.excalidraw-editor`
+  * **Quick Install:** `code --install-extension pomdtr.excalidraw-editor`
+
 * **Markdown Preview Mermaid Support** (by *Matt Bierner*)
-  * **Purpose:** Enables rendering of complex architecture and flow diagrams using Mermaid syntax directly inside the Markdown preview.
+  * **Purpose:** Enables real-time rendering of complex architecture blueprints, sequence flows, and system journeys using Mermaid syntax directly inside markdown preview panes (used extensively in `2_Environment/architecture.md`).
   * **Marketplace ID:** `bierner.markdown-mermaid`
+  * **Quick Install:** `code --install-extension bierner.markdown-mermaid`
+
 * **Mermaid Chart** (by *Mermaid Chart*)
-  * **Purpose:** Advanced collaboration, editing, and syncing of diagrams with Mermaid Chart.
+  * **Purpose:** Advanced collaboration, visual diagram authoring, and two-way syncing of Mermaid diagrams.
   * **Marketplace ID:** `mermaid-chart.mermaid-chart`
+  * **Quick Install:** `code --install-extension mermaid-chart.mermaid-chart`
 
 ### 2. Cloud & Infrastructure Management
 * **Azure Account & Azure Resources** (by *Microsoft*)

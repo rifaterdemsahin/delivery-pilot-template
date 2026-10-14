@@ -41,7 +41,7 @@ The self-learning loop flows through this stage automatically:
 | `decisions.md` | Architecture Decision Records (ADRs) — why X over Y |
 | `database.md` | Supabase integration and secrets configuration guide |
 | `dsl.md` | Domain-specific language and terminology used in this project |
-| `extensions.md` | Required system and IDE extensions/plugins |
+| [`extensions.md`](../2_Environment/extensions.md) | Required system, CLI, and IDE extensions (housed in `2_Environment/`) |
 | `navigation.md` | Shared navigation menu design and reusability formula |
 | `logging_and_autofix.md` | Unified logging (footer debug + Axiom) and the nightly continuous-fix agent |
 | `specs.md` | Technical specifications — spec before code, then formulate what you did as a spec after delivery (SPEC-011 / RULE-001) |

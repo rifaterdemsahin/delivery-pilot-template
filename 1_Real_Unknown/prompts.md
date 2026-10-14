@@ -192,5 +192,13 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Purpose:** Decouple project-specific application code (`5_Symbols/project/`) from framework-level deliverypilot tooling (`5_Symbols/deliverypilot/`), moving `master_review/` under `deliverypilot/`.
 - **Done:** Created `5_Symbols/project/` and `5_Symbols/deliverypilot/`, moved `master_review/` to `5_Symbols/deliverypilot/master_review/`, updated relative links, updated `gen_repo_files.py`, updated `SPEC-017`, synced menus with `nav_sync.py`, verified with smoke test suite, committed and pushed.
 
+---
+
+## 2026-10-14 — Move extensions.md to 2_Environment & Add Excalidraw / Mermaid (Environment Agent)
+- **Prompt:** "in the environment folder have the extensions.md and mention extensions such as excalidraw or mermaid to be installed there . commit and push"
+- **Purpose:** House tooling and IDE extension requirements in `2_Environment/extensions.md`, explicitly recommending Excalidraw (for wireframes in `3_Simulation/`) and Mermaid (for architecture blueprints).
+- **Done:** Moved `4_Formula/extensions.md` → `2_Environment/extensions.md`, enhanced Visualization & Diagramming with Excalidraw and Mermaid extensions, updated `2_Environment/README.md` and `4_Formula/README.md`, synced menus with `nav_sync.py`, verified with smoke test, committed and pushed.
+
+
 
 
