@@ -171,3 +171,18 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Purpose:** Formalize Excalidraw wireframe usage in `3_Simulation/` synced directly with `1_Real_Unknown/` problems/OKRs, formulated as a gating rule in `4_Formula/`.
 - **Done:** Documented Excalidraw wireframes in `3_Simulation/README.md` and `3_Simulation/design_workflow.md`, updated `4_Formula/README.md` and `4_Formula/specs.md` (SPEC-016), updated thinking log, verified with smoke test.
 
+---
+
+## 2026-10-14 — License, Real Unknown Taxonomy, Requirements & Todos (Real / Formula Agents)
+- **Prompt:** "mention under the 1_Real_Unknown there would be 3 sub folders What how what and markdowns related accordingly" + "add the root have the licence file > MIT License..." + "in the real folder there should be todos.md and requirements.md mention that > push"
+- **Purpose:** Add root MIT License with smoke test allowance, define Golden Circle Why/How/What taxonomy in `1_Real_Unknown/README.md`, and create `requirements.md` and `todos.md`.
+- **Done:** Created `LICENSE`, added `requirements.md` and `todos.md`, updated `1_Real_Unknown/README.md`, updated `smoke_test.py` ALLOWED_ROOT_FILES and SPEC-013.
+
+---
+
+## 2026-10-14 — Master Review & File Carousel Suite (Symbols / Formula Agents)
+- **Prompt:** "make this page part of delivery-pilot-template > to give feedback on all components in the project > ... > place in the symbols" + "when other projects implement the delivery-pilot-template the review is kept in the azure storage to give feedback. every project has its own unique container"
+- **Purpose:** Provide an in-browser inspection and feedback carousel suite across all repository files with isolated per-project Azure Blob Storage containers and fail-soft local storage.
+- **Done:** Built `5_Symbols/master_review/` (`index.html`, `styles.css`, `app.js`), built catalog generator `5_Symbols/toolbox/gen_repo_files.py`, formulated SPEC-017, updated navigation and smoke tests.
+
+

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Review — All Repository Files & File Types</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 5-Second Animated Notification Container -->
+    <div id="azureToastContainer" class="azure-toast-container" aria-live="polite"></div>
+
+    <div class="container">
+        <header>
+            <div>
+                <h1>🎛️ Master Review & File Carousel</h1>
+                <p class="sub">Comprehensive inspection suite for every file across the repository — starting from <code>1_Real_Unknown/</code> in order. Notes and reviews are saved directly to <strong>Azure Blob Storage</strong> in your project's unique container (with local backup) so your feedback is never lost.</p>
+            </div>
+            <div class="actions">
+                <span class="azure-sync-status" id="azureSyncIndicatorTop">☁️ Azure: Loading...</span>
+                <button class="btn azure" id="syncAzureBtnTop" type="button" title="Push notes and state to Azure Storage Blob now">☁️ Push to Azure</button>
+                <button class="btn azure" id="migrateCookiesBtnTop" type="button" title="Scan and save existing browser cookies to Azure Storage">🍪 Save Cookies to Azure</button>
+                <button class="btn primary" id="showAllNotesBtnTop" type="button">📝 All Notes (<span class="notes-count-badge">0</span>)</button>
+                <button class="btn warning" id="viewSkippedBtnTop" type="button">⏭️ Skipped (<span class="skipped-count-badge">0</span>)</button>
+                <button class="btn danger" id="clearSkippedBtnTop" type="button" title="Clear all skipped files and restore them to the main list">Clear Skipped</button>
+                <button class="btn secondary refresh-trigger-btn" id="topRefreshBtn" type="button" title="Refresh catalog and reload live document from disk (Shortcut: R)">🔄 Refresh</button>
+                <a class="btn" href="../../index.html">🗺️ Dashboard</a>
+            </div>
+        </header>
+
+        <!-- Global Filter & Exclusion System -->
+        <div class="filter-system-card">
+            <div class="filter-system-row">
+                <div class="filter-group-toggles">
+                    <span class="filter-header-label">🛡️ Filters:</span>
+                    <label class="filter-checkbox-label is-commented-filter" title="Hide files that already have review comments or notes (Default: ON)">
+                        <input type="checkbox" id="hideCommentedCheckbox" checked>
+                        <span>💬 Hide Commented (<span id="commentedCountBadge">0</span>)</span>
+                    </label>
+                    <label class="filter-checkbox-label is-checked-filter" title="Hide files marked as checked or reviewed">
+                        <input type="checkbox" id="hideCheckedCheckbox">
+                        <span>✅ Hide Checked (<span id="checkedCountBadge">0</span>)</span>
+                    </label>
+                    <label class="filter-checkbox-label" title="Exclude all files inside backup/ folders">
+                        <input type="checkbox" id="excludeBackupCheckbox" checked>
+                        <span>📁 Exclude <code>backup/</code> (<span id="backupCountBadge">0</span>)</span>
+                    </label>
+                    <label class="filter-checkbox-label" title="Exclude all files inside _obsolete/ folders">
+                        <input type="checkbox" id="excludeRawCheckbox" checked>
+                        <span>🗑️ Exclude <code>_obsolete/</code> (<span id="rawCountBadge">0</span>)</span>
+                    </label>
+                </div>
+
+                <div class="filter-group-inputs">
+                    <div class="filter-input-wrap search-intellisense-wrap">
+                        <span class="filter-icon">🔍</span>
+                        <input type="text" id="pathSearchInput" class="filter-input search-intellisense-input" placeholder="Search file with Intellisense (Press /)..." autocomplete="off" spellcheck="false" />
+                        <button type="button" id="clearSearchBtn" class="filter-clear-btn" title="Clear search">✕</button>
+                        <div id="searchIntellisenseMenu" class="intellisense-dropdown" style="display:none;" role="listbox" aria-label="Search Suggestions"></div>
+                    </div>
+
+                    <div class="filter-input-wrap">
+                        <span class="filter-icon">🚫</span>
+                        <input type="text" id="customExcludeInput" class="filter-input" placeholder="Exclude pattern (e.g. .jpg, tests)..." />
+                        <button type="button" id="clearCustomExcludeBtn" class="filter-clear-btn" title="Clear pattern">✕</button>
+                    </div>
+
+                    <button type="button" id="resetFiltersBtn" class="btn btn-sm" title="Reset all exclusion filters to defaults">🔄 Reset Filters</button>
+                </div>
+
+                <div class="filter-stats" id="filterStatsText">
+                    Showing <strong id="visibleCountText">0</strong> / <span id="totalCountText">0</span> files (<span id="excludedCountText">0</span> excluded)
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="category-tabs" id="categoryTabs">
+            <!-- Injected by JS -->
+        </div>
+
+        <!-- Carousel Presentation Card -->
+        <div class="carousel-card">
+            <div class="carousel-top">
+                <div class="file-info">
+                    <div style="display:flex; align-items:center; gap:0.65rem; flex-wrap:wrap;">
+                        <div class="file-name" id="currentFileName">Loading file...</div>
+                        <button class="btn secondary btn-sm refresh-trigger-btn" id="reloadFileHeaderBtn" type="button" title="Reload current document content from disk (Shortcut: R)">🔄 Refresh File</button>
+                    </div>
+                    <div class="file-meta" id="currentFileMeta">
+                        <!-- Metadata badge -->
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="btn success btn-sm" id="checkNoUpdatesBtnTop" type="button" title="Check this document (no updates needed), sync to Azure, and advance to next file (Shortcut: C)">✅ Check & Next ▶</button>
+                    <label class="file-checked-toggle" title="Mark this file as checked / reviewed">
+                        <input type="checkbox" id="markCurrentFileChecked">
+                        <span>✅ Checked</span>
+                    </label>
+                    <button class="nav-btn" id="prevBtn" type="button" title="Previous file (Left Arrow)">◀</button>
+                    <span class="index-indicator" id="indexIndicator">0 / 0</span>
+                    <button class="nav-btn" id="nextBtn" type="button" title="Next file (Right Arrow)">▶</button>
+                    <button class="nav-btn refresh-trigger-btn" id="refreshFileBtn" type="button" title="Refresh current document preview from disk (Shortcut: R)">🔄</button>
+                    <button class="btn warning btn-sm" id="skipFileTopBtn" type="button" title="Skip this file and hide from main list">⏭️ Skip File</button>
+                </div>
+            </div>
+
+            <!-- Thumbnail Carousel Slider -->
+            <div class="thumb-strip" id="thumbStrip"></div>
+
+            <!-- Two-Column Interactive Preview & Editable Review Grid -->
+            <div class="carousel-content-grid">
+                <!-- Left: Preview Frame -->
+                <div class="preview-frame" id="previewFrame">
+                    <p style="color: var(--text-secondary);">Initializing preview...</p>
+                </div>
+
+                <!-- Right: Fully Editable Review Input Box -->
+                <div class="review-box">
+                    <div>
+                        <div class="review-header">
+                            <div>
+                                <div class="review-title">✏️ Review & Notes for This File</div>
+                                <div class="review-subtitle">
+                                    Saved automatically to Azure Storage Blob & local repository.
+                                </div>
+                            </div>
+                            <div class="review-status-wrap">
+                                <span class="azure-sync-status" id="azureSyncIndicatorBox">☁️ Azure: Loading...</span>
+                                <span class="review-status" id="reviewSavedIndicator">Ready</span>
+                                <button type="button" class="btn success btn-sm next-indicator-btn" id="nextBesideReadyBtn" title="Go to next document (Right Arrow)">Next ▶</button>
+                            </div>
+                        </div>
+
+                        <!-- Friendly after-typing prompt asking if ready for next file -->
+                        <div id="afterTypingNextPrompt" class="after-typing-banner" style="display:none;">
+                            <div class="after-typing-content">
+                                <span>💬 Note saved! Move to next file?</span>
+                            </div>
+                            <div class="after-typing-buttons">
+                                <button type="button" class="btn success btn-sm" id="promptGoNextBtn">Yes, Next File ▶</button>
+                                <button type="button" class="btn btn-sm" id="promptDismissBtn">Stay Here</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <textarea
+                        class="review-textarea"
+                        id="fileReviewInput"
+                        placeholder="Write your review, feedback, or notes…
+Example:
+- Verified requirement and spec alignment
+- Formatting and layout verified
+- Action required / approved"
+                        tabindex="0"
+                    ></textarea>
+
+                    <div class="review-actions-bar">
+                        <button class="btn success btn-sm" id="checkNoUpdatesBtnBox" type="button" title="Check this document (no updates needed), sync to Azure, and advance to next file (Shortcut: C)">✅ Checked (Nothing to Update) · Next ▶</button>
+                        <button class="btn success btn-sm" id="saveNoteBtn" type="button">💾 Save Note</button>
+                        <button class="btn azure btn-sm" id="syncAzureBtnBox" type="button">☁️ Push to Azure</button>
+                        <button class="btn warning btn-sm" id="skipFileBtn" type="button" title="Skip this file and remove from main list">⏭️ Skip This File</button>
+                        <button class="btn primary btn-sm" id="showAllNotesBtnBox" type="button">📝 All Notes (<span class="notes-count-badge">0</span>)</button>
+                        <button class="btn danger btn-sm" id="clearNoteBtn" type="button">🗑️ Clear Note</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Aggregated Feedback Dock (Collapsible) -->
+    <div class="dock" id="bottomDock">
+        <div class="dock-inner">
+            <div class="dock-header">
+                <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+                    <span>🍪 Aggregated Feedback & Notes (<span class="notes-count-badge">0</span> files reviewed · <span class="skipped-count-badge">0</span> skipped · <span class="checked-count-badge">0</span> checked)</span>
+                    <button type="button" class="btn btn-sm" id="toggleDockBtn" title="Toggle dock collapse" style="padding:0.25rem 0.65rem;font-size:0.75rem;">▼ Collapse Dock</button>
+                </div>
+                <small id="dockHeaderSubtitle">All notes sync live to project Azure Storage Blob container. Collapsible for maximum workspace.</small>
+            </div>
+            <div class="dock-collapsible-content" id="dockContent">
+                <textarea id="combinedFeedback" placeholder="Your file reviews will aggregate here in markdown format…"></textarea>
+                <div class="dock-actions">
+                    <button class="btn azure" id="syncAzureBtnDock" type="button">☁️ Push to Azure</button>
+                    <button class="btn azure" id="migrateCookiesBtnDock" type="button" title="Scan and save existing browser cookies to Azure Storage">🍪 Save Cookies to Azure</button>
+                    <a id="azureBlobDirectLink" href="#" target="_blank" rel="noopener" class="btn btn-sm" style="background:rgba(59,130,246,0.15);color:#93c5fd;">🔗 Azure Blob JSON</a>
+                    <button class="btn primary" id="showAllNotesBtnDock" type="button">📝 Show All Notes Taken (<span class="notes-count-badge">0</span>)</button>
+                    <button class="btn warning" id="viewSkippedBtnDock" type="button">⏭️ Skipped Files (<span class="skipped-count-badge">0</span>)</button>
+                    <button class="btn danger" id="clearSkippedBtnDock" type="button">🔄 Clear Skipped Files</button>
+                    <button class="btn" id="copyFeedbackBtn" type="button">📋 Copy All Feedback</button>
+                    <button class="btn danger" id="clearFeedbackBtn" type="button">🧹 Clear All Reviews</button>
+                    <span class="status-msg" id="statusMessage"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Show All Notes Taken -->
+    <div id="notesModal" class="modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="modalTitle">📝 All Notes Taken (<span class="notes-count-badge" id="modalCount">0</span>)</h2>
+                <button class="nav-btn" id="closeNotesModalBtn" type="button" title="Close modal" style="width:36px;height:36px;">✕</button>
+            </div>
+            <div class="modal-body" id="modalNotesList">
+                <!-- Injected by JS -->
+            </div>
+            <div class="modal-footer">
+                <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                    <button class="btn azure" id="modalSyncAzureBtn" type="button">☁️ Sync All to Azure</button>
+                    <button class="btn primary" id="modalCopyAllBtn" type="button">📋 Copy All Notes</button>
+                    <button class="btn" id="modalExportBtn" type="button">📥 Export as .md</button>
+                </div>
+                <button class="btn" id="modalCloseBtn" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Manage Skipped Files -->
+    <div id="skippedModal" class="modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="skippedModalTitle">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="skippedModalTitle">⏭️ Skipped Files (<span class="skipped-count-badge" id="modalSkippedCount">0</span>)</h2>
+                <button class="nav-btn" id="closeSkippedModalBtn" type="button" title="Close modal" style="width:36px;height:36px;">✕</button>
+            </div>
+            <div class="modal-body" id="modalSkippedList">
+                <!-- Injected by JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn danger" id="modalClearAllSkippedBtn" type="button">🔄 Clear All Skipped Files (Restore All to List)</button>
+                <button class="btn" id="modalSkippedCloseBtn" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

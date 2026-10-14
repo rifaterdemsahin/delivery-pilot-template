@@ -8,24 +8,46 @@ This folder captures everything we **don't yet know** — the questions that dri
 
 ## What belongs here
 
-- **Problem statements** — What pain, gap, or opportunity exists?
-- **OKRs** — Objectives and Key Results for this project
-- **Core questions** — The specific unknowns this project must answer
-- **Hypotheses** — Initial assumptions to be validated in `7_Testing_Known`
-- **Stakeholder needs** — Who benefits and how
+- **Problem statements & Requirements** — What pain, gap, or opportunity exists, and what functional boundaries define success
+- **OKRs & Todos** — Objectives, Key Results, and fast-track action items
+- **Core questions & Hypotheses** — The specific unknowns and assumptions this project tests
+- **Governance** — Kanban tracking, risk registers, cost tracking, and prompts
 
-## Files
+## Sub-Taxonomy: Why, How, What (Golden Circle)
 
+To provide clear cognitive separation, markdown files in `1_Real_Unknown/` map to three conceptual layers:
+
+```
+1_Real_Unknown/
+├── 🎯 Why/   — The Purpose & Problems (problem_statement.md, requirements.md, hypotheses.md, questions.md)
+├── ⚙️ How/   — The Strategy & Governance (kanban.md, costs.md, risks.md, sanity_check_report.md)
+└── 📦 What/  — The Deliverables & Actions (okrs.md, tasks.md, todos.md, prompts.md)
+```
+
+### 1. 🎯 Why (Purpose, Problem & Scope)
 | File | Description |
 |------|-------------|
-| [`problem_statement.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/problem_statement.md) | The core problem this project solves |
-| [`okrs.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/okrs.md) | Objectives and Key Results |
-| [`questions.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/questions.md) | Open questions driving the work |
-| [`hypotheses.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/hypotheses.md) | Assumptions to validate |
-| [`kanban.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/kanban.md) | Project Kanban Board for task tracking |
-| [`tasks.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/tasks.md) | Project phases and task breakdown managed by the Real Agent |
-| [`costs.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/costs.md) | Project Cost Tracker for infrastructure/API expenses |
-| [`risks.md`](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/risks.md) | Project risk register — active risks, solved risks, and risk update log |
+| [`problem_statement.md`](problem_statement.md) | The core problem, customer pain, and opportunity this project solves |
+| [`requirements.md`](requirements.md) | High-level functional and non-functional requirements |
+| [`questions.md`](questions.md) | Open questions and unknowns driving the research |
+| [`hypotheses.md`](hypotheses.md) | Core assumptions to be validated downstream in `7_Testing_Known` |
+
+### 2. ⚙️ How (Strategy, Constraints & Governance)
+| File | Description |
+|------|-------------|
+| [`kanban.md`](kanban.md) | Project Kanban Board for stage flow tracking |
+| [`costs.md`](costs.md) | Cost tracking for cloud environments, models, and tool calls |
+| [`risks.md`](risks.md) | Living risk register with active risks, mitigations, and resolved risks |
+| [`sanity_check_report.md`](sanity_check_report.md) | Verification report validating delivery alignment against objectives |
+
+### 3. 📦 What (Deliverables, Goals & Action Items)
+| File | Description |
+|------|-------------|
+| [`okrs.md`](okrs.md) | Objectives and Key Results defining project success |
+| [`tasks.md`](tasks.md) | Multi-stage phases and task breakdown coordinated by the Real Agent |
+| [`todos.md`](todos.md) | Quick-capture action items and todos actively tracked by the Real Agent |
+| [`prompts.md`](prompts.md) | Comprehensive prompt audit log recording user requests and purposes |
+
 
 ## Rules
 

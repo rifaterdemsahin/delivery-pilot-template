@@ -983,3 +983,39 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Documented workflow and file formats (`.excalidraw`, `.svg`, `.png`) in `3_Simulation/`.
 - Smoke test verified and changes committed.
 
+---
+
+## 📅 2026-10-14 — Root License, Real Taxonomy (Why/How/What), Requirements & Master Review (SPEC-017)
+
+### 📥 Input / Task
+- "mention under the 1_Real_Unknown there would be 3 sub folders What how what and markdowns related accordingly"
+- "add the root have the licence file > MIT License..."
+- "make this page part of delivery-pilot-template > to give feedback on all components in the project > [HTML] > place in the symbols"
+- "when other projects implement the delivery-pilot-template the review is kept in the azure storage to give feedback. every project has its own unique container"
+- "in the real folder there should be todos.md and requirements.md mention that > push"
+
+### 💭 Thinking & Reasoning Process
+1. **Root License (RULE-005 / SPEC-013)**:
+   - Added standard MIT `LICENSE` with Copyright (c) 2025 Rifat Erdem Sahin.
+   - Updated `ALLOWED_ROOT_FILES` in `5_Symbols/toolbox/smoke_test.py` and `SPEC-013` in `4_Formula/specs.md` to prevent root layout false positives.
+2. **1_Real_Unknown Taxonomy & Artifacts**:
+   - Structured `1_Real_Unknown/README.md` into Simon Sinek's Golden Circle categories:
+     - `Why/`: `problem_statement.md`, `requirements.md`, `hypotheses.md`, `questions.md`.
+     - `How/`: `kanban.md`, `costs.md`, `risks.md`, `sanity_check_report.md`.
+     - `What/`: `okrs.md`, `tasks.md`, `todos.md`, `prompts.md`.
+   - Created `1_Real_Unknown/requirements.md` (functional & non-functional project boundaries) and `1_Real_Unknown/todos.md` (quick-capture action items).
+3. **Master Review Suite & Multi-Project Container Isolation (SPEC-017)**:
+   - Placed the full review suite in `5_Symbols/master_review/` (`index.html`, `styles.css`, `app.js`).
+   - Implemented dynamic project-scoped container resolution: `app.js` inspects `?project=`, `window.PROJECT_NAME`, repo pathname, or `{{PROJECT_NAME}}` placeholder to address `https://<account>.blob.core.windows.net/<project_container>/master_review_state.json`.
+   - Converted file preview paths to portable relative paths (`../../` base) so the tool works both locally and on GitHub Pages subpaths.
+   - Built `5_Symbols/toolbox/gen_repo_files.py` to auto-generate `repo_files.json` ordered across the 7 stages (`1_Real_Unknown` through `7_Testing_Known`).
+   - Synced debug menu via `nav_sync.py` (77 entries across 3 sources).
+
+### 📤 Outcomes & Decisions
+- `LICENSE` file created and validated in smoke test.
+- `requirements.md` and `todos.md` created; `1_Real_Unknown/README.md` updated with Why/How/What taxonomy.
+- Formulated `SPEC-017` in `4_Formula/specs.md`.
+- Master Review suite functional at `5_Symbols/master_review/index.html`.
+- 11/11 smoke tests passed. Ready for commit & push.
+
+

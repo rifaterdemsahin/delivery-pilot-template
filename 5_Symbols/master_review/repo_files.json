@@ -1,0 +1,884 @@
+[
+  {
+    "path": "1_Real_Unknown/costs.md",
+    "name": "costs.md",
+    "ext": ".md",
+    "size": 7323,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/hypotheses.md",
+    "name": "hypotheses.md",
+    "ext": ".md",
+    "size": 954,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/kanban.md",
+    "name": "kanban.md",
+    "ext": ".md",
+    "size": 5051,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/okrs.md",
+    "name": "okrs.md",
+    "ext": ".md",
+    "size": 1531,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/problem_statement.md",
+    "name": "problem_statement.md",
+    "ext": ".md",
+    "size": 736,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/prompts.md",
+    "name": "prompts.md",
+    "ext": ".md",
+    "size": 27315,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/questions.md",
+    "name": "questions.md",
+    "ext": ".md",
+    "size": 1106,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/README.md",
+    "name": "README.md",
+    "ext": ".md",
+    "size": 3247,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/requirements.md",
+    "name": "requirements.md",
+    "ext": ".md",
+    "size": 2073,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/risks.md",
+    "name": "risks.md",
+    "ext": ".md",
+    "size": 12004,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/sanity_check_report.md",
+    "name": "sanity_check_report.md",
+    "ext": ".md",
+    "size": 5782,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/tasks.md",
+    "name": "tasks.md",
+    "ext": ".md",
+    "size": 9346,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/todos.md",
+    "name": "todos.md",
+    "ext": ".md",
+    "size": 1229,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/architecture.md",
+    "name": "architecture.md",
+    "ext": ".md",
+    "size": 4654,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/axiom.md",
+    "name": "axiom.md",
+    "ext": ".md",
+    "size": 3378,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/cloudflare_workers.md",
+    "name": "cloudflare_workers.md",
+    "ext": ".md",
+    "size": 2874,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/dependencies.md",
+    "name": "dependencies.md",
+    "ext": ".md",
+    "size": 6406,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/fly_io.md",
+    "name": "fly_io.md",
+    "ext": ".md",
+    "size": 6485,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/github_agent.md",
+    "name": "github_agent.md",
+    "ext": ".md",
+    "size": 6385,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/github_pages.md",
+    "name": "github_pages.md",
+    "ext": ".md",
+    "size": 3398,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/llm_tools.md",
+    "name": "llm_tools.md",
+    "ext": ".md",
+    "size": 6492,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/local_server.md",
+    "name": "local_server.md",
+    "ext": ".md",
+    "size": 128,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/mcp.md",
+    "name": "mcp.md",
+    "ext": ".md",
+    "size": 3429,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/navigation.md",
+    "name": "navigation.md",
+    "ext": ".md",
+    "size": 7027,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/product_rules.md",
+    "name": "product_rules.md",
+    "ext": ".md",
+    "size": 9527,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/README.md",
+    "name": "README.md",
+    "ext": ".md",
+    "size": 4537,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/setup_ai.md",
+    "name": "setup_ai.md",
+    "ext": ".md",
+    "size": 3101,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/setup_azure.md",
+    "name": "setup_azure.md",
+    "ext": ".md",
+    "size": 2547,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/setup_mac.md",
+    "name": "setup_mac.md",
+    "ext": ".md",
+    "size": 1204,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/setup_windows.md",
+    "name": "setup_windows.md",
+    "ext": ".md",
+    "size": 1214,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/supabase.md",
+    "name": "supabase.md",
+    "ext": ".md",
+    "size": 3526,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/supabase/.gitignore",
+    "name": ".gitignore",
+    "ext": "",
+    "size": 72,
+    "category": "Other"
+  },
+  {
+    "path": "2_Environment/supabase/config.toml",
+    "name": "config.toml",
+    "ext": ".toml",
+    "size": 15498,
+    "category": "Config"
+  },
+  {
+    "path": "2_Environment/superskills.md",
+    "name": "superskills.md",
+    "ext": ".md",
+    "size": 4524,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/tools.md",
+    "name": "tools.md",
+    "ext": ".md",
+    "size": 5947,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/toolstack.md",
+    "name": "toolstack.md",
+    "ext": ".md",
+    "size": 6998,
+    "category": "Documentation"
+  },
+  {
+    "path": "3_Simulation/agentic_workflow.svg",
+    "name": "agentic_workflow.svg",
+    "ext": ".svg",
+    "size": 6032,
+    "category": "Images"
+  },
+  {
+    "path": "3_Simulation/carousel_config.json",
+    "name": "carousel_config.json",
+    "ext": ".json",
+    "size": 223,
+    "category": "Config"
+  },
+  {
+    "path": "3_Simulation/design_workflow.md",
+    "name": "design_workflow.md",
+    "ext": ".md",
+    "size": 4039,
+    "category": "Documentation"
+  },
+  {
+    "path": "3_Simulation/image_prompts.md",
+    "name": "image_prompts.md",
+    "ext": ".md",
+    "size": 1916,
+    "category": "Documentation"
+  },
+  {
+    "path": "3_Simulation/menu_design.md",
+    "name": "menu_design.md",
+    "ext": ".md",
+    "size": 286,
+    "category": "Documentation"
+  },
+  {
+    "path": "3_Simulation/README.md",
+    "name": "README.md",
+    "ext": ".md",
+    "size": 2879,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/.claude/commands/init-project.md",
+    "name": "init-project.md",
+    "ext": ".md",
+    "size": 4364,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/.claude/commands/log-error.md",
+    "name": "log-error.md",
+    "ext": ".md",
+    "size": 952,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/.claude/commands/log-fix.md",
+    "name": "log-fix.md",
+    "ext": ".md",
+    "size": 1019,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/.claude/commands/retrospective.md",
+    "name": "retrospective.md",
+    "ext": ".md",
+    "size": 1134,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/.claude/commands/stage-commit.md",
+    "name": "stage-commit.md",
+    "ext": ".md",
+    "size": 1370,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/.claude/README.md",
+    "name": "README.md",
+    "ext": ".md",
+    "size": 3852,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/.claude/settings.template.json",
+    "name": "settings.template.json",
+    "ext": ".json",
+    "size": 610,
+    "category": "Config"
+  },
+  {
+    "path": "4_Formula/.claude/skills.md",
+    "name": "skills.md",
+    "ext": ".md",
+    "size": 3179,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/agent_creation.md",
+    "name": "agent_creation.md",
+    "ext": ".md",
+    "size": 7010,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/bot_spec.md",
+    "name": "bot_spec.md",
+    "ext": ".md",
+    "size": 2407,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/database.md",
+    "name": "database.md",
+    "ext": ".md",
+    "size": 3065,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/decisions.md",
+    "name": "decisions.md",
+    "ext": ".md",
+    "size": 3100,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/dsl.md",
+    "name": "dsl.md",
+    "ext": ".md",
+    "size": 3895,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/extensions.md",
+    "name": "extensions.md",
+    "ext": ".md",
+    "size": 4071,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/harness.md",
+    "name": "harness.md",
+    "ext": ".md",
+    "size": 5936,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/llm_thinking_log.md",
+    "name": "llm_thinking_log.md",
+    "ext": ".md",
+    "size": 70609,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/logging_and_autofix.md",
+    "name": "logging_and_autofix.md",
+    "ext": ".md",
+    "size": 9208,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/navigation.md",
+    "name": "navigation.md",
+    "ext": ".md",
+    "size": 3495,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/README.md",
+    "name": "README.md",
+    "ext": ".md",
+    "size": 3807,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/specs.md",
+    "name": "specs.md",
+    "ext": ".md",
+    "size": 22708,
+    "category": "Documentation"
+  },
+  {
+    "path": "4_Formula/togaf_gap_analysis.md",
+    "name": "togaf_gap_analysis.md",
+    "ext": ".md",
+    "size": 9545,
+    "category": "Documentation"
+  },
+  {
+    "path": "5_Symbols/artifacts_carousel.html",
+    "name": "artifacts_carousel.html",
+    "ext": ".html",
+    "size": 34378,
+    "category": "Pages"
+  },
+  {
+    "path": "5_Symbols/calendar_view.html",
+    "name": "calendar_view.html",
+    "ext": ".html",
+    "size": 18104,
+    "category": "Pages"
+  },
+  {
+    "path": "5_Symbols/markdown_renderer.html",
+    "name": "markdown_renderer.html",
+    "ext": ".html",
+    "size": 25205,
+    "category": "Pages"
+  },
+  {
+    "path": "5_Symbols/master_review/app.js",
+    "name": "app.js",
+    "ext": ".js",
+    "size": 86446,
+    "category": "JavaScript"
+  },
+  {
+    "path": "5_Symbols/master_review/index.html",
+    "name": "index.html",
+    "ext": ".html",
+    "size": 16318,
+    "category": "Pages"
+  },
+  {
+    "path": "5_Symbols/master_review/styles.css",
+    "name": "styles.css",
+    "ext": ".css",
+    "size": 36511,
+    "category": "Styles"
+  },
+  {
+    "path": "5_Symbols/README.md",
+    "name": "README.md",
+    "ext": ".md",
+    "size": 2172,
+    "category": "Documentation"
+  },
+  {
+    "path": "5_Symbols/rules/agent_operating_rules.md",
+    "name": "agent_operating_rules.md",
+    "ext": ".md",
+    "size": 7960,
+    "category": "Rules"
+  },
+  {
+    "path": "5_Symbols/rules/coding_standards.md",
+    "name": "coding_standards.md",
+    "ext": ".md",
+    "size": 3059,
+    "category": "Rules"
+  },
+  {
+    "path": "5_Symbols/rules/file_organization.md",
+    "name": "file_organization.md",
+    "ext": ".md",
+    "size": 3537,
+    "category": "Rules"
+  },
+  {
+    "path": "5_Symbols/rules/git_conventions.md",
+    "name": "git_conventions.md",
+    "ext": ".md",
+    "size": 1786,
+    "category": "Rules"
+  },
+  {
+    "path": "5_Symbols/toolbox/count.sh",
+    "name": "count.sh",
+    "ext": ".sh",
+    "size": 1413,
+    "category": "Toolbox"
+  },
+  {
+    "path": "5_Symbols/toolbox/gen_repo_files.py",
+    "name": "gen_repo_files.py",
+    "ext": ".py",
+    "size": 3767,
+    "category": "Toolbox"
+  },
+  {
+    "path": "5_Symbols/toolbox/harness_packet.py",
+    "name": "harness_packet.py",
+    "ext": ".py",
+    "size": 2624,
+    "category": "Toolbox"
+  },
+  {
+    "path": "5_Symbols/toolbox/nav_sync.py",
+    "name": "nav_sync.py",
+    "ext": ".py",
+    "size": 6431,
+    "category": "Toolbox"
+  },
+  {
+    "path": "5_Symbols/toolbox/smoke_test.py",
+    "name": "smoke_test.py",
+    "ext": ".py",
+    "size": 12274,
+    "category": "Toolbox"
+  },
+  {
+    "path": "6_Semblance/error.log",
+    "name": "error.log",
+    "ext": ".log",
+    "size": 1174,
+    "category": "Other"
+  },
+  {
+    "path": "6_Semblance/error_log.md",
+    "name": "error_log.md",
+    "ext": ".md",
+    "size": 1009,
+    "category": "Documentation"
+  },
+  {
+    "path": "6_Semblance/fix.log",
+    "name": "fix.log",
+    "ext": ".log",
+    "size": 1647,
+    "category": "Other"
+  },
+  {
+    "path": "6_Semblance/gap_analysis.md",
+    "name": "gap_analysis.md",
+    "ext": ".md",
+    "size": 969,
+    "category": "Documentation"
+  },
+  {
+    "path": "6_Semblance/lessons_learned.md",
+    "name": "lessons_learned.md",
+    "ext": ".md",
+    "size": 9407,
+    "category": "Documentation"
+  },
+  {
+    "path": "6_Semblance/README.md",
+    "name": "README.md",
+    "ext": ".md",
+    "size": 2317,
+    "category": "Documentation"
+  },
+  {
+    "path": "6_Semblance/smoke_test_report.md",
+    "name": "smoke_test_report.md",
+    "ext": ".md",
+    "size": 1117,
+    "category": "Documentation"
+  },
+  {
+    "path": "6_Semblance/workarounds.md",
+    "name": "workarounds.md",
+    "ext": ".md",
+    "size": 840,
+    "category": "Documentation"
+  },
+  {
+    "path": "7_Testing_Known/_obsolete/sanity_check_report_2026-05-30.md",
+    "name": "sanity_check_report_2026-05-30.md",
+    "ext": ".md",
+    "size": 7971,
+    "category": "Documentation"
+  },
+  {
+    "path": "7_Testing_Known/harness_golden_report.md",
+    "name": "harness_golden_report.md",
+    "ext": ".md",
+    "size": 2502,
+    "category": "Documentation"
+  },
+  {
+    "path": "7_Testing_Known/harness_slice2_report.md",
+    "name": "harness_slice2_report.md",
+    "ext": ".md",
+    "size": 2266,
+    "category": "Documentation"
+  },
+  {
+    "path": "7_Testing_Known/logic.md",
+    "name": "logic.md",
+    "ext": ".md",
+    "size": 2187,
+    "category": "Documentation"
+  },
+  {
+    "path": "7_Testing_Known/README.md",
+    "name": "README.md",
+    "ext": ".md",
+    "size": 3583,
+    "category": "Documentation"
+  },
+  {
+    "path": "7_Testing_Known/sanity_check_report.md",
+    "name": "sanity_check_report.md",
+    "ext": ".md",
+    "size": 2298,
+    "category": "Documentation"
+  },
+  {
+    "path": "7_Testing_Known/smoke_tests.md",
+    "name": "smoke_tests.md",
+    "ext": ".md",
+    "size": 8611,
+    "category": "Documentation"
+  },
+  {
+    "path": "7_Testing_Known/validation_report.md",
+    "name": "validation_report.md",
+    "ext": ".md",
+    "size": 1390,
+    "category": "Documentation"
+  },
+  {
+    "path": ".claude/settings.local.json",
+    "name": "settings.local.json",
+    "ext": ".json",
+    "size": 659,
+    "category": "Config"
+  },
+  {
+    "path": ".claude/skills/bootstrap-template/SKILL.md",
+    "name": "SKILL.md",
+    "ext": ".md",
+    "size": 1886,
+    "category": "Documentation"
+  },
+  {
+    "path": ".claude/skills/harness/SKILL.md",
+    "name": "SKILL.md",
+    "ext": ".md",
+    "size": 2155,
+    "category": "Documentation"
+  },
+  {
+    "path": ".claude/skills/nav-sync/SKILL.md",
+    "name": "SKILL.md",
+    "ext": ".md",
+    "size": 1342,
+    "category": "Documentation"
+  },
+  {
+    "path": ".claude/skills/sanity-check/SKILL.md",
+    "name": "SKILL.md",
+    "ext": ".md",
+    "size": 1673,
+    "category": "Documentation"
+  },
+  {
+    "path": ".claude/skills/smoke-test/SKILL.md",
+    "name": "SKILL.md",
+    "ext": ".md",
+    "size": 1395,
+    "category": "Documentation"
+  },
+  {
+    "path": ".kilo/.gitignore",
+    "name": ".gitignore",
+    "ext": "",
+    "size": 107,
+    "category": "Other"
+  },
+  {
+    "path": ".kilo/kilo.json",
+    "name": "kilo.json",
+    "ext": ".json",
+    "size": 464,
+    "category": "Config"
+  },
+  {
+    "path": ".kilo/package-lock.json",
+    "name": "package-lock.json",
+    "ext": ".json",
+    "size": 13825,
+    "category": "Config"
+  },
+  {
+    "path": ".kilo/package.json",
+    "name": "package.json",
+    "ext": ".json",
+    "size": 61,
+    "category": "Config"
+  },
+  {
+    "path": ".kilo/skills/deploy.md",
+    "name": "deploy.md",
+    "ext": ".md",
+    "size": 1569,
+    "category": "Documentation"
+  },
+  {
+    "path": ".kilo/skills/error-fix.md",
+    "name": "error-fix.md",
+    "ext": ".md",
+    "size": 2976,
+    "category": "Documentation"
+  },
+  {
+    "path": ".kilo/skills/navigation.md",
+    "name": "navigation.md",
+    "ext": ".md",
+    "size": 1577,
+    "category": "Documentation"
+  },
+  {
+    "path": ".kilo/skills/planning.md",
+    "name": "planning.md",
+    "ext": ".md",
+    "size": 2200,
+    "category": "Documentation"
+  },
+  {
+    "path": ".kilo/skills/secrets.md",
+    "name": "secrets.md",
+    "ext": ".md",
+    "size": 1336,
+    "category": "Documentation"
+  },
+  {
+    "path": ".kilo/skills/simulation.md",
+    "name": "simulation.md",
+    "ext": ".md",
+    "size": 1531,
+    "category": "Documentation"
+  },
+  {
+    "path": ".env",
+    "name": ".env",
+    "ext": "",
+    "size": 651,
+    "category": "Other"
+  },
+  {
+    "path": ".env.example",
+    "name": ".env.example",
+    "ext": ".example",
+    "size": 1833,
+    "category": "Other"
+  },
+  {
+    "path": ".gitignore",
+    "name": ".gitignore",
+    "ext": "",
+    "size": 297,
+    "category": "Other"
+  },
+  {
+    "path": "agents.md",
+    "name": "agents.md",
+    "ext": ".md",
+    "size": 35653,
+    "category": "Documentation"
+  },
+  {
+    "path": "calendar_config.json",
+    "name": "calendar_config.json",
+    "ext": ".json",
+    "size": 1332,
+    "category": "Config"
+  },
+  {
+    "path": "claude.md",
+    "name": "claude.md",
+    "ext": ".md",
+    "size": 22959,
+    "category": "Documentation"
+  },
+  {
+    "path": "copilot.md",
+    "name": "copilot.md",
+    "ext": ".md",
+    "size": 19942,
+    "category": "Documentation"
+  },
+  {
+    "path": "gemini.md",
+    "name": "gemini.md",
+    "ext": ".md",
+    "size": 19926,
+    "category": "Documentation"
+  },
+  {
+    "path": "index.html",
+    "name": "index.html",
+    "ext": ".html",
+    "size": 31853,
+    "category": "Pages"
+  },
+  {
+    "path": "kilocode.md",
+    "name": "kilocode.md",
+    "ext": ".md",
+    "size": 19914,
+    "category": "Documentation"
+  },
+  {
+    "path": "LICENSE",
+    "name": "LICENSE",
+    "ext": "",
+    "size": 1074,
+    "category": "Other"
+  },
+  {
+    "path": "navigation_config.json",
+    "name": "navigation_config.json",
+    "ext": ".json",
+    "size": 6477,
+    "category": "Config"
+  },
+  {
+    "path": "README.md",
+    "name": "README.md",
+    "ext": ".md",
+    "size": 11129,
+    "category": "Documentation"
+  },
+  {
+    "path": "robots.txt",
+    "name": "robots.txt",
+    "ext": ".txt",
+    "size": 103,
+    "category": "Text"
+  },
+  {
+    "path": "sitemap.xml",
+    "name": "sitemap.xml",
+    "ext": ".xml",
+    "size": 523,
+    "category": "Data"
+  }
+]

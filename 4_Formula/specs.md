@@ -169,11 +169,11 @@
   - **RULE-005** — Do not create new top-level project folders. Place new work inside the matching allowed folder.
   - Placement: OKRs/tasks → `1_Real_Unknown/`; architecture/tools → `2_Environment/`; designs → `3_Simulation/`; specs → `4_Formula/`; code → `5_Symbols/`; errors/lessons → `6_Semblance/`; tests → `7_Testing_Known/`; Claude skills → `.claude/skills/`; Actions → `.github/workflows/`; Kilo skills → `.kilo/skills/`.
   - After a move: `git mv`, update references, run `nav_sync.py` if a markdown path changed, commit and push.
-  - Root **files** that stay: `index.html`, `README.md`, `robots.txt`, `sitemap.xml`, `.gitignore`, `.env.example`, `navigation_config.json`, `agents.md` + LLM persona files. `markdown_renderer.html` stays in `5_Symbols/`.
+  - Root **files** that stay: `index.html`, `README.md`, `robots.txt`, `sitemap.xml`, `.gitignore`, `.env.example`, `navigation_config.json`, `LICENSE`, `agents.md` + LLM persona files. `markdown_renderer.html` stays in `5_Symbols/`.
   - Tool caches (`.antigravitycli/`, `node_modules/`, `.env`) are gitignored, not stage folders.
   - Kilo config lives at `.kilo/kilo.json` (not the repo root). Smoke test **Root Layout (RULE-005)** fails if extra root files or folders appear.
-- **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/file_organization.md`, `agents.md`, `5_Symbols/toolbox/smoke_test.py`, `README.md`
-- **Last Updated:** 2026-09-10
+- **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/file_organization.md`, `agents.md`, `5_Symbols/toolbox/smoke_test.py`, `README.md`, `LICENSE`
+- **Last Updated:** 2026-10-14
 
 ### SPEC-014: AI Harness — Bot-Driven Development Contract
 - **Status:** Active
@@ -208,6 +208,18 @@
   - **Sync Requirement**: Every wireframe element must map directly to an active problem definition, OKR, or question in `1_Real_Unknown/`. When items in `1_Real_Unknown/` change, corresponding wireframes must be updated before specs are finalized.
   - **Formula Gating**: The Formula Agent inspects `3_Simulation/` wireframes during spec creation (`4_Formula/specs.md`). Code implementation in `5_Symbols/` is blocked if wireframes diverge from `1_Real_Unknown/` or if UI features lack a corresponding Excalidraw wireframe.
 - **Related Files:** `3_Simulation/README.md`, `3_Simulation/design_workflow.md`, `1_Real_Unknown/README.md`, `1_Real_Unknown/problem_statement.md`, `1_Real_Unknown/okrs.md`, `4_Formula/README.md`, `4_Formula/specs.md`
+- **Last Updated:** 2026-10-14
+
+### SPEC-017: Master Review & Project-Scoped Azure Feedback Storage
+- **Status:** Active
+- **Description:** An in-browser inspection suite and file carousel in `5_Symbols/master_review/` enabling developers and reviewers to audit every file across all 7 architectural stages in sequence. Feedback, reviews, and status notes are persisted to an isolated Azure Blob Storage container scoped to each consumer project, with fail-soft local storage and cookie chunking.
+- **Key Behaviors:**
+  - **Stage Sequence Review**: Inspects all repository files starting from `1_Real_Unknown/` through `7_Testing_Known/`, generated via `5_Symbols/toolbox/gen_repo_files.py`.
+  - **Per-Project Azure Container**: Each project implementing `delivery-pilot-template` resolves its own container name dynamically (via query param `?project=`, `window.PROJECT_NAME`, GitHub Pages repo path, or `{{PROJECT_NAME}}` placeholder), targeting `https://<account>.blob.core.windows.net/<project-container>/master_review_state.json`.
+  - **Zero-Collision Cloud Feedback**: Different projects deploying this template never overwrite each other's review notes or verification states.
+  - **Fail-Soft Storage**: When Azure credentials or network access are unavailable, feedback is automatically persisted to browser cookies and localStorage, with a one-click manual "Push to Azure" sync once cloud credentials are provided.
+  - **Multi-Format Previews**: Live in-frame preview supports Markdown, HTML, Code/Config text, PDF, and images using portable relative links (`../../`).
+- **Related Files:** `5_Symbols/master_review/index.html`, `5_Symbols/master_review/styles.css`, `5_Symbols/master_review/app.js`, `5_Symbols/master_review/repo_files.json`, `5_Symbols/toolbox/gen_repo_files.py`, `4_Formula/specs.md`, `navigation_config.json`
 - **Last Updated:** 2026-10-14
 
 ---

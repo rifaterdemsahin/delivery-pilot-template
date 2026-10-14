@@ -79,6 +79,10 @@
 | TSK-033 | Golden task 2: add a markdown page + run nav-sync (appears in all 3 debug-menu sources) | Symbols Agent | Ran live on `bot/TSK-033` → PR #4 merged (red 10/11 → green 11/11, 73 entries) | [x] |
 | TSK-034 | Golden task 3: refuse a secret commit (bot refuses + logs `[PENDING]`) | Semblance Agent | Proven live: validator REFUSE exit 1, tree untouched — refusal needs no branch by design; evidence in golden report | [x] |
 | TSK-036 | Excalidraw wireframes in 3_Simulation synced with 1_Real_Unknown & gated in 4_Formula (SPEC-016) | Real Agent | Real Agent coordinates: Simulation defines Excalidraw wireframe workflow → Formula specs sync & gating rule → Test validates | [x] |
+| TSK-037 | Root LICENSE file (MIT) & ALLOWED_ROOT_FILES update (SPEC-013) | Real Agent | Real Agent coordinates: Real adds LICENSE → Symbols updates smoke test → Formula updates SPEC-013 | [x] |
+| TSK-038 | Real Unknown Golden Circle taxonomy (Why, How, What) + requirements.md & todos.md | Real Agent | Real Agent defines and organizes taxonomy in 1_Real_Unknown/README.md, creates requirements.md and todos.md | [x] |
+| TSK-039 | Master Review & Feedback suite with per-project Azure container (SPEC-017) | Symbols Agent | Real Agent coordinates: Symbols builds 5_Symbols/master_review/ & catalog generator → Formula specs isolated Azure containers → Test validates | [x] |
+
 
 
 ### Task packet template (SPEC-014 — bot refuses to start if any field is missing)

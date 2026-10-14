@@ -56,6 +56,8 @@ ALLOWED_ROOT_FILES = {
     "gemini.md",
     "copilot.md",
     "kilocode.md",
+    "LICENSE",
+    "LICENCE",
 }
 IGNORED_ROOT_NAMES = {".git", ".antigravitycli", "node_modules", ".venv", "__pycache__", ".DS_Store"}
 MD_URL_PATTERN = re.compile(r"[0-9A-Za-z_]+/[0-9A-Za-z_/.\-]*\.md")
