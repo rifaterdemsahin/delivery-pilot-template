@@ -19,4 +19,10 @@ qdrant_storage/
 !.claude/skills/
 !4_Formula/.claude/
 !4_Formula/.claude/**
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
 .antigravitycli/

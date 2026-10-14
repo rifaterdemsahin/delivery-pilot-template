@@ -1246,6 +1246,37 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - `_README.md` refactor and init guides fully aligned with latest system reality.
 - 11/11 smoke tests green. Ready for commit and push.
 
+---
+
+## 2026-10-14 — TSK-048: Repository Link Integrity Checker & Automated Broken Link Remediation (SPEC-023)
+
+### 📥 Inputs & Requirements
+- **User Prompt:** "after changes add the spec to check the links and fix broken ones"
+- **Stage Focus:** Formula Agent (SPEC-023 spec definition) + Symbols Agent (build `check_links.py`, fix broken links, update `smoke_test.py`) + Test Agent (12/12 smoke test validation).
+
+### 🔍 Analysis & Discoveries
+1. **Link Scanner Requirements**:
+   - Following directory reorganizations (e.g. `1_Real_Unknown/` subfolders `Why/`, `How/`, `What/`, and `5_Symbols/deliverypilot/`), relative links in markdown and HTML files can break if they don't adjust their parent traversal (`../` vs `../../`).
+   - Need a script that parses Markdown links `[text](target)` and HTML `href="target"` / `src="target"`, while ignoring code blocks (fenced ` ``` ` and inline `` `code` ``) to prevent false positives on code examples.
+2. **Broken Links Detected**:
+   - Initial scan discovered 8 broken relative links across 6 files:
+     - `1_Real_Unknown/How/sanity_check_report.md:3`: `../7_Testing_Known/` → `../../7_Testing_Known/`
+     - `1_Real_Unknown/What/todos.md:23`: `../4_Formula/` → `../../4_Formula/`
+     - `1_Real_Unknown/Why/requirements.md:30-31`: `okrs.md` → `../What/okrs.md`, `../4_Formula/` → `../../4_Formula/`, `../3_Simulation/` → `../../3_Simulation/`
+     - `2_Environment/product_rules.md:295`: `../1_Real_Unknown/okrs.md` → `../1_Real_Unknown/What/okrs.md`
+     - `5_Symbols/calendar_view.html:416`: `index.html` → `../index.html`
+     - `7_Testing_Known/sanity_check_report.md:29`: `README.md` → `_README.md`
+3. **Smoke Test Integration**:
+   - Added Check 11 (`Link Integrity (SPEC-023)`) to `5_Symbols/toolbox/smoke_test.py`, verifying all internal links on every smoke run.
+
+### 📤 Outcomes & Decisions
+- Created `5_Symbols/toolbox/check_links.py`.
+- Formulated `SPEC-023` in `4_Formula/specs.md`.
+- Remediated all 8 broken links; `check_links.py` reports 0 broken links across 98 files.
+- `smoke_test.py` now runs 12 checks (all 12/12 pass).
+- Updated `7_Testing_Known/smoke_tests.md` and `1_Real_Unknown/What/tasks.md`.
+
+
 
 
 

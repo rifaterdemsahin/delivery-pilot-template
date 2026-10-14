@@ -281,6 +281,19 @@
 - **Related Files:** `1_Real_Unknown/_README.md`, `1_Real_Unknown/Why/_README.md`, `1_Real_Unknown/How/_README.md`, `1_Real_Unknown/What/_README.md`, `1_Real_Unknown/How/mindmap.md`, `1_Real_Unknown/How/patterns.md`, `5_Symbols/toolbox/nav_sync.py`, `navigation_config.json`, `index.html`, `5_Symbols/deliverypilot/markdown_renderer.html`
 - **Last Updated:** 2026-10-14
 
+### SPEC-023: Repository Link Integrity & Automated Broken Link Remediation
+- **Status:** Active
+- **Description:** Defines the link validation contract and automated toolchain for verifying internal markdown and HTML links across the entire repository. Guarantees that internal relative hyperlinks, asset references, and cross-stage documentation dependencies resolve cleanly without 404s, especially following directory restructurings, refactors, or file relocations.
+- **Key Behaviors:**
+  - **Comprehensive Multi-Format Parsing**: Scans all `.md` and `.html` files in the repository (excluding VCS `.git`, cache `.gemini`, `node_modules`, and obsolete directories). Extracts markdown links `[text](target)`, inline images `![alt](target)`, and HTML attributes (`href="target"`, `src="target"`).
+  - **Intelligent Syntax Exclusions**: Ignores external protocols (`http://`, `https://`, `mailto:`, `ftp://`, etc.), page fragment anchors (`#...`), code block examples (fenced ` ``` ` and ` ~~~ ` in Markdown), and template expressions (`{{...}}`, `${...}`).
+  - **Path Normalization & Resolution**: Cleans target URLs by stripping queries (`?...`) and anchor fragments (`#...`), decoding percent-encoded characters, and normalizing relative paths against the containing document's directory (or repo root for leading `/`).
+  - **Automated Verification Script**: Provides `5_Symbols/toolbox/check_links.py` as an executable verification tool with exit codes (0 = all pass, 1 = broken links detected) suitable for pre-commit hooks and CI pipelines.
+  - **Integrated Smoke Testing**: Integrates link verification into `5_Symbols/toolbox/smoke_test.py` as an active test check (Check 12), ensuring no pull request or deployment occurs with broken cross-references.
+  - **Self-Healing Remediation Protocol**: When structural changes occur (e.g. stage partitioning, subfolder creation), running `check_links.py` is mandatory. Identified broken links must be remediated immediately in the same change cycle.
+- **Related Files:** `5_Symbols/toolbox/check_links.py`, `5_Symbols/toolbox/smoke_test.py`, `4_Formula/specs.md`, `7_Testing_Known/smoke_tests.md`
+- **Last Updated:** 2026-10-14
+
 ---
 
 ## Spec Template

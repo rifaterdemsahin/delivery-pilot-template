@@ -241,6 +241,14 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Purpose:** Organize all markdown documents in `1_Real_Unknown/` into three Golden Circle subdirectories (`Why/`, `How/`, `What/`) with dedicated `_README.md` indices, update the 3-way navigation system, refresh the `## Refactor` and `## Init` prompts in `_README.md` based on a full scan of recent architectural updates, update all cross-references across `agents.md`, `kilocode.md`, and stage docs, and formulate SPEC-022.
 - **Done:** Created `1_Real_Unknown/Why/` and `1_Real_Unknown/What/` subdirectories; moved `problem_statement.md`, `requirements.md`, `hypotheses.md`, and `questions.md` into `Why/`; moved `kanban.md`, `costs.md`, `risks.md`, and `sanity_check_report.md` into `How/`; moved `okrs.md`, `tasks.md`, `todos.md`, and `prompts.md` into `What/`; created `_README.md` files for `Why/`, `How/`, and `What/`; updated `1_Real_Unknown/_README.md`; updated `5_Symbols/toolbox/nav_sync.py` and synced 82 menu entries; updated `artifacts_carousel.html` ARTIFACTS array; updated `_README.md` `## Refactor` and `## Init` sections with latest project scan; updated `agents.md`, `kilocode.md`, `1_Real_Unknown/How/mindmap.md`, `1_Real_Unknown/How/patterns.md`, `1_Real_Unknown/How/ai_harness.md`, `7_Testing_Known/sanity_check_report.md`, and `5_Symbols/toolbox/harness_packet.py`; formulated SPEC-022 in `4_Formula/specs.md`; regenerated `repo_files.json` (132 files); verified 11/11 smoke tests pass.
 
+---
+
+## 2026-10-14 — Repository Link Integrity Checker & Automated Broken Link Remediation (Formula / Symbols / Test Agents)
+- **Prompt:** "after changes add the spec to check the links and fix broken ones"
+- **Purpose:** Build an automated repository-wide internal link checker (`check_links.py`), scan all markdown and HTML files for broken relative links and broken asset targets, remediate all identified broken links across all stages, integrate link integrity verification into `smoke_test.py` (Check 11), document the testing strategy in `7_Testing_Known/smoke_tests.md`, and formulate SPEC-023.
+- **Done:** Built `5_Symbols/toolbox/check_links.py` with multi-format parsing, fenced code block skipping, and inline code stripping; discovered and remediated 8 broken relative links across `1_Real_Unknown/How/sanity_check_report.md`, `1_Real_Unknown/What/todos.md`, `1_Real_Unknown/Why/requirements.md`, `2_Environment/product_rules.md`, `5_Symbols/calendar_view.html`, and `7_Testing_Known/sanity_check_report.md`; integrated Check 11 (Link Integrity) into `5_Symbols/toolbox/smoke_test.py`; updated `7_Testing_Known/smoke_tests.md` test table; formulated SPEC-023 in `4_Formula/specs.md`; logged task in `1_Real_Unknown/What/tasks.md` (TSK-048) and thinking log; verified 12/12 smoke tests pass (0 broken links across 98 files).
+
+
 
 
 

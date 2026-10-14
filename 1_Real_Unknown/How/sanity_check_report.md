@@ -1,6 +1,6 @@
 # 🧪 Sanity Check Report
 
-> **Stage 1: Real Unknown** — Produced by the **Real Agent's sanity check sub-agent**. Consumes test evidence from `7_Testing_Known` (see [`7_Testing_Known/sanity_check_report.md`](../7_Testing_Known/sanity_check_report.md)) and judges delivery against the objectives — completing the 7 → 1 loop (SPEC-009).
+> **Stage 1: Real Unknown** — Produced by the **Real Agent's sanity check sub-agent**. Consumes test evidence from `7_Testing_Known` (see [`7_Testing_Known/sanity_check_report.md`](../../7_Testing_Known/sanity_check_report.md)) and judges delivery against the objectives — completing the 7 → 1 loop (SPEC-009).
 
 - **Date:** 2026-07-12 (rev 2 — updated after fixes; rev 1 findings preserved below)
 - **Agent:** Real Agent → Sanity Check Sub-Agent

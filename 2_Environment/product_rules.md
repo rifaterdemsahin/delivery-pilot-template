@@ -292,7 +292,7 @@ When forking delivery-pilot-template for a new project:
 
 - [`navigation.md`](./navigation.md) — Two-menu architecture deep dive
 - [`README.md`](../README.md) — Template overview and product rules summary
-- [`1_Real_Unknown/okrs.md`](../1_Real_Unknown/okrs.md) — OKR framework and examples
+- [`1_Real_Unknown/What/okrs.md`](../1_Real_Unknown/What/okrs.md) — OKR framework and examples
 - [`5_Symbols/toolbox/nav_sync.py`](../5_Symbols/toolbox/nav_sync.py) — Navigation sync script
 - [`.claude/skills/nav-sync/SKILL.md`](../.claude/skills/nav-sync/SKILL.md) — Nav sync skill for agents
 

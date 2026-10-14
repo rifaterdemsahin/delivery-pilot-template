@@ -218,7 +218,25 @@ def run_checks(root, base_url=None):
         )
     )
 
-    # 11. Deployed site reachable (cloud mode only)
+    # 11. Markdown & HTML Link Integrity (SPEC-023)
+    try:
+        from check_links import run_link_check
+    except ImportError:
+        sys.path.insert(0, os.path.join(root, "5_Symbols", "toolbox"))
+        from check_links import run_link_check
+
+    file_count, broken = run_link_check(root)
+    results.append(
+        Result(
+            "Link Integrity (SPEC-023)",
+            not broken,
+            f"{len(broken)} broken link(s): " + "; ".join(f"{b['source']}:{b['line']}" for b in broken[:5])
+            if broken
+            else f"{file_count} files verified",
+        )
+    )
+
+    # 12. Deployed site reachable (cloud mode only)
     if base_url:
         try:
             status, body = fetch(base_url)

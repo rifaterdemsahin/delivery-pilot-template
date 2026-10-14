@@ -26,7 +26,7 @@ Real Agent — sanity check sub-agent
 | `5_Symbols/toolbox/smoke_test.py` runner output | Automated pass/fail evidence (local + cloud), written to `6_Semblance/smoke_test_report.md` |
 | [`validation_report.md`](validation_report.md) | Feature validation evidence and checklists |
 | [`logic.md`](logic.md) | Premise → objective → delivered-task chains |
-| [`README.md`](README.md) | Master testing checklist status |
+| [`_README.md`](_README.md) | Master testing checklist status |
 
 ## Rules
 

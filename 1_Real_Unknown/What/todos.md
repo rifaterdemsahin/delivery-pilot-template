@@ -20,4 +20,4 @@
 
 1. **Quick Capture**: Drop incoming requests and ideas here immediately upon arrival.
 2. **Promote to Tasks**: Formal tasks with multiple agent coordinations are assigned `TSK-XXX` IDs and tracked in [`tasks.md`](tasks.md).
-3. **Close the Loop**: When items are completed, mark `[x]` and log rationale in [`4_Formula/llm_thinking_log.md`](../4_Formula/llm_thinking_log.md).
+3. **Close the Loop**: When items are completed, mark `[x]` and log rationale in [`4_Formula/llm_thinking_log.md`](../../4_Formula/llm_thinking_log.md).

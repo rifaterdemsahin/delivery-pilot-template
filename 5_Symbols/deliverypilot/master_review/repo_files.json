@@ -59,7 +59,7 @@
     "path": "1_Real_Unknown/How/sanity_check_report.md",
     "name": "sanity_check_report.md",
     "ext": ".md",
-    "size": 5782,
+    "size": 5785,
     "category": "Documentation"
   },
   {
@@ -80,21 +80,21 @@
     "path": "1_Real_Unknown/What/prompts.md",
     "name": "prompts.md",
     "ext": ".md",
-    "size": 36031,
+    "size": 37372,
     "category": "Documentation"
   },
   {
     "path": "1_Real_Unknown/What/tasks.md",
     "name": "tasks.md",
     "ext": ".md",
-    "size": 11620,
+    "size": 11952,
     "category": "Documentation"
   },
   {
     "path": "1_Real_Unknown/What/todos.md",
     "name": "todos.md",
     "ext": ".md",
-    "size": 1229,
+    "size": 1232,
     "category": "Documentation"
   },
   {
@@ -129,7 +129,7 @@
     "path": "1_Real_Unknown/Why/requirements.md",
     "name": "requirements.md",
     "ext": ".md",
-    "size": 2073,
+    "size": 2087,
     "category": "Documentation"
   },
   {
@@ -227,7 +227,7 @@
     "path": "2_Environment/product_rules.md",
     "name": "product_rules.md",
     "ext": ".md",
-    "size": 9527,
+    "size": 9537,
     "category": "Documentation"
   },
   {
@@ -451,7 +451,7 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 90519,
+    "size": 92716,
     "category": "Documentation"
   },
   {
@@ -472,7 +472,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 33857,
+    "size": 36038,
     "category": "Documentation"
   },
   {
@@ -493,7 +493,7 @@
     "path": "5_Symbols/calendar_view.html",
     "name": "calendar_view.html",
     "ext": ".html",
-    "size": 18104,
+    "size": 18107,
     "category": "Pages"
   },
   {
@@ -574,6 +574,13 @@
     "category": "Rules"
   },
   {
+    "path": "5_Symbols/toolbox/check_links.py",
+    "name": "check_links.py",
+    "ext": ".py",
+    "size": 6511,
+    "category": "Toolbox"
+  },
+  {
     "path": "5_Symbols/toolbox/count.sh",
     "name": "count.sh",
     "ext": ".sh",
@@ -605,7 +612,7 @@
     "path": "5_Symbols/toolbox/smoke_test.py",
     "name": "smoke_test.py",
     "ext": ".py",
-    "size": 12306,
+    "size": 12900,
     "category": "Toolbox"
   },
   {
@@ -654,7 +661,7 @@
     "path": "6_Semblance/smoke_test_report.md",
     "name": "smoke_test_report.md",
     "ext": ".md",
-    "size": 1117,
+    "size": 1178,
     "category": "Documentation"
   },
   {
@@ -703,14 +710,14 @@
     "path": "7_Testing_Known/sanity_check_report.md",
     "name": "sanity_check_report.md",
     "ext": ".md",
-    "size": 2318,
+    "size": 2320,
     "category": "Documentation"
   },
   {
     "path": "7_Testing_Known/smoke_tests.md",
     "name": "smoke_tests.md",
     "ext": ".md",
-    "size": 8611,
+    "size": 8761,
     "category": "Documentation"
   },
   {
