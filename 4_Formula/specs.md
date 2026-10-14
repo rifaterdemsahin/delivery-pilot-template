@@ -235,6 +235,17 @@
 - **Related Files:** `1_Real_Unknown/_README.md`, `1_Real_Unknown/How/patterns.md`, `5_Symbols/toolbox/nav_sync.py`, `5_Symbols/toolbox/smoke_test.py`, `5_Symbols/markdown_renderer.html`, `navigation_config.json`, `_README.md`, `README.md`
 - **Last Updated:** 2026-10-14
 
+### SPEC-019: AI Harness Triad Architecture (Channel, Compute, Bot)
+- **Status:** Active
+- **Description:** Formally defines how the Delivery Pilot Template acts as the operational substrate for autonomous AI harnesses, binding three interconnected abstractions: the Channel (intake & review layer), the Compute (execution runtime & infrastructure layer), and the Bot (constrained actor executing the 7-stage contract).
+- **Key Behaviors:**
+  - **The Channel**: Defines inbound intent (interactive developer chat, `bot-ready` GitHub Issues, automated telemetry/Axiom error events) and outbound reviews (pull requests with strict CI guards, Master Review stored in Azure Blob Storage).
+  - **The Compute**: Defines agent execution environments (local CLI runners, GitHub Actions virtual machines), verification compute (`smoke_test.py`), deployment compute (Fly.io containers, Cloudflare Workers, Pages), and secure storage (Azure Key Vault, Blob Storage).
+  - **The Bot**: Constrained to act as a Symbols Agent with a Test Agent exit gate (`SPEC-014`). Operates strictly on a task packet with 5 mandatory fields, a dedicated branch `bot/<task-id>`, zero secret exposure, and opens a single PR requiring human merge. Cataloged in `4_Formula/bot_spec.md`.
+  - **Template Substrate**: The template provides the stage lineage, gating rules, and single verifier exit gate, preventing unconstrained hallucination and breaking changes.
+- **Related Files:** `1_Real_Unknown/How/ai_harness.md`, `1_Real_Unknown/How/patterns.md`, `4_Formula/harness.md`, `4_Formula/bot_spec.md`, `5_Symbols/toolbox/smoke_test.py`, `5_Symbols/toolbox/harness_packet.py`, `.github/workflows/harness.yml`
+- **Last Updated:** 2026-10-14
+
 ---
 
 ## Spec Template
@@ -249,4 +260,5 @@
 - **Related Files:** `path/to/file`
 - **Last Updated:** YYYY-MM-DD
 ```
+
 

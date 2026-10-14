@@ -22,6 +22,7 @@ MENU = [
     ("   ├─ 🔍 Sanity Check Report", "1_Real_Unknown/sanity_check_report.md"),
     ("   ├─ 🧠 Mindmap & Rationale", "1_Real_Unknown/How/mindmap.md"),
     ("   ├─ 📐 Architectural Patterns", "1_Real_Unknown/How/patterns.md"),
+    ("   ├─ 🤖 AI Harness & Triad", "1_Real_Unknown/How/ai_harness.md"),
     ("   ├─ 📝 Prompt Log", "1_Real_Unknown/prompts.md"),
     ("🛠️ 2. Environment", "2_Environment/_README.md"),
     ("   ├─ 🏗️ Architecture", "2_Environment/architecture.md"),

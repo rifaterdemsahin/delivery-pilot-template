@@ -98,6 +98,16 @@ Errors detected during testing do not merely get patched; they evolve the system
 
 ---
 
+## 🤖 Pattern 7: The AI Harness Triad Pattern (Channel, Compute, Bot)
+
+Autonomous agentic development requires three distinct, cooperative abstractions bound by the template:
+1. **The Channel (Intake & Feedback)**: Ingests intent via CLI/chat sessions, GitHub issues (`bot-ready`), or automated telemetry; reviews and audits exit through pull requests and Master Review.
+2. **The Compute (Runtime & Infrastructure)**: Provides agent compute (CLI, GitHub Actions runners), validation compute (`smoke_test.py`), deployment compute (Fly.io, Cloudflare Workers, Pages), and secure storage (Key Vault, Blob Storage).
+3. **The Bot (Constrained Actor)**: Runs as a Symbols Agent with a Test Agent exit gate under `SPEC-014` / `SPEC-015`. Consumes exactly one task packet, operates on an isolated branch, verifies with the exit gate, and opens a single PR.
+- **Reference**: Detailed architectural definition in `1_Real_Unknown/How/ai_harness.md`.
+
+---
+
 ## 📋 Pattern Checklist for Stage Folders
 
 When creating or reorganizing a stage folder in Delivery Pilot:
@@ -105,3 +115,4 @@ When creating or reorganizing a stage folder in Delivery Pilot:
 - [x] Register `_README.md` in `5_Symbols/toolbox/nav_sync.py`.
 - [x] Run `python3 5_Symbols/toolbox/nav_sync.py` to synchronize 3-way navigation.
 - [x] Run `python3 5_Symbols/toolbox/smoke_test.py` to confirm zero orphaned files or broken links.
+

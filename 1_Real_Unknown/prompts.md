@@ -213,6 +213,14 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Purpose:** Rename all stage folder READMEs to `_README.md` to ensure alphabetical sort priority and distinct metadata demarcation, maintain root `_README.md` with a `README.md` symlink for GitHub homepage rendering, document this and broader design patterns in `1_Real_Unknown/How/patterns.md`, and formulate SPEC-018.
 - **Done:** Renamed stage folder READMEs to `_README.md`, created root symlink `README.md -> _README.md`, created `1_Real_Unknown/How/patterns.md`, updated `4_Formula/specs.md` with SPEC-018, updated `nav_sync.py` and synced menus, updated `smoke_test.py` root rules, updated `artifacts_carousel.html` and `markdown_renderer.html`, regenerated Master Review catalog (131 files), verified with 11/11 smoke tests, committed and pushed.
 
+---
+
+## 2026-10-14 — Define AI Harness Triad: Channel, Compute, and Bot (Real / Formula Agents)
+- **Prompt:** "mention in the how folder how does this project relate in the ai-harness and how the channel compute and the bot relate to this project as template define it > commit and push"
+- **Purpose:** Architecturally define how `delivery-pilot-template` provides the substrate for autonomous AI harnesses, and define the Triad (Channel, Compute, Bot) in `1_Real_Unknown/How/ai_harness.md`, linking it in `How/mindmap.md`, `How/patterns.md`, and `4_Formula/specs.md` (SPEC-019).
+- **Done:** Created `1_Real_Unknown/How/ai_harness.md`, updated `How/mindmap.md` (diagram and connection matrix), added Pattern 7 to `How/patterns.md`, formulated SPEC-019 in `4_Formula/specs.md`, registered in `nav_sync.py`, synced menus across 3 sources (82 entries), refreshed Master Review catalog (132 files), verified 11/11 smoke tests, committed and pushed.
+
+
 
 
 

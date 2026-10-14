@@ -14,17 +14,24 @@
     "category": "Documentation"
   },
   {
+    "path": "1_Real_Unknown/How/ai_harness.md",
+    "name": "ai_harness.md",
+    "ext": ".md",
+    "size": 8472,
+    "category": "Documentation"
+  },
+  {
     "path": "1_Real_Unknown/How/mindmap.md",
     "name": "mindmap.md",
     "ext": ".md",
-    "size": 7720,
+    "size": 7783,
     "category": "Documentation"
   },
   {
     "path": "1_Real_Unknown/How/patterns.md",
     "name": "patterns.md",
     "ext": ".md",
-    "size": 5436,
+    "size": 6384,
     "category": "Documentation"
   },
   {
@@ -59,7 +66,7 @@
     "path": "1_Real_Unknown/prompts.md",
     "name": "prompts.md",
     "ext": ".md",
-    "size": 29761,
+    "size": 30759,
     "category": "Documentation"
   },
   {
@@ -94,7 +101,7 @@
     "path": "1_Real_Unknown/tasks.md",
     "name": "tasks.md",
     "ext": ".md",
-    "size": 10005,
+    "size": 10311,
     "category": "Documentation"
   },
   {
@@ -423,7 +430,7 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 78188,
+    "size": 80679,
     "category": "Documentation"
   },
   {
@@ -444,7 +451,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 27112,
+    "size": 28820,
     "category": "Documentation"
   },
   {
@@ -507,7 +514,7 @@
     "path": "5_Symbols/markdown_renderer.html",
     "name": "markdown_renderer.html",
     "ext": ".html",
-    "size": 25879,
+    "size": 25976,
     "category": "Pages"
   },
   {
@@ -570,7 +577,7 @@
     "path": "5_Symbols/toolbox/nav_sync.py",
     "name": "nav_sync.py",
     "ext": ".py",
-    "size": 6976,
+    "size": 7055,
     "category": "Toolbox"
   },
   {
@@ -871,7 +878,7 @@
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 32524,
+    "size": 32621,
     "category": "Pages"
   },
   {
@@ -892,7 +899,7 @@
     "path": "navigation_config.json",
     "name": "navigation_config.json",
     "ext": ".json",
-    "size": 7134,
+    "size": 7229,
     "category": "Config"
   },
   {
