@@ -961,3 +961,25 @@ This log documents the thinking phase summaries and reasoning processes of the L
 
 ### 📤 Outcomes & Decisions
 - README Refactor + Init updated, SPEC-010 in sync. Commit → push → Pages deploy verified below.
+
+---
+
+## 📅 2026-10-14 — Excalidraw Wireframes & 1_Real_Unknown Sync (SPEC-016)
+
+### 📥 Input / Task
+- "mention in 3_Simulation/ the excalidraw wireframes would be used and they would be in sync with the 1_Real_Unknown , which would be mentioned in the formula"
+
+### 💭 Thinking & Reasoning Process
+1. **Stage Alignment**: In the 7-stage workflow, `1_Real_Unknown` defines the "Why" (problems, OKRs, user journeys), `3_Simulation` defines the visual "Vision", and `4_Formula` establishes the technical specs and gating rules before code is produced in `5_Symbols`.
+2. **Visual Bridge**: Excalidraw wireframes serve as the ideal rapid sketching medium (`.excalidraw`, `.svg`, `.png`). Tying them explicitly to `1_Real_Unknown` prevents visual drift from actual business/user problems.
+3. **Formula Enforcement**: Gating this synchronization in `4_Formula` (SPEC-016) guarantees that no feature reaches code in `5_Symbols` unless its visual wireframe matches an approved problem/OKR definition.
+4. **Files updated**:
+   - `3_Simulation/README.md` & `3_Simulation/design_workflow.md`: Added Excalidraw wireframe format conventions, bidirectional sync with `1_Real_Unknown`, and naming guidelines.
+   - `4_Formula/README.md` & `4_Formula/specs.md`: Formulated SPEC-016 and updated stage rules.
+   - `1_Real_Unknown/prompts.md` & `1_Real_Unknown/tasks.md`: Logged prompt and TSK-036.
+
+### 📤 Outcomes & Decisions
+- Defined SPEC-016 (Excalidraw Wireframes & 1_Real_Unknown Sync).
+- Documented workflow and file formats (`.excalidraw`, `.svg`, `.png`) in `3_Simulation/`.
+- Smoke test verified and changes committed.
+

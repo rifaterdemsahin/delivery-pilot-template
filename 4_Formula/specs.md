@@ -199,6 +199,17 @@
 - **Related Files:** `.claude/skills/harness/SKILL.md`, `5_Symbols/toolbox/harness_packet.py`, `7_Testing_Known/harness_slice2_report.md`, `4_Formula/harness.md`
 - **Last Updated:** 2026-10-08
 
+### SPEC-016: Excalidraw Wireframes & 1_Real_Unknown Sync
+- **Status:** Active
+- **Description:** Excalidraw wireframes in `3_Simulation/` serve as the visual bridge translating user problem statements, hypotheses, and OKRs from `1_Real_Unknown/` into concrete UI layouts and flows. All visual wireframes must remain synchronized with `1_Real_Unknown/` requirements, and this synchronization is validated by the Formula Agent as a mandatory gating condition before code is written in `5_Symbols/`.
+- **Key Behaviors:**
+  - **Tool Standard**: Excalidraw is the primary wireframing tool for rapid visual prototyping, interface layout, and journey modeling in `3_Simulation/`.
+  - **Artifact Formats**: Wireframes are maintained as `.excalidraw` source files with exported `.svg` (vector) and `.png` (raster) files for inclusion in documentation and the auto-updating image carousel on `index.html`.
+  - **Sync Requirement**: Every wireframe element must map directly to an active problem definition, OKR, or question in `1_Real_Unknown/`. When items in `1_Real_Unknown/` change, corresponding wireframes must be updated before specs are finalized.
+  - **Formula Gating**: The Formula Agent inspects `3_Simulation/` wireframes during spec creation (`4_Formula/specs.md`). Code implementation in `5_Symbols/` is blocked if wireframes diverge from `1_Real_Unknown/` or if UI features lack a corresponding Excalidraw wireframe.
+- **Related Files:** `3_Simulation/README.md`, `3_Simulation/design_workflow.md`, `1_Real_Unknown/README.md`, `1_Real_Unknown/problem_statement.md`, `1_Real_Unknown/okrs.md`, `4_Formula/README.md`, `4_Formula/specs.md`
+- **Last Updated:** 2026-10-14
+
 ---
 
 ## Spec Template

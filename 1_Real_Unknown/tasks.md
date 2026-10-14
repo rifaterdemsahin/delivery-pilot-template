@@ -78,6 +78,8 @@
 | TSK-032 | Golden task 1: fix a broken menu link (verifier red → green) | Test Agent | Ran live on `bot/TSK-032` → PR #3 merged (red 10/11 → green 11/11, landed harness.yml guard) | [x] |
 | TSK-033 | Golden task 2: add a markdown page + run nav-sync (appears in all 3 debug-menu sources) | Symbols Agent | Ran live on `bot/TSK-033` → PR #4 merged (red 10/11 → green 11/11, 73 entries) | [x] |
 | TSK-034 | Golden task 3: refuse a secret commit (bot refuses + logs `[PENDING]`) | Semblance Agent | Proven live: validator REFUSE exit 1, tree untouched — refusal needs no branch by design; evidence in golden report | [x] |
+| TSK-036 | Excalidraw wireframes in 3_Simulation synced with 1_Real_Unknown & gated in 4_Formula (SPEC-016) | Real Agent | Real Agent coordinates: Simulation defines Excalidraw wireframe workflow → Formula specs sync & gating rule → Test validates | [x] |
+
 
 ### Task packet template (SPEC-014 — bot refuses to start if any field is missing)
 

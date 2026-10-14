@@ -8,6 +8,7 @@ This folder holds **visual representations** of what the project will look like 
 
 ## What belongs here
 
+- **Excalidraw wireframes** — Collaborative vector wireframes (`.excalidraw`, `.svg`, `.png`) capturing user flows and UI layouts, kept in strict synchronization with `1_Real_Unknown`
 - **UI mockups** — Wireframes and design prototypes
 - **Screenshots** — Captures of the working system at key milestones
 - **Flow diagrams** — User journeys and interaction flows
@@ -21,7 +22,16 @@ This folder holds **visual representations** of what the project will look like 
 | `mockup_navigation.png` | Navigation menu mockup |
 | `flow_user_journey.md` | User journey flow diagram |
 | `carousel_config.json` | Image list for the auto-updating carousel |
-| `design_workflow.md` | Design-first workflow — create images before code |
+| `design_workflow.md` | Design-first workflow — Excalidraw wireframes and sync with `1_Real_Unknown` before code |
+
+## Excalidraw Wireframes & Sync with `1_Real_Unknown`
+
+Excalidraw wireframes are the primary visual medium for rapid UI sketching and journey mapping in this stage:
+- **Source of truth**: Wireframes must directly reflect the problem statements, OKRs, user journeys, and core questions established in `1_Real_Unknown/`.
+- **Bidirectional sync**: When requirements change in `1_Real_Unknown/`, the Excalidraw wireframes in `3_Simulation/` must be updated before new specs are created in `4_Formula/`.
+- **Export & Versioning**: Keep both the editable `.excalidraw` file and exported `.svg` or `.png` files for web rendering and inclusion in the image carousel.
+- **Formula Gating**: As specified in `4_Formula/` (SPEC-016), code implementation in `5_Symbols/` is gated until Excalidraw wireframes match the current real-world problem definition.
+
 
 ## Image Carousel
 

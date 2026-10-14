@@ -163,3 +163,11 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Prompt:** "commit push deploy and update the readme init and refactor > push".
 - **Purpose:** Consumer prompts must teach the harness lane and per-bot specs.
 - **Done:** README Refactor/Init carry harness + bot_spec lines, SPEC-010 synced, pushed, Pages deploy green.
+
+---
+
+## 2026-10-14 — Excalidraw Wireframes Sync with 1_Real_Unknown (Real / Simulation / Formula Agents)
+- **Prompt:** "mention in 3_Simulation/ the excalidraw wireframes would be used and they would be in sync with the 1_Real_Unknown , which would be mentioned in the formula"
+- **Purpose:** Formalize Excalidraw wireframe usage in `3_Simulation/` synced directly with `1_Real_Unknown/` problems/OKRs, formulated as a gating rule in `4_Formula/`.
+- **Done:** Documented Excalidraw wireframes in `3_Simulation/README.md` and `3_Simulation/design_workflow.md`, updated `4_Formula/README.md` and `4_Formula/specs.md` (SPEC-016), updated thinking log, verified with smoke test.
+

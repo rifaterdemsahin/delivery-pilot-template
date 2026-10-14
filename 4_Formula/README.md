@@ -74,11 +74,13 @@ services:
 ## Rules
 
 - **Think before you code** — log the plan in `llm_thinking_log.md` before touching `5_Symbols`
+- **Excalidraw wireframe synchronization (SPEC-016)** — Before specs gate code in `5_Symbols`, verify that Excalidraw wireframes in `3_Simulation/` match the problem statements and OKRs in `1_Real_Unknown/`
 - **Log after execution** — append the LLM reasoning summary to `llm_thinking_log.md` once done
 - Write the *why* not just the *what* — reasoning decays fastest
 - Link research notes to the decisions they informed
 - Move superseded guides to `_obsolete/` 🚮
 - Keep Docker configs in sync with `2_Environment` setup guides
+
 
 ## 🧪 Testing Checklist
 
