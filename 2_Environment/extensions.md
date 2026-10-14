@@ -38,7 +38,24 @@ To ensure a seamless development experience, install the following extensions in
   * **Marketplace ID:** `mermaid-chart.mermaid-chart`
   * **Quick Install:** `code --install-extension mermaid-chart.mermaid-chart`
 
-### 2. Cloud & Infrastructure Management
+### 2. Markdown & Documentation Authoring (Template Previews)
+
+* **Markdown Preview Enhanced** (by *Yiyi Wang*)
+  * **Purpose:** Supercharged markdown previewing supporting Mermaid, KaTeX, PlantUML, interactive diagrams, and live HTML embedding matching delivery-pilot rendering.
+  * **Marketplace ID:** `shd101wyy.markdown-preview-enhanced`
+  * **Quick Install:** `code --install-extension shd101wyy.markdown-preview-enhanced`
+
+* **Markdown All in One** (by *Yu Zhang*)
+  * **Purpose:** Automated table of contents generation, keyboard shortcuts, formatting, and markdown linting for rapid documentation authoring.
+  * **Marketplace ID:** `yzhang.markdown-all-in-one`
+  * **Quick Install:** `code --install-extension yzhang.markdown-all-in-one`
+
+* **GitHub Markdown Preview** (by *Matt Bierner*)
+  * **Purpose:** Matches the exact GitHub-flavored markdown styling used by GitHub Pages and markdown_renderer.
+  * **Marketplace ID:** `bierner.github-markdown-preview`
+  * **Quick Install:** `code --install-extension bierner.github-markdown-preview`
+
+### 3. Cloud & Infrastructure Management
 * **Azure Account & Azure Resources** (by *Microsoft*)
   * **Purpose:** Authenticate and browse your Azure resources, including Key Vaults, directly within the editor.
   * **Marketplace ID:** `ms-vscode.azure-account` / `ms-azuretools.vscode-azureresources`

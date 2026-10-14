@@ -39,6 +39,7 @@ To provide clear cognitive separation, markdown files in `1_Real_Unknown/` map t
 | [`costs.md`](costs.md) | Cost tracking for cloud environments, models, and tool calls |
 | [`risks.md`](risks.md) | Living risk register with active risks, mitigations, and resolved risks |
 | [`sanity_check_report.md`](sanity_check_report.md) | Verification report validating delivery alignment against objectives |
+| [`How/mindmap.md`](How/mindmap.md) | Visual lineage mindmap connecting all framework files with architectural rationale |
 
 ### 3. 📦 What (Deliverables, Goals & Action Items)
 | File | Description |

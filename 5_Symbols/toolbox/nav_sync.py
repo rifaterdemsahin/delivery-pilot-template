@@ -20,6 +20,7 @@ MENU = [
     ("   ├─ 💰 Cost Tracker", "1_Real_Unknown/costs.md"),
     ("   ├─ ⚠️ Risks", "1_Real_Unknown/risks.md"),
     ("   ├─ 🔍 Sanity Check Report", "1_Real_Unknown/sanity_check_report.md"),
+    ("   ├─ 🧠 Mindmap & Rationale", "1_Real_Unknown/How/mindmap.md"),
     ("   ├─ 📝 Prompt Log", "1_Real_Unknown/prompts.md"),
     ("🛠️ 2. Environment", "2_Environment/README.md"),
     ("   ├─ 🏗️ Architecture", "2_Environment/architecture.md"),

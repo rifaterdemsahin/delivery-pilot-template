@@ -1065,6 +1065,32 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - `2_Environment/extensions.md` live with Excalidraw and Mermaid extension guides.
 - 11/11 smoke tests passed. Committed and pushed to `main`.
 
+---
+
+## 📅 2026-10-14 — Mindmap Lineage in 1_Real_Unknown/How/ & Markdown Authoring Extensions (TSK-042)
+
+### 📥 Input / Task
+- "in the real how folder have a mindmap to show how all files connect to each other in a mindmap and the rationale"
+- "include extension such as markdown preview pro or others that enables this template commit and push"
+
+### 💭 Thinking & Reasoning Process
+1. **Architectural Mindmap in 1_Real_Unknown/How/**:
+   - Created `1_Real_Unknown/How/mindmap.md` with a comprehensive Mermaid architecture diagram illustrating the exact dataflow and feedback loops between all 7 stages.
+   - Built a comprehensive File Connection Matrix explaining upstream inputs, downstream deliverables, and architectural rationale for each stage file.
+2. **Markdown Preview Extensions in 2_Environment/extensions.md**:
+   - Added **Markdown Preview Enhanced** (`shd101wyy.markdown-preview-enhanced`) supporting Mermaid, KaTeX, PlantUML, and HTML embeds.
+   - Added **Markdown All in One** (`yzhang.markdown-all-in-one`) for TOC generation, keyboard shortcuts, and table formatting.
+   - Added **GitHub Markdown Preview** (`bierner.github-markdown-preview`) for pixel-perfect GitHub Flavored Markdown fidelity.
+3. **Menu Sync & Master Review Catalog**:
+   - Added `1_Real_Unknown/How/mindmap.md` to `nav_sync.py` and re-synced all 3 navigation targets (80 entries).
+   - Re-generated `repo_files.json` (129 files cataloged).
+
+### 📤 Outcomes & Decisions
+- Mindmap live at `1_Real_Unknown/How/mindmap.md`.
+- Extensions documented in `2_Environment/extensions.md`.
+- 11/11 smoke tests passed. Committed and pushed to `main`.
+
+
 
 
 

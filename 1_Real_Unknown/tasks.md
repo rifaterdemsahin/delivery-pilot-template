@@ -84,6 +84,8 @@
 | TSK-039 | Master Review & Feedback suite with per-project Azure container (SPEC-017) | Symbols Agent | Real Agent coordinates: Symbols builds 5_Symbols/master_review/ & catalog generator → Formula specs isolated Azure containers → Test validates | [x] |
 | TSK-040 | Partition 5_Symbols into project/ and deliverypilot/ subfolders | Symbols Agent | Symbols Agent creates project/ and deliverypilot/, moves master_review, updates relative paths and nav-sync | [x] |
 | TSK-041 | Move extensions.md to 2_Environment/ and document Excalidraw & Mermaid extensions | Environment Agent | Environment Agent moves extensions.md, adds Excalidraw/Mermaid installation, updates nav-sync & READMEs | [x] |
+| TSK-042 | Create 1_Real_Unknown/How/mindmap.md lineage & add Markdown authoring extensions | Real Agent | Real Agent creates lineage mindmap & connection matrix; Environment Agent adds Markdown preview tools | [x] |
+
 
 
 

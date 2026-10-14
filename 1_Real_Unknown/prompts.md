@@ -199,6 +199,14 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Purpose:** House tooling and IDE extension requirements in `2_Environment/extensions.md`, explicitly recommending Excalidraw (for wireframes in `3_Simulation/`) and Mermaid (for architecture blueprints).
 - **Done:** Moved `4_Formula/extensions.md` → `2_Environment/extensions.md`, enhanced Visualization & Diagramming with Excalidraw and Mermaid extensions, updated `2_Environment/README.md` and `4_Formula/README.md`, synced menus with `nav_sync.py`, verified with smoke test, committed and pushed.
 
+---
+
+## 2026-10-14 — Mindmap Lineage in 1_Real_Unknown/How/ & Markdown Preview Extensions (Real & Environment Agents)
+- **Prompt:** "in the real how folder have a mindmap to show how all files connect to each other in a mindmap and the rationale" + "include extension such as markdown preview pro or others that enables this template commit and push"
+- **Purpose:** Provide an end-to-end Mermaid lineage mindmap and connection rationale matrix in `1_Real_Unknown/How/mindmap.md`, and document Markdown Preview Enhanced / All-in-One / GitHub Preview in `2_Environment/extensions.md`.
+- **Done:** Created `1_Real_Unknown/How/mindmap.md`, updated `2_Environment/extensions.md` with Markdown authoring extensions, updated `1_Real_Unknown/README.md`, synced menus with `nav_sync.py`, regenerated catalog, verified with smoke test, committed and pushed.
+
+
 
 
 
