@@ -778,7 +778,7 @@
                 '<span class="badge ' + badgeClass + '">' + f.category + '</span>' +
                 '<span>' + f.ext.toUpperCase() + '</span> · ' +
                 '<span>' + formatBytes(f.size) + '</span> · ' +
-                '<a href="../../' + encodeURI(f.path) + '" target="_blank" rel="noopener" style="color:#60a5fa;text-decoration:none;">Open in new tab ↗</a>';
+                '<a href="../../../' + encodeURI(f.path) + '" target="_blank" rel="noopener" style="color:#60a5fa;text-decoration:none;">Open in new tab ↗</a>';
 
             document.getElementById('indexIndicator').textContent = (currentIndex + 1) + ' / ' + filteredFiles.length;
 
@@ -811,7 +811,7 @@
             var frame = document.getElementById('previewFrame');
             frame.innerHTML = '<p style="color:var(--text-secondary);">Loading preview…</p>';
 
-            var fileUrl = '../../' + encodeURI(f.path) + '?_t=' + Date.now();
+            var fileUrl = '../../../' + encodeURI(f.path) + '?_t=' + Date.now();
 
             if (f.category === 'Images') {
                 frame.innerHTML = '<img src="' + fileUrl + '" alt="' + f.name + '">';
@@ -846,7 +846,7 @@
             var frame = document.getElementById('previewFrame');
             frame.innerHTML = '<p style="color:var(--text-secondary);">Reloading preview…</p>';
 
-            var fileUrl = '../../' + encodeURI(f.path) + '?_t=' + Date.now();
+            var fileUrl = '../../../' + encodeURI(f.path) + '?_t=' + Date.now();
 
             if (f.category === 'Images') {
                 frame.innerHTML = '<img src="' + fileUrl + '" alt="' + f.name + '">';

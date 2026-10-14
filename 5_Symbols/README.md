@@ -14,16 +14,28 @@ This folder contains the **core source code and implementation files**. Everythi
 - **GitHub Actions workflows** — CI/CD pipeline definitions
 - **Static assets** — JS, CSS bundles used by the app
 
-## Files
+## Structure & Subfolders
 
-| File | Description |
-|------|-------------|
-| `main.py` | Primary application entry point |
-| `Dockerfile` | Container build definition |
-| `docker-compose.yml` | Multi-service orchestration |
-| `requirements.txt` | Python dependencies |
-| `.github/workflows/` | CI/CD pipeline definitions |
-| `rules/` | **Rules agents load** — operating rules (spec what you did + commit/push), coding standards, git conventions, file organization |
+`5_Symbols/` is organized into two primary subfolders to keep project code decoupled from framework tooling:
+
+```
+5_Symbols/
+├── 🚀 project/        — Application & product-specific code (backend, frontend, microservices)
+├── 🎛️ deliverypilot/  — DeliveryPilot framework components & tools (e.g., master_review)
+├── 📜 rules/          — Standing operating rules, coding standards, and git conventions
+└── 🧰 toolbox/        — Automation scripts (smoke_test.py, nav_sync.py, gen_repo_files.py)
+```
+
+## Files & Folders
+
+| File / Folder | Description |
+|---|---|
+| [`project/`](project/README.md) | Application and product-specific source code |
+| [`deliverypilot/`](deliverypilot/README.md) | Framework-level tools and review suites (e.g. Master Review) |
+| [`rules/`](rules/agent_operating_rules.md) | Agent operating rules, coding standards, and conventions |
+| [`toolbox/`](toolbox/) | Project verification scripts, smoke tests, and catalog generators |
+| `markdown_renderer.html` | Markdown document viewer with live navigation |
+| `artifacts_carousel.html` | Interactive artifact presentation carousel |
 
 ## Code Standards
 

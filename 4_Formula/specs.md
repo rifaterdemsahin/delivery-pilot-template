@@ -212,14 +212,15 @@
 
 ### SPEC-017: Master Review & Project-Scoped Azure Feedback Storage
 - **Status:** Active
-- **Description:** An in-browser inspection suite and file carousel in `5_Symbols/master_review/` enabling developers and reviewers to audit every file across all 7 architectural stages in sequence. Feedback, reviews, and status notes are persisted to an isolated Azure Blob Storage container scoped to each consumer project, with fail-soft local storage and cookie chunking.
+- **Description:** An in-browser inspection suite and file carousel in `5_Symbols/deliverypilot/master_review/` enabling developers and reviewers to audit every file across all 7 architectural stages in sequence. Feedback, reviews, and status notes are persisted to an isolated Azure Blob Storage container scoped to each consumer project, with fail-soft local storage and cookie chunking. `5_Symbols/` is partitioned into `project/` (consumer app code) and `deliverypilot/` (framework tooling).
 - **Key Behaviors:**
   - **Stage Sequence Review**: Inspects all repository files starting from `1_Real_Unknown/` through `7_Testing_Known/`, generated via `5_Symbols/toolbox/gen_repo_files.py`.
+  - **Subfolder Decoupling**: Framework tools live under `5_Symbols/deliverypilot/` (e.g. `master_review/`), while project-specific application logic lives under `5_Symbols/project/`.
   - **Per-Project Azure Container**: Each project implementing `delivery-pilot-template` resolves its own container name dynamically (via query param `?project=`, `window.PROJECT_NAME`, GitHub Pages repo path, or `{{PROJECT_NAME}}` placeholder), targeting `https://<account>.blob.core.windows.net/<project-container>/master_review_state.json`.
   - **Zero-Collision Cloud Feedback**: Different projects deploying this template never overwrite each other's review notes or verification states.
   - **Fail-Soft Storage**: When Azure credentials or network access are unavailable, feedback is automatically persisted to browser cookies and localStorage, with a one-click manual "Push to Azure" sync once cloud credentials are provided.
-  - **Multi-Format Previews**: Live in-frame preview supports Markdown, HTML, Code/Config text, PDF, and images using portable relative links (`../../`).
-- **Related Files:** `5_Symbols/master_review/index.html`, `5_Symbols/master_review/styles.css`, `5_Symbols/master_review/app.js`, `5_Symbols/master_review/repo_files.json`, `5_Symbols/toolbox/gen_repo_files.py`, `4_Formula/specs.md`, `navigation_config.json`
+  - **Multi-Format Previews**: Live in-frame preview supports Markdown, HTML, Code/Config text, PDF, and images using portable relative links (`../../../`).
+- **Related Files:** `5_Symbols/deliverypilot/master_review/index.html`, `5_Symbols/deliverypilot/master_review/styles.css`, `5_Symbols/deliverypilot/master_review/app.js`, `5_Symbols/deliverypilot/master_review/repo_files.json`, `5_Symbols/toolbox/gen_repo_files.py`, `5_Symbols/project/README.md`, `5_Symbols/deliverypilot/README.md`, `4_Formula/specs.md`, `navigation_config.json`
 - **Last Updated:** 2026-10-14
 
 ---

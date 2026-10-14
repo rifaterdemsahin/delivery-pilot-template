@@ -402,7 +402,7 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 70609,
+    "size": 73311,
     "category": "Documentation"
   },
   {
@@ -430,7 +430,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 22708,
+    "size": 24568,
     "category": "Documentation"
   },
   {
@@ -455,32 +455,32 @@
     "category": "Pages"
   },
   {
-    "path": "5_Symbols/markdown_renderer.html",
-    "name": "markdown_renderer.html",
-    "ext": ".html",
-    "size": 25205,
-    "category": "Pages"
-  },
-  {
-    "path": "5_Symbols/master_review/app.js",
+    "path": "5_Symbols/deliverypilot/master_review/app.js",
     "name": "app.js",
     "ext": ".js",
-    "size": 86446,
+    "size": 86455,
     "category": "JavaScript"
   },
   {
-    "path": "5_Symbols/master_review/index.html",
+    "path": "5_Symbols/deliverypilot/master_review/index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 16318,
+    "size": 16321,
     "category": "Pages"
   },
   {
-    "path": "5_Symbols/master_review/styles.css",
+    "path": "5_Symbols/deliverypilot/master_review/styles.css",
     "name": "styles.css",
     "ext": ".css",
     "size": 36511,
     "category": "Styles"
+  },
+  {
+    "path": "5_Symbols/markdown_renderer.html",
+    "name": "markdown_renderer.html",
+    "ext": ".html",
+    "size": 25467,
+    "category": "Pages"
   },
   {
     "path": "5_Symbols/README.md",
@@ -528,7 +528,7 @@
     "path": "5_Symbols/toolbox/gen_repo_files.py",
     "name": "gen_repo_files.py",
     "ext": ".py",
-    "size": 3767,
+    "size": 3815,
     "category": "Toolbox"
   },
   {
@@ -542,7 +542,7 @@
     "path": "5_Symbols/toolbox/nav_sync.py",
     "name": "nav_sync.py",
     "ext": ".py",
-    "size": 6431,
+    "size": 6639,
     "category": "Toolbox"
   },
   {
@@ -836,7 +836,7 @@
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 31853,
+    "size": 32115,
     "category": "Pages"
   },
   {
@@ -857,7 +857,7 @@
     "path": "navigation_config.json",
     "name": "navigation_config.json",
     "ext": ".json",
-    "size": 6477,
+    "size": 6733,
     "category": "Config"
   },
   {

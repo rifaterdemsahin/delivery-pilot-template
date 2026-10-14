@@ -185,4 +185,12 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Purpose:** Provide an in-browser inspection and feedback carousel suite across all repository files with isolated per-project Azure Blob Storage containers and fail-soft local storage.
 - **Done:** Built `5_Symbols/master_review/` (`index.html`, `styles.css`, `app.js`), built catalog generator `5_Symbols/toolbox/gen_repo_files.py`, formulated SPEC-017, updated navigation and smoke tests.
 
+---
+
+## 2026-10-14 — 5_Symbols Subfolders: project and deliverypilot (Symbols Agent)
+- **Prompt:** "the 5_Symbols should have 2 subfolders project and deliverypilot > and project related code should go to project where deliverypilot based code such as master_review should shourl under deliverypilot > commit push"
+- **Purpose:** Decouple project-specific application code (`5_Symbols/project/`) from framework-level deliverypilot tooling (`5_Symbols/deliverypilot/`), moving `master_review/` under `deliverypilot/`.
+- **Done:** Created `5_Symbols/project/` and `5_Symbols/deliverypilot/`, moved `master_review/` to `5_Symbols/deliverypilot/master_review/`, updated relative links, updated `gen_repo_files.py`, updated `SPEC-017`, synced menus with `nav_sync.py`, verified with smoke test suite, committed and pushed.
+
+
 

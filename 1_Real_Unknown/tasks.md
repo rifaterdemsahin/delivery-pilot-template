@@ -82,6 +82,8 @@
 | TSK-037 | Root LICENSE file (MIT) & ALLOWED_ROOT_FILES update (SPEC-013) | Real Agent | Real Agent coordinates: Real adds LICENSE → Symbols updates smoke test → Formula updates SPEC-013 | [x] |
 | TSK-038 | Real Unknown Golden Circle taxonomy (Why, How, What) + requirements.md & todos.md | Real Agent | Real Agent defines and organizes taxonomy in 1_Real_Unknown/README.md, creates requirements.md and todos.md | [x] |
 | TSK-039 | Master Review & Feedback suite with per-project Azure container (SPEC-017) | Symbols Agent | Real Agent coordinates: Symbols builds 5_Symbols/master_review/ & catalog generator → Formula specs isolated Azure containers → Test validates | [x] |
+| TSK-040 | Partition 5_Symbols into project/ and deliverypilot/ subfolders | Symbols Agent | Symbols Agent creates project/ and deliverypilot/, moves master_review, updates relative paths and nav-sync | [x] |
+
 
 
 

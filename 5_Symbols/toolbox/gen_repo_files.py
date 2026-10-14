@@ -106,9 +106,9 @@ def generate_catalog(repo_root=REPO_ROOT):
 
 
 def write_catalog(target_path=None, repo_root=REPO_ROOT):
-    """Write catalog to target_path (default: 5_Symbols/master_review/repo_files.json)."""
+    """Write catalog to target_path (default: 5_Symbols/deliverypilot/master_review/repo_files.json)."""
     if target_path is None:
-        target_path = os.path.join(repo_root, '5_Symbols', 'master_review', 'repo_files.json')
+        target_path = os.path.join(repo_root, '5_Symbols', 'deliverypilot', 'master_review', 'repo_files.json')
     catalog = generate_catalog(repo_root)
     os.makedirs(os.path.dirname(os.path.abspath(target_path)), exist_ok=True)
     with open(target_path, 'w', encoding='utf-8') as f:
@@ -121,7 +121,7 @@ def main():
     parser.add_argument('-o', '--output', help='Destination path for repo_files.json')
     args = parser.parse_args()
 
-    out_path = args.output or os.path.join(REPO_ROOT, '5_Symbols', 'master_review', 'repo_files.json')
+    out_path = args.output or os.path.join(REPO_ROOT, '5_Symbols', 'deliverypilot', 'master_review', 'repo_files.json')
     catalog = write_catalog(out_path)
     print(f'Generated {out_path} with {len(catalog)} files.')
 

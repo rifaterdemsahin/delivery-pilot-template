@@ -1018,4 +1018,29 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Master Review suite functional at `5_Symbols/master_review/index.html`.
 - 11/11 smoke tests passed. Ready for commit & push.
 
+---
+
+## 📅 2026-10-14 — Partition 5_Symbols into project/ and deliverypilot/ Subfolders (TSK-040)
+
+### 📥 Input / Task
+- "the 5_Symbols should have 2 subfolders project and deliverypilot > and project related code should go to project where deliverypilot based code such as master_review should shourl under deliverypilot > commit push"
+
+### 💭 Thinking & Reasoning Process
+1. **Architectural Separation**: As consumer projects adopt `delivery-pilot-template`, mingling consumer business logic with framework tooling inside `5_Symbols/` causes cognitive friction and refactoring risks.
+2. **Folder Boundaries**:
+   - `5_Symbols/project/`: Reserved exclusively for consumer application and product source code (APIs, services, web components).
+   - `5_Symbols/deliverypilot/`: Dedicated to framework delivery components, tools, and review suites (such as `master_review/`).
+3. **Execution & Path Updates**:
+   - `git mv 5_Symbols/master_review 5_Symbols/deliverypilot/master_review`
+   - Updated relative URLs in `master_review/index.html` and `master_review/app.js` from `../../` to `../../../` to reach repository root from 3 directory levels down.
+   - Updated catalog target in `gen_repo_files.py` and regenerated `repo_files.json`.
+   - Updated navigation debugMenu link in `nav_sync.py` and re-synced all 3 sources.
+   - Updated `SPEC-017` in `4_Formula/specs.md` and `5_Symbols/README.md`.
+
+### 📤 Outcomes & Decisions
+- Created `5_Symbols/project/README.md` and `5_Symbols/deliverypilot/README.md`.
+- Master Review relocated to `5_Symbols/deliverypilot/master_review/index.html`.
+- 11/11 smoke tests green. Changes committed and pushed.
+
+
 
