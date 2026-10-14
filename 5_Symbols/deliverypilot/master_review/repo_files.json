@@ -24,7 +24,7 @@
     "path": "1_Real_Unknown/How/mindmap.md",
     "name": "mindmap.md",
     "ext": ".md",
-    "size": 7783,
+    "size": 7794,
     "category": "Documentation"
   },
   {
@@ -66,7 +66,7 @@
     "path": "1_Real_Unknown/prompts.md",
     "name": "prompts.md",
     "ext": ".md",
-    "size": 31708,
+    "size": 32585,
     "category": "Documentation"
   },
   {
@@ -101,7 +101,7 @@
     "path": "1_Real_Unknown/tasks.md",
     "name": "tasks.md",
     "ext": ".md",
-    "size": 10597,
+    "size": 10854,
     "category": "Documentation"
   },
   {
@@ -430,7 +430,7 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 82862,
+    "size": 84955,
     "category": "Documentation"
   },
   {
@@ -451,7 +451,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 30101,
+    "size": 32123,
     "category": "Documentation"
   },
   {
@@ -465,15 +465,8 @@
     "path": "5_Symbols/_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 2899,
+    "size": 2854,
     "category": "Documentation"
-  },
-  {
-    "path": "5_Symbols/artifacts_carousel.html",
-    "name": "artifacts_carousel.html",
-    "ext": ".html",
-    "size": 34235,
-    "category": "Pages"
   },
   {
     "path": "5_Symbols/calendar_view.html",
@@ -486,8 +479,22 @@
     "path": "5_Symbols/deliverypilot/_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 877,
+    "size": 1133,
     "category": "Documentation"
+  },
+  {
+    "path": "5_Symbols/deliverypilot/artifacts_carousel.html",
+    "name": "artifacts_carousel.html",
+    "ext": ".html",
+    "size": 34134,
+    "category": "Pages"
+  },
+  {
+    "path": "5_Symbols/deliverypilot/markdown_renderer.html",
+    "name": "markdown_renderer.html",
+    "ext": ".html",
+    "size": 25666,
+    "category": "Pages"
   },
   {
     "path": "5_Symbols/deliverypilot/master_review/app.js",
@@ -509,13 +516,6 @@
     "ext": ".css",
     "size": 36511,
     "category": "Styles"
-  },
-  {
-    "path": "5_Symbols/markdown_renderer.html",
-    "name": "markdown_renderer.html",
-    "ext": ".html",
-    "size": 25828,
-    "category": "Pages"
   },
   {
     "path": "5_Symbols/project/_README.md",
@@ -542,7 +542,7 @@
     "path": "5_Symbols/rules/file_organization.md",
     "name": "file_organization.md",
     "ext": ".md",
-    "size": 3651,
+    "size": 3687,
     "category": "Rules"
   },
   {
@@ -577,14 +577,14 @@
     "path": "5_Symbols/toolbox/nav_sync.py",
     "name": "nav_sync.py",
     "ext": ".py",
-    "size": 6961,
+    "size": 6989,
     "category": "Toolbox"
   },
   {
     "path": "5_Symbols/toolbox/smoke_test.py",
     "name": "smoke_test.py",
     "ext": ".py",
-    "size": 12292,
+    "size": 12306,
     "category": "Toolbox"
   },
   {
@@ -836,7 +836,7 @@
     "path": "_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 11129,
+    "size": 11157,
     "category": "Documentation"
   },
   {
@@ -857,7 +857,7 @@
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 32473,
+    "size": 32384,
     "category": "Pages"
   },
   {
@@ -878,14 +878,14 @@
     "path": "navigation_config.json",
     "name": "navigation_config.json",
     "ext": ".json",
-    "size": 7087,
+    "size": 6876,
     "category": "Config"
   },
   {
     "path": "README.md",
     "name": "README.md",
     "ext": ".md",
-    "size": 11129,
+    "size": 11157,
     "category": "Documentation"
   },
   {
@@ -899,7 +899,7 @@
     "path": "sitemap.xml",
     "name": "sitemap.xml",
     "ext": ".xml",
-    "size": 523,
+    "size": 537,
     "category": "Data"
   }
 ]

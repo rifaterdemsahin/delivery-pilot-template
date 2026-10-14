@@ -344,7 +344,7 @@
 
   <header class="renderer-header">
     <div class="header-container">
-      <a href="../index.html" class="back-btn">
+      <a href="../../index.html" class="back-btn">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Home</span>
       </a>
@@ -398,8 +398,6 @@
     let navigationData = {
       projectMenu: [
         { label: "🏠 Home", url: "index.html" },
-        { label: "🎯 OKRs & Outcomes", url: "5_Symbols/markdown_renderer.html?file=1_Real_Unknown/okrs.md" },
-        { label: "📊 Progress Dashboard", url: "5_Symbols/markdown_renderer.html?file=1_Real_Unknown/kanban.md" },
         { label: "📅 Calendar", url: "5_Symbols/calendar_view.html" }
       ],
       debugMenu: [
@@ -479,7 +477,7 @@
         { label: "   ├─ 📋 Sanity Data Source", url: "7_Testing_Known/sanity_check_report.md" },
         { label: "---", url: "divider" },
         { label: "🎛️ Master Review & Feedback", url: "5_Symbols/deliverypilot/master_review/index.html" },
-        { label: "🎠 Artifacts Carousel", url: "5_Symbols/artifacts_carousel.html" },
+        { label: "🎠 Artifacts Carousel", url: "5_Symbols/deliverypilot/artifacts_carousel.html" },
         { label: "📖 agents.md (Coordinator & Personas)", url: "agents.md" },
         { label: "⚡ kilocode.md", url: "kilocode.md" }
       ]
@@ -515,8 +513,8 @@
       const debugLinksList = document.getElementById("debugLinksList");
       const editGitHubBtn = document.getElementById("editGitHubBtn");
 
-      // Load config dynamically (site root is one level up from 5_Symbols/)
-      fetch("../navigation_config.json")
+      // Load config dynamically (site root is two levels up from 5_Symbols/deliverypilot/)
+      fetch("../../navigation_config.json")
         .then(res => res.json())
         .then(data => {
           debugLog("Dynamic navigation config loaded successfully.", data);
@@ -553,12 +551,12 @@
             const a = document.createElement("a");
             
             // Route relative URLs dynamically through the renderer.
-            // Config URLs are root-relative; this page lives in 5_Symbols/, so
-            // .html pages get a ../ prefix and .md files stay on this renderer.
+            // Config URLs are root-relative; this page lives in 5_Symbols/deliverypilot/, so
+            // .html pages get a ../../ prefix and .md files stay on this renderer.
             let finalUrl = item.url;
             if (finalUrl !== "divider" && !finalUrl.startsWith("http")) {
               if (finalUrl.includes(".html")) {
-                finalUrl = `../${finalUrl}`;
+                finalUrl = `../../${finalUrl}`;
               } else {
                 finalUrl = `markdown_renderer.html?file=${finalUrl}`;
               }
@@ -625,8 +623,8 @@
       editGitHubBtn.style.display = "inline-flex";
       debugLog("Edit on GitHub URL configured:", gitHubEditUrl);
 
-      debugLog(`Fetching markdown file from: "../${fetchPath}"`);
-      fetch(`../${fetchPath}`)
+      debugLog(`Fetching markdown file from: "../../${fetchPath}"`);
+      fetch(`../../${fetchPath}`)
         .then(response => {
           if (!response.ok) throw new Error("File not found");
           debugLog(`Fetched file "${fetchPath}" successfully. Status: ${response.status}`);
@@ -654,7 +652,7 @@
               <i class="fa-solid fa-circle-exclamation error-icon"></i>
               <h2>Unable to load file</h2>
               <p style="color: var(--text-muted); margin-top: 0.5rem;">${err.message}: ${fetchPath}</p>
-              <a href="index.html" style="display:inline-block; margin-top:1.5rem; color:var(--accent-cyan); text-decoration:underline;">Return to Home</a>
+              <a href="../../index.html" style="display:inline-block; margin-top:1.5rem; color:var(--accent-cyan); text-decoration:underline;">Return to Home</a>
             </div>
           `;
         });

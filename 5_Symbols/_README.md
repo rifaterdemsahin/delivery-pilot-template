@@ -30,12 +30,11 @@ This folder contains the **core source code and implementation files**. Everythi
 
 | File / Folder | Description |
 |---|---|
-| [`project/`](project/README.md) | Application and product-specific source code |
-| [`deliverypilot/`](deliverypilot/README.md) | Framework-level tools and review suites (e.g. Master Review) |
+| [`project/`](project/_README.md) | Application and product-specific source code |
+| [`deliverypilot/`](deliverypilot/_README.md) | Framework-level tools and review suites (Markdown Renderer, Master Review, Carousel) |
 | [`rules/`](rules/agent_operating_rules.md) | Agent operating rules, coding standards, and conventions |
 | [`toolbox/`](toolbox/) | Project verification scripts, smoke tests, and catalog generators |
-| `markdown_renderer.html` | Markdown document viewer with live navigation |
-| `artifacts_carousel.html` | Interactive artifact presentation carousel |
+| [`calendar_view.html`](calendar_view.html) | Project calendar view interface |
 
 ## Code Standards
 

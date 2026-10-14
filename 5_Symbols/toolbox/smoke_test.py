@@ -25,7 +25,7 @@ import urllib.request
 
 CONFIG_FILE = "navigation_config.json"
 REPORT_FILE = os.path.join("6_Semblance", "smoke_test_report.md")
-RENDERER = "5_Symbols/markdown_renderer.html"
+RENDERER = "5_Symbols/deliverypilot/markdown_renderer.html"
 REQUIRED_ROOT_FILES = ["index.html", RENDERER, "README.md", "robots.txt", "sitemap.xml"]
 REQUIRED_INDEX_LINKS = ["github.com", "linkedin.com", "youtube.com"]
 STAGE_GLOB = re.compile(r"^[1-7]_[A-Za-z_]+$")

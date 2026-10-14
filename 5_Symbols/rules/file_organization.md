@@ -48,7 +48,7 @@ These **files** stay at the repo root because GitHub Pages, git, or the coordina
 - `navigation_config.json` — Shared menu config (loaded by root `index.html`)
 - `agents.md` + LLM persona files — coordinator contract
 
-`5_Symbols/markdown_renderer.html` is source code — it lives in Stage 5, not at the root.
+`5_Symbols/deliverypilot/markdown_renderer.html` is source code — it lives under `5_Symbols/deliverypilot/`, not at the root.
 
 ### Stage 5 Files
 Everything else that is code/implementation belongs here:

@@ -227,6 +227,13 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Purpose:** Consolidate model-specific personas for Claude, Gemini, and GitHub Copilot directly into `agents.md`, eliminate file duplication across the root directory, update navigation and catalog tools, and formulate SPEC-020.
 - **Done:** Merged Claude, Gemini, and Copilot personas into `agents.md` with full skills, MCPs, and multimodal workflows; removed redundant root files (`git rm claude.md gemini.md copilot.md`); updated `nav_sync.py` and synced menus (79 entries); updated `artifacts_carousel.html` and `agent_operating_rules.md`; regenerated `repo_files.json` (129 files); formulated SPEC-020 in `4_Formula/specs.md`; verified 11/11 smoke tests, committed and pushed.
 
+---
+
+## 2026-10-14 — Relocate DeliveryPilot Framework Pages & Pure ProjectMenu Partitioning (Symbols / Formula Agents)
+- **Prompt:** "update the related placed the delivery pilot is behing the debug icon only and project menus are never > behind 5_Symbols/deliverypilot/markdown_renderer.html > put all deliverypilot related code pages under 5_Symbols/deliverypilot move markdown_renderer.html under deliverypilot folder inside the 5_Symbols"
+- **Purpose:** Relocate `markdown_renderer.html` and `artifacts_carousel.html` into `5_Symbols/deliverypilot/`, update all root-relative asset fetches to two levels (`../../`), purify `projectMenu` in `navigation_config.json` and fallback configurations so that framework pages (OKRs, Kanban, stage documentation) never appear in the consumer project menu, isolate all framework navigation strictly behind the debug menu icon, and formulate SPEC-021.
+- **Done:** Moved `markdown_renderer.html` and `artifacts_carousel.html` to `5_Symbols/deliverypilot/` via `git mv`; updated root back buttons, config fetches, and markdown fetches to two-level traversal (`../../`); cleansed `projectMenu` in `navigation_config.json`, `index.html`, and `markdown_renderer.html` to retain only consumer project pages (`index.html`, `5_Symbols/calendar_view.html`); updated `5_Symbols/toolbox/nav_sync.py` and synced 79 menu entries across 3 sources; updated `5_Symbols/toolbox/smoke_test.py` `RENDERER` path; regenerated `repo_files.json` catalog (129 files); updated `sitemap.xml`, `_README.md`, `5_Symbols/_README.md`, `5_Symbols/deliverypilot/_README.md`, `5_Symbols/rules/file_organization.md`, `1_Real_Unknown/How/mindmap.md`; formulated SPEC-021 in `4_Formula/specs.md`; verified 11/11 smoke tests pass.
+
 
 
 

@@ -702,8 +702,6 @@
     let navigationData = {
       projectMenu: [
         { label: "🏠 Home", url: "index.html" },
-        { label: "🎯 OKRs & Outcomes", url: "5_Symbols/markdown_renderer.html?file=1_Real_Unknown/okrs.md" },
-        { label: "📊 Progress Dashboard", url: "5_Symbols/markdown_renderer.html?file=1_Real_Unknown/kanban.md" },
         { label: "📅 Calendar", url: "5_Symbols/calendar_view.html" }
       ],
       debugMenu: [
@@ -783,7 +781,7 @@
         { label: "   ├─ 📋 Sanity Data Source", url: "7_Testing_Known/sanity_check_report.md" },
         { label: "---", url: "divider" },
         { label: "🎛️ Master Review & Feedback", url: "5_Symbols/deliverypilot/master_review/index.html" },
-        { label: "🎠 Artifacts Carousel", url: "5_Symbols/artifacts_carousel.html" },
+        { label: "🎠 Artifacts Carousel", url: "5_Symbols/deliverypilot/artifacts_carousel.html" },
         { label: "📖 agents.md (Coordinator & Personas)", url: "agents.md" },
         { label: "⚡ kilocode.md", url: "kilocode.md" }
       ]
@@ -843,8 +841,8 @@
           
           // Route relative URLs (except Home index.html) through renderer if they are MD files or directories
           let finalUrl = item.url;
-          if (finalUrl !== "index.html" && !finalUrl.startsWith("http") && !finalUrl.includes("markdown_renderer.html")) {
-            finalUrl = `5_Symbols/markdown_renderer.html?file=${finalUrl}`;
+          if (finalUrl !== "index.html" && !finalUrl.startsWith("http") && !finalUrl.includes("markdown_renderer.html") && !finalUrl.includes(".html")) {
+            finalUrl = `5_Symbols/deliverypilot/markdown_renderer.html?file=${finalUrl}`;
           }
           
           link.href = finalUrl;
@@ -880,7 +878,9 @@
             // Route relative URLs dynamically through the renderer
             let finalUrl = item.url;
             if (finalUrl !== "index.html" && finalUrl !== "divider" && !finalUrl.startsWith("http") && !finalUrl.includes("markdown_renderer.html")) {
-              finalUrl = `5_Symbols/markdown_renderer.html?file=${finalUrl}`;
+              if (!finalUrl.includes(".html")) {
+                finalUrl = `5_Symbols/deliverypilot/markdown_renderer.html?file=${finalUrl}`;
+              }
             }
             
             a.href = finalUrl;

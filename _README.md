@@ -126,7 +126,7 @@ This template includes a **reusable calendar view component** (`5_Symbols/calend
 ## Links
 
 - **GitHub Pages:** [https://rifaterdemsahin.github.io/delivery-pilot-template/](https://rifaterdemsahin.github.io/delivery-pilot-template/)
-- **Artifacts Carousel:** [5_Symbols/artifacts_carousel.html](5_Symbols/artifacts_carousel.html)
+- **Artifacts Carousel:** [5_Symbols/deliverypilot/artifacts_carousel.html](5_Symbols/deliverypilot/artifacts_carousel.html)
 - **GitHub:** [delivery-pilot-template](https://github.com/rifaterdemsahin/delivery-pilot-template)
 - **LinkedIn:** [rifaterdemsahin](https://www.linkedin.com/in/rifaterdemsahin/)
 - **YouTube:** [@RifatErdemSahin](https://www.youtube.com/@RifatErdemSahin)

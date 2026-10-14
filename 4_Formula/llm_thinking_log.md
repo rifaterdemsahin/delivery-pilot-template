@@ -1178,6 +1178,38 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Redundant standalone files cleanly removed.
 - 11/11 smoke tests green. Ready for commit and push.
 
+---
+
+## 📅 2026-10-14 — Relocate DeliveryPilot Framework Pages & Pure ProjectMenu Partitioning (TSK-046 / SPEC-021)
+
+### 📥 Input / Task
+- "update the related placed the delivery pilot is behing the debug icon only and project menus are never > behind 5_Symbols/deliverypilot/markdown_renderer.html > put all deliverypilot related code pages under 5_Symbols/deliverypilot move markdown_renderer.html under deliverypilot folder inside the 5_Symbols"
+
+### 💭 Thinking & Reasoning Process
+1. **Architectural Separation of Concerns**:
+   - The delivery pilot framework is a methodology and tooling substrate, whereas the consumer project is the product application built on top of it.
+   - Previously, framework links (`1_Real_Unknown/okrs.md`, `1_Real_Unknown/kanban.md`) leaked into `projectMenu`, creating confusing mixing between framework internals and product interfaces.
+   - Moving all framework code pages (`markdown_renderer.html`, `artifacts_carousel.html`, `master_review/`) under `5_Symbols/deliverypilot/` ensures physical code separation.
+   - Purifying `projectMenu` in `navigation_config.json` and fallback configurations ensures that consumers only see their actual application pages (`index.html`, `calendar_view.html`), while delivery pilot framework resources remain accessible behind the floating debug menu icon.
+2. **Two-Level Pathing Refactor**:
+   - Relocating `markdown_renderer.html` and `artifacts_carousel.html` from `5_Symbols/` (depth 1) to `5_Symbols/deliverypilot/` (depth 2) required updating all root-relative asset fetches from `../` to `../../`.
+   - Updated header back links to `../../index.html`.
+   - Updated navigation configuration fetches to `../../navigation_config.json`.
+   - Updated markdown document fetches to `../../${fetchPath}`.
+   - Updated debug menu URL routing for `.html` files to `../../${finalUrl}`.
+3. **Menu & Tool Synchronization**:
+   - Updated `5_Symbols/toolbox/nav_sync.py` to point to `5_Symbols/deliverypilot/markdown_renderer.html` and `5_Symbols/deliverypilot/artifacts_carousel.html`, successfully synchronizing 79 debug entries across 3 sources.
+   - Updated `5_Symbols/toolbox/smoke_test.py` constant `RENDERER = "5_Symbols/deliverypilot/markdown_renderer.html"`.
+   - Re-generated `repo_files.json` catalog with 129 files.
+   - Formulated `SPEC-021` in `4_Formula/specs.md`.
+   - Validated via `smoke_test.py` (11/11 tests pass).
+
+### 📤 Outcomes & Decisions
+- Framework tools encapsulated cleanly inside `5_Symbols/deliverypilot/`.
+- `projectMenu` purified with zero delivery-pilot leakage.
+- Full 11/11 smoke tests green. Ready for commit and push.
+
+
 
 
 

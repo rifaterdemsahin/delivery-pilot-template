@@ -10,6 +10,8 @@ This folder houses framework-level delivery components provided by `delivery-pil
 
 | Tool / Folder | Description |
 |---|---|
+| [`markdown_renderer.html`](markdown_renderer.html) | Markdown document reader with PrismJS syntax highlighting and live debug navigation |
+| [`artifacts_carousel.html`](artifacts_carousel.html) | Interactive artifact presentation carousel and reviewer |
 | [`master_review/`](master_review/index.html) | Interactive Master Review & File Carousel suite for auditing files and capturing feedback |
 
 ## Architecture & Storage

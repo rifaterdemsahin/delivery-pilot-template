@@ -84,7 +84,7 @@ MENU = [
     ("   ├─ 📋 Sanity Data Source", "7_Testing_Known/sanity_check_report.md"),
     ("---", "divider"),
     ("🎛️ Master Review & Feedback", "5_Symbols/deliverypilot/master_review/index.html"),
-    ("🎠 Artifacts Carousel", "5_Symbols/artifacts_carousel.html"),
+    ("🎠 Artifacts Carousel", "5_Symbols/deliverypilot/artifacts_carousel.html"),
     ("📖 agents.md (Coordinator & Personas)", "agents.md"),
     ("⚡ kilocode.md", "kilocode.md"),
 ]
@@ -110,7 +110,7 @@ js_lines = ",\n".join(
 )
 block = f"debugMenu: [\n{js_lines}\n      ]"
 pat = re.compile(r"debugMenu: \[.*?\n      \]", re.DOTALL)
-for f in ("index.html", "5_Symbols/markdown_renderer.html"):
+for f in ("index.html", "5_Symbols/deliverypilot/markdown_renderer.html"):
     p = f"{ROOT}/{f}"
     s = open(p).read()
     s2, n = pat.subn(block, s)

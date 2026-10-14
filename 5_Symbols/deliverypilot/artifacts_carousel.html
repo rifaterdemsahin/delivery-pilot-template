@@ -515,7 +515,7 @@
 
   <header class="renderer-header">
     <div class="header-container">
-      <a href="../index.html" class="back-btn">
+      <a href="../../index.html" class="back-btn">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Home</span>
       </a>
@@ -597,9 +597,8 @@
     // ─── Navigation Config ─────────────────────────────────────────────────
     let navigationData = {
       projectMenu: [
-        { label: "Home", url: "index.html" },
-        { label: "Docs", url: "5_Symbols/markdown_renderer.html?file=2_Environment/_README.md" },
-        { label: "API", url: "5_Symbols/markdown_renderer.html?file=4_Formula/_README.md" }
+        { label: "🏠 Home", url: "index.html" },
+        { label: "📅 Calendar", url: "5_Symbols/calendar_view.html" }
       ],
       debugMenu: [
         { label: "1. Real Unknown", url: "1_Real_Unknown/_README.md" },
@@ -690,7 +689,7 @@
       { file: "4_Formula/specs.md",                         label: "Specs",                      type: "markdown" },
       { file: "4_Formula/decisions.md",                     label: "Decision Log",               type: "markdown" },
       { file: "4_Formula/llm_thinking_log.md",              label: "LLM Thinking Log",           type: "markdown" },
-      { file: "5_Symbols/markdown_renderer.html",            label: "Markdown Renderer",          type: "html" },
+      { file: "5_Symbols/deliverypilot/markdown_renderer.html", label: "Markdown Renderer",       type: "html" },
       { file: "1_Real_Unknown/okrs.md",                     label: "OKRs",                       type: "markdown" },
       { file: "1_Real_Unknown/risks.md",                    label: "Risk Register",             type: "markdown" },
       { file: "6_Semblance/lessons_learned.md",              label: "Lessons Learned",            type: "markdown" },
@@ -774,7 +773,7 @@
       loadNotesForFile(art.file);
 
       // Render content
-      const path = `../${art.file}`;
+      const path = `../../${art.file}`;
 
       if (art.type === "image") {
         artifactContent.innerHTML = `<img src="${path}" alt="${art.label}" loading="lazy">`;
@@ -864,7 +863,7 @@
       const debugSearch = document.getElementById("debugSearch");
       const debugLinksList = document.getElementById("debugLinksList");
 
-      fetch("../navigation_config.json")
+      fetch("../../navigation_config.json")
         .then(res => res.json())
         .then(data => { navigationData = data; buildDebugMenu(); })
         .catch(() => { buildDebugMenu(); });
@@ -883,7 +882,7 @@
             const a = document.createElement("a");
             let finalUrl = item.url;
             if (finalUrl !== "divider" && !finalUrl.startsWith("http")) {
-              if (finalUrl.includes(".html")) finalUrl = `../${finalUrl}`;
+              if (finalUrl.includes(".html")) finalUrl = `../../${finalUrl}`;
               else finalUrl = `markdown_renderer.html?file=${finalUrl}`;
             }
             a.href = finalUrl; a.className = "debug-link";

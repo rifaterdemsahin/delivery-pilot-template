@@ -257,6 +257,18 @@
 - **Related Files:** `agents.md`, `kilocode.md`, `5_Symbols/toolbox/nav_sync.py`, `5_Symbols/toolbox/smoke_test.py`, `navigation_config.json`
 - **Last Updated:** 2026-10-14
 
+### SPEC-021: Strict DeliveryPilot Encapsulation & Pure ProjectMenu Partitioning
+- **Status:** Active
+- **Description:** Relocates all delivery-pilot framework code pages (`markdown_renderer.html`, `artifacts_carousel.html`, `master_review/`) under `5_Symbols/deliverypilot/` and strictly isolates all framework navigation behind the floating debug menu icon. Enforces that `projectMenu` contains only consumer project/product pages (e.g. `index.html`, `calendar_view.html`), preventing delivery-pilot framework pages (OKRs, Kanban, stage documentation) from leaking into the end-user product interface.
+- **Key Behaviors:**
+  - **Framework Subfolder Relocation**: All deliverypilot-specific UI pages are stored in `5_Symbols/deliverypilot/` (`markdown_renderer.html`, `artifacts_carousel.html`, `master_review/`).
+  - **Path Shift Resilience**: Root asset fetching, navigation config fetching, and back navigation in deliverypilot HTML files dynamically reference root via two-level traversal (`../../` prefix instead of `../`).
+  - **Strict `projectMenu` Purity**: `projectMenu` in `navigation_config.json` and fallback configurations strictly excludes framework and stage documentation. Framework pages are accessible exclusively through the debug menu overlay (`debugMenu`).
+  - **Dynamic Link Routing**: In `index.html` and other entry points, non-HTML relative links are automatically wrapped in `5_Symbols/deliverypilot/markdown_renderer.html?file=${finalUrl}`, while HTML pages link directly.
+  - **Single Source of Truth Verification**: `5_Symbols/toolbox/nav_sync.py` and `5_Symbols/toolbox/smoke_test.py` target `5_Symbols/deliverypilot/markdown_renderer.html` and validate 11/11 checks.
+- **Related Files:** `navigation_config.json`, `index.html`, `5_Symbols/deliverypilot/markdown_renderer.html`, `5_Symbols/deliverypilot/artifacts_carousel.html`, `5_Symbols/toolbox/nav_sync.py`, `5_Symbols/toolbox/smoke_test.py`, `5_Symbols/_README.md`, `5_Symbols/deliverypilot/_README.md`
+- **Last Updated:** 2026-10-14
+
 ---
 
 ## Spec Template

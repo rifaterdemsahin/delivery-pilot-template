@@ -40,10 +40,10 @@ flowchart TD
 
     subgraph S5["5️⃣ Symbols (Implementation & Code)"]
         S5_PROJ["🚀 project/ (Application & Product Source Code)"]
-        S5_DP["🎛️ deliverypilot/master_review/ (Feedback & Review Suite)"]
+        S5_DP["🎛️ deliverypilot/ (markdown_renderer.html · artifacts_carousel.html · master_review/)"]
         S5_RULES["📜 rules/ (Operating Rules, Standards, Git Conventions)"]
         S5_BOX["🧰 toolbox/ (smoke_test.py, nav_sync.py, gen_repo_files.py)"]
-        S5_UI["🖥️ markdown_renderer.html · artifacts_carousel.html"]
+        S5_UI["📅 calendar_view.html (Project Page)"]
     end
 
     subgraph S7["7️⃣ Testing Known (Proof & Validation)"]
