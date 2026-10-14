@@ -220,6 +220,14 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Purpose:** Architecturally define how `delivery-pilot-template` provides the substrate for autonomous AI harnesses, and define the Triad (Channel, Compute, Bot) in `1_Real_Unknown/How/ai_harness.md`, linking it in `How/mindmap.md`, `How/patterns.md`, and `4_Formula/specs.md` (SPEC-019).
 - **Done:** Created `1_Real_Unknown/How/ai_harness.md`, updated `How/mindmap.md` (diagram and connection matrix), added Pattern 7 to `How/patterns.md`, formulated SPEC-019 in `4_Formula/specs.md`, registered in `nav_sync.py`, synced menus across 3 sources (82 entries), refreshed Master Review catalog (132 files), verified 11/11 smoke tests, committed and pushed.
 
+---
+
+## 2026-10-14 — Merge copilot.md, gemini.md, and claude.md into agents.md (Real / Formula Agents)
+- **Prompt:** "merge copilot.md gemini.md claude.md into agents.md > commit and push"
+- **Purpose:** Consolidate model-specific personas for Claude, Gemini, and GitHub Copilot directly into `agents.md`, eliminate file duplication across the root directory, update navigation and catalog tools, and formulate SPEC-020.
+- **Done:** Merged Claude, Gemini, and Copilot personas into `agents.md` with full skills, MCPs, and multimodal workflows; removed redundant root files (`git rm claude.md gemini.md copilot.md`); updated `nav_sync.py` and synced menus (79 entries); updated `artifacts_carousel.html` and `agent_operating_rules.md`; regenerated `repo_files.json` (129 files); formulated SPEC-020 in `4_Formula/specs.md`; verified 11/11 smoke tests, committed and pushed.
+
+
 
 
 

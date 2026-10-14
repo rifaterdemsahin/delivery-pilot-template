@@ -66,7 +66,7 @@
     "path": "1_Real_Unknown/prompts.md",
     "name": "prompts.md",
     "ext": ".md",
-    "size": 30759,
+    "size": 31708,
     "category": "Documentation"
   },
   {
@@ -101,7 +101,7 @@
     "path": "1_Real_Unknown/tasks.md",
     "name": "tasks.md",
     "ext": ".md",
-    "size": 10311,
+    "size": 10597,
     "category": "Documentation"
   },
   {
@@ -430,7 +430,7 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 80679,
+    "size": 82862,
     "category": "Documentation"
   },
   {
@@ -451,7 +451,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 28820,
+    "size": 30101,
     "category": "Documentation"
   },
   {
@@ -472,7 +472,7 @@
     "path": "5_Symbols/artifacts_carousel.html",
     "name": "artifacts_carousel.html",
     "ext": ".html",
-    "size": 34387,
+    "size": 34235,
     "category": "Pages"
   },
   {
@@ -514,7 +514,7 @@
     "path": "5_Symbols/markdown_renderer.html",
     "name": "markdown_renderer.html",
     "ext": ".html",
-    "size": 25976,
+    "size": 25828,
     "category": "Pages"
   },
   {
@@ -528,7 +528,7 @@
     "path": "5_Symbols/rules/agent_operating_rules.md",
     "name": "agent_operating_rules.md",
     "ext": ".md",
-    "size": 7960,
+    "size": 7928,
     "category": "Rules"
   },
   {
@@ -577,7 +577,7 @@
     "path": "5_Symbols/toolbox/nav_sync.py",
     "name": "nav_sync.py",
     "ext": ".py",
-    "size": 7055,
+    "size": 6961,
     "category": "Toolbox"
   },
   {
@@ -843,7 +843,7 @@
     "path": "agents.md",
     "name": "agents.md",
     "ext": ".md",
-    "size": 35653,
+    "size": 40086,
     "category": "Documentation"
   },
   {
@@ -854,31 +854,10 @@
     "category": "Config"
   },
   {
-    "path": "claude.md",
-    "name": "claude.md",
-    "ext": ".md",
-    "size": 22959,
-    "category": "Documentation"
-  },
-  {
-    "path": "copilot.md",
-    "name": "copilot.md",
-    "ext": ".md",
-    "size": 19942,
-    "category": "Documentation"
-  },
-  {
-    "path": "gemini.md",
-    "name": "gemini.md",
-    "ext": ".md",
-    "size": 19926,
-    "category": "Documentation"
-  },
-  {
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 32621,
+    "size": 32473,
     "category": "Pages"
   },
   {
@@ -899,7 +878,7 @@
     "path": "navigation_config.json",
     "name": "navigation_config.json",
     "ext": ".json",
-    "size": 7229,
+    "size": 7087,
     "category": "Config"
   },
   {

@@ -85,10 +85,7 @@ MENU = [
     ("---", "divider"),
     ("🎛️ Master Review & Feedback", "5_Symbols/deliverypilot/master_review/index.html"),
     ("🎠 Artifacts Carousel", "5_Symbols/artifacts_carousel.html"),
-    ("📖 agents.md", "agents.md"),
-    ("🤖 claude.md", "claude.md"),
-    ("✨ gemini.md", "gemini.md"),
-    ("🧑‍💻 copilot.md", "copilot.md"),
+    ("📖 agents.md (Coordinator & Personas)", "agents.md"),
     ("⚡ kilocode.md", "kilocode.md"),
 ]
 

@@ -87,6 +87,7 @@
 | TSK-042 | Create 1_Real_Unknown/How/mindmap.md lineage & add Markdown authoring extensions | Real Agent | Real Agent creates lineage mindmap & connection matrix; Environment Agent adds Markdown preview tools | [x] |
 | TSK-043 | Adopt _README.md leading underscore convention & create 1_Real_Unknown/How/patterns.md (SPEC-018) | Real Agent | Real Agent coordinates: Symbols renames stage READMEs to _README.md & updates nav/smoke tests → Real documents patterns.md → Formula updates SPEC-018 → Test validates | [x] |
 | TSK-044 | Define AI Harness Triad (Channel, Compute, Bot) in 1_Real_Unknown/How/ai_harness.md (SPEC-019) | Real Agent | Real Agent creates ai_harness.md & updates How/mindmap.md & How/patterns.md → Formula updates SPEC-019 → Symbols syncs nav & catalog → Test validates | [x] |
+| TSK-045 | Merge copilot.md, gemini.md, and claude.md personas into agents.md (SPEC-020) | Real Agent | Real Agent coordinates: Formula updates agents.md with consolidated personas → Symbols removes redundant files & syncs nav → Test validates | [x] |
 
 
 

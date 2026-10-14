@@ -128,15 +128,15 @@
 - **Status:** Active
 - **Description:** This repository is a **template** — other projects start from it. Every consumer-facing file must be reusable without manual archaeology: placeholders are explicit, project-specific values are concentrated, and each agent persona file tells the consumer LLM agent how to bootstrap.
 - **Key Behaviors:**
-  - All 5 agent files (`agents.md`, `claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`) carry a "Using This Template" section with the placeholder table and bootstrap steps for consumer LLM agents
+  - Agent instructions carry a "Using This Template" section with the placeholder table and bootstrap steps for consumer LLM agents (`agents.md` consolidated coordinator & personas, and `kilocode.md`)
   - Standard placeholders: `{{PROJECT_NAME}}`, `{{GITHUB_USER}}`, `{{REPO_NAME}}`, `{{PAGES_URL}}`, `{{LINKEDIN_URL}}`, `{{YOUTUBE_URL}}` — consumers search-and-replace these six values
   - Project-specific values live in: `navigation_config.json` (projectMenu), `index.html` (social links, titles), `README.md` (Pages URL), `sitemap.xml`/`robots.txt` (absolute URLs), `supabase/config.toml` under `2_Environment/` (project id)
   - Runtime code must not hardcode the repo where it can derive it (e.g. renderer's GitHub edit URL derives user/repo from the Pages URL)
   - Bootstrap validation: run `python3 5_Symbols/toolbox/smoke_test.py` after replacing placeholders — it is config-driven and needs no adaptation
   - CI/CD is owned by the **Formula Agent**: `.github/workflows/static.yml` runs the smoke test gate, then deploys to GitHub Pages (Continuous Integration → Continuous Delivery → Continuous Deployment)
   - **Refactor / Init prompts** live in `README.md` and must tell the consumer agent to follow RULE-001–005, use Key Vault `/vaults/dp-kv-deliverypilot/secrets` (do not create a new vault), place files in allowed root folders, use the AI harness for bot-driven work (SPEC-014/SPEC-015: packet → validator → `bot/<id>` branch → smoke gate → one PR), copy `4_Formula/bot_spec.md` per bot agent, then nav-sync + smoke-test + commit/push
-- **Related Files:** `agents.md`, `claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`, `.github/workflows/static.yml`, `5_Symbols/toolbox/smoke_test.py`, `README.md`
-- **Last Updated:** 2026-09-10
+- **Related Files:** `agents.md`, `kilocode.md`, `.github/workflows/static.yml`, `5_Symbols/toolbox/smoke_test.py`, `README.md`
+- **Last Updated:** 2026-10-14
 
 ### SPEC-011: Agent Operating Rules (Spec What You Did + Commit/Push)
 - **Status:** Active
@@ -246,6 +246,17 @@
 - **Related Files:** `1_Real_Unknown/How/ai_harness.md`, `1_Real_Unknown/How/patterns.md`, `4_Formula/harness.md`, `4_Formula/bot_spec.md`, `5_Symbols/toolbox/smoke_test.py`, `5_Symbols/toolbox/harness_packet.py`, `.github/workflows/harness.yml`
 - **Last Updated:** 2026-10-14
 
+### SPEC-020: Consolidated Agent Persona & Coordinator Architecture
+- **Status:** Active
+- **Description:** Consolidates model-specific personas for Claude (`claude.md`), Gemini (`gemini.md`), and GitHub Copilot (`copilot.md`) directly into `agents.md`. Eliminates file duplication and cross-persona maintenance drift while preserving individual LLM specializations (Claude skills & MCPs, Gemini multimodal analysis, Copilot Actions CI/CD).
+- **Key Behaviors:**
+  - **Single Source of Truth**: `agents.md` serves as both universal coordinator for the 7 stages and comprehensive repository for model-specific personas.
+  - **Consolidated Personas**: Includes dedicated sections for Claude (skills, MCP servers, error loop), Gemini (multimodal inspection in `3_Simulation/`, AI stack), and Copilot (Actions CI/CD, PR pipelines).
+  - **Clean Root Footprint**: Retires standalone persona files (`claude.md`, `gemini.md`, `copilot.md`), keeping only `agents.md` and `kilocode.md`.
+  - **Tool & Navigation Alignment**: `5_Symbols/toolbox/nav_sync.py` and `navigation_config.json` route to `agents.md` as the unified coordinator and persona reference.
+- **Related Files:** `agents.md`, `kilocode.md`, `5_Symbols/toolbox/nav_sync.py`, `5_Symbols/toolbox/smoke_test.py`, `navigation_config.json`
+- **Last Updated:** 2026-10-14
+
 ---
 
 ## Spec Template
@@ -260,5 +271,6 @@
 - **Related Files:** `path/to/file`
 - **Last Updated:** YYYY-MM-DD
 ```
+
 
 

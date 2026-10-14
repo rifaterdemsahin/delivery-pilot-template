@@ -1149,6 +1149,36 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - SPEC-019 active in `4_Formula/specs.md`.
 - 11/11 smoke tests green. Ready for commit and push.
 
+---
+
+## 📅 2026-10-14 — Merge copilot.md, gemini.md, and claude.md into agents.md (TSK-045 / SPEC-020)
+
+### 📥 Input / Task
+- "merge copilot.md gemini.md claude.md into agents.md > commit and push"
+
+### 💭 Thinking & Reasoning Process
+1. **Architectural Consolidation**:
+   - Maintaining separate root persona files (`claude.md`, `gemini.md`, `copilot.md`) created significant duplication of the 7-stage cycle, coding standards, and checklist items across multiple files.
+   - Merging model-specific sections directly into `agents.md` creates a single, authoritative coordinator that preserves the specialized capabilities of each LLM while eliminating cross-file maintenance drift.
+2. **Merged Persona Sections in `agents.md`**:
+   - **Claude Persona**: Anthropic Claude capabilities, MCP servers (GitHub, Key Vault, Browser, Supabase, Axiom, Fly.io, Qdrant), Claude Code CLI skills catalog (`.claude/skills/`), and error tracking loop.
+   - **Gemini Persona**: Google Gemini multimodal image capabilities (`3_Simulation/`), visual review workflows, AI stack integrations (Qdrant, Ollama, nomic-embed-text).
+   - **Copilot Persona**: GitHub Copilot native GitHub Actions integrations, PR reviews, workflow authoring (`harness.yml`, `static.yml`), and GitHub Agent integration.
+3. **Execution & Cleanup**:
+   - Updated `agents.md` with the merged personas and updated the Supported Agents table.
+   - Removed redundant root files via `git rm claude.md gemini.md copilot.md`.
+   - Updated `5_Symbols/toolbox/nav_sync.py` to route to `agents.md (Coordinator & Personas)` and synced menus across 3 sources (79 entries).
+   - Updated `5_Symbols/artifacts_carousel.html` and `5_Symbols/rules/agent_operating_rules.md`.
+   - Regenerated `repo_files.json` (129 files cataloged).
+   - Formulated `SPEC-020` in `4_Formula/specs.md`.
+   - Validated via `smoke_test.py` (11/11 passed).
+
+### 📤 Outcomes & Decisions
+- `agents.md` is now the single consolidated coordinator and persona manual.
+- Redundant standalone files cleanly removed.
+- 11/11 smoke tests green. Ready for commit and push.
+
+
 
 
 
