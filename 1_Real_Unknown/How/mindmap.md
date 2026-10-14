@@ -10,9 +10,9 @@
 flowchart TD
     subgraph S1["1️⃣ Real Unknown (Why / What / How)"]
         direction TB
-        S1_WHY["🎯 Why: problem_statement.md<br/>requirements.md<br/>hypotheses.md · questions.md"]
-        S1_WHAT["📦 What: okrs.md<br/>tasks.md · todos.md<br/>prompts.md"]
-        S1_HOW["⚙️ How: kanban.md · costs.md<br/>risks.md · sanity_check_report.md<br/>How/mindmap.md · How/patterns.md · How/ai_harness.md"]
+        S1_WHY["🎯 Why: Why/problem_statement.md<br/>Why/requirements.md<br/>Why/hypotheses.md · Why/questions.md"]
+        S1_WHAT["📦 What: What/okrs.md<br/>What/tasks.md · What/todos.md<br/>What/prompts.md"]
+        S1_HOW["⚙️ How: How/kanban.md · How/costs.md<br/>How/risks.md · How/sanity_check_report.md<br/>How/mindmap.md · How/patterns.md · How/ai_harness.md"]
         S1_WHY --> S1_WHAT --> S1_HOW
     end
 
@@ -75,9 +75,9 @@ flowchart TD
 
 | Stage & Category | Primary Files | Upstream Inputs (Feeds From) | Downstream Deliverables (Feeds To) | Architectural Rationale |
 |---|---|---|---|---|
-| **1️⃣ Real Unknown: Why** | `problem_statement.md`<br/>`requirements.md`<br/>`hypotheses.md`<br/>`questions.md` | Customer pain, user prompts, market gaps | `1_Real_Unknown/okrs.md`<br/>`3_Simulation/` (Wireframes)<br/>`4_Formula/specs.md` | Grounds the entire project in actual need. Prevents building solutions for unverified or ill-defined problems. |
-| **1️⃣ Real Unknown: What** | `okrs.md`<br/>`tasks.md`<br/>`todos.md`<br/>`prompts.md` | Problem statements & functional requirements | `1_Real_Unknown/kanban.md`<br/>All stage agents | Quantifies success metrics and organizes tasks into multi-agent coordinated phases. Logs all input prompts for complete auditability. |
-| **1️⃣ Real Unknown: How** | `kanban.md`<br/>`costs.md`<br/>`risks.md`<br/>`sanity_check_report.md`<br/>`How/mindmap.md`<br/>`How/patterns.md`<br/>`How/ai_harness.md` | Phase tracking, cloud spend, error feedback | `2_Environment/architecture.md`<br/>Real Agent Coordinator | Tracks workflow velocity, monitors resource spend, registers active/mitigated risks, and documents structural lineage, architectural patterns & AI harness triad. |
+| **1️⃣ Real Unknown: Why** | `Why/problem_statement.md`<br/>`Why/requirements.md`<br/>`Why/hypotheses.md`<br/>`Why/questions.md` | Customer pain, user prompts, market gaps | `1_Real_Unknown/What/okrs.md`<br/>`3_Simulation/` (Wireframes)<br/>`4_Formula/specs.md` | Grounds the entire project in actual need. Prevents building solutions for unverified or ill-defined problems. |
+| **1️⃣ Real Unknown: What** | `What/okrs.md`<br/>`What/tasks.md`<br/>`What/todos.md`<br/>`What/prompts.md` | Problem statements & functional requirements | `1_Real_Unknown/How/kanban.md`<br/>All stage agents | Quantifies success metrics and organizes tasks into multi-agent coordinated phases. Logs all input prompts for complete auditability. |
+| **1️⃣ Real Unknown: How** | `How/kanban.md`<br/>`How/costs.md`<br/>`How/risks.md`<br/>`How/sanity_check_report.md`<br/>`How/mindmap.md`<br/>`How/patterns.md`<br/>`How/ai_harness.md` | Phase tracking, cloud spend, error feedback | `2_Environment/architecture.md`<br/>Real Agent Coordinator | Tracks workflow velocity, monitors resource spend, registers active/mitigated risks, and documents structural lineage, architectural patterns & AI harness triad. |
 | **2️⃣ Environment** | `architecture.md`<br/>`tools.md`<br/>`extensions.md`<br/>`setup_*.md` | `1_Real_Unknown/` requirements & constraints | `3_Simulation/`<br/>`4_Formula/`<br/>Developer environment | Establishes infrastructure, toolstack rationale, IDE extensions (Excalidraw, Mermaid, Markdown Preview), and zero-secret Azure Key Vault policies. |
 | **3️⃣ Simulation** | `feature_wireframe.excalidraw`<br/>`design_workflow.md`<br/>`carousel_config.json` | `1_Real_Unknown` problems & OKRs | `4_Formula/specs.md` (SPEC-016 Gate)<br/>`index.html` carousel | "Make the invisible visible before writing code". Excalidraw wireframes translate problems into visual workflows, keeping design and specs in strict sync. |
 | **4️⃣ Formula** | `specs.md`<br/>`decisions.md`<br/>`llm_thinking_log.md`<br/>`harness.md` | `3_Simulation/` wireframes & `2_Environment/` tools | `5_Symbols/` implementation gate | Mandatory thinking & planning gate. Specs define behavior before coding, and post-delivery formulation ensures specifications reflect reality (RULE-001). |

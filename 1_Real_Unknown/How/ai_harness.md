@@ -130,7 +130,7 @@ The Delivery Pilot Template acts as the contract that binds the triad into a sel
 
 | Triad Element | Template Stage Mapping | Governance Mechanism |
 |---|---|---|
-| **Channel** | `1_Real_Unknown/` & `6_Semblance/` | `tasks.md` packets, `prompts.md`, Master Review in Azure, PR bodies |
+| **Channel** | `1_Real_Unknown/` & `6_Semblance/` | `What/tasks.md` packets, `What/prompts.md`, Master Review in Azure, PR bodies |
 | **Compute** | `2_Environment/` & `5_Symbols/toolbox/` | `architecture.md`, `setup_*.md`, `smoke_test.py`, Key Vault, Fly.io |
 | **Bot** | `4_Formula/` & `5_Symbols/` | `harness.md`, `bot_spec.md`, `specs.md` (`SPEC-014`, `SPEC-015`), `agent_operating_rules.md` |
 

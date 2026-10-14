@@ -3,112 +3,133 @@
     "path": "1_Real_Unknown/_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 3371,
+    "size": 3785,
     "category": "Documentation"
   },
   {
-    "path": "1_Real_Unknown/costs.md",
-    "name": "costs.md",
+    "path": "1_Real_Unknown/How/_README.md",
+    "name": "_README.md",
     "ext": ".md",
-    "size": 7323,
+    "size": 1492,
     "category": "Documentation"
   },
   {
     "path": "1_Real_Unknown/How/ai_harness.md",
     "name": "ai_harness.md",
     "ext": ".md",
-    "size": 8472,
+    "size": 8482,
     "category": "Documentation"
   },
   {
-    "path": "1_Real_Unknown/How/mindmap.md",
-    "name": "mindmap.md",
+    "path": "1_Real_Unknown/How/costs.md",
+    "name": "costs.md",
     "ext": ".md",
-    "size": 7794,
+    "size": 7323,
     "category": "Documentation"
   },
   {
-    "path": "1_Real_Unknown/How/patterns.md",
-    "name": "patterns.md",
-    "ext": ".md",
-    "size": 6384,
-    "category": "Documentation"
-  },
-  {
-    "path": "1_Real_Unknown/hypotheses.md",
-    "name": "hypotheses.md",
-    "ext": ".md",
-    "size": 954,
-    "category": "Documentation"
-  },
-  {
-    "path": "1_Real_Unknown/kanban.md",
+    "path": "1_Real_Unknown/How/kanban.md",
     "name": "kanban.md",
     "ext": ".md",
     "size": 5051,
     "category": "Documentation"
   },
   {
-    "path": "1_Real_Unknown/okrs.md",
-    "name": "okrs.md",
+    "path": "1_Real_Unknown/How/mindmap.md",
+    "name": "mindmap.md",
     "ext": ".md",
-    "size": 1531,
+    "size": 7907,
     "category": "Documentation"
   },
   {
-    "path": "1_Real_Unknown/problem_statement.md",
-    "name": "problem_statement.md",
+    "path": "1_Real_Unknown/How/patterns.md",
+    "name": "patterns.md",
     "ext": ".md",
-    "size": 736,
+    "size": 6882,
     "category": "Documentation"
   },
   {
-    "path": "1_Real_Unknown/prompts.md",
-    "name": "prompts.md",
-    "ext": ".md",
-    "size": 32585,
-    "category": "Documentation"
-  },
-  {
-    "path": "1_Real_Unknown/questions.md",
-    "name": "questions.md",
-    "ext": ".md",
-    "size": 1106,
-    "category": "Documentation"
-  },
-  {
-    "path": "1_Real_Unknown/requirements.md",
-    "name": "requirements.md",
-    "ext": ".md",
-    "size": 2073,
-    "category": "Documentation"
-  },
-  {
-    "path": "1_Real_Unknown/risks.md",
+    "path": "1_Real_Unknown/How/risks.md",
     "name": "risks.md",
     "ext": ".md",
     "size": 12004,
     "category": "Documentation"
   },
   {
-    "path": "1_Real_Unknown/sanity_check_report.md",
+    "path": "1_Real_Unknown/How/sanity_check_report.md",
     "name": "sanity_check_report.md",
     "ext": ".md",
     "size": 5782,
     "category": "Documentation"
   },
   {
-    "path": "1_Real_Unknown/tasks.md",
-    "name": "tasks.md",
+    "path": "1_Real_Unknown/What/_README.md",
+    "name": "_README.md",
     "ext": ".md",
-    "size": 10854,
+    "size": 1102,
     "category": "Documentation"
   },
   {
-    "path": "1_Real_Unknown/todos.md",
+    "path": "1_Real_Unknown/What/okrs.md",
+    "name": "okrs.md",
+    "ext": ".md",
+    "size": 1531,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/What/prompts.md",
+    "name": "prompts.md",
+    "ext": ".md",
+    "size": 36031,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/What/tasks.md",
+    "name": "tasks.md",
+    "ext": ".md",
+    "size": 11620,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/What/todos.md",
     "name": "todos.md",
     "ext": ".md",
     "size": 1229,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/Why/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 1178,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/Why/hypotheses.md",
+    "name": "hypotheses.md",
+    "ext": ".md",
+    "size": 954,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/Why/problem_statement.md",
+    "name": "problem_statement.md",
+    "ext": ".md",
+    "size": 736,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/Why/questions.md",
+    "name": "questions.md",
+    "ext": ".md",
+    "size": 1106,
+    "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/Why/requirements.md",
+    "name": "requirements.md",
+    "ext": ".md",
+    "size": 2073,
     "category": "Documentation"
   },
   {
@@ -430,7 +451,7 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 84955,
+    "size": 90519,
     "category": "Documentation"
   },
   {
@@ -451,7 +472,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 32123,
+    "size": 33857,
     "category": "Documentation"
   },
   {
@@ -493,7 +514,7 @@
     "path": "5_Symbols/deliverypilot/markdown_renderer.html",
     "name": "markdown_renderer.html",
     "ext": ".html",
-    "size": 25666,
+    "size": 26026,
     "category": "Pages"
   },
   {
@@ -570,14 +591,14 @@
     "path": "5_Symbols/toolbox/harness_packet.py",
     "name": "harness_packet.py",
     "ext": ".py",
-    "size": 2624,
+    "size": 2629,
     "category": "Toolbox"
   },
   {
     "path": "5_Symbols/toolbox/nav_sync.py",
     "name": "nav_sync.py",
     "ext": ".py",
-    "size": 6989,
+    "size": 7295,
     "category": "Toolbox"
   },
   {
@@ -682,7 +703,7 @@
     "path": "7_Testing_Known/sanity_check_report.md",
     "name": "sanity_check_report.md",
     "ext": ".md",
-    "size": 2298,
+    "size": 2318,
     "category": "Documentation"
   },
   {
@@ -836,14 +857,14 @@
     "path": "_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 11157,
+    "size": 12837,
     "category": "Documentation"
   },
   {
     "path": "agents.md",
     "name": "agents.md",
     "ext": ".md",
-    "size": 40086,
+    "size": 40257,
     "category": "Documentation"
   },
   {
@@ -857,14 +878,14 @@
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 32384,
+    "size": 32744,
     "category": "Pages"
   },
   {
     "path": "kilocode.md",
     "name": "kilocode.md",
     "ext": ".md",
-    "size": 19914,
+    "size": 19866,
     "category": "Documentation"
   },
   {
@@ -878,14 +899,14 @@
     "path": "navigation_config.json",
     "name": "navigation_config.json",
     "ext": ".json",
-    "size": 6876,
+    "size": 7230,
     "category": "Config"
   },
   {
     "path": "README.md",
     "name": "README.md",
     "ext": ".md",
-    "size": 11157,
+    "size": 12837,
     "category": "Documentation"
   },
   {

@@ -4,7 +4,7 @@
 Usage:
     python3 5_Symbols/toolbox/harness_packet.py <packet.md> [--trigger TEXT]
 
-Packet format (markdown bullet fields; see 1_Real_Unknown/tasks.md template):
+Packet format (markdown bullet fields; see 1_Real_Unknown/What/tasks.md template):
 
     - id: TSK-033
     - outcome: <one sentence>

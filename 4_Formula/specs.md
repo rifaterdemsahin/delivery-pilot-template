@@ -267,6 +267,18 @@
   - **Dynamic Link Routing**: In `index.html` and other entry points, non-HTML relative links are automatically wrapped in `5_Symbols/deliverypilot/markdown_renderer.html?file=${finalUrl}`, while HTML pages link directly.
   - **Single Source of Truth Verification**: `5_Symbols/toolbox/nav_sync.py` and `5_Symbols/toolbox/smoke_test.py` target `5_Symbols/deliverypilot/markdown_renderer.html` and validate 11/11 checks.
 - **Related Files:** `navigation_config.json`, `index.html`, `5_Symbols/deliverypilot/markdown_renderer.html`, `5_Symbols/deliverypilot/artifacts_carousel.html`, `5_Symbols/toolbox/nav_sync.py`, `5_Symbols/toolbox/smoke_test.py`, `5_Symbols/_README.md`, `5_Symbols/deliverypilot/_README.md`
+### SPEC-022: Stage 1 Golden Circle Taxonomy Subfolders (Why, How, What)
+- **Status:** Active
+- **Description:** Groups markdown documentation inside `1_Real_Unknown/` into three Golden Circle subdirectories (`Why/`, `How/`, `What/`) with pinned `_README.md` metadata indices in each. Resolves root stage clutter and provides cognitive separation between problem framing (*Why*), governance and operational patterns (*How*), and concrete targets and action logs (*What*).
+- **Key Behaviors:**
+  - **Directory Partitioning**:
+    - `Why/`: Problem statements, user requirements, open questions, and testable hypotheses.
+    - `How/`: Kanban board, costs tracker, risk register, sanity check report, lineage mindmap, architectural patterns, and AI harness triad.
+    - `What/`: OKRs, multi-agent task phases, immediate todos, and comprehensive prompt execution logs.
+  - **Pinned `_README.md` Indices**: Every subfolder contains a dedicated `_README.md` explaining its purpose and upstream/downstream connections per SPEC-018.
+  - **Stage Root Index**: `1_Real_Unknown/_README.md` serves as the stage entry point linking into `Why/`, `How/`, and `What/`.
+  - **Navigation & Verifier Sync**: `5_Symbols/toolbox/nav_sync.py` reflects the subfolder hierarchy in the unified debug menu (82 entries), and `5_Symbols/toolbox/smoke_test.py` validates that 0 documents are orphaned and all links resolve.
+- **Related Files:** `1_Real_Unknown/_README.md`, `1_Real_Unknown/Why/_README.md`, `1_Real_Unknown/How/_README.md`, `1_Real_Unknown/What/_README.md`, `1_Real_Unknown/How/mindmap.md`, `1_Real_Unknown/How/patterns.md`, `5_Symbols/toolbox/nav_sync.py`, `navigation_config.json`, `index.html`, `5_Symbols/deliverypilot/markdown_renderer.html`
 - **Last Updated:** 2026-10-14
 
 ---

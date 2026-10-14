@@ -100,12 +100,11 @@ delivery-pilot-template/
 - **Task Resolution** — When resolving a task, mention which agent is involved. For complex tasks spanning multiple agents, describe how the Real Agent coordinates them.
 - **Sub-Agent Generation** — Top agents create sub-agents when specialized work is needed. When receiving a task, ask if a sub-agent is required. Get confirmation and create a spec before generating.
 - Use emojis (✨, 🛠, 🧪, 🐛) for scannability
-- Focus on precision code generation and minimal footprint changes
-- **Record every prompt** in `1_Real_Unknown/prompts.md` — log date, agent, and purpose for each prompt given
+- **Record every prompt** in `1_Real_Unknown/What/prompts.md` — log date, agent, and purpose for each prompt given
 - **README.md must include the public GitHub Pages URL** — e.g., `https://rifaterdemsahin.github.io/<repo-name>/` (see [proxmox example](https://rifaterdemsahin.github.io/proxmox/))
 - **Keep `index.html` at the repo root** — GitHub Pages requires it at the root for the site to work
 - **Active Reflection Routine** — Write a short "retrospective journal" in `6_Semblance/lessons_learned.md` after every milestone.
-- **Keep Debug Menu Config Synchronized** — When markdown files are added, modified, or deleted in any stage, remember to update the debug menu configuration (`navigation_config.json` and the fallback arrays in `index.html` and `5_Symbols/markdown_renderer.html` — or run `python3 5_Symbols/toolbox/nav_sync.py`) to reflect these changes immediately.
+- **Keep Debug Menu Config Synchronized** — When markdown files are added, modified, or deleted in any stage, remember to update the debug menu configuration (`navigation_config.json` and the fallback arrays in `index.html` and `5_Symbols/deliverypilot/markdown_renderer.html` — or run `python3 5_Symbols/toolbox/nav_sync.py`) to reflect these changes immediately.
 - **Architecture Documentation Sync** — When the system architecture changes, immediately update the architecture overview document at `2_Environment/architecture.md` (with updated Mermaid diagrams) to keep it working.
 - **Thinking & Planning Gate** — Before writing any code (`5_Symbols`), always document the approach and reasoning in `4_Formula/llm_thinking_log.md`. After execution, append a summary of the LLM reasoning process. `4_Formula` is the mandatory planning stage that encapsulates thinking before action.
 - **Specs System (RULE-001)** — Technical specifications live in `4_Formula/specs.md`. Before implementing any feature, create or update its spec. After completing work, **formulate what you did as a spec** and add it to the Formula folder so the spec matches delivery, not only the plan. When new tasks arrive, check `4_Formula/specs.md` for existing specs that may be affected. If a task changes behavior covered by an active spec, flag it with `[NEEDS UPDATE]` and **warn** before writing code. Specs are validated against code in `5_Symbols`.

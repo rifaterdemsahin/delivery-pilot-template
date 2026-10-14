@@ -85,9 +85,9 @@ The framework mimics how humans learn: recognize ignorance, build context, visua
 
 1. Fork or clone this repo
 2. Read `agents.md` for agent coordination rules
-3. Read `1_Real_Unknown/prompts.md` for the project management framework
-4. Start with `1_Real_Unknown/` — define your problem and OKRs
-5. Customize the **project menu** with your OKRs and outcomes (not template plumbing)
+3. Read `1_Real_Unknown/What/prompts.md` for the prompt history and PM framework
+4. Start with `1_Real_Unknown/` — define your problem (`Why/`) and OKRs/Tasks (`What/`)
+5. Customize the **project menu** in `navigation_config.json` with your project's application pages (not framework internals)
 6. Update `calendar_config.json` with your project's milestones and deadlines
 7. Let AI agents guide you through each stage
 
@@ -148,7 +148,7 @@ Read first: agents.md and 5_Symbols/rules/agent_operating_rules.md (RULE-001 thr
 RULE-001 — After each change, formulate what you did as a spec in 4_Formula/specs.md. Log reasoning in 4_Formula/llm_thinking_log.md.
 RULE-002 — After every logical change, commit and push. Do not batch unrelated work. Never commit secrets.
 RULE-003 — Apps with a backend deploy to Cloudflare Workers (lightweight, stateless) or Fly.io (heavy containers). Both take credentials from Azure Key Vault. Static frontends stay on GitHub Pages.
-RULE-004 — Default storage is Azure project-based storage (project-scoped blobs). Do not default to Fly volumes, R2, or git LFS.
+RULE-004 — Default storage is Azure project-based storage with an isolated project container (e.g. dp-<project-name>). Do not default to Fly volumes, R2, or git LFS.
 RULE-005 — Allowed root folders only:
   .claude/skills
   .github/workflows
@@ -161,7 +161,22 @@ RULE-005 — Allowed root folders only:
   6_Semblance
   7_Testing_Known
 Move every other root file or folder into the related subfolder of those (git mv, then fix references).
-Keep at repo root only: index.html, README.md, robots.txt, sitemap.xml, .gitignore, .env.example, navigation_config.json, agents.md + LLM persona files.
+Keep at repo root only: index.html, _README.md (symlink README.md -> _README.md), robots.txt, sitemap.xml, .gitignore, .env.example, navigation_config.json, agents.md, kilocode.md.
+
+Stage Architecture & Placement:
+- 1_Real_Unknown/: Group into Golden Circle subfolders:
+  - Why/ (problem_statement.md, requirements.md, hypotheses.md, questions.md)
+  - How/ (kanban.md, costs.md, risks.md, sanity_check_report.md, mindmap.md, patterns.md, ai_harness.md)
+  - What/ (okrs.md, tasks.md, todos.md, prompts.md)
+  All subfolders and stage roots use _README.md (SPEC-018).
+- 5_Symbols/: Partition cleanly into:
+  - project/ — Application & consumer-specific source code
+  - deliverypilot/ — Framework tools (markdown_renderer.html, artifacts_carousel.html, master_review/)
+  - rules/ — Agent operating rules and coding standards
+  - toolbox/ — Automation scripts (nav_sync.py, gen_repo_files.py, smoke_test.py, harness_packet.py)
+- Navigation Purity (SPEC-021):
+  - projectMenu in navigation_config.json contains ONLY user application pages (e.g. index.html).
+  - Delivery Pilot framework pages and 7-stage docs remain strictly behind the floating debug icon (debugMenu).
 
 Replace template placeholders. Map existing files into those folders. Fix broken links.
 
@@ -171,12 +186,13 @@ Save and load all credentials there (Fly.io, Cloudflare Workers, Azure Storage, 
 
 Pull needed skills from popular GitHub skill repos. Place Claude skills in .claude/skills, Kilo skills in .kilo/skills, workflows in .github/workflows.
 
-Bot-driven work uses the AI harness (SPEC-014/SPEC-015, runbook 4_Formula/harness.md): one task packet (id, outcome, allowed/forbidden paths, verifier) → validate with 5_Symbols/toolbox/harness_packet.py → branch bot/<id> → implement → smoke_test.py green → one PR, human merges. Bot PRs are CI-guarded (.github/workflows/harness.yml).
+Bot-driven work uses the AI harness (SPEC-014/SPEC-015/SPEC-019, runbook 4_Formula/harness.md): one task packet in 1_Real_Unknown/What/tasks.md (id, outcome, allowed/forbidden paths, verifier) → validate with 5_Symbols/toolbox/harness_packet.py → branch bot/<id> → implement → smoke_test.py green → one PR, human merges. Bot PRs are CI-guarded (.github/workflows/harness.yml).
 
 Per-bot specs: copy 4_Formula/bot_spec.md to 4_Formula/bot_spec_<agent>.md and fill in that bot's values.
 
-Then:
+Verification Pipeline:
   python3 5_Symbols/toolbox/nav_sync.py
+  python3 5_Symbols/toolbox/gen_repo_files.py
   python3 5_Symbols/toolbox/smoke_test.py
 Commit and push each logical step (RULE-002).
 ```
@@ -194,8 +210,13 @@ Read first: agents.md and 5_Symbols/rules/agent_operating_rules.md (RULE-001 thr
 RULE-001 — Formulate what you did as a spec in 4_Formula/specs.md. Log reasoning in 4_Formula/llm_thinking_log.md.
 RULE-002 — After every logical change, commit and push. Never commit secrets.
 RULE-003 — Backends: Cloudflare Workers (light) or Fly.io (heavy containers). Credentials from Azure Key Vault.
-RULE-004 — Default storage is Azure project-based storage.
-RULE-005 — Allowed root folders only: .claude/skills, .github/workflows, .kilo/skills, 1_Real_Unknown … 7_Testing_Known. Move extras into those. Keep index.html (and the other listed root files) at the repo root.
+RULE-004 — Default storage is Azure project-based storage (isolated project container dp-<project-name>).
+RULE-005 — Allowed root folders only: .claude/skills, .github/workflows, .kilo/skills, 1_Real_Unknown … 7_Testing_Known. Move extras into those. Keep index.html, _README.md, robots.txt, sitemap.xml, navigation_config.json, agents.md at the repo root.
+
+Stage Structure:
+- 1_Real_Unknown/: Golden Circle Why/, How/, What/ subfolders with _README.md.
+- 5_Symbols/: Partition into project/ (application code) and deliverypilot/ (framework tools).
+- Navigation: Keep delivery pilot behind debug icon only; projectMenu for application pages.
 
 Replace placeholders. Create the 7-stage folders. Commit and push each step.
 
@@ -210,11 +231,12 @@ Goal of this project:
 
 Pull needed skills from popular GitHub skill repos into .claude/skills and .kilo/skills.
 
-Bot-driven work uses the AI harness (SPEC-014/SPEC-015, runbook 4_Formula/harness.md): task packets in 1_Real_Unknown/tasks.md → validate with 5_Symbols/toolbox/harness_packet.py → branch bot/<id> → smoke_test.py green → one PR per task, human merges.
+Bot-driven work uses the AI harness (SPEC-014/SPEC-015/SPEC-019, runbook 4_Formula/harness.md): task packets in 1_Real_Unknown/What/tasks.md → validate with 5_Symbols/toolbox/harness_packet.py → branch bot/<id> → smoke_test.py green → one PR per task, human merges.
 
 Per-bot specs: copy 4_Formula/bot_spec.md to 4_Formula/bot_spec_<agent>.md per agent and fill in its values.
 
-Then:
+Verification Pipeline:
   python3 5_Symbols/toolbox/nav_sync.py
+  python3 5_Symbols/toolbox/gen_repo_files.py
   python3 5_Symbols/toolbox/smoke_test.py
 ```

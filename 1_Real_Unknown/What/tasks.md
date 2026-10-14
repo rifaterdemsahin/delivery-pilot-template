@@ -89,6 +89,7 @@
 | TSK-044 | Define AI Harness Triad (Channel, Compute, Bot) in 1_Real_Unknown/How/ai_harness.md (SPEC-019) | Real Agent | Real Agent creates ai_harness.md & updates How/mindmap.md & How/patterns.md → Formula updates SPEC-019 → Symbols syncs nav & catalog → Test validates | [x] |
 | TSK-045 | Merge copilot.md, gemini.md, and claude.md personas into agents.md (SPEC-020) | Real Agent | Real Agent coordinates: Formula updates agents.md with consolidated personas → Symbols removes redundant files & syncs nav → Test validates | [x] |
 | TSK-046 | Relocate markdown_renderer & artifacts_carousel to deliverypilot/, isolate DeliveryPilot behind debug icon (SPEC-021) | Symbols Agent | Real Agent coordinates: Symbols relocates pages under 5_Symbols/deliverypilot/, updates 2-level pathing, purifies projectMenu to consumer-only pages, updates nav_sync & smoke tests → Formula specs SPEC-021 → Test validates 11/11 | [x] |
+| TSK-047 | Group 1_Real_Unknown markdowns under Why, How, What & update README refactor prompt (SPEC-022) | Real Agent | Real Agent coordinates: creates Why/ and What/ subfolders with _README.md, git mv files into Why/How/What, updates nav_sync & menus, updates README refactor/init prompts with latest project scan → Formula specs SPEC-022 → Test validates 11/11 | [x] |
 
 
 

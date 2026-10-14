@@ -1209,6 +1209,44 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - `projectMenu` purified with zero delivery-pilot leakage.
 - Full 11/11 smoke tests green. Ready for commit and push.
 
+---
+
+## 📅 2026-10-14 — Group 1_Real_Unknown Markdowns Under Why, How, What & Update README Refactor Code (TSK-047 / SPEC-022)
+
+### 📥 Input / Task
+- "group the markdowns under 1_Real_Unknown under How Why What folders update the refactor code in readme.md with the latest updates scane the project"
+
+### 💭 Thinking & Reasoning Process
+1. **Stage 1 Directory Partitioning**:
+   - `1_Real_Unknown/` previously accumulated numerous markdown files at its folder root (`problem_statement.md`, `requirements.md`, `hypotheses.md`, `questions.md`, `kanban.md`, `costs.md`, `risks.md`, `sanity_check_report.md`, `okrs.md`, `tasks.md`, `todos.md`, `prompts.md`).
+   - Grouping them strictly into the Simon Sinek Golden Circle taxonomy creates clear cognitive separation:
+     - `Why/`: Problem framing, requirements, open questions, hypotheses.
+     - `How/`: Workflow governance (kanban), costs, risk register, sanity reporting, lineage mindmap, architectural patterns, AI harness triad.
+     - `What/`: Targets (OKRs), task breakdowns, actionable todos, prompt audit history.
+   - Pinned `_README.md` created in each subfolder (`Why/_README.md`, `How/_README.md`, `What/_README.md`) per SPEC-018.
+2. **Refactor & Init Prompt Modernization in `_README.md`**:
+   - Scanned the entire project for recent architectural advances (SPEC-017 through SPEC-021).
+   - Updated the `## Refactor` and `## Init` prompts in `_README.md` to reflect:
+     - Golden Circle subfolder layout (`Why/`, `How/`, `What/`).
+     - `5_Symbols/` partitioning into `project/` (application) and `deliverypilot/` (framework tools).
+     - Single coordinator & consolidated persona architecture (`agents.md`).
+     - Pure `projectMenu` vs debug overlay isolation (SPEC-021).
+     - Dedicated project storage container (`dp-<project-name>`) for Master Review.
+     - 3-step verification pipeline (`nav_sync.py` → `gen_repo_files.py` → `smoke_test.py`).
+3. **Cross-Referencing & Navigation Sync**:
+   - Updated `5_Symbols/toolbox/nav_sync.py` with hierarchical `Why/`, `How/`, `What/` debug menu entries and synced across `navigation_config.json`, `index.html`, and `markdown_renderer.html` (82 entries).
+   - Updated `artifacts_carousel.html` ARTIFACTS array to point to `1_Real_Unknown/What/okrs.md` and `1_Real_Unknown/How/risks.md`.
+   - Updated `1_Real_Unknown/How/mindmap.md`, `1_Real_Unknown/How/patterns.md`, `1_Real_Unknown/How/ai_harness.md`, `7_Testing_Known/sanity_check_report.md`, `agents.md`, `kilocode.md`, and `5_Symbols/toolbox/harness_packet.py`.
+   - Formulated `SPEC-022` in `4_Formula/specs.md`.
+   - Regenerated `repo_files.json` catalog (132 files).
+   - Verified 11/11 smoke tests pass.
+
+### 📤 Outcomes & Decisions
+- `1_Real_Unknown/` clean, modular Golden Circle architecture established.
+- `_README.md` refactor and init guides fully aligned with latest system reality.
+- 11/11 smoke tests green. Ready for commit and push.
+
+
 
 
 

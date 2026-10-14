@@ -21,17 +21,27 @@ All stage folders and primary subdirectories prefix their overview document with
 ```text
 1_Real_Unknown/
 ├── _README.md                <-- 📌 Always sorted to the top!
-├── costs.md
-├── hypotheses.md
-├── kanban.md
-├── okrs.md
-├── problem_statement.md
-├── prompts.md
-├── questions.md
-├── requirements.md
-├── risks.md
-├── tasks.md
-└── todos.md
+├── Why/                      <-- 🎯 Purpose & Requirements
+│   ├── _README.md
+│   ├── problem_statement.md
+│   ├── requirements.md
+│   ├── hypotheses.md
+│   └── questions.md
+├── How/                      <-- ⚙️ Strategy, Constraints & Lineage
+│   ├── _README.md
+│   ├── kanban.md
+│   ├── costs.md
+│   ├── risks.md
+│   ├── sanity_check_report.md
+│   ├── mindmap.md
+│   ├── patterns.md
+│   └── ai_harness.md
+└── What/                     <-- 📦 Outcomes & Execution
+    ├── _README.md
+    ├── okrs.md
+    ├── tasks.md
+    ├── todos.md
+    └── prompts.md
 ```
 
 ### Key Benefits
@@ -94,7 +104,7 @@ Code is never written in `5_Symbols/` until visual representations exist in `3_S
 Errors detected during testing do not merely get patched; they evolve the system:
 1. `7_Testing_Known/` detects failures via smoke tests and logic evaluation.
 2. `6_Semblance/` logs the incident (`error_log.md`), tests the fix (`fix.log`), and captures insights (`lessons_learned.md`).
-3. Resolved outcomes and new risk factors feed directly back to `1_Real_Unknown/risks.md` and `tasks.md`, permanently closing the loop.
+3. Resolved outcomes and new risk factors feed directly back to `1_Real_Unknown/How/risks.md` and `1_Real_Unknown/What/tasks.md`, permanently closing the loop.
 
 ---
 

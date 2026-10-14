@@ -1,6 +1,6 @@
 # 🔁 Sanity Check Data Source (Stage 7 → Stage 1 Loop)
 
-> **Stage 7: Testing Known** — This stage **produces the validation data**; the canonical sanity check report lives in [`1_Real_Unknown/sanity_check_report.md`](../1_Real_Unknown/sanity_check_report.md). See **SPEC-009** in `4_Formula/specs.md`.
+> **Stage 7: Testing Known** — This stage **produces the validation data**; the canonical sanity check report lives in [`1_Real_Unknown/How/sanity_check_report.md`](../1_Real_Unknown/How/sanity_check_report.md). See **SPEC-009** in `4_Formula/specs.md`.
 
 ## How the Loop Works
 
@@ -13,9 +13,9 @@ The 7-stage journey ends where it began. Stage 7 proves the delivery; Stage 1 ju
     ↓
 Real Agent — sanity check sub-agent
     ↓
-1_Real_Unknown/sanity_check_report.md  ← canonical report (verdict vs objectives)
+1_Real_Unknown/How/sanity_check_report.md  ← canonical report (verdict vs objectives)
     ↓
-1_Real_Unknown/risks.md updated (new risks added, solved risks moved)
+1_Real_Unknown/How/risks.md updated (new risks added, solved risks moved)
 ```
 
 ## Data This Stage Feeds Into the Report
@@ -40,4 +40,4 @@ Real Agent — sanity check sub-agent
 | Date | Report | Location | Status |
 |------|--------|----------|--------|
 | 2026-05-30 | Template fitness validation | `_obsolete/sanity_check_report_2026-05-30.md` | Archived (predates `index.html`; findings resolved) |
-| 2026-07-12 | Full project sanity check | `1_Real_Unknown/sanity_check_report.md` | ✅ Canonical |
+| 2026-07-12 | Full project sanity check | `1_Real_Unknown/How/sanity_check_report.md` | ✅ Canonical |
