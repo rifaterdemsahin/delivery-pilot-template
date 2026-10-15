@@ -20,3 +20,10 @@
 1. Document questions **before** writing code.
 2. Update the "Resolution Notes" column as soon as a decision is made or implemented.
 3. Move fully resolved questions to [1_Real_Unknown/_obsolete/questions.md](file:///Users/rifaterdemsahin/projects/delivery-pilot-template/1_Real_Unknown/_obsolete/questions.md) if the log gets too cluttered.
+
+## 🔗 Lineage & Relationships
+
+- [[problem_statement.md|originates from]]: Unresolved questions emerging from the problem space
+- [[../../4_Formula/decisions.md|resolved by]]: Formal architectural decision records
+- [[../../2_Environment/When/architecture.md|resolved by]]: Environmental blueprints addressing infrastructure questions
+- [[knowledge_graph.html|visualized in]]: Interactive relationship canvas viewer

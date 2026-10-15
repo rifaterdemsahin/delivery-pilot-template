@@ -26,3 +26,10 @@
 *What is explicitly out of scope or a known constraint for this problem definition?*
 
 - 
+
+## 🔗 Lineage & Relationships
+
+- [[requirements.md|specifies]]: Functional and operational requirements solving this problem
+- [[../What/okrs.md|measured by]]: Key Results and objectives measuring problem resolution
+- [[../../4_Formula/specs.md|governed by]]: Technical specifications formulating system architecture
+- [[knowledge_graph.html|visualized in]]: Interactive relationship canvas viewer

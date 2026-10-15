@@ -15,6 +15,7 @@
 - [x] Document 1_Real_Unknown sub-taxonomies: Why, How, What
 - [x] Add `requirements.md` and `todos.md` to `1_Real_Unknown`
 - [x] Add Master Review & File Carousel suite to `5_Symbols/master_review/`
+- [x] Document Wikilinks format in `agents.md` & add Knowledge Graph Canvas viewer in `1_Real_Unknown/Why/` (TSK-053)
 
 ## Todo Rules
 

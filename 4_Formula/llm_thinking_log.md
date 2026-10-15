@@ -1400,6 +1400,43 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - 102 markdown and HTML files verified with 0 broken links (`check_links.py`).
 - 12/12 smoke tests pass green (`smoke_test.py`).
 
+---
+
+## 2026-10-15 — TSK-053: Document Wikilinks Syntax & Knowledge Graph Canvas Viewer (SPEC-027)
+
+### 📥 Inputs & Requirements
+- **User Prompt:** "add to the agents.md all the documents to be related with each other using wikilinks format example: document a.md would have [[b|depends on]] in it to show the relationship a depends on b. And add a tool to be able to show the relationship between the objects in a canvas and show the relationship between each other. I would be able to look at the graph and be able to to see the orphan ones and be able to fix and give better feedback. Add this viewer under 1_Real_Unknown\Why folder"
+- **Stage Focus:** Real Agent (coordinator & `Why/` folder owner) + Formula Agent (`SPEC-027` formulation) + Symbols Agent (`5_Symbols/toolbox/gen_graph.py` & `1_Real_Unknown/Why/knowledge_graph.html`) + Test Agent (`smoke_test.py` & `check_links.py`).
+
+### 🔍 Analysis & Decisions
+1. **Wikilinks Syntax & Mandate**:
+   - Wikilink syntax adopted: `[[target|relationship]]` where `target` points to the referenced document and `relationship` explains the semantic connection (e.g. `[[b|depends on]]`, `[[problem_statement.md|formalizes]]`, `[[specs.md|implements]]`).
+   - Added explicit mandate to `agents.md` under *Plug & Play — Model Resilience* and *Document Wikilinks & Cross-Stage Lineage Format (SPEC-027)*.
+   - Added checklist item to `5_Symbols/rules/agent_operating_rules.md`: `- [ ] Related documents linked using wikilinks [[target|relationship]] (SPEC-027)`.
+2. **Automated Lineage Extraction (`5_Symbols/toolbox/gen_graph.py`)**:
+   - Created script using regex `\[\[([^|\]]+)\|([^\]]+)\]\]` and standard markdown links `\[([^\]]+)\]\(([^)]+\.(?:md|html))\)`.
+   - Scans 103 markdown and HTML files, extracts node topology and directed edges.
+   - Computes in-degree, out-degree, total degree, and flags orphans (`degree == 0`).
+   - Outputs JSON payload to `1_Real_Unknown/Why/graph_data.json` (98 nodes, 188 edges, 21 orphans).
+3. **Interactive Knowledge Graph Canvas Viewer (`1_Real_Unknown/Why/knowledge_graph.html`)**:
+   - Implemented responsive HTML5 Canvas force-directed physics graph with zero external framework dependencies.
+   - Stage-based color scheme: Stage 1 Violet `#8b5cf6`, Stage 2 Cyan `#06b6d4`, Stage 3 Green `#10b981`, Stage 4 Amber `#f59e0b`, Stage 5 Red `#ef4444`, Stage 7 Blue `#3b82f6`, Stage 6 Pink `#ec4899`.
+   - Pan/drag, zoom (wheel & reset button), directed arrows, and readable relationship labels.
+   - **Orphan Isolation & Feedback**: Quick toggle (`⚠️ Orphans (21)`) isolates unconnected files, adds pulsing hazard rings, and opens Document Inspector with actionable "Copy Wikilink" button to immediately connect orphan files.
+   - **Document Inspector**: Detailed drawer displaying connectivity, incoming/outgoing link breakdowns, and direct launcher to `5_Symbols/deliverypilot/markdown_renderer.html`.
+   - **Two-Menu Navigation**: Slide-out debug navigation drawer loaded from `../../navigation_config.json` and fail-soft client `/index.html` link interception (`SPEC-024`).
+4. **Formula & Navigation Synchronization**:
+   - Formulated `SPEC-027` in `4_Formula/specs.md`.
+   - Added `🕸️ Knowledge Graph Canvas` to `5_Symbols/toolbox/nav_sync.py` under `   ├─ 🎯 Why`.
+   - Synced 86 debug menu entries across `navigation_config.json`, `index.html`, and `markdown_renderer.html`.
+   - Re-ran `5_Symbols/toolbox/check_links.py` (0 broken links across 103 files) and `smoke_test.py` (12/12 passing).
+
+### 📤 Outcomes & Decisions
+- Wikilinks standard established across template.
+- Knowledge Graph canvas viewer deployed at `1_Real_Unknown/Why/knowledge_graph.html`.
+- SPEC-027 formulated in `4_Formula/specs.md`.
+- 12/12 smoke tests pass green.
+
 
 
 

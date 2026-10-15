@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Relationship Knowledge Graph — Why</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: rgba(15, 23, 42, 0.85);
+      --bg-glass: rgba(15, 23, 42, 0.9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(139, 92, 246, 0.25);
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --stage-real: #8b5cf6;
+      --stage-env: #06b6d4;
+      --stage-sim: #10b981;
+      --stage-form: #f59e0b;
+      --stage-sym: #ef4444;
+      --stage-sem: #ec4899;
+      --stage-test: #3b82f6;
+      --orphan-color: #f97316;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+
+    /* Header */
+    .app-header {
+      backdrop-filter: blur(14px);
+      background-color: var(--bg-glass);
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      z-index: 100;
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .back-btn:hover {
+      color: var(--stage-real);
+      border-color: var(--stage-real);
+      transform: translateX(-2px);
+    }
+
+    .stage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: #c4b5fd;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-tool {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-tool:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-orphans-filter {
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid rgba(249, 115, 22, 0.35);
+      color: #fb923c;
+    }
+
+    .btn-orphans-filter.active {
+      background: #f97316;
+      color: #0b0f19;
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
+    }
+
+    /* Main Canvas & Layout */
+    .app-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #080c14;
+      overflow: hidden;
+      cursor: grab;
+    }
+
+    .canvas-container.grabbing {
+      cursor: grabbing;
+    }
+
+    #graphCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Floating Canvas Controls */
+    .canvas-controls {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 10;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.4rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .ctrl-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .ctrl-btn:hover {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: var(--stage-real);
+      color: #c4b5fd;
+    }
+
+    /* Search & Filter Bar Overlay */
+    .graph-search-bar {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.4rem 0.75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      width: 320px;
+    }
+
+    .search-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      font-family: var(--font-body);
+      flex: 1;
+    }
+
+    .stage-filters-strip {
+      position: absolute;
+      top: 1.5rem;
+      left: 350px;
+      z-index: 10;
+      display: flex;
+      gap: 0.35rem;
+      overflow-x: auto;
+      max-width: calc(100% - 740px);
+      padding-bottom: 2px;
+    }
+
+    .filter-chip {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .filter-chip:hover {
+      color: var(--text-primary);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .filter-chip.active {
+      background: rgba(139, 92, 246, 0.25);
+      border-color: var(--stage-real);
+      color: #ddd6fe;
+      font-weight: 600;
+    }
+
+    /* Right Sidebar Inspector */
+    .inspector-sidebar {
+      background-color: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border-left: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      z-index: 20;
+    }
+
+    .inspector-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .inspector-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .inspector-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      flex: 1;
+    }
+
+    /* Node Card in Inspector */
+    .node-summary-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .node-title-main {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #f8fafc;
+      word-break: break-word;
+    }
+
+    .node-path-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--stage-env);
+      background: rgba(6, 182, 212, 0.1);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      word-break: break-all;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .metric-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Orphan Warning Card */
+    .orphan-alert-card {
+      background: rgba(249, 115, 22, 0.1);
+      border: 1px solid rgba(249, 115, 22, 0.35);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .orphan-alert-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #fb923c;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .orphan-alert-text {
+      color: #fed7aa;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .feedback-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px dashed rgba(249, 115, 22, 0.4);
+      border-radius: 6px;
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feedback-title {
+      font-size: 0.8rem;
+      color: #fba94b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .feedback-code {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #fde047;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      word-break: break-all;
+    }
+
+    .btn-copy-snippet {
+      align-self: flex-start;
+      background: rgba(249, 115, 22, 0.2);
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      color: #fed7aa;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: var(--transition);
+    }
+
+    .btn-copy-snippet:hover {
+      background: #f97316;
+      color: #0b0f19;
+    }
+
+    /* Links Lists */
+    .links-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .links-heading {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+
+    .link-item:hover {
+      background: rgba(139, 92, 246, 0.1);
+      border-color: rgba(139, 92, 246, 0.3);
+      transform: translateX(3px);
+    }
+
+    .link-relation-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    .btn-open-doc {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--stage-real), var(--stage-env));
+      border: none;
+      color: #0b0f19;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: auto;
+    }
+
+    .btn-open-doc:hover {
+      box-shadow: 0 0 20px var(--border-glow);
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    /* Debug Drawer */
+    .debug-toggle-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--stage-real), var(--stage-env));
+      border: none;
+      color: #0b0f19;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 20px var(--border-glow);
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .debug-toggle-btn:hover {
+      transform: scale(1.08) rotate(45deg);
+    }
+
+    .debug-menu-overlay {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      height: 100vh;
+      background-color: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--border-color);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .debug-menu-overlay.open { right: 0; }
+
+    .debug-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+
+    .debug-menu-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--stage-env);
+    }
+
+    .debug-search-input {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+      outline: none;
+    }
+
+    .debug-search-input:focus { border-color: var(--stage-env); }
+
+    .debug-links-list {
+      list-style: none;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    .debug-item { margin-bottom: 0.4rem; }
+
+    .debug-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 0.85rem;
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      color: var(--text-primary);
+    }
+
+    .debug-link:hover {
+      background-color: rgba(6, 182, 212, 0.08);
+      border-color: rgba(6, 182, 212, 0.2);
+      color: var(--stage-env);
+      transform: translateX(4px);
+    }
+
+    .debug-divider { height: 1px; background-color: var(--border-color); margin: 0.75rem 0; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .app-body { grid-template-columns: 1fr; }
+      .inspector-sidebar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 380px;
+        box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+      }
+      .stage-filters-strip { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top App Navigation -->
+  <header class="app-header">
+    <div class="header-left">
+      <a href="../../index.html" class="back-btn" id="homeBackBtn">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Home</span>
+      </a>
+      <span class="stage-badge"><i class="fa-solid fa-circle-question"></i> Stage 1 · Why</span>
+      <h1 class="page-title">
+        <i class="fa-solid fa-diagram-project" style="color: var(--stage-real);"></i>
+        <span>Knowledge Graph &amp; Wikilinks Canvas</span>
+      </h1>
+    </div>
+
+    <div class="header-right">
+      <button class="btn-tool btn-orphans-filter" id="orphanToggleBtn">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Orphans (<span id="orphanCountBadge">0</span>)</span>
+      </button>
+      <button class="btn-tool" id="resetViewBtn" title="Reset view and center graph">
+        <i class="fa-solid fa-arrows-to-circle"></i>
+        <span>Reset Canvas</span>
+      </button>
+      <button class="btn-tool" id="exportGraphBtn" title="Export graph nodes & edges as JSON">
+        <i class="fa-solid fa-download"></i>
+        <span>Export</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Graph Body -->
+  <main class="app-body">
+    
+    <!-- Canvas Area -->
+    <div class="canvas-container" id="canvasContainer">
+      <canvas id="graphCanvas"></canvas>
+
+      <!-- Search Overlay -->
+      <div class="graph-search-bar">
+        <i class="fa-solid fa-magnifying-glass" style="color: var(--text-muted); font-size: 0.85rem;"></i>
+        <input type="text" class="search-input" id="nodeSearchInput" placeholder="Search documents & wikilinks..." />
+      </div>
+
+      <!-- Stage Filters Overlay -->
+      <div class="stage-filters-strip" id="stageFiltersStrip">
+        <button class="filter-chip active" data-stage="ALL">All Documents</button>
+        <button class="filter-chip" data-stage="ORPHANS">⚠️ Orphans Only</button>
+        <button class="filter-chip" data-stage="1_Real_Unknown">1. Real</button>
+        <button class="filter-chip" data-stage="2_Environment">2. Env</button>
+        <button class="filter-chip" data-stage="3_Simulation">3. Sim</button>
+        <button class="filter-chip" data-stage="4_Formula">4. Formula</button>
+        <button class="filter-chip" data-stage="5_Symbols">5. Symbols</button>
+        <button class="filter-chip" data-stage="6_Semblance">6. Semblance</button>
+        <button class="filter-chip" data-stage="7_Testing_Known">7. Test</button>
+      </div>
+
+      <!-- Canvas Controls -->
+      <div class="canvas-controls">
+        <button class="ctrl-btn" id="zoomInBtn" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
+        <button class="ctrl-btn" id="zoomOutBtn" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
+        <button class="ctrl-btn" id="zoomFitBtn" title="Fit to Screen"><i class="fa-solid fa-expand"></i></button>
+      </div>
+    </div>
+
+    <!-- Right Inspector Sidebar -->
+    <aside class="inspector-sidebar">
+      <div class="inspector-header">
+        <h2 class="inspector-title">
+          <i class="fa-solid fa-circle-nodes" style="color: var(--stage-real);"></i>
+          <span>Document Inspector</span>
+        </h2>
+        <span class="link-relation-badge" id="graphStatsBadge">97 nodes · 162 edges</span>
+      </div>
+
+      <div class="inspector-content">
+        <!-- Selected Node Summary -->
+        <div class="node-summary-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;">
+            <div class="node-title-main" id="inspectTitle">Select a document</div>
+            <span class="stage-badge" id="inspectStageBadge" style="font-size:0.7rem;padding:0.2rem 0.5rem;">—</span>
+          </div>
+          <div class="node-path-badge" id="inspectPath">Click any node on the canvas to inspect</div>
+
+          <div class="metric-grid">
+            <div class="metric-box">
+              <div class="metric-value" id="inspectInDegree">0</div>
+              <div class="metric-label">Incoming</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-value" id="inspectOutDegree">0</div>
+              <div class="metric-label">Outgoing</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-value" id="inspectWikilinks">0</div>
+              <div class="metric-label">Wikilinks</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orphan Warning & Fix Recommendation -->
+        <div class="orphan-alert-card" id="orphanAlertCard" style="display: none;">
+          <div class="orphan-alert-header">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Orphan Document Alert</span>
+          </div>
+          <p class="orphan-alert-text">
+            This document has <strong>0 connections</strong> in the knowledge graph. It lacks upstream specifications or downstream deliverables.
+          </p>
+          <div class="feedback-box">
+            <div class="feedback-title">Suggested Feedback &amp; Fix:</div>
+            <p style="font-size: 0.8rem; color: #cbd5e1;">Add this wikilink to connect this document to the upstream pipeline:</p>
+            <div class="feedback-code" id="orphanSnippetCode">[[1_Real_Unknown/Why/problem_statement.md|addresses]]</div>
+            <button class="btn-copy-snippet" id="copySnippetBtn">
+              <i class="fa-solid fa-copy"></i>
+              <span>Copy Wikilink</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Outgoing Links -->
+        <div class="links-section">
+          <div class="links-heading">
+            <span>Outgoing Links (<span id="outgoingCount">0</span>)</span>
+            <i class="fa-solid fa-arrow-trend-up"></i>
+          </div>
+          <div class="links-list" id="outgoingLinksList">
+            <div style="color:var(--text-muted);font-size:0.8rem;padding:0.5rem;">None</div>
+          </div>
+        </div>
+
+        <!-- Incoming References -->
+        <div class="links-section">
+          <div class="links-heading">
+            <span>Incoming References (<span id="incomingCount">0</span>)</span>
+            <i class="fa-solid fa-arrow-trend-down"></i>
+          </div>
+          <div class="links-list" id="incomingLinksList">
+            <div style="color:var(--text-muted);font-size:0.8rem;padding:0.5rem;">None</div>
+          </div>
+        </div>
+
+        <!-- Open Document in Renderer Button -->
+        <a href="#" class="btn-open-doc" id="openRendererBtn" target="_blank">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Open in Markdown Renderer</span>
+        </a>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Debug Menu Trigger & Overlay -->
+  <button class="debug-toggle-btn" id="debugToggle" title="Open Debug Navigation">
+    <i class="fa-solid fa-compass"></i>
+  </button>
+
+  <div class="debug-menu-overlay" id="debugMenuOverlay">
+    <div class="debug-menu-header">
+      <div class="debug-menu-title">🧭 Navigation Menu</div>
+      <button id="debugClose" style="background:none;border:none;color:#94a3b8;font-size:1.4rem;cursor:pointer;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <input type="text" class="debug-search-input" id="debugSearch" placeholder="Search project pages..." />
+    <ul class="debug-links-list" id="debugLinksList"></ul>
+  </div>
+
+  <script>
+    // ─── Stage Colors Palette ─────────────────────────────────────────────
+    const STAGE_COLORS = {
+      "1_Real_Unknown": "#8b5cf6",
+      "2_Environment": "#06b6d4",
+      "3_Simulation": "#10b981",
+      "4_Formula": "#f59e0b",
+      "5_Symbols": "#ef4444",
+      "6_Semblance": "#ec4899",
+      "7_Testing_Known": "#3b82f6",
+      "Root": "#64748b"
+    };
+
+    // ─── Application State ────────────────────────────────────────────────
+    let graphData = { nodes: [], edges: [], metadata: {} };
+    let selectedNode = null;
+    let hoveredNode = null;
+    let draggedNode = null;
+    let orphanFilterActive = false;
+    let currentStageFilter = "ALL";
+    let searchQuery = "";
+
+    // Viewport transform
+    let scale = 0.85;
+    let panX = 0;
+    let panY = 0;
+    let isPanning = false;
+    let startX = 0;
+    let startY = 0;
+
+    const canvas = document.getElementById("graphCanvas");
+    const ctx = canvas.getContext("2d");
+    const container = document.getElementById("canvasContainer");
+
+    // ─── Resize Canvas ────────────────────────────────────────────────────
+    function resizeCanvas() {
+      canvas.width = container.clientWidth * window.devicePixelRatio;
+      canvas.height = container.clientHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+    window.addEventListener("resize", resizeCanvas);
+
+    // ─── Cookie Helpers ───────────────────────────────────────────────────
+    function getCookie(name) {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : null;
+    }
+    function setCookie(name, val) {
+      document.cookie = name + "=" + val + "; path=/; max-age=31536000";
+    }
+
+    // ─── Load Graph Data ──────────────────────────────────────────────────
+    async function loadGraphData() {
+      try {
+        const res = await fetch("graph_data.json");
+        if (res.ok) {
+          graphData = await res.json();
+          initGraph();
+          return;
+        }
+      } catch (_) {}
+
+      // Fallback: minimal generated dataset if fetch fails
+      graphData = {
+        metadata: { total_nodes: 0, total_edges: 0, orphan_count: 0 },
+        nodes: [],
+        edges: []
+      };
+      initGraph();
+    }
+
+    // ─── Force-Directed Physics Simulation ────────────────────────────────
+    function initGraph() {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      // Position nodes radially by stage
+      const stageAngles = {
+        "1_Real_Unknown": 0,
+        "2_Environment": (Math.PI * 2) * (1 / 7),
+        "3_Simulation": (Math.PI * 2) * (2 / 7),
+        "4_Formula": (Math.PI * 2) * (3 / 7),
+        "5_Symbols": (Math.PI * 2) * (4 / 7),
+        "6_Semblance": (Math.PI * 2) * (5 / 7),
+        "7_Testing_Known": (Math.PI * 2) * (6 / 7),
+        "Root": 0
+      };
+
+      const radius = Math.min(width, height) * 0.38;
+
+      graphData.nodes.forEach((node, i) => {
+        const angle = (stageAngles[node.stage] || 0) + (Math.random() - 0.5) * 0.6;
+        const dist = node.stage === "Root" ? radius * 0.15 : radius * (0.6 + Math.random() * 0.6);
+        node.x = width / 2 + Math.cos(angle) * dist;
+        node.y = height / 2 + Math.sin(angle) * dist;
+        node.vx = 0;
+        node.vy = 0;
+        node.radius = Math.max(12, Math.min(26, 12 + (node.degree || 0) * 1.5));
+      });
+
+      // Update Header Stats
+      const orphans = graphData.nodes.filter(n => n.is_orphan).length;
+      document.getElementById("orphanCountBadge").textContent = orphans;
+      document.getElementById("graphStatsBadge").textContent = 
+        `${graphData.nodes.length} nodes · ${graphData.edges.length} edges · ${orphans} orphans`;
+
+      // Select default node (problem_statement.md or first)
+      const defaultNode = graphData.nodes.find(n => n.id.includes("problem_statement.md")) || graphData.nodes[0];
+      if (defaultNode) selectNode(defaultNode);
+
+      centerView();
+      requestAnimationFrame(renderLoop);
+    }
+
+    function simulateStep() {
+      if (draggedNode) return; // Gentle dampening during drag
+
+      const nodes = graphData.nodes;
+      const edges = graphData.edges;
+      const nodeMap = new Map(nodes.map(n => [n.id, n]));
+
+      // 1. Repulsion between nodes
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i];
+          const b = nodes[j];
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const distSq = dx * dx + dy * dy || 1;
+          const dist = Math.sqrt(distSq);
+          if (dist < 400) {
+            const force = (4500 / distSq);
+            const fx = (dx / dist) * force;
+            const fy = (dy / dist) * force;
+            a.vx -= fx;
+            a.vy -= fy;
+            b.vx += fx;
+            b.vy += fy;
+          }
+        }
+      }
+
+      // 2. Attraction along edges
+      edges.forEach(edge => {
+        const source = nodeMap.get(edge.source);
+        const target = nodeMap.get(edge.target);
+        if (source && target) {
+          const dx = target.x - source.x;
+          const dy = target.y - source.y;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          const desiredDist = 120;
+          const force = (dist - desiredDist) * 0.035;
+          const fx = (dx / dist) * force;
+          const fy = (dy / dist) * force;
+          source.vx += fx;
+          source.vy += fy;
+          target.vx -= fx;
+          target.vy -= fy;
+        }
+      });
+
+      // 3. Center gravity & dampening
+      const cx = container.clientWidth / 2;
+      const cy = container.clientHeight / 2;
+      nodes.forEach(node => {
+        node.vx += (cx - node.x) * 0.002;
+        node.vy += (cy - node.y) * 0.002;
+        node.vx *= 0.88;
+        node.vy *= 0.88;
+        node.x += node.vx;
+        node.y += node.vy;
+      });
+    }
+
+    // ─── Rendering Engine ─────────────────────────────────────────────────
+    function renderLoop() {
+      simulateStep();
+
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.save();
+      ctx.translate(panX, panY);
+      ctx.scale(scale, scale);
+
+      const activeNodes = getFilteredNodes();
+      const activeNodeIds = new Set(activeNodes.map(n => n.id));
+      const connectedToSelected = new Set();
+
+      if (selectedNode) {
+        connectedToSelected.add(selectedNode.id);
+        graphData.edges.forEach(e => {
+          if (e.source === selectedNode.id) connectedToSelected.add(e.target);
+          if (e.target === selectedNode.id) connectedToSelected.add(e.source);
+        });
+      }
+
+      // 1. Draw Edges
+      graphData.edges.forEach(edge => {
+        if (!activeNodeIds.has(edge.source) || !activeNodeIds.has(edge.target)) return;
+        const source = graphData.nodes.find(n => n.id === edge.source);
+        const target = graphData.nodes.find(n => n.id === edge.target);
+        if (!source || !target) return;
+
+        const isHighlighted = selectedNode && (edge.source === selectedNode.id || edge.target === selectedNode.id);
+        const isDimmed = selectedNode && !isHighlighted;
+
+        ctx.beginPath();
+        ctx.moveTo(source.x, source.y);
+        ctx.lineTo(target.x, target.y);
+        ctx.strokeStyle = isHighlighted ? "#a78bfa" : (edge.type === "wikilink" ? "rgba(139, 92, 246, 0.45)" : "rgba(255, 255, 255, 0.12)");
+        ctx.lineWidth = isHighlighted ? 2.5 : (edge.type === "wikilink" ? 1.5 : 1);
+        ctx.setLineDash(edge.type === "wikilink" ? [] : [4, 4]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Draw Arrowhead
+        const angle = Math.atan2(target.y - source.y, target.x - source.x);
+        const arrowDist = target.radius + 6;
+        const arrowX = target.x - Math.cos(angle) * arrowDist;
+        const arrowY = target.y - Math.sin(angle) * arrowDist;
+        ctx.beginPath();
+        ctx.moveTo(arrowX, arrowY);
+        ctx.lineTo(arrowX - 8 * Math.cos(angle - Math.PI / 6), arrowY - 8 * Math.sin(angle - Math.PI / 6));
+        ctx.lineTo(arrowX - 8 * Math.cos(angle + Math.PI / 6), arrowY - 8 * Math.sin(angle + Math.PI / 6));
+        ctx.fillStyle = ctx.strokeStyle;
+        ctx.fill();
+
+        // Edge relationship label on hover or selection
+        if (isHighlighted || (hoveredNode && (edge.source === hoveredNode.id || edge.target === hoveredNode.id))) {
+          const midX = (source.x + target.x) / 2;
+          const midY = (source.y + target.y) / 2;
+          ctx.font = "10px Inter, sans-serif";
+          ctx.fillStyle = "#cbd5e1";
+          ctx.textAlign = "center";
+          ctx.fillText(edge.relationship || "relates to", midX, midY - 5);
+        }
+      });
+
+      // 2. Draw Nodes
+      activeNodes.forEach(node => {
+        const isSelected = selectedNode && selectedNode.id === node.id;
+        const isHovered = hoveredNode && hoveredNode.id === node.id;
+        const isConnected = !selectedNode || connectedToSelected.has(node.id);
+        const alpha = isConnected ? 1.0 : 0.25;
+
+        ctx.globalAlpha = alpha;
+
+        // Orphan Pulse or Warning Ring
+        if (node.is_orphan) {
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius + 6, 0, Math.PI * 2);
+          ctx.strokeStyle = "rgba(249, 115, 22, 0.65)";
+          ctx.lineWidth = 2;
+          ctx.setLineDash([3, 3]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        // Selection Ring
+        if (isSelected) {
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius + 8, 0, Math.PI * 2);
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+        }
+
+        // Node Circle Body
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = node.is_orphan ? "#ea580c" : (node.color || "#64748b");
+        ctx.fill();
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Node Label
+        ctx.font = `${isSelected || isHovered ? "bold 12px" : "11px"} Inter, sans-serif`;
+        ctx.fillStyle = isSelected ? "#ffffff" : "#cbd5e1";
+        ctx.textAlign = "center";
+        const labelText = node.label.replace(".md", "");
+        ctx.fillText(labelText, node.x, node.y + node.radius + 14);
+
+        ctx.globalAlpha = 1.0;
+      });
+
+      ctx.restore();
+      requestAnimationFrame(renderLoop);
+    }
+
+    // ─── Filter Logic ─────────────────────────────────────────────────────
+    function getFilteredNodes() {
+      let list = graphData.nodes;
+
+      if (orphanFilterActive || currentStageFilter === "ORPHANS") {
+        list = list.filter(n => n.is_orphan);
+      } else if (currentStageFilter !== "ALL") {
+        list = list.filter(n => n.stage === currentStageFilter);
+      }
+
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        list = list.filter(n => n.label.toLowerCase().includes(q) || (n.title && n.title.toLowerCase().includes(q)));
+      }
+
+      return list;
+    }
+
+    // ─── Node Selection & Inspector Details ────────────────────────────────
+    function selectNode(node) {
+      selectedNode = node;
+      document.getElementById("inspectTitle").textContent = node.title || node.label;
+      document.getElementById("inspectPath").textContent = node.path;
+      
+      const badge = document.getElementById("inspectStageBadge");
+      badge.textContent = node.stage;
+      badge.style.background = node.color ? `${node.color}25` : "rgba(255,255,255,0.1)";
+      badge.style.borderColor = node.color || "rgba(255,255,255,0.2)";
+      badge.style.color = node.color || "#fff";
+
+      document.getElementById("inspectInDegree").textContent = node.in_degree || 0;
+      document.getElementById("inspectOutDegree").textContent = node.out_degree || 0;
+      document.getElementById("inspectWikilinks").textContent = node.wikilinks_count || 0;
+
+      // Orphan Alert & Fix Advice
+      const orphanCard = document.getElementById("orphanAlertCard");
+      if (node.is_orphan) {
+        orphanCard.style.display = "flex";
+        const recSnippet = generateRecommendedSnippet(node);
+        document.getElementById("orphanSnippetCode").textContent = recSnippet;
+      } else {
+        orphanCard.style.display = "none";
+      }
+
+      // Outgoing Links List
+      const outgoing = graphData.edges.filter(e => e.source === node.id);
+      document.getElementById("outgoingCount").textContent = outgoing.length;
+      const outList = document.getElementById("outgoingLinksList");
+      if (outgoing.length === 0) {
+        outList.innerHTML = `<div style="color:var(--text-muted);font-size:0.8rem;padding:0.4rem;">No outgoing links</div>`;
+      } else {
+        outList.innerHTML = outgoing.map(e => {
+          const target = graphData.nodes.find(n => n.id === e.target);
+          return `
+            <div class="link-item" onclick="jumpToNode('${e.target}')">
+              <span>${target ? target.label : e.target}</span>
+              <span class="link-relation-badge">${e.relationship}</span>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Incoming Links List
+      const incoming = graphData.edges.filter(e => e.target === node.id);
+      document.getElementById("incomingCount").textContent = incoming.length;
+      const inList = document.getElementById("incomingLinksList");
+      if (incoming.length === 0) {
+        inList.innerHTML = `<div style="color:var(--text-muted);font-size:0.8rem;padding:0.4rem;">No incoming references</div>`;
+      } else {
+        inList.innerHTML = incoming.map(e => {
+          const source = graphData.nodes.find(n => n.id === e.source);
+          return `
+            <div class="link-item" onclick="jumpToNode('${e.source}')">
+              <span>${source ? source.label : e.source}</span>
+              <span class="link-relation-badge">${e.relationship}</span>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Renderer Button
+      const rendererBtn = document.getElementById("openRendererBtn");
+      rendererBtn.href = `../../5_Symbols/deliverypilot/markdown_renderer.html?file=${encodeURIComponent(node.path)}`;
+    }
+
+    function jumpToNode(nodeId) {
+      const node = graphData.nodes.find(n => n.id === nodeId);
+      if (node) {
+        selectNode(node);
+        // Center view on jumped node
+        panX = (container.clientWidth / 2) - node.x * scale;
+        panY = (container.clientHeight / 2) - node.y * scale;
+      }
+    }
+
+    function generateRecommendedSnippet(node) {
+      const stage = node.stage;
+      if (stage === "1_Real_Unknown") {
+        return `[[1_Real_Unknown/Why/problem_statement.md|addresses]]`;
+      } else if (stage === "2_Environment") {
+        return `[[1_Real_Unknown/Why/requirements.md|depends on]]`;
+      } else if (stage === "3_Simulation") {
+        return `[[1_Real_Unknown/Why/requirements.md|visualizes]]`;
+      } else if (stage === "4_Formula") {
+        return `[[1_Real_Unknown/Why/requirements.md|formulates]]`;
+      } else if (stage === "5_Symbols") {
+        return `[[4_Formula/specs.md|implements]]`;
+      } else if (stage === "6_Semblance") {
+        return `[[7_Testing_Known/smoke_tests.md|remediates]]`;
+      } else if (stage === "7_Testing_Known") {
+        return `[[4_Formula/specs.md|verifies]]`;
+      }
+      return `[[1_Real_Unknown/Why/problem_statement.md|relates to]]`;
+    }
+
+    function centerView() {
+      scale = 0.85;
+      panX = 0;
+      panY = 0;
+    }
+
+    // ─── Mouse & Canvas Interaction ───────────────────────────────────────
+    function getMousePos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+      return {
+        x: (clientX - rect.left - panX) / scale,
+        y: (clientY - rect.top - panY) / scale
+      };
+    }
+
+    canvas.addEventListener("mousedown", (e) => {
+      const pos = getMousePos(e);
+      const activeNodes = getFilteredNodes();
+      const clicked = activeNodes.find(n => {
+        const dx = n.x - pos.x;
+        const dy = n.y - pos.y;
+        return (dx * dx + dy * dy) <= (n.radius * n.radius * 1.5);
+      });
+
+      if (clicked) {
+        draggedNode = clicked;
+        selectNode(clicked);
+      } else {
+        isPanning = true;
+        startX = e.clientX - panX;
+        startY = e.clientY - panY;
+        container.classList.add("grabbing");
+      }
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (draggedNode) {
+        const pos = getMousePos(e);
+        draggedNode.x = pos.x;
+        draggedNode.y = pos.y;
+        draggedNode.vx = 0;
+        draggedNode.vy = 0;
+      } else if (isPanning) {
+        panX = e.clientX - startX;
+        panY = e.clientY - startY;
+      } else {
+        const pos = getMousePos(e);
+        const activeNodes = getFilteredNodes();
+        hoveredNode = activeNodes.find(n => {
+          const dx = n.x - pos.x;
+          const dy = n.y - pos.y;
+          return (dx * dx + dy * dy) <= (n.radius * n.radius);
+        }) || null;
+      }
+    });
+
+    window.addEventListener("mouseup", () => {
+      draggedNode = null;
+      isPanning = false;
+      container.classList.remove("grabbing");
+    });
+
+    // Zoom Controls
+    container.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+      if (scale * zoomFactor > 0.25 && scale * zoomFactor < 3.5) {
+        scale *= zoomFactor;
+      }
+    }, { passive: false });
+
+    document.getElementById("zoomInBtn").addEventListener("click", () => { if (scale < 3.0) scale *= 1.2; });
+    document.getElementById("zoomOutBtn").addEventListener("click", () => { if (scale > 0.3) scale *= 0.8; });
+    document.getElementById("zoomFitBtn").addEventListener("click", centerView);
+    document.getElementById("resetViewBtn").addEventListener("click", centerView);
+
+    // ─── Filter Events ────────────────────────────────────────────────────
+    const orphanToggle = document.getElementById("orphanToggleBtn");
+    orphanToggle.addEventListener("click", () => {
+      orphanFilterActive = !orphanFilterActive;
+      orphanToggle.classList.toggle("active", orphanFilterActive);
+      const activeNodes = getFilteredNodes();
+      if (activeNodes.length > 0) selectNode(activeNodes[0]);
+    });
+
+    const filterChips = document.querySelectorAll(".filter-chip");
+    filterChips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        filterChips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        currentStageFilter = chip.getAttribute("data-stage");
+        const activeNodes = getFilteredNodes();
+        if (activeNodes.length > 0) selectNode(activeNodes[0]);
+      });
+    });
+
+    document.getElementById("nodeSearchInput").addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim();
+    });
+
+    // Copy Wikilink Snippet
+    document.getElementById("copySnippetBtn").addEventListener("click", () => {
+      const code = document.getElementById("orphanSnippetCode").textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById("copySnippetBtn");
+        btn.innerHTML = `<i class="fa-solid fa-check"></i><span>Copied!</span>`;
+        setTimeout(() => {
+          btn.innerHTML = `<i class="fa-solid fa-copy"></i><span>Copy Wikilink</span>`;
+        }, 2000);
+      });
+    });
+
+    // Export Graph
+    document.getElementById("exportGraphBtn").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(graphData, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "knowledge_graph.json";
+      a.click();
+    });
+
+    // ─── Debug Navigation Menu ────────────────────────────────────────────
+    const debugToggle = document.getElementById("debugToggle");
+    const debugClose = document.getElementById("debugClose");
+    const debugOverlay = document.getElementById("debugMenuOverlay");
+    const debugSearch = document.getElementById("debugSearch");
+    const debugLinksList = document.getElementById("debugLinksList");
+
+    let navData = { debugMenu: [] };
+    fetch("../../navigation_config.json")
+      .then(res => res.json())
+      .then(d => { navData = d; buildDebugMenu(); })
+      .catch(() => buildDebugMenu());
+
+    function buildDebugMenu(filter = "") {
+      debugLinksList.innerHTML = "";
+      const query = filter.toLowerCase();
+      (navData.debugMenu || []).forEach(item => {
+        if (query && item.label === "---") return;
+        if (query && !item.label.toLowerCase().includes(query)) return;
+        if (item.label === "---") {
+          const d = document.createElement("li"); d.className = "debug-divider";
+          debugLinksList.appendChild(d);
+        } else {
+          const li = document.createElement("li"); li.className = "debug-item";
+          const a = document.createElement("a");
+          let finalUrl = item.url;
+          if (finalUrl !== "divider" && !finalUrl.startsWith("http")) {
+            if (finalUrl.includes(".html")) finalUrl = `../../${finalUrl}`;
+            else finalUrl = `../../5_Symbols/deliverypilot/markdown_renderer.html?file=${finalUrl}`;
+          }
+          a.href = finalUrl; a.className = "debug-link";
+          a.innerHTML = `<span>${item.label}</span><i class="fa-solid fa-chevron-right" style="font-size:0.75rem;opacity:0.5;"></i>`;
+          li.appendChild(a); debugLinksList.appendChild(li);
+        }
+      });
+    }
+
+    debugSearch.addEventListener("input", (e) => buildDebugMenu(e.target.value));
+
+    debugToggle.addEventListener("click", () => {
+      const isOpen = debugOverlay.classList.toggle("open");
+      setCookie("debug", isOpen ? "true" : "false");
+    });
+    debugClose.addEventListener("click", () => {
+      debugOverlay.classList.remove("open");
+      setCookie("debug", "false");
+    });
+
+    // Fail-soft /index.html interception (SPEC-024)
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (a) {
+        const href = a.getAttribute("href");
+        if (href === "/index.html" || href === "/" || href === "./index.html") {
+          e.preventDefault();
+          window.location.href = "../../index.html";
+        }
+      }
+    });
+
+    // ─── Initialize ───────────────────────────────────────────────────────
+    resizeCanvas();
+    loadGraphData();
+  </script>
+</body>
+</html>

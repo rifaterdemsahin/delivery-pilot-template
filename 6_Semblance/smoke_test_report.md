@@ -4,7 +4,7 @@
 > Latest run overwrites this file; one report per test run.
 
 ## Run Info
-- **Date:** 2026-10-15 07:16
+- **Date:** 2026-10-15 22:44
 - **Trigger:** Manual run
 - **Mode:** Local filesystem
 - **Tester:** smoke_test.py (automated)
@@ -24,7 +24,7 @@
 | README Pages URL | ✅ Pass | — |
 | Secrets Scan | ✅ Pass | — |
 | Root Layout (RULE-005) | ✅ Pass | — |
-| Link Integrity (SPEC-023) | ✅ Pass | 102 files verified |
+| Link Integrity (SPEC-023) | ✅ Pass | 103 files verified |
 
 ## Failures
 

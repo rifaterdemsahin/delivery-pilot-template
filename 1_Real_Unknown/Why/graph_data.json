@@ -1,0 +1,2425 @@
+{
+  "metadata": {
+    "total_nodes": 98,
+    "total_edges": 188,
+    "orphan_count": 21,
+    "connected_count": 77,
+    "generated_at": "2026-10-15",
+    "stages": {
+      "1_Real_Unknown": "#8b5cf6",
+      "2_Environment": "#06b6d4",
+      "3_Simulation": "#10b981",
+      "4_Formula": "#f59e0b",
+      "5_Symbols": "#ef4444",
+      "6_Semblance": "#ec4899",
+      "7_Testing_Known": "#3b82f6",
+      "Root": "#64748b"
+    }
+  },
+  "nodes": [
+    {
+      "id": "index.html",
+      "label": "index.html",
+      "title": "index.html",
+      "path": "index.html",
+      "stage": "Root",
+      "color": "#64748b",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "_README.md",
+      "label": "_README.md",
+      "title": "delivery-pilot-template",
+      "path": "_README.md",
+      "stage": "Root",
+      "color": "#64748b",
+      "in_degree": 1,
+      "out_degree": 1,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "README.md",
+      "label": "README.md",
+      "title": "delivery-pilot-template",
+      "path": "README.md",
+      "stage": "Root",
+      "color": "#64748b",
+      "in_degree": 2,
+      "out_degree": 1,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "kilocode.md",
+      "label": "kilocode.md",
+      "title": "🛠 Kilo Code — Delivery Pilot Template",
+      "path": "kilocode.md",
+      "stage": "Root",
+      "color": "#64748b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "agents.md",
+      "label": "agents.md",
+      "title": "Agents — Coordinator",
+      "path": "agents.md",
+      "stage": "Root",
+      "color": "#64748b",
+      "in_degree": 1,
+      "out_degree": 3,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 4
+    },
+    {
+      "id": "7_Testing_Known/sanity_check_report.md",
+      "label": "sanity_check_report.md",
+      "title": "🔁 Sanity Check Data Source (Stage 7 → Stage 1 Loop",
+      "path": "7_Testing_Known/sanity_check_report.md",
+      "stage": "7_Testing_Known",
+      "color": "#3b82f6",
+      "in_degree": 1,
+      "out_degree": 5,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 6
+    },
+    {
+      "id": "7_Testing_Known/harness_slice2_report.md",
+      "label": "harness_slice2_report.md",
+      "title": "🧪 Harness Slice-2 Report — Skill + Packet Validato",
+      "path": "7_Testing_Known/harness_slice2_report.md",
+      "stage": "7_Testing_Known",
+      "color": "#3b82f6",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "7_Testing_Known/_README.md",
+      "label": "_README.md",
+      "title": "7️⃣ Testing Known — The \"Proof\"",
+      "path": "7_Testing_Known/_README.md",
+      "stage": "7_Testing_Known",
+      "color": "#3b82f6",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "7_Testing_Known/smoke_tests.md",
+      "label": "smoke_tests.md",
+      "title": "Smoke Tests & Error Resolution",
+      "path": "7_Testing_Known/smoke_tests.md",
+      "stage": "7_Testing_Known",
+      "color": "#3b82f6",
+      "in_degree": 3,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "7_Testing_Known/harness_golden_report.md",
+      "label": "harness_golden_report.md",
+      "title": "🏅 Harness Golden-Task Report — Live Branch Evidenc",
+      "path": "7_Testing_Known/harness_golden_report.md",
+      "stage": "7_Testing_Known",
+      "color": "#3b82f6",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "7_Testing_Known/logic.md",
+      "label": "logic.md",
+      "title": "Logic Tracker — Premise & Conclusion",
+      "path": "7_Testing_Known/logic.md",
+      "stage": "7_Testing_Known",
+      "color": "#3b82f6",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "7_Testing_Known/validation_report.md",
+      "label": "validation_report.md",
+      "title": "🧪 Validation Report",
+      "path": "7_Testing_Known/validation_report.md",
+      "stage": "7_Testing_Known",
+      "color": "#3b82f6",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "2_Environment/_README.md",
+      "label": "_README.md",
+      "title": "2️⃣ Environment — The \"Context\"",
+      "path": "2_Environment/_README.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 0,
+      "out_degree": 23,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 23
+    },
+    {
+      "id": "2_Environment/When/product_rules.md",
+      "label": "product_rules.md",
+      "title": "Product Rules — Template Customization Guide",
+      "path": "2_Environment/When/product_rules.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 2,
+      "out_degree": 5,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 7
+    },
+    {
+      "id": "2_Environment/When/setup_ai.md",
+      "label": "setup_ai.md",
+      "title": "🤖 AI Stack Configuration Guide",
+      "path": "2_Environment/When/setup_ai.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 5,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 5
+    },
+    {
+      "id": "2_Environment/When/architecture.md",
+      "label": "architecture.md",
+      "title": "🏗️ System Architecture Overview",
+      "path": "2_Environment/When/architecture.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 6,
+      "out_degree": 3,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 9
+    },
+    {
+      "id": "2_Environment/When/extensions.md",
+      "label": "extensions.md",
+      "title": "🔌 Required Extensions & Tools",
+      "path": "2_Environment/When/extensions.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 3,
+      "out_degree": 4,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 7
+    },
+    {
+      "id": "2_Environment/When/superskills.md",
+      "label": "superskills.md",
+      "title": "🧰 Superskills Requirements",
+      "path": "2_Environment/When/superskills.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 3,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "2_Environment/When/mcp.md",
+      "label": "mcp.md",
+      "title": "MCP Server Requirements",
+      "path": "2_Environment/When/mcp.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 3,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "2_Environment/When/dependencies.md",
+      "label": "dependencies.md",
+      "title": "Dependencies, Libraries & Packages",
+      "path": "2_Environment/When/dependencies.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "2_Environment/When/navigation.md",
+      "label": "navigation.md",
+      "title": "Navigation System — Two-Menu Architecture",
+      "path": "2_Environment/When/navigation.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 4,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 4
+    },
+    {
+      "id": "2_Environment/When/_README.md",
+      "label": "_README.md",
+      "title": "⏰ Environment — When (Lifecycles, Triggers & Tool ",
+      "path": "2_Environment/When/_README.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 2,
+      "out_degree": 17,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 19
+    },
+    {
+      "id": "2_Environment/When/toolstack.md",
+      "label": "toolstack.md",
+      "title": "🏗 Toolstack & Rationale",
+      "path": "2_Environment/When/toolstack.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 3,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "2_Environment/When/github_agent.md",
+      "label": "github_agent.md",
+      "title": "GitHub Error-Fixing Agent",
+      "path": "2_Environment/When/github_agent.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 3,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "2_Environment/When/tools.md",
+      "label": "tools.md",
+      "title": "🧰 Tools Overview — Delivery Pilot Template",
+      "path": "2_Environment/When/tools.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 3,
+      "out_degree": 11,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 14
+    },
+    {
+      "id": "2_Environment/When/llm_tools.md",
+      "label": "llm_tools.md",
+      "title": "🛠 LLM Tools — Rationale & Security Boundaries",
+      "path": "2_Environment/When/llm_tools.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "2_Environment/Where/axiom.md",
+      "label": "axiom.md",
+      "title": "Axiom — Server-Side Logs & Observability",
+      "path": "2_Environment/Where/axiom.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 5,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 5
+    },
+    {
+      "id": "2_Environment/Where/local_server.md",
+      "label": "local_server.md",
+      "title": "local_server.md",
+      "path": "2_Environment/Where/local_server.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "2_Environment/Where/fly_io.md",
+      "label": "fly_io.md",
+      "title": "Fly.io — Container-Based Deployments",
+      "path": "2_Environment/Where/fly_io.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 6,
+      "out_degree": 2,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 8
+    },
+    {
+      "id": "2_Environment/Where/setup_mac.md",
+      "label": "setup_mac.md",
+      "title": "🍏 macOS Environment Setup Guide",
+      "path": "2_Environment/Where/setup_mac.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "2_Environment/Where/_README.md",
+      "label": "_README.md",
+      "title": "🌐 Environment — Where (Platforms, Hosting & Infras",
+      "path": "2_Environment/Where/_README.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 2,
+      "out_degree": 13,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 15
+    },
+    {
+      "id": "2_Environment/Where/supabase.md",
+      "label": "supabase.md",
+      "title": "Supabase — Database & Backend Features",
+      "path": "2_Environment/Where/supabase.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 4,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 4
+    },
+    {
+      "id": "2_Environment/Where/setup_windows.md",
+      "label": "setup_windows.md",
+      "title": "🪟 Windows Environment Setup Guide",
+      "path": "2_Environment/Where/setup_windows.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "2_Environment/Where/setup_azure.md",
+      "label": "setup_azure.md",
+      "title": "☁️ Azure Key Vault & Credentials Setup Guide",
+      "path": "2_Environment/Where/setup_azure.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 6,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 6
+    },
+    {
+      "id": "2_Environment/Where/github_pages.md",
+      "label": "github_pages.md",
+      "title": "GitHub Pages — Frontend Static Hosting",
+      "path": "2_Environment/Where/github_pages.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 3,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "2_Environment/Where/cloudflare_workers.md",
+      "label": "cloudflare_workers.md",
+      "title": "Cloudflare Workers — Backend Edge Compute",
+      "path": "2_Environment/Where/cloudflare_workers.md",
+      "stage": "2_Environment",
+      "color": "#06b6d4",
+      "in_degree": 5,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 5
+    },
+    {
+      "id": "4_Formula/logging_and_autofix.md",
+      "label": "logging_and_autofix.md",
+      "title": "🪵 Formula — Unified Logging & Nightly Continuous-F",
+      "path": "4_Formula/logging_and_autofix.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 2,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "4_Formula/togaf_gap_analysis.md",
+      "label": "togaf_gap_analysis.md",
+      "title": "🧭 TOGAF vs. Delivery Pilot Framework — Gap Analysi",
+      "path": "4_Formula/togaf_gap_analysis.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/navigation.md",
+      "label": "navigation.md",
+      "title": "🗺️ Reusable Navigation Formula",
+      "path": "4_Formula/navigation.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/_README.md",
+      "label": "_README.md",
+      "title": "4️⃣ Formula — The \"Thinking & Planning\" Stage",
+      "path": "4_Formula/_README.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 1,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "4_Formula/specs.md",
+      "label": "specs.md",
+      "title": "Technical Specifications",
+      "path": "4_Formula/specs.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 10,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 10
+    },
+    {
+      "id": "4_Formula/harness.md",
+      "label": "harness.md",
+      "title": "🤖 AI Harness — Bot-Driven Development Contract",
+      "path": "4_Formula/harness.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/dsl.md",
+      "label": "dsl.md",
+      "title": "📖 Domain-Specific Language (DSL) Dictionary",
+      "path": "4_Formula/dsl.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/bot_spec.md",
+      "label": "bot_spec.md",
+      "title": "🤖 Bot Spec (Template)",
+      "path": "4_Formula/bot_spec.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/agent_creation.md",
+      "label": "agent_creation.md",
+      "title": "Agent Creation Responsibility",
+      "path": "4_Formula/agent_creation.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/llm_thinking_log.md",
+      "label": "llm_thinking_log.md",
+      "title": "🧠 LLM Thinking Phase & Reasoning Log",
+      "path": "4_Formula/llm_thinking_log.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "4_Formula/decisions.md",
+      "label": "decisions.md",
+      "title": "🏛️ Architecture Decision Records (ADRs)",
+      "path": "4_Formula/decisions.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "4_Formula/database.md",
+      "label": "database.md",
+      "title": "🗄️ Database Integration — Supabase",
+      "path": "4_Formula/database.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "4_Formula/.claude/README.md",
+      "label": "README.md",
+      "title": "🤖 .claude — Project Initialization Guide",
+      "path": "4_Formula/.claude/README.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/.claude/skills.md",
+      "label": "skills.md",
+      "title": "🧰 Skills Reference — Delivery Pilot Template",
+      "path": "4_Formula/.claude/skills.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/.claude/commands/stage-commit.md",
+      "label": "stage-commit.md",
+      "title": "/stage-commit",
+      "path": "4_Formula/.claude/commands/stage-commit.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/.claude/commands/log-fix.md",
+      "label": "log-fix.md",
+      "title": "/log-fix",
+      "path": "4_Formula/.claude/commands/log-fix.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/.claude/commands/init-project.md",
+      "label": "init-project.md",
+      "title": "/init-project",
+      "path": "4_Formula/.claude/commands/init-project.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/.claude/commands/log-error.md",
+      "label": "log-error.md",
+      "title": "/log-error",
+      "path": "4_Formula/.claude/commands/log-error.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "4_Formula/.claude/commands/retrospective.md",
+      "label": "retrospective.md",
+      "title": "/retrospective",
+      "path": "4_Formula/.claude/commands/retrospective.md",
+      "stage": "4_Formula",
+      "color": "#f59e0b",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "1_Real_Unknown/_README.md",
+      "label": "_README.md",
+      "title": "1️⃣ Real Unknown — The \"Why\"",
+      "path": "1_Real_Unknown/_README.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 0,
+      "out_degree": 18,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 18
+    },
+    {
+      "id": "1_Real_Unknown/Why/requirements.md",
+      "label": "requirements.md",
+      "title": "📋 Requirements — Real Unknown",
+      "path": "1_Real_Unknown/Why/requirements.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 7,
+      "out_degree": 6,
+      "wikilinks_count": 6,
+      "is_orphan": false,
+      "degree": 13
+    },
+    {
+      "id": "1_Real_Unknown/Why/knowledge_graph.html",
+      "label": "knowledge_graph.html",
+      "title": "knowledge_graph.html",
+      "path": "1_Real_Unknown/Why/knowledge_graph.html",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 6,
+      "out_degree": 8,
+      "wikilinks_count": 8,
+      "is_orphan": false,
+      "degree": 14
+    },
+    {
+      "id": "1_Real_Unknown/Why/hypotheses.md",
+      "label": "hypotheses.md",
+      "title": "🧪 Hypotheses",
+      "path": "1_Real_Unknown/Why/hypotheses.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 3,
+      "out_degree": 5,
+      "wikilinks_count": 4,
+      "is_orphan": false,
+      "degree": 8
+    },
+    {
+      "id": "1_Real_Unknown/Why/problem_statement.md",
+      "label": "problem_statement.md",
+      "title": "🎯 Problem Statement",
+      "path": "1_Real_Unknown/Why/problem_statement.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 6,
+      "out_degree": 4,
+      "wikilinks_count": 4,
+      "is_orphan": false,
+      "degree": 10
+    },
+    {
+      "id": "1_Real_Unknown/Why/_README.md",
+      "label": "_README.md",
+      "title": "🎯 1_Real_Unknown / Why — Purpose, Problem & Scope",
+      "path": "1_Real_Unknown/Why/_README.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 7,
+      "wikilinks_count": 7,
+      "is_orphan": false,
+      "degree": 9
+    },
+    {
+      "id": "1_Real_Unknown/Why/questions.md",
+      "label": "questions.md",
+      "title": "❓ Open Questions",
+      "path": "1_Real_Unknown/Why/questions.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 4,
+      "wikilinks_count": 4,
+      "is_orphan": false,
+      "degree": 6
+    },
+    {
+      "id": "1_Real_Unknown/How/costs.md",
+      "label": "costs.md",
+      "title": "💰 Cost Tracker & Model/Tool Comparisons",
+      "path": "1_Real_Unknown/How/costs.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "1_Real_Unknown/How/risks.md",
+      "label": "risks.md",
+      "title": "Project Risks",
+      "path": "1_Real_Unknown/How/risks.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 3,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "1_Real_Unknown/How/sanity_check_report.md",
+      "label": "sanity_check_report.md",
+      "title": "🧪 Sanity Check Report",
+      "path": "1_Real_Unknown/How/sanity_check_report.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 3,
+      "out_degree": 2,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 5
+    },
+    {
+      "id": "1_Real_Unknown/How/kanban.md",
+      "label": "kanban.md",
+      "title": "📋 Project Kanban Board",
+      "path": "1_Real_Unknown/How/kanban.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 6,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 8
+    },
+    {
+      "id": "1_Real_Unknown/How/_README.md",
+      "label": "_README.md",
+      "title": "⚙️ 1_Real_Unknown / How — Strategy, Constraints & ",
+      "path": "1_Real_Unknown/How/_README.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 7,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 9
+    },
+    {
+      "id": "1_Real_Unknown/How/patterns.md",
+      "label": "patterns.md",
+      "title": "📐 Architectural Patterns — Real Unknown (How)",
+      "path": "1_Real_Unknown/How/patterns.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "1_Real_Unknown/How/mindmap.md",
+      "label": "mindmap.md",
+      "title": "🧠 Mindmap & Architectural File Lineage — Real Unkn",
+      "path": "1_Real_Unknown/How/mindmap.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "1_Real_Unknown/How/ai_harness.md",
+      "label": "ai_harness.md",
+      "title": "🤖 AI Harness & The Triad (Channel, Compute, Bot) —",
+      "path": "1_Real_Unknown/How/ai_harness.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "1_Real_Unknown/What/_README.md",
+      "label": "_README.md",
+      "title": "📦 1_Real_Unknown / What — Deliverables, Goals & Ac",
+      "path": "1_Real_Unknown/What/_README.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 3,
+      "out_degree": 4,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 7
+    },
+    {
+      "id": "1_Real_Unknown/What/tasks.md",
+      "label": "tasks.md",
+      "title": "Tasks & Phases",
+      "path": "1_Real_Unknown/What/tasks.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 3,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "1_Real_Unknown/What/todos.md",
+      "label": "todos.md",
+      "title": "📝 Todos — Real Agent Tracker",
+      "path": "1_Real_Unknown/What/todos.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 2,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 4
+    },
+    {
+      "id": "1_Real_Unknown/What/prompts.md",
+      "label": "prompts.md",
+      "title": "Prompts",
+      "path": "1_Real_Unknown/What/prompts.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 2,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "1_Real_Unknown/What/okrs.md",
+      "label": "okrs.md",
+      "title": "🏆 Objectives and Key Results (OKRs)",
+      "path": "1_Real_Unknown/What/okrs.md",
+      "stage": "1_Real_Unknown",
+      "color": "#8b5cf6",
+      "in_degree": 5,
+      "out_degree": 1,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 6
+    },
+    {
+      "id": "5_Symbols/_README.md",
+      "label": "_README.md",
+      "title": "5️⃣ Symbols — The \"Reality\"",
+      "path": "5_Symbols/_README.md",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 0,
+      "out_degree": 4,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 4
+    },
+    {
+      "id": "5_Symbols/calendar_view.html",
+      "label": "calendar_view.html",
+      "title": "calendar_view.html",
+      "path": "5_Symbols/calendar_view.html",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "5_Symbols/deliverypilot/_README.md",
+      "label": "_README.md",
+      "title": "🎛️ DeliveryPilot Framework Code — Symbols",
+      "path": "5_Symbols/deliverypilot/_README.md",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 1,
+      "out_degree": 4,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 5
+    },
+    {
+      "id": "5_Symbols/deliverypilot/artifacts_carousel.html",
+      "label": "artifacts_carousel.html",
+      "title": "artifacts_carousel.html",
+      "path": "5_Symbols/deliverypilot/artifacts_carousel.html",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 3,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "5_Symbols/deliverypilot/markdown_renderer.html",
+      "label": "markdown_renderer.html",
+      "title": "markdown_renderer.html",
+      "path": "5_Symbols/deliverypilot/markdown_renderer.html",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "5_Symbols/deliverypilot/master_review/index.html",
+      "label": "index.html",
+      "title": "index.html",
+      "path": "5_Symbols/deliverypilot/master_review/index.html",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "5_Symbols/project/_README.md",
+      "label": "_README.md",
+      "title": "🚀 Project Code — Symbols",
+      "path": "5_Symbols/project/_README.md",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 1,
+      "out_degree": 3,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 4
+    },
+    {
+      "id": "5_Symbols/rules/file_organization.md",
+      "label": "file_organization.md",
+      "title": "File Organization",
+      "path": "5_Symbols/rules/file_organization.md",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "5_Symbols/rules/coding_standards.md",
+      "label": "coding_standards.md",
+      "title": "Coding Standards",
+      "path": "5_Symbols/rules/coding_standards.md",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "5_Symbols/rules/agent_operating_rules.md",
+      "label": "agent_operating_rules.md",
+      "title": "Agent Operating Rules",
+      "path": "5_Symbols/rules/agent_operating_rules.md",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 5,
+      "out_degree": 6,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 11
+    },
+    {
+      "id": "5_Symbols/rules/git_conventions.md",
+      "label": "git_conventions.md",
+      "title": "Git Conventions",
+      "path": "5_Symbols/rules/git_conventions.md",
+      "stage": "5_Symbols",
+      "color": "#ef4444",
+      "in_degree": 2,
+      "out_degree": 1,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 3
+    },
+    {
+      "id": "3_Simulation/image_prompts.md",
+      "label": "image_prompts.md",
+      "title": "🎨 UI & Asset Image Prompts",
+      "path": "3_Simulation/image_prompts.md",
+      "stage": "3_Simulation",
+      "color": "#10b981",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "3_Simulation/carousel.html",
+      "label": "carousel.html",
+      "title": "carousel.html",
+      "path": "3_Simulation/carousel.html",
+      "stage": "3_Simulation",
+      "color": "#10b981",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "3_Simulation/_README.md",
+      "label": "_README.md",
+      "title": "3️⃣ Simulation — The \"Vision\"",
+      "path": "3_Simulation/_README.md",
+      "stage": "3_Simulation",
+      "color": "#10b981",
+      "in_degree": 1,
+      "out_degree": 1,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 2
+    },
+    {
+      "id": "3_Simulation/excalidraw_carousel.html",
+      "label": "excalidraw_carousel.html",
+      "title": "excalidraw_carousel.html",
+      "path": "3_Simulation/excalidraw_carousel.html",
+      "stage": "3_Simulation",
+      "color": "#10b981",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "3_Simulation/design_workflow.md",
+      "label": "design_workflow.md",
+      "title": "Design Workflow — Design Before Code",
+      "path": "3_Simulation/design_workflow.md",
+      "stage": "3_Simulation",
+      "color": "#10b981",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "3_Simulation/menu_design.md",
+      "label": "menu_design.md",
+      "title": "how we design the menus",
+      "path": "3_Simulation/menu_design.md",
+      "stage": "3_Simulation",
+      "color": "#10b981",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    },
+    {
+      "id": "6_Semblance/workarounds.md",
+      "label": "workarounds.md",
+      "title": "🛠 Active Workarounds & Technical Debt",
+      "path": "6_Semblance/workarounds.md",
+      "stage": "6_Semblance",
+      "color": "#ec4899",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "6_Semblance/gap_analysis.md",
+      "label": "gap_analysis.md",
+      "title": "📊 Gap Analysis",
+      "path": "6_Semblance/gap_analysis.md",
+      "stage": "6_Semblance",
+      "color": "#ec4899",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "6_Semblance/_README.md",
+      "label": "_README.md",
+      "title": "6️⃣ Semblance — The \"Scars\"",
+      "path": "6_Semblance/_README.md",
+      "stage": "6_Semblance",
+      "color": "#ec4899",
+      "in_degree": 0,
+      "out_degree": 4,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 4
+    },
+    {
+      "id": "6_Semblance/error_log.md",
+      "label": "error_log.md",
+      "title": "🐛 Error Log",
+      "path": "6_Semblance/error_log.md",
+      "stage": "6_Semblance",
+      "color": "#ec4899",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "6_Semblance/lessons_learned.md",
+      "label": "lessons_learned.md",
+      "title": "📓 Lessons Learned & Active Reflection Journal",
+      "path": "6_Semblance/lessons_learned.md",
+      "stage": "6_Semblance",
+      "color": "#ec4899",
+      "in_degree": 1,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": false,
+      "degree": 1
+    },
+    {
+      "id": "6_Semblance/smoke_test_report.md",
+      "label": "smoke_test_report.md",
+      "title": "Smoke Test Report",
+      "path": "6_Semblance/smoke_test_report.md",
+      "stage": "6_Semblance",
+      "color": "#ec4899",
+      "in_degree": 0,
+      "out_degree": 0,
+      "wikilinks_count": 0,
+      "is_orphan": true,
+      "degree": 0
+    }
+  ],
+  "edges": [
+    {
+      "source": "_README.md",
+      "target": "5_Symbols/deliverypilot/artifacts_carousel.html",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "README.md",
+      "target": "5_Symbols/deliverypilot/artifacts_carousel.html",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "agents.md",
+      "target": "5_Symbols/rules/agent_operating_rules.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "agents.md",
+      "target": "1_Real_Unknown/Why/knowledge_graph.html",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "agents.md",
+      "target": "2_Environment/When/architecture.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "7_Testing_Known/sanity_check_report.md",
+      "target": "1_Real_Unknown/How/sanity_check_report.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "7_Testing_Known/sanity_check_report.md",
+      "target": "7_Testing_Known/smoke_tests.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "7_Testing_Known/sanity_check_report.md",
+      "target": "7_Testing_Known/validation_report.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "7_Testing_Known/sanity_check_report.md",
+      "target": "7_Testing_Known/logic.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "7_Testing_Known/sanity_check_report.md",
+      "target": "7_Testing_Known/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/architecture.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/product_rules.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/tools.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/toolstack.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/dependencies.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/setup_ai.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/github_agent.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/mcp.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/superskills.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/llm_tools.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/navigation.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/When/extensions.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/github_pages.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/cloudflare_workers.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/fly_io.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/supabase.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/axiom.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/setup_azure.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/local_server.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/setup_mac.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/_README.md",
+      "target": "2_Environment/Where/setup_windows.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/product_rules.md",
+      "target": "2_Environment/When/navigation.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/product_rules.md",
+      "target": "2_Environment/When/toolstack.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/product_rules.md",
+      "target": "_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/product_rules.md",
+      "target": "1_Real_Unknown/What/okrs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/product_rules.md",
+      "target": "5_Symbols/rules/agent_operating_rules.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/architecture.md",
+      "target": "2_Environment/Where/cloudflare_workers.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/architecture.md",
+      "target": "2_Environment/Where/fly_io.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/architecture.md",
+      "target": "2_Environment/When/tools.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/extensions.md",
+      "target": "2_Environment/Where/setup_azure.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/extensions.md",
+      "target": "2_Environment/Where/fly_io.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/extensions.md",
+      "target": "2_Environment/When/setup_ai.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/extensions.md",
+      "target": "2_Environment/When/architecture.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/architecture.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/product_rules.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/tools.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/toolstack.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/dependencies.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/setup_ai.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/github_agent.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/mcp.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/superskills.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/llm_tools.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/navigation.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/When/extensions.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "1_Real_Unknown/Why/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "1_Real_Unknown/What/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "2_Environment/Where/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "3_Simulation/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/_README.md",
+      "target": "4_Formula/specs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/Where/github_pages.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/Where/cloudflare_workers.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/Where/fly_io.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/Where/setup_azure.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/Where/supabase.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/Where/axiom.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/When/setup_ai.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/When/github_agent.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/When/mcp.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/When/superskills.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/When/tools.md",
+      "target": "2_Environment/When/architecture.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/fly_io.md",
+      "target": "2_Environment/Where/supabase.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/fly_io.md",
+      "target": "2_Environment/Where/axiom.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/Where/github_pages.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/Where/cloudflare_workers.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/Where/fly_io.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/Where/supabase.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/Where/axiom.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/Where/setup_azure.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/Where/local_server.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/Where/setup_mac.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/Where/setup_windows.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "1_Real_Unknown/How/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "2_Environment/When/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "4_Formula/specs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "2_Environment/Where/_README.md",
+      "target": "5_Symbols/rules/agent_operating_rules.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "4_Formula/logging_and_autofix.md",
+      "target": "2_Environment/Where/axiom.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "4_Formula/logging_and_autofix.md",
+      "target": "4_Formula/llm_thinking_log.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "4_Formula/_README.md",
+      "target": "2_Environment/When/extensions.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/Why/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/Why/problem_statement.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/Why/requirements.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/Why/questions.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/Why/hypotheses.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/How/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/How/kanban.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/How/costs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/How/risks.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/How/sanity_check_report.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/How/mindmap.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/How/patterns.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/How/ai_harness.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/What/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/What/okrs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/What/tasks.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/What/todos.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/_README.md",
+      "target": "1_Real_Unknown/What/prompts.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/Why/requirements.md",
+      "target": "1_Real_Unknown/Why/problem_statement.md",
+      "relationship": "depends on",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/requirements.md",
+      "target": "1_Real_Unknown/What/okrs.md",
+      "relationship": "quantified by",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/requirements.md",
+      "target": "4_Formula/specs.md",
+      "relationship": "formulated in",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/requirements.md",
+      "target": "3_Simulation/design_workflow.md",
+      "relationship": "designed in",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/requirements.md",
+      "target": "1_Real_Unknown/Why/hypotheses.md",
+      "relationship": "tested by",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/requirements.md",
+      "target": "1_Real_Unknown/Why/knowledge_graph.html",
+      "relationship": "visualized in",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/knowledge_graph.html",
+      "target": "1_Real_Unknown/Why/problem_statement.md",
+      "relationship": "addresses",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/knowledge_graph.html",
+      "target": "1_Real_Unknown/Why/requirements.md",
+      "relationship": "depends on",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/knowledge_graph.html",
+      "target": "1_Real_Unknown/Why/requirements.md",
+      "relationship": "visualizes",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/knowledge_graph.html",
+      "target": "1_Real_Unknown/Why/requirements.md",
+      "relationship": "formulates",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/knowledge_graph.html",
+      "target": "4_Formula/specs.md",
+      "relationship": "implements",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/knowledge_graph.html",
+      "target": "7_Testing_Known/smoke_tests.md",
+      "relationship": "remediates",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/knowledge_graph.html",
+      "target": "4_Formula/specs.md",
+      "relationship": "verifies",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/knowledge_graph.html",
+      "target": "1_Real_Unknown/Why/problem_statement.md",
+      "relationship": "relates to",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/hypotheses.md",
+      "target": "1_Real_Unknown/Why/requirements.md",
+      "relationship": "depends on",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/hypotheses.md",
+      "target": "7_Testing_Known/smoke_tests.md",
+      "relationship": "verified by",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/hypotheses.md",
+      "target": "7_Testing_Known/logic.md",
+      "relationship": "tracked by",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/hypotheses.md",
+      "target": "1_Real_Unknown/Why/knowledge_graph.html",
+      "relationship": "visualized in",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/hypotheses.md",
+      "target": "7_Testing_Known/validation_report.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/Why/problem_statement.md",
+      "target": "1_Real_Unknown/Why/requirements.md",
+      "relationship": "specifies",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/problem_statement.md",
+      "target": "1_Real_Unknown/What/okrs.md",
+      "relationship": "measured by",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/problem_statement.md",
+      "target": "4_Formula/specs.md",
+      "relationship": "governed by",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/problem_statement.md",
+      "target": "1_Real_Unknown/Why/knowledge_graph.html",
+      "relationship": "visualized in",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/_README.md",
+      "target": "1_Real_Unknown/Why/problem_statement.md",
+      "relationship": "includes",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/_README.md",
+      "target": "1_Real_Unknown/Why/requirements.md",
+      "relationship": "includes",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/_README.md",
+      "target": "1_Real_Unknown/Why/questions.md",
+      "relationship": "includes",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/_README.md",
+      "target": "1_Real_Unknown/Why/hypotheses.md",
+      "relationship": "includes",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/_README.md",
+      "target": "1_Real_Unknown/Why/knowledge_graph.html",
+      "relationship": "visualized in",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/_README.md",
+      "target": "1_Real_Unknown/What/_README.md",
+      "relationship": "flows to",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/_README.md",
+      "target": "4_Formula/specs.md",
+      "relationship": "governed by",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/questions.md",
+      "target": "1_Real_Unknown/Why/problem_statement.md",
+      "relationship": "originates from",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/questions.md",
+      "target": "4_Formula/decisions.md",
+      "relationship": "resolved by",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/questions.md",
+      "target": "2_Environment/When/architecture.md",
+      "relationship": "resolved by",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/Why/questions.md",
+      "target": "1_Real_Unknown/Why/knowledge_graph.html",
+      "relationship": "visualized in",
+      "type": "wikilink"
+    },
+    {
+      "source": "1_Real_Unknown/How/sanity_check_report.md",
+      "target": "7_Testing_Known/sanity_check_report.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/sanity_check_report.md",
+      "target": "1_Real_Unknown/How/risks.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/kanban.md",
+      "target": "2_Environment/When/setup_ai.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/kanban.md",
+      "target": "2_Environment/Where/setup_azure.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/kanban.md",
+      "target": "README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/kanban.md",
+      "target": "index.html",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/kanban.md",
+      "target": "2_Environment/When/navigation.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/kanban.md",
+      "target": "4_Formula/database.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/_README.md",
+      "target": "1_Real_Unknown/How/kanban.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/_README.md",
+      "target": "1_Real_Unknown/How/costs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/_README.md",
+      "target": "1_Real_Unknown/How/risks.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/_README.md",
+      "target": "1_Real_Unknown/How/sanity_check_report.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/_README.md",
+      "target": "1_Real_Unknown/How/mindmap.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/_README.md",
+      "target": "1_Real_Unknown/How/patterns.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/How/_README.md",
+      "target": "1_Real_Unknown/How/ai_harness.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/What/_README.md",
+      "target": "1_Real_Unknown/What/okrs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/What/_README.md",
+      "target": "1_Real_Unknown/What/tasks.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/What/_README.md",
+      "target": "1_Real_Unknown/What/todos.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/What/_README.md",
+      "target": "1_Real_Unknown/What/prompts.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/What/todos.md",
+      "target": "1_Real_Unknown/What/tasks.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/What/todos.md",
+      "target": "4_Formula/llm_thinking_log.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "1_Real_Unknown/What/okrs.md",
+      "target": "README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/_README.md",
+      "target": "5_Symbols/project/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/_README.md",
+      "target": "5_Symbols/deliverypilot/_README.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/_README.md",
+      "target": "5_Symbols/rules/agent_operating_rules.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/_README.md",
+      "target": "5_Symbols/calendar_view.html",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/deliverypilot/_README.md",
+      "target": "5_Symbols/deliverypilot/markdown_renderer.html",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/deliverypilot/_README.md",
+      "target": "5_Symbols/deliverypilot/artifacts_carousel.html",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/deliverypilot/_README.md",
+      "target": "5_Symbols/deliverypilot/master_review/index.html",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/deliverypilot/_README.md",
+      "target": "4_Formula/specs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/project/_README.md",
+      "target": "5_Symbols/rules/coding_standards.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/project/_README.md",
+      "target": "5_Symbols/rules/git_conventions.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/project/_README.md",
+      "target": "4_Formula/specs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/rules/agent_operating_rules.md",
+      "target": "agents.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/rules/agent_operating_rules.md",
+      "target": "4_Formula/specs.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/rules/agent_operating_rules.md",
+      "target": "5_Symbols/rules/git_conventions.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/rules/agent_operating_rules.md",
+      "target": "2_Environment/Where/setup_azure.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/rules/agent_operating_rules.md",
+      "target": "2_Environment/Where/fly_io.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/rules/agent_operating_rules.md",
+      "target": "2_Environment/Where/cloudflare_workers.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "5_Symbols/rules/git_conventions.md",
+      "target": "5_Symbols/rules/agent_operating_rules.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "3_Simulation/_README.md",
+      "target": "3_Simulation/excalidraw_carousel.html",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "6_Semblance/_README.md",
+      "target": "6_Semblance/error_log.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "6_Semblance/_README.md",
+      "target": "6_Semblance/workarounds.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "6_Semblance/_README.md",
+      "target": "6_Semblance/gap_analysis.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    },
+    {
+      "source": "6_Semblance/_README.md",
+      "target": "6_Semblance/lessons_learned.md",
+      "relationship": "references",
+      "type": "markdown_link"
+    }
+  ]
+}

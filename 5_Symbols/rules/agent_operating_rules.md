@@ -39,6 +39,7 @@ Coordinator: [`agents.md`](../../agents.md) · Specs: [`4_Formula/specs.md`](../
 
 - [ ] One logical change
 - [ ] Spec in `4_Formula/specs.md` updated for what was done (RULE-001)
+- [ ] Related documents linked using wikilinks `[[target|relationship]]` (SPEC-027)
 - [ ] No secrets in the diff
 - [ ] Debug menu synced if a markdown file was added, renamed, or deleted
 

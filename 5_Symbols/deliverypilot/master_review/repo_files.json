@@ -101,35 +101,49 @@
     "path": "1_Real_Unknown/Why/_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 1178,
+    "size": 2420,
     "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/Why/graph_data.json",
+    "name": "graph_data.json",
+    "ext": ".json",
+    "size": 69713,
+    "category": "Config"
   },
   {
     "path": "1_Real_Unknown/Why/hypotheses.md",
     "name": "hypotheses.md",
     "ext": ".md",
-    "size": 954,
+    "size": 1361,
     "category": "Documentation"
+  },
+  {
+    "path": "1_Real_Unknown/Why/knowledge_graph.html",
+    "name": "knowledge_graph.html",
+    "ext": ".html",
+    "size": 47232,
+    "category": "Pages"
   },
   {
     "path": "1_Real_Unknown/Why/problem_statement.md",
     "name": "problem_statement.md",
     "ext": ".md",
-    "size": 736,
+    "size": 1137,
     "category": "Documentation"
   },
   {
     "path": "1_Real_Unknown/Why/questions.md",
     "name": "questions.md",
     "ext": ".md",
-    "size": 1106,
+    "size": 1525,
     "category": "Documentation"
   },
   {
     "path": "1_Real_Unknown/Why/requirements.md",
     "name": "requirements.md",
     "ext": ".md",
-    "size": 2087,
+    "size": 2123,
     "category": "Documentation"
   },
   {
@@ -535,7 +549,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 45138,
+    "size": 48351,
     "category": "Documentation"
   },
   {
@@ -577,7 +591,7 @@
     "path": "5_Symbols/deliverypilot/markdown_renderer.html",
     "name": "markdown_renderer.html",
     "ext": ".html",
-    "size": 26937,
+    "size": 27053,
     "category": "Pages"
   },
   {
@@ -612,7 +626,7 @@
     "path": "5_Symbols/rules/agent_operating_rules.md",
     "name": "agent_operating_rules.md",
     "ext": ".md",
-    "size": 8235,
+    "size": 8319,
     "category": "Rules"
   },
   {
@@ -651,6 +665,13 @@
     "category": "Toolbox"
   },
   {
+    "path": "5_Symbols/toolbox/gen_graph.py",
+    "name": "gen_graph.py",
+    "ext": ".py",
+    "size": 8127,
+    "category": "Toolbox"
+  },
+  {
     "path": "5_Symbols/toolbox/gen_repo_files.py",
     "name": "gen_repo_files.py",
     "ext": ".py",
@@ -668,7 +689,7 @@
     "path": "5_Symbols/toolbox/nav_sync.py",
     "name": "nav_sync.py",
     "ext": ".py",
-    "size": 7706,
+    "size": 7804,
     "category": "Toolbox"
   },
   {
@@ -934,7 +955,7 @@
     "path": "agents.md",
     "name": "agents.md",
     "ext": ".md",
-    "size": 40326,
+    "size": 41511,
     "category": "Documentation"
   },
   {
@@ -948,7 +969,7 @@
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 35530,
+    "size": 35646,
     "category": "Pages"
   },
   {
@@ -969,7 +990,7 @@
     "path": "navigation_config.json",
     "name": "navigation_config.json",
     "ext": ".json",
-    "size": 7689,
+    "size": 7803,
     "category": "Config"
   },
   {

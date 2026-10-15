@@ -361,6 +361,28 @@
 - **Related Files:** `3_Simulation/excalidraw_carousel.html`, `3_Simulation/carousel.html`, `3_Simulation/carousel_config.json`, `3_Simulation/feature_wireframe.excalidraw`, `3_Simulation/feature_wireframe.svg`, `3_Simulation/system_architecture.excalidraw`, `3_Simulation/system_architecture.svg`, `3_Simulation/agentic_workflow.excalidraw`, `3_Simulation/agentic_workflow.svg`, `3_Simulation/_README.md`, `3_Simulation/design_workflow.md`, `5_Symbols/toolbox/nav_sync.py`, `4_Formula/specs.md`
 - **Last Updated:** 2026-10-15
 
+### SPEC-027: Document Wikilinks Specification & Knowledge Graph Canvas Viewer
+- **Status:** Active
+- **Description:** Enforces explicit cross-stage and intra-stage document relationships across the delivery pilot repository using standard wikilinks syntax (`[[target|relationship]]`). Establishes a transparent dependency lineage network and zero-orphan documentation topology. Provides a dedicated, interactive HTML5 Canvas force-directed relationship graph viewer in `1_Real_Unknown/Why/knowledge_graph.html` paired with an automated graph generation engine in `5_Symbols/toolbox/gen_graph.py` to inspect nodes, identify unconnected orphan documents, and provide instant actionable feedback for linking.
+- **Key Behaviors:**
+  - **Wikilink Syntax & Semantics**:
+    - Format: `[[target|relationship]]` where `target` specifies the target document (filename or relative path) and `relationship` describes the exact semantic relationship (e.g., `depends on`, `formalizes`, `specifies`, `validates`, `derives from`).
+    - Agents and human contributors must link all new and modified markdown files to upstream rationale and downstream deliverables.
+  - **Zero-Orphan Policy**:
+    - Mandated in `agents.md` and `5_Symbols/rules/agent_operating_rules.md`.
+    - Every documentation file must maintain at least one inbound or outbound link to prevent isolated or stale specifications.
+  - **Canvas-Based Knowledge Graph Viewer (`1_Real_Unknown/Why/knowledge_graph.html`)**:
+    - HTML5 Canvas force-directed physics engine rendering nodes color-coded by the 7 delivery stages (Stage 1 Violet `#8b5cf6`, Stage 2 Cyan `#06b6d4`, Stage 3 Green `#10b981`, Stage 4 Amber `#f59e0b`, Stage 5 Red `#ef4444`, Stage 7 Blue `#3b82f6`, Stage 6 Pink `#ec4899`).
+    - Interactive pan and zoom (scroll wheel / drag) with directed relationship arrows and edge labels.
+    - **Orphan Isolation & Feedback**: Quick toggle (`⚠️ Orphans (N)`) that filters to zero-connection files, adds animated hazard rings to nodes, and opens the Document Inspector with suggested wikilink snippets ready to copy into upstream documents.
+    - **Document Inspector**: Sidebar displaying full path, stage classification, in/out connection counts, incoming/outgoing link lists, and a direct button to inspect the document in `5_Symbols/deliverypilot/markdown_renderer.html`.
+    - **Navigation & Fail-Soft**: Integrated slide-out debug navigation drawer loaded from `../../navigation_config.json` and client-side `/index.html` link interception (`SPEC-024`).
+  - **Automated Extraction & Generation Engine (`5_Symbols/toolbox/gen_graph.py`)**:
+    - Scans all workspace Markdown and HTML documents.
+    - Extracts `[[target|relationship]]` wikilinks and standard Markdown reference links, normalizes cross-stage paths, resolves aliases, tallies in/out degrees, tags orphan status (`degree == 0`), and exports structured JSON to `1_Real_Unknown/Why/graph_data.json`.
+- **Related Files:** `agents.md`, `5_Symbols/rules/agent_operating_rules.md`, `1_Real_Unknown/Why/knowledge_graph.html`, `1_Real_Unknown/Why/graph_data.json`, `5_Symbols/toolbox/gen_graph.py`, `5_Symbols/toolbox/nav_sync.py`, `4_Formula/specs.md`
+- **Last Updated:** 2026-10-15
+
 ---
 
 ## Spec Template

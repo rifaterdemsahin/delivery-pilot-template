@@ -27,5 +27,5 @@ Requirements in this document bridge the core problem statement into actionable 
 
 ## Traceability & Lifecycle
 
-- **Upstream**: [`problem_statement.md`](problem_statement.md), [`okrs.md`](../What/okrs.md)
-- **Downstream**: [`4_Formula/specs.md`](../../4_Formula/specs.md), [`3_Simulation/design_workflow.md`](../../3_Simulation/design_workflow.md)
+- **Upstream**: [[problem_statement.md|depends on]], [[../What/okrs.md|quantified by]]
+- **Downstream**: [[../../4_Formula/specs.md|formulated in]], [[../../3_Simulation/design_workflow.md|designed in]], [[hypotheses.md|tested by]], [[knowledge_graph.html|visualized in]]
