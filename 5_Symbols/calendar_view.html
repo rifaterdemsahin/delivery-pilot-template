@@ -381,9 +381,88 @@
       color: var(--accent-yellow);
     }
 
+    /* Header & Navigation (SPEC-024) */
+    .app-header {
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      margin: -2rem -2rem 2rem -2rem;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .app-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .project-menu-nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .menu-link {
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      position: relative;
+      padding: 0.25rem 0;
+      transition: var(--transition);
+    }
+
+    .menu-link:hover, .menu-link.active {
+      color: var(--text-primary);
+    }
+
+    .menu-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-violet), var(--accent-cyan));
+      transition: var(--transition);
+    }
+
+    .menu-link:hover::after, .menu-link.active::after {
+      width: 100%;
+    }
+
     @media (max-width: 768px) {
       body {
         padding: 1rem;
+      }
+
+      .app-header {
+        margin: -1rem -1rem 1rem -1rem;
+      }
+
+      .header-container {
+        padding: 0.75rem 1rem;
+      }
+
+      .project-menu-nav {
+        gap: 1rem;
       }
 
       .calendar-title {
@@ -412,6 +491,19 @@
   </style>
 </head>
 <body>
+  <header class="app-header">
+    <div class="header-container">
+      <a href="../index.html" class="app-logo">
+        <i class="fa-solid fa-compass-drafting"></i>
+        <span>Delivery Pilot</span>
+      </a>
+      <nav class="project-menu-nav" id="projectMenu">
+        <a href="../index.html" class="menu-link">🏠 Home</a>
+        <a href="calendar_view.html" class="menu-link active">📅 Calendar</a>
+      </nav>
+    </div>
+  </header>
+
   <div class="calendar-container">
     <a href="../index.html" class="back-link">
       <i class="fas fa-arrow-left"></i>
@@ -685,6 +777,44 @@
           document.getElementById('listView').style.display = 'block';
         }
       });
+    });
+
+    // Load Project Menu from navigation_config.json (SPEC-024)
+    fetch('../navigation_config.json')
+      .then(res => res.json())
+      .then(data => {
+        if (data.projectMenu && data.projectMenu.length) {
+          const nav = document.getElementById('projectMenu');
+          nav.innerHTML = '';
+          data.projectMenu.forEach(item => {
+            const a = document.createElement('a');
+            let clean = (item.url || '').trim().replace(/^\/+/, '');
+            if (clean === 'index.html') {
+              a.href = '../index.html';
+            } else if (clean.includes('calendar_view.html')) {
+              a.href = 'calendar_view.html';
+              a.classList.add('active');
+            } else {
+              a.href = `../${clean}`;
+            }
+            a.className = `menu-link ${clean.includes('calendar_view.html') ? 'active' : ''}`;
+            a.textContent = item.label;
+            nav.appendChild(a);
+          });
+        }
+      })
+      .catch(() => {});
+
+    // Fail-soft runtime interception for /index.html links (SPEC-024)
+    document.addEventListener("click", (e) => {
+      const anchor = e.target.closest("a");
+      if (anchor) {
+        const href = anchor.getAttribute("href");
+        if (href === "/index.html" || href === "/" || href === "./index.html") {
+          e.preventDefault();
+          window.location.href = "../index.html";
+        }
+      }
     });
 
     loadEvents();

@@ -598,6 +598,18 @@
         debugLog("Debug overlay closed.");
       });
 
+      // Fail-soft runtime interception for /index.html links (SPEC-024)
+      document.addEventListener("click", (e) => {
+        const anchor = e.target.closest("a");
+        if (anchor) {
+          const href = anchor.getAttribute("href");
+          if (href === "/index.html" || href === "/" || href === "./index.html") {
+            e.preventDefault();
+            window.location.href = "../../index.html";
+          }
+        }
+      });
+
       // 3. Fetch and Parse Markdown File
       const urlParams = new URLSearchParams(window.location.search);
       const filePath = urlParams.get('file') || '_README.md';

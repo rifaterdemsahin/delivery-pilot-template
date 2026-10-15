@@ -80,3 +80,16 @@ function renderAllMenus() {
 1. **Single Source of Truth:** Adding a new markdown page or project link only requires editing a single line in `navigation_config.json`.
 2. **Reduced Footprint:** HTML files are kept lean and focus on their respective layout structure.
 3. **Consistency:** All menus share the exact same labels, order, and styling rules, preventing discrepancies between the landing dashboard and deep-linked documentation pages.
+
+---
+
+## 🔗 Project Link Resolution & `/index.html` Resilience (SPEC-024)
+
+When authoring project pages and configuring `projectMenu` in `navigation_config.json`:
+1. **Leading Slash Tolerance**: Links specified as `/index.html` or `index.html` are automatically normalized. In static subpath hosting environments (e.g. `https://<user>.github.io/<repo>/`), leading slashes are stripped during client menu compilation to prevent browsers from escaping to the root domain origin.
+2. **Depth-Aware Traversal**:
+   - `index.html` (root): links to `index.html`
+   - `5_Symbols/calendar_view.html` (depth 1): links to `../index.html`
+   - `5_Symbols/deliverypilot/markdown_renderer.html` (depth 2): links to `../../index.html`
+   - `5_Symbols/deliverypilot/master_review/index.html` (depth 3): links to `../../../index.html`
+3. **Fail-Soft Runtime Interception**: All project pages attach a global click listener that intercepts any clicks targeting `/index.html` or `/` and redirects them safely to the depth-relative `index.html`, eliminating 404s.

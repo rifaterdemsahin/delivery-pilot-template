@@ -837,15 +837,17 @@
 
       function initMenus() {
         debugLog("Initializing Project and Debug Menus.", navigationData);
-        // 1. Build Project Menu
+        // 1. Build Project Menu (SPEC-024)
         projectMenuContainer.innerHTML = "";
         navigationData.projectMenu.forEach((item, index) => {
           const link = document.createElement("a");
           
-          // Route relative URLs (except Home index.html) through renderer if they are MD files or directories
-          let finalUrl = item.url;
-          if (finalUrl !== "index.html" && !finalUrl.startsWith("http") && !finalUrl.includes("markdown_renderer.html") && !finalUrl.includes(".html")) {
-            finalUrl = `5_Symbols/deliverypilot/markdown_renderer.html?file=${finalUrl}`;
+          // Normalize leading slashes (e.g., "/index.html" -> "index.html")
+          let rawUrl = (item.url || "").trim();
+          let cleanUrl = rawUrl.replace(/^\/+/, "");
+          let finalUrl = cleanUrl;
+          if (cleanUrl !== "index.html" && !cleanUrl.startsWith("http") && !cleanUrl.includes("markdown_renderer.html") && !cleanUrl.includes(".html")) {
+            finalUrl = `5_Symbols/deliverypilot/markdown_renderer.html?file=${cleanUrl}`;
           }
           
           link.href = finalUrl;
@@ -857,6 +859,18 @@
         // 2. Build Debug Menu
         buildDebugMenu();
       }
+
+      // 5. Fail-soft runtime interception for /index.html links (SPEC-024)
+      document.addEventListener("click", (e) => {
+        const anchor = e.target.closest("a");
+        if (anchor) {
+          const href = anchor.getAttribute("href");
+          if (href === "/index.html" || href === "/" || href === "./index.html") {
+            e.preventDefault();
+            window.location.href = "index.html";
+          }
+        }
+      });
 
       // Build Debug Menu List Items
       function buildDebugMenu(filterText = "") {

@@ -294,6 +294,22 @@
 - **Related Files:** `5_Symbols/toolbox/check_links.py`, `5_Symbols/toolbox/smoke_test.py`, `4_Formula/specs.md`, `7_Testing_Known/smoke_tests.md`
 - **Last Updated:** 2026-10-14
 
+### SPEC-024: Project Menu Root Link Resolution & /index.html Resilience
+- **Status:** Active
+- **Description:** Mandates that all project-facing pages (e.g., `index.html`, `5_Symbols/calendar_view.html`, and any future consumer project pages configured in `projectMenu`) maintain functional, portable links to the project root (`index.html` / `/index.html`). Guarantees that whether links are declared as root-absolute (`/index.html`), root-relative (`index.html`), or parent-relative (`../index.html`), they resolve seamlessly without 404 errors across both local development servers (e.g., port 30080–30090) and subpath deployments like GitHub Pages (`https://<user>.github.io/<repo>/`).
+- **Key Behaviors:**
+  - **Leading-Slash Normalization**: Navigation compilation scripts and menu parsers in `index.html` and other project pages must normalize `url: "/index.html"` and `url: "index.html"` equivalently, removing leading slashes when compiling relative links so that subpath hosting environments (such as GitHub Pages `/<repo>/`) never resolve to the root domain origin (which causes 404s).
+  - **Depth-Aware Relative Resolution**:
+    - Repository root (`depth = 0`, e.g. `index.html`): Home link resolves to `index.html`.
+    - Subfolder level 1 (`depth = 1`, e.g. `5_Symbols/calendar_view.html`): Home link resolves to `../index.html`.
+    - DeliveryPilot framework level 2 (`depth = 2`, e.g. `5_Symbols/deliverypilot/markdown_renderer.html`): Home link resolves to `../../index.html`.
+    - Master Review level 3 (`depth = 3`, e.g. `5_Symbols/deliverypilot/master_review/index.html`): Home link resolves to `../../../index.html`.
+  - **Universal Project Menu Accessibility**: Every user-facing project page in `projectMenu` must provide accessible top-level navigation back to Home (`index.html`) and between active project views.
+  - **Runtime Interception & Fail-Soft Routing**: Project HTML pages include a client-side link resolution guard that intercepts clicks targeting `/index.html` or `/` and routes them to the correct depth-relative path or GitHub Pages repository base path, guaranteeing fail-soft navigation.
+  - **Automated Verifier Coverage**: `5_Symbols/toolbox/smoke_test.py` (Check 3 & Check 11) and `5_Symbols/toolbox/check_links.py` actively validate that all project menu entries (including `/index.html` variations) resolve to valid filesystem targets and respond with HTTP 200 in deployed verification runs.
+- **Related Files:** `navigation_config.json`, `index.html`, `5_Symbols/calendar_view.html`, `5_Symbols/deliverypilot/markdown_renderer.html`, `5_Symbols/deliverypilot/artifacts_carousel.html`, `5_Symbols/deliverypilot/master_review/index.html`, `5_Symbols/toolbox/smoke_test.py`, `5_Symbols/toolbox/check_links.py`, `4_Formula/specs.md`, `4_Formula/navigation.md`
+- **Last Updated:** 2026-10-15
+
 ---
 
 ## Spec Template

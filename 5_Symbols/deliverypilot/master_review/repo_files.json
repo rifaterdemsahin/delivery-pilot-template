@@ -80,14 +80,14 @@
     "path": "1_Real_Unknown/What/prompts.md",
     "name": "prompts.md",
     "ext": ".md",
-    "size": 37372,
+    "size": 38715,
     "category": "Documentation"
   },
   {
     "path": "1_Real_Unknown/What/tasks.md",
     "name": "tasks.md",
     "ext": ".md",
-    "size": 11952,
+    "size": 12347,
     "category": "Documentation"
   },
   {
@@ -451,7 +451,7 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 92716,
+    "size": 95276,
     "category": "Documentation"
   },
   {
@@ -465,14 +465,14 @@
     "path": "4_Formula/navigation.md",
     "name": "navigation.md",
     "ext": ".md",
-    "size": 3495,
+    "size": 4541,
     "category": "Documentation"
   },
   {
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 36038,
+    "size": 38879,
     "category": "Documentation"
   },
   {
@@ -493,7 +493,7 @@
     "path": "5_Symbols/calendar_view.html",
     "name": "calendar_view.html",
     "ext": ".html",
-    "size": 18107,
+    "size": 21737,
     "category": "Pages"
   },
   {
@@ -507,21 +507,21 @@
     "path": "5_Symbols/deliverypilot/artifacts_carousel.html",
     "name": "artifacts_carousel.html",
     "ext": ".html",
-    "size": 34134,
+    "size": 34580,
     "category": "Pages"
   },
   {
     "path": "5_Symbols/deliverypilot/markdown_renderer.html",
     "name": "markdown_renderer.html",
     "ext": ".html",
-    "size": 26026,
+    "size": 26472,
     "category": "Pages"
   },
   {
     "path": "5_Symbols/deliverypilot/master_review/app.js",
     "name": "app.js",
     "ext": ".js",
-    "size": 86455,
+    "size": 86922,
     "category": "JavaScript"
   },
   {
@@ -612,7 +612,7 @@
     "path": "5_Symbols/toolbox/smoke_test.py",
     "name": "smoke_test.py",
     "ext": ".py",
-    "size": 12900,
+    "size": 12984,
     "category": "Toolbox"
   },
   {
@@ -857,7 +857,7 @@
     "path": ".gitignore",
     "name": ".gitignore",
     "ext": "",
-    "size": 297,
+    "size": 360,
     "category": "Other"
   },
   {
@@ -885,7 +885,7 @@
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 32744,
+    "size": 33265,
     "category": "Pages"
   },
   {

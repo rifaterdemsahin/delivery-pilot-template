@@ -1276,6 +1276,34 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - `smoke_test.py` now runs 12 checks (all 12/12 pass).
 - Updated `7_Testing_Known/smoke_tests.md` and `1_Real_Unknown/What/tasks.md`.
 
+---
+
+## 2026-10-15 — TSK-049: Project Menu Root Link Resolution & /index.html Resilience (SPEC-024)
+
+### 📥 Inputs & Requirements
+- **User Prompt:** "MAKE SURE THE LINKS /index.html LINKS FOR THE PROJECT ONES ARE WORKING ADD THAT TO THE SPECS PUSH"
+- **Stage Focus:** Formula Agent (SPEC-024 specification & navigation architecture) + Symbols Agent (link normalization, project navigation on calendar_view.html, click interceptors across project pages, smoke_test Check 3 resilience) + Test Agent (12/12 smoke tests).
+
+### 🔍 Analysis & Discoveries
+1. **The /index.html Subpath Challenge**:
+   - In static hosting under subpaths (like GitHub Pages at `https://<user>.github.io/<repo>/`), links with a leading slash `/index.html` resolve against the domain origin (`https://<user>.github.io/index.html`), escaping the repository and yielding 404s.
+   - Conversely, on local root development servers (port 30080–30090), `/index.html` resolves to server root `index.html`.
+   - On nested project pages like `5_Symbols/calendar_view.html`, a plain `index.html` without path traversal points to `5_Symbols/index.html` (404), requiring `../index.html`.
+2. **Project Navigation Parity**:
+   - `5_Symbols/calendar_view.html` was missing the top application navigation (`.app-header` and `#projectMenu`). Users navigating from `index.html` to Calendar had no unified top navbar to navigate back or switch views.
+3. **Multi-Layer Defensive Solution**:
+   - **Spec Formulation**: Created `SPEC-024` in `4_Formula/specs.md` and documented depth-aware traversal and leading-slash normalization in `4_Formula/navigation.md`.
+   - **Menu Compilation Normalization**: `index.html` strips leading slashes when building `projectMenu`, ensuring both `"index.html"` and `"/index.html"` map cleanly.
+   - **Project Menu Added to Calendar**: Added `app-header`, `projectMenu` navigation, dynamic config fetch, and active page styling to `5_Symbols/calendar_view.html`.
+   - **Runtime Click Interception**: Installed click listeners in `index.html`, `calendar_view.html`, `markdown_renderer.html`, `artifacts_carousel.html`, and `master_review/app.js` to intercept any link targeting `/index.html` or `/` and route to the correct depth-relative path.
+   - **Smoke Test Update**: Updated Check 3 in `smoke_test.py` to normalize leading slashes (`target.lstrip("/")`).
+
+### 📤 Outcomes & Decisions
+- All project pages have resilient, working links to `index.html`.
+- Formulated `SPEC-024` in `4_Formula/specs.md`.
+- 12/12 smoke tests pass green. Ready for commit and push.
+
+
 
 
 

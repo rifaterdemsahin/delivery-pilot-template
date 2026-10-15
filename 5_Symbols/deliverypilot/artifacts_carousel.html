@@ -907,6 +907,18 @@
         setCookie("debug", "false");
       });
 
+      // Fail-soft runtime interception for /index.html links (SPEC-024)
+      document.addEventListener("click", (e) => {
+        const anchor = e.target.closest("a");
+        if (anchor) {
+          const href = anchor.getAttribute("href");
+          if (href === "/index.html" || href === "/" || href === "./index.html") {
+            e.preventDefault();
+            window.location.href = "../../index.html";
+          }
+        }
+      });
+
       // Init first artifact
       goTo(0);
     });

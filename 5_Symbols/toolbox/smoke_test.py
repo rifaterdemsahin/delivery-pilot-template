@@ -126,8 +126,9 @@ def run_checks(root, base_url=None):
     broken = []
     for section, label, url in menu_urls(config):
         target = url.split("?file=")[-1] if "?file=" in url else url.split("?")[0]
+        clean_target = target.lstrip("/")
         if base_url:
-            page = url if ".html" in url or url.endswith("/") else RENDERER + "?file=" + url
+            page = clean_target if ".html" in clean_target or clean_target.endswith("/") else RENDERER + "?file=" + clean_target
             full = base_url.rstrip("/") + "/" + page
             try:
                 status, _ = fetch(full)
@@ -136,7 +137,7 @@ def run_checks(root, base_url=None):
             except (urllib.error.URLError, TimeoutError) as e:
                 broken.append(f"{url} → {e}")
         else:
-            if not os.path.exists(target):
+            if not os.path.exists(clean_target):
                 broken.append(f"{section}: '{label.strip()}' → {target}")
     results.append(Result("Menu Links Resolve", not broken, "; ".join(broken[:10])))
 

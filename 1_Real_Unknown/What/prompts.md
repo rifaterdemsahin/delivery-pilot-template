@@ -248,6 +248,14 @@ Record every prompt given to AI agents below. Include the date, agent, and purpo
 - **Purpose:** Build an automated repository-wide internal link checker (`check_links.py`), scan all markdown and HTML files for broken relative links and broken asset targets, remediate all identified broken links across all stages, integrate link integrity verification into `smoke_test.py` (Check 11), document the testing strategy in `7_Testing_Known/smoke_tests.md`, and formulate SPEC-023.
 - **Done:** Built `5_Symbols/toolbox/check_links.py` with multi-format parsing, fenced code block skipping, and inline code stripping; discovered and remediated 8 broken relative links across `1_Real_Unknown/How/sanity_check_report.md`, `1_Real_Unknown/What/todos.md`, `1_Real_Unknown/Why/requirements.md`, `2_Environment/product_rules.md`, `5_Symbols/calendar_view.html`, and `7_Testing_Known/sanity_check_report.md`; integrated Check 11 (Link Integrity) into `5_Symbols/toolbox/smoke_test.py`; updated `7_Testing_Known/smoke_tests.md` test table; formulated SPEC-023 in `4_Formula/specs.md`; logged task in `1_Real_Unknown/What/tasks.md` (TSK-048) and thinking log; verified 12/12 smoke tests pass (0 broken links across 98 files).
 
+---
+
+## 2026-10-15 — Project Menu Root Link Resolution & /index.html Resilience (Formula / Symbols / Test Agents)
+- **Prompt:** "MAKE SURE THE LINKS /index.html LINKS FOR THE PROJECT ONES ARE WORKING ADD THAT TO THE SPECS PUSH"
+- **Purpose:** Guarantee that all project-facing pages maintain working, resilient links to the project root (`index.html` / `/index.html`) across local dev servers and subpath hosting (GitHub Pages), normalize `/index.html` leading slashes in menu compilers and smoke tests, add project menu navigation to `5_Symbols/calendar_view.html`, install fail-soft click interceptors across project pages, document in `4_Formula/navigation.md`, and formulate SPEC-024.
+- **Done:** Added `SPEC-024` to `4_Formula/specs.md`; updated `4_Formula/navigation.md` with `/index.html` resilience rules; updated `index.html` projectMenu compilation with leading-slash normalization and click interception; added sticky `app-header`, `projectMenu` navigation, dynamic config fetch, and click interception to `5_Symbols/calendar_view.html`; updated `markdown_renderer.html`, `artifacts_carousel.html`, and `master_review/app.js` with fail-soft `/index.html` interception; updated `5_Symbols/toolbox/smoke_test.py` Check 3 target normalization; logged task in `tasks.md` (TSK-049) and thinking log; verified 12/12 smoke tests pass.
+
+
 
 
 

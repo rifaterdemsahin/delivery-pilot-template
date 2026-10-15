@@ -91,6 +91,7 @@
 | TSK-046 | Relocate markdown_renderer & artifacts_carousel to deliverypilot/, isolate DeliveryPilot behind debug icon (SPEC-021) | Symbols Agent | Real Agent coordinates: Symbols relocates pages under 5_Symbols/deliverypilot/, updates 2-level pathing, purifies projectMenu to consumer-only pages, updates nav_sync & smoke tests → Formula specs SPEC-021 → Test validates 11/11 | [x] |
 | TSK-047 | Group 1_Real_Unknown markdowns under Why, How, What & update README refactor prompt (SPEC-022) | Real Agent | Real Agent coordinates: creates Why/ and What/ subfolders with _README.md, git mv files into Why/How/What, updates nav_sync & menus, updates README refactor/init prompts with latest project scan → Formula specs SPEC-022 → Test validates 11/11 | [x] |
 | TSK-048 | Repository Link Integrity check tool & automated broken link remediation (SPEC-023) | Formula Agent | Real Agent coordinates: Formula defines SPEC-023 → Symbols creates check_links.py & integrates Check 11 into smoke_test.py → Symbols fixes all 8 broken links across project → Test validates 12/12 passing | [x] |
+| TSK-049 | Project Menu Root Link Resolution & /index.html Resilience (SPEC-024) | Formula Agent | Real Agent coordinates: Formula defines SPEC-024 & updates navigation.md → Symbols normalizes /index.html in index.html & adds project navigation to calendar_view.html & click interceptors across project pages → Symbols updates smoke_test.py Check 3 → Test validates 12/12 passing | [x] |
 
 
 

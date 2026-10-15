@@ -1838,7 +1838,18 @@
                 filterCategory('All');
             })
             .catch(function (err) {
-                console.error(err);
                 document.getElementById('previewFrame').innerHTML = '<p style="color:#f87171;padding:1.5rem;">Failed to load file catalog (repo_files.json). Please check server.</p>';
             });
+
+        // Fail-soft runtime interception for /index.html links (SPEC-024)
+        document.addEventListener("click", function (e) {
+            var anchor = e.target.closest("a");
+            if (anchor) {
+                var href = anchor.getAttribute("href");
+                if (href === "/index.html" || href === "/" || href === "./index.html") {
+                    e.preventDefault();
+                    window.location.href = "../../../index.html";
+                }
+            }
+        });
     })();
