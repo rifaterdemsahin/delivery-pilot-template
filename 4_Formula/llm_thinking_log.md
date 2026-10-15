@@ -1480,6 +1480,38 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Knowledge Graph canvas equipped with inside content hover preview and complete note-taking suite.
 - 12/12 smoke tests pass.
 
+---
+
+## 📅 2026-10-15 — Knowledge Graph Initial Load Stabilization & Stage Colors (1–7) Legend Bar (TSK-055)
+
+### 📥 Input / Task
+- "the digram moves more than usual and each folder should have different color 1_ 7_ > and have a color tag over there for 1 to 7. Fix always moving issue in the initial load"
+
+### 💭 Thinking & Reasoning Process
+1. **Diagnosis of Excessive Motion**:
+   - In `knowledge_graph.html`, `simulateStep()` ran on every frame inside `renderLoop()` unconditionally without temperature cooling or kinetic energy cutoff.
+   - Pairwise repulsion (`4500 / distSq`) without damping caused perpetual fighting against edge spring forces (`(dist - desiredDist) * 0.035`).
+   - Solution: Implement a cooling force-directed layout schedule. Pre-warm 45 simulation steps in `initGraph()` before first render so nodes start near equilibrium. Live animation starts with `simAlpha = 0.35` decaying by `0.975` per frame down to `< 0.003`. Cap forces, add softening denominator (`distSq + 120`), apply progressive dynamic friction (0.80 to 0.64), and apply deadband velocity cutoff (`< 0.02`) so velocities smoothly reach zero and completely halt.
+   - Add Freeze/Play physics controls (`#togglePhysicsBtn`) and Re-layout (`#reheatBtn`) with real-time status indicators ("Stabilized", "Stabilizing...", "Frozen").
+2. **Diagnosis of Folder Stage Colors (1–7)**:
+   - Previously in `renderLoop()`, line 1521 had `ctx.fillStyle = node.is_orphan ? "#ea580c" : (node.color || "#64748b")`. Because many documents in the template are unlinked, orphan status was overriding the node body color to orange, causing all orphan nodes across stages 1–7 to look identical!
+   - Solution: Preserve the folder stage color on the node body (`node.color || STAGE_COLORS[node.stage]`) unconditionally. Distinguish orphan status using the pulsing outer dashed hazard ring and a dedicated orange `!` badge.
+3. **Stage Color Tags & Floating Legend Bar**:
+   - Added a floating `.stage-legend-bar` inside the canvas container showing color tags for all 7 stages (`1_Real_Unknown` #8b5cf6, `2_Environment` #06b6d4, `3_Simulation` #10b981, `4_Formula` #f59e0b, `5_Symbols` #ef4444, `6_Semblance` #ec4899, `7_Testing_Known` #3b82f6) with stage numbers (`1_` to `7_`), stage names, real-time node count badges, and simulation status.
+   - Added matching stage color indicator dots and hover glow to each button in `.stage-filters-strip`.
+   - Synchronized stage filter clicks across both filter chips and legend pills.
+4. **Verification & Testing**:
+   - Ran `gen_graph.py` (97 nodes, 191 edges, 20 orphans).
+   - Ran `check_links.py` (102 files verified, 0 broken links).
+   - Ran `smoke_test.py` (12/12 passed).
+
+### 📤 Outcomes & Decisions
+- Knowledge graph stabilizes into a motionless resting state within ~1 second of initial load.
+- Stage colors 1–7 are clearly distinguishable and visually prominent.
+- Floating stage legend bar gives instant visual feedback for stages 1 to 7.
+- 12/12 smoke tests pass.
+
+
 
 
 

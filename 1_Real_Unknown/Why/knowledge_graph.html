@@ -267,6 +267,9 @@
       cursor: pointer;
       white-space: nowrap;
       transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
     .filter-chip:hover {
@@ -279,6 +282,149 @@
       border-color: var(--stage-real);
       color: #ddd6fe;
       font-weight: 600;
+    }
+
+    .stage-tag-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 5px currentColor;
+    }
+
+    .filter-chip.stage-chip:hover {
+      border-color: var(--chip-color, var(--border-color));
+      color: #fff;
+    }
+
+    .filter-chip.stage-chip.active {
+      background: var(--chip-bg, rgba(139, 92, 246, 0.25));
+      border-color: var(--chip-color, var(--stage-real));
+      color: #fff;
+      box-shadow: 0 0 12px var(--chip-glow, rgba(139, 92, 246, 0.3));
+    }
+
+    /* Floating Stage Color Legend (Stages 1-7) */
+    .stage-legend-bar {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 5.25rem;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.35rem 0.75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+      max-width: calc(100% - 10rem);
+      overflow-x: auto;
+    }
+
+    .legend-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+      padding-right: 0.45rem;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .legend-tags-row {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .stage-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.74rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: var(--transition);
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .stage-tag-pill:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: var(--pill-color, rgba(255, 255, 255, 0.3));
+      transform: translateY(-1px);
+    }
+
+    .stage-tag-pill.active {
+      background: var(--pill-bg, rgba(139, 92, 246, 0.25));
+      border-color: var(--pill-color, var(--stage-real));
+      box-shadow: 0 0 10px var(--pill-glow, rgba(139, 92, 246, 0.4));
+      font-weight: 600;
+    }
+
+    .stage-tag-pill .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .stage-tag-pill .legend-num {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.72rem;
+    }
+
+    .stage-tag-pill .legend-count {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.08rem 0.35rem;
+      border-radius: 999px;
+      margin-left: 0.15rem;
+    }
+
+    /* Simulation Status Tag */
+    .sim-status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-left: 0.4rem;
+      padding-left: 0.5rem;
+      border-left: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    .sim-status-tag .status-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 6px #34d399;
+    }
+
+    .sim-status-tag .status-indicator.cooling {
+      background: #f59e0b;
+      box-shadow: 0 0 6px #f59e0b;
+    }
+
+    .sim-status-tag .status-indicator.frozen {
+      background: #38bdf8;
+      box-shadow: 0 0 6px #38bdf8;
     }
 
     /* Right Sidebar Inspector */
@@ -977,15 +1123,15 @@
       <!-- Stage Filters Overlay -->
       <div class="stage-filters-strip" id="stageFiltersStrip">
         <button class="filter-chip active" data-stage="ALL">All Documents</button>
-        <button class="filter-chip" data-stage="NOTES">📝 With Notes (<span id="filterNotesCount">0</span>)</button>
+        <button class="filter-chip" data-stage="NOTES">📝 Notes (<span id="filterNotesCount">0</span>)</button>
         <button class="filter-chip" data-stage="ORPHANS">⚠️ Orphans Only</button>
-        <button class="filter-chip" data-stage="1_Real_Unknown">1. Real</button>
-        <button class="filter-chip" data-stage="2_Environment">2. Env</button>
-        <button class="filter-chip" data-stage="3_Simulation">3. Sim</button>
-        <button class="filter-chip" data-stage="4_Formula">4. Formula</button>
-        <button class="filter-chip" data-stage="5_Symbols">5. Symbols</button>
-        <button class="filter-chip" data-stage="6_Semblance">6. Semblance</button>
-        <button class="filter-chip" data-stage="7_Testing_Known">7. Test</button>
+        <button class="filter-chip stage-chip" data-stage="1_Real_Unknown" style="--chip-color:#8b5cf6;--chip-bg:rgba(139,92,246,0.22);--chip-glow:rgba(139,92,246,0.4);" title="Stage 1 · Real Unknown (Purple/Violet)"><span class="stage-tag-dot" style="background:#8b5cf6;"></span>1_Real_Unknown</button>
+        <button class="filter-chip stage-chip" data-stage="2_Environment" style="--chip-color:#06b6d4;--chip-bg:rgba(6,182,212,0.22);--chip-glow:rgba(6,182,212,0.4);" title="Stage 2 · Environment (Cyan)"><span class="stage-tag-dot" style="background:#06b6d4;"></span>2_Environment</button>
+        <button class="filter-chip stage-chip" data-stage="3_Simulation" style="--chip-color:#10b981;--chip-bg:rgba(16,185,129,0.22);--chip-glow:rgba(16,185,129,0.4);" title="Stage 3 · Simulation (Green)"><span class="stage-tag-dot" style="background:#10b981;"></span>3_Simulation</button>
+        <button class="filter-chip stage-chip" data-stage="4_Formula" style="--chip-color:#f59e0b;--chip-bg:rgba(245,158,11,0.22);--chip-glow:rgba(245,158,11,0.4);" title="Stage 4 · Formula (Amber)"><span class="stage-tag-dot" style="background:#f59e0b;"></span>4_Formula</button>
+        <button class="filter-chip stage-chip" data-stage="5_Symbols" style="--chip-color:#ef4444;--chip-bg:rgba(239,68,68,0.22);--chip-glow:rgba(239,68,68,0.4);" title="Stage 5 · Symbols (Red)"><span class="stage-tag-dot" style="background:#ef4444;"></span>5_Symbols</button>
+        <button class="filter-chip stage-chip" data-stage="6_Semblance" style="--chip-color:#ec4899;--chip-bg:rgba(236,72,153,0.22);--chip-glow:rgba(236,72,153,0.4);" title="Stage 6 · Semblance (Pink)"><span class="stage-tag-dot" style="background:#ec4899;"></span>6_Semblance</button>
+        <button class="filter-chip stage-chip" data-stage="7_Testing_Known" style="--chip-color:#3b82f6;--chip-bg:rgba(59,130,246,0.22);--chip-glow:rgba(59,130,246,0.4);" title="Stage 7 · Testing Known (Blue)"><span class="stage-tag-dot" style="background:#3b82f6;"></span>7_Testing_Known</button>
       </div>
 
       <!-- Floating Hover Popover ("Show Inside") -->
@@ -1027,6 +1173,61 @@
         <button class="ctrl-btn" id="zoomInBtn" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
         <button class="ctrl-btn" id="zoomOutBtn" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
         <button class="ctrl-btn" id="zoomFitBtn" title="Fit to Screen"><i class="fa-solid fa-expand"></i></button>
+        <button class="ctrl-btn" id="togglePhysicsBtn" title="Freeze / Stabilize Physics"><i class="fa-solid fa-snowflake"></i></button>
+        <button class="ctrl-btn" id="reheatBtn" title="Re-heat / Re-layout Diagram"><i class="fa-solid fa-rotate"></i></button>
+      </div>
+
+      <!-- Floating Stage Color Legend (Stages 1-7) -->
+      <div class="stage-legend-bar" id="stageLegendBar">
+        <span class="legend-title"><i class="fa-solid fa-palette"></i> Stage Colors 1–7</span>
+        <div class="legend-tags-row">
+          <div class="stage-tag-pill" data-stage="1_Real_Unknown" style="--pill-color:#8b5cf6;--pill-bg:rgba(139,92,246,0.22);--pill-glow:rgba(139,92,246,0.4);" title="Stage 1 · Real Unknown (Purple / Violet)">
+            <span class="legend-dot" style="background:#8b5cf6;box-shadow:0 0 6px #8b5cf6;"></span>
+            <span class="legend-num" style="color:#c4b5fd;">1_</span>
+            <span>Real</span>
+            <span class="legend-count" id="legendCount-1_Real_Unknown">0</span>
+          </div>
+          <div class="stage-tag-pill" data-stage="2_Environment" style="--pill-color:#06b6d4;--pill-bg:rgba(6,182,212,0.22);--pill-glow:rgba(6,182,212,0.4);" title="Stage 2 · Environment (Cyan)">
+            <span class="legend-dot" style="background:#06b6d4;box-shadow:0 0 6px #06b6d4;"></span>
+            <span class="legend-num" style="color:#67e8f9;">2_</span>
+            <span>Environment</span>
+            <span class="legend-count" id="legendCount-2_Environment">0</span>
+          </div>
+          <div class="stage-tag-pill" data-stage="3_Simulation" style="--pill-color:#10b981;--pill-bg:rgba(16,185,129,0.22);--pill-glow:rgba(16,185,129,0.4);" title="Stage 3 · Simulation (Green)">
+            <span class="legend-dot" style="background:#10b981;box-shadow:0 0 6px #10b981;"></span>
+            <span class="legend-num" style="color:#6ee7b7;">3_</span>
+            <span>Simulation</span>
+            <span class="legend-count" id="legendCount-3_Simulation">0</span>
+          </div>
+          <div class="stage-tag-pill" data-stage="4_Formula" style="--pill-color:#f59e0b;--pill-bg:rgba(245,158,11,0.22);--pill-glow:rgba(245,158,11,0.4);" title="Stage 4 · Formula (Amber)">
+            <span class="legend-dot" style="background:#f59e0b;box-shadow:0 0 6px #f59e0b;"></span>
+            <span class="legend-num" style="color:#fde68a;">4_</span>
+            <span>Formula</span>
+            <span class="legend-count" id="legendCount-4_Formula">0</span>
+          </div>
+          <div class="stage-tag-pill" data-stage="5_Symbols" style="--pill-color:#ef4444;--pill-bg:rgba(239,68,68,0.22);--pill-glow:rgba(239,68,68,0.4);" title="Stage 5 · Symbols (Red)">
+            <span class="legend-dot" style="background:#ef4444;box-shadow:0 0 6px #ef4444;"></span>
+            <span class="legend-num" style="color:#fca5a5;">5_</span>
+            <span>Symbols</span>
+            <span class="legend-count" id="legendCount-5_Symbols">0</span>
+          </div>
+          <div class="stage-tag-pill" data-stage="6_Semblance" style="--pill-color:#ec4899;--pill-bg:rgba(236,72,153,0.22);--pill-glow:rgba(236,72,153,0.4);" title="Stage 6 · Semblance (Pink)">
+            <span class="legend-dot" style="background:#ec4899;box-shadow:0 0 6px #ec4899;"></span>
+            <span class="legend-num" style="color:#f9a8d4;">6_</span>
+            <span>Semblance</span>
+            <span class="legend-count" id="legendCount-6_Semblance">0</span>
+          </div>
+          <div class="stage-tag-pill" data-stage="7_Testing_Known" style="--pill-color:#3b82f6;--pill-bg:rgba(59,130,246,0.22);--pill-glow:rgba(59,130,246,0.4);" title="Stage 7 · Testing Known (Blue)">
+            <span class="legend-dot" style="background:#3b82f6;box-shadow:0 0 6px #3b82f6;"></span>
+            <span class="legend-num" style="color:#93c5fd;">7_</span>
+            <span>Testing</span>
+            <span class="legend-count" id="legendCount-7_Testing_Known">0</span>
+          </div>
+        </div>
+        <div class="sim-status-tag" id="simStatusTag">
+          <span class="status-indicator" id="simStatusIndicator"></span>
+          <span id="simStatusText">Stabilized</span>
+        </div>
       </div>
     </div>
 
@@ -1317,6 +1518,11 @@
     }
 
     // ─── Force-Directed Physics Simulation ────────────────────────────────
+    // ─── Force-Directed Physics Simulation Engine ────────────────────────
+    let simAlpha = 1.0;
+    let isSimRunning = true;
+    let isPhysicsPaused = false;
+
     function initGraph() {
       const width = container.clientWidth;
       const height = container.clientHeight;
@@ -1334,23 +1540,57 @@
       };
 
       const radius = Math.min(width, height) * 0.38;
+      const stageCounts = {
+        "1_Real_Unknown": 0,
+        "2_Environment": 0,
+        "3_Simulation": 0,
+        "4_Formula": 0,
+        "5_Symbols": 0,
+        "6_Semblance": 0,
+        "7_Testing_Known": 0,
+        "Root": 0
+      };
 
       graphData.nodes.forEach((node, i) => {
-        const angle = (stageAngles[node.stage] || 0) + (Math.random() - 0.5) * 0.6;
-        const dist = node.stage === "Root" ? radius * 0.15 : radius * (0.6 + Math.random() * 0.6);
+        const angle = (stageAngles[node.stage] || 0) + (Math.random() - 0.5) * 0.55;
+        const dist = node.stage === "Root" ? radius * 0.18 : radius * (0.65 + Math.random() * 0.55);
         node.x = width / 2 + Math.cos(angle) * dist;
         node.y = height / 2 + Math.sin(angle) * dist;
         node.vx = 0;
         node.vy = 0;
         node.radius = Math.max(12, Math.min(26, 12 + (node.degree || 0) * 1.5));
+        node.color = STAGE_COLORS[node.stage] || "#64748b";
+
+        if (stageCounts[node.stage] !== undefined) {
+          stageCounts[node.stage]++;
+        } else {
+          stageCounts["Root"]++;
+        }
       });
 
-      // Update Header Stats
+      // Update Header & Legend counts
       const orphans = graphData.nodes.filter(n => n.is_orphan).length;
       document.getElementById("orphanCountBadge").textContent = orphans;
       document.getElementById("graphStatsBadge").textContent = 
         `${graphData.nodes.length} nodes · ${graphData.edges.length} edges · ${orphans} orphans`;
       updateNotesBadges();
+
+      Object.keys(stageCounts).forEach(stage => {
+        const el = document.getElementById(`legendCount-${stage}`);
+        if (el) el.textContent = stageCounts[stage];
+      });
+
+      // Pre-warm physics simulation for 45 steps so initial positions are already near equilibrium
+      let preAlpha = 1.0;
+      for (let s = 0; s < 45; s++) {
+        stepPhysics(preAlpha);
+        preAlpha *= 0.97;
+      }
+
+      // Start live animation with gentle settling
+      simAlpha = 0.35;
+      isSimRunning = true;
+      updateSimStatus("cooling");
 
       // Select default node (problem_statement.md or first)
       const defaultNode = graphData.nodes.find(n => n.id.includes("problem_statement.md")) || graphData.nodes[0];
@@ -1360,14 +1600,12 @@
       requestAnimationFrame(renderLoop);
     }
 
-    function simulateStep() {
-      if (draggedNode) return; // Gentle dampening during drag
-
+    function stepPhysics(alpha) {
       const nodes = graphData.nodes;
       const edges = graphData.edges;
       const nodeMap = new Map(nodes.map(n => [n.id, n]));
 
-      // 1. Repulsion between nodes
+      // 1. Repulsion between nodes (capped, with softening denominator)
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const a = nodes[i];
@@ -1376,8 +1614,8 @@
           const dy = b.y - a.y;
           const distSq = dx * dx + dy * dy || 1;
           const dist = Math.sqrt(distSq);
-          if (dist < 400) {
-            const force = (4500 / distSq);
+          if (dist < 360) {
+            const force = Math.min(16, 4200 / (distSq + 120)) * alpha;
             const fx = (dx / dist) * force;
             const fy = (dy / dist) * force;
             a.vx -= fx;
@@ -1396,8 +1634,8 @@
           const dx = target.x - source.x;
           const dy = target.y - source.y;
           const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-          const desiredDist = 120;
-          const force = (dist - desiredDist) * 0.035;
+          const desiredDist = 110;
+          const force = Math.min(12, Math.max(-12, (dist - desiredDist) * 0.032)) * alpha;
           const fx = (dx / dist) * force;
           const fy = (dy / dist) * force;
           source.vx += fx;
@@ -1407,17 +1645,70 @@
         }
       });
 
-      // 3. Center gravity & dampening
+      // 3. Center gravity & progressive damping
       const cx = container.clientWidth / 2;
       const cy = container.clientHeight / 2;
+      let totalV = 0;
+
       nodes.forEach(node => {
-        node.vx += (cx - node.x) * 0.002;
-        node.vy += (cy - node.y) * 0.002;
-        node.vx *= 0.88;
-        node.vy *= 0.88;
+        if (draggedNode && node.id === draggedNode.id) return;
+
+        node.vx += (cx - node.x) * 0.0025 * alpha;
+        node.vy += (cy - node.y) * 0.0025 * alpha;
+
+        const damping = 0.80 - (1 - alpha) * 0.16;
+        node.vx *= damping;
+        node.vy *= damping;
+
+        // Cutoff microscopic oscillations
+        if (Math.abs(node.vx) < 0.02) node.vx = 0;
+        if (Math.abs(node.vy) < 0.02) node.vy = 0;
+
+        totalV += Math.abs(node.vx) + Math.abs(node.vy);
+
         node.x += node.vx;
         node.y += node.vy;
       });
+
+      return totalV;
+    }
+
+    function simulateStep() {
+      if (!isSimRunning || isPhysicsPaused) return;
+
+      const totalV = stepPhysics(simAlpha);
+      simAlpha *= 0.975; // Smooth cooling per frame
+
+      if (simAlpha < 0.003 || (simAlpha < 0.08 && totalV < 0.5)) {
+        simAlpha = 0;
+        isSimRunning = false;
+        graphData.nodes.forEach(n => { n.vx = 0; n.vy = 0; });
+        updateSimStatus("stabilized");
+      }
+    }
+
+    function reheatSimulation(heat = 0.3) {
+      if (isPhysicsPaused) return;
+      simAlpha = Math.max(simAlpha, heat);
+      isSimRunning = true;
+      updateSimStatus("cooling");
+    }
+
+    function updateSimStatus(state) {
+      const indicator = document.getElementById("simStatusIndicator");
+      const text = document.getElementById("simStatusText");
+      if (!indicator || !text) return;
+
+      if (isPhysicsPaused) {
+        indicator.className = "status-indicator frozen";
+        text.textContent = "Frozen";
+      } else if (state === "cooling" || isSimRunning) {
+        indicator.className = "status-indicator cooling";
+        text.textContent = "Stabilizing...";
+      } else {
+        indicator.className = "status-indicator";
+        text.textContent = "Stabilized";
+      }
     }
 
     // ─── Rendering Engine ─────────────────────────────────────────────────
@@ -1495,15 +1786,32 @@
 
         ctx.globalAlpha = alpha;
 
-        // Orphan Pulse or Warning Ring
+        // Orphan Pulse / Warning Ring & Tag
         if (node.is_orphan) {
           ctx.beginPath();
           ctx.arc(node.x, node.y, node.radius + 6, 0, Math.PI * 2);
-          ctx.strokeStyle = "rgba(249, 115, 22, 0.65)";
-          ctx.lineWidth = 2;
+          ctx.strokeStyle = "rgba(249, 115, 22, 0.85)";
+          ctx.lineWidth = 2.2;
           ctx.setLineDash([3, 3]);
           ctx.stroke();
           ctx.setLineDash([]);
+
+          // Orphan warning badge icon (!)
+          const tagX = node.x - node.radius * 0.72;
+          const tagY = node.y - node.radius * 0.72;
+          ctx.beginPath();
+          ctx.arc(tagX, tagY, 6.5, 0, Math.PI * 2);
+          ctx.fillStyle = "#f97316";
+          ctx.fill();
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "bold 8.5px sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("!", tagX, tagY + 0.5);
+          ctx.textBaseline = "alphabetic";
         }
 
         // Selection Ring
@@ -1515,12 +1823,12 @@
           ctx.stroke();
         }
 
-        // Node Circle Body
+        // Node Circle Body — ALWAYS preserves Stage Folder Color
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = node.is_orphan ? "#ea580c" : (node.color || "#64748b");
+        ctx.fillStyle = node.color || STAGE_COLORS[node.stage] || "#64748b";
         ctx.fill();
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+        ctx.strokeStyle = isSelected ? "#ffffff" : (node.color ? `${node.color}66` : "rgba(255, 255, 255, 0.25)");
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
@@ -1794,6 +2102,7 @@
       if (clicked) {
         draggedNode = clicked;
         selectNode(clicked);
+        reheatSimulation(0.2);
       } else {
         isPanning = true;
         startX = e.clientX - panX;
@@ -1809,6 +2118,7 @@
         draggedNode.y = pos.y;
         draggedNode.vx = 0;
         draggedNode.vy = 0;
+        reheatSimulation(0.18);
       } else if (isPanning) {
         panX = e.clientX - startX;
         panY = e.clientY - startY;
@@ -1829,7 +2139,10 @@
     });
 
     window.addEventListener("mouseup", () => {
-      draggedNode = null;
+      if (draggedNode) {
+        reheatSimulation(0.12);
+        draggedNode = null;
+      }
       isPanning = false;
       container.classList.remove("grabbing");
     });
@@ -1845,26 +2158,78 @@
 
     document.getElementById("zoomInBtn").addEventListener("click", () => { if (scale < 3.0) scale *= 1.2; });
     document.getElementById("zoomOutBtn").addEventListener("click", () => { if (scale > 0.3) scale *= 0.8; });
-    document.getElementById("zoomFitBtn").addEventListener("click", centerView);
-    document.getElementById("resetViewBtn").addEventListener("click", centerView);
+    document.getElementById("zoomFitBtn").addEventListener("click", () => { centerView(); reheatSimulation(0.25); });
+    document.getElementById("resetViewBtn").addEventListener("click", () => { centerView(); reheatSimulation(0.35); });
 
-    // ─── Filter Events ────────────────────────────────────────────────────
+    // Physics Controls
+    const togglePhysicsBtn = document.getElementById("togglePhysicsBtn");
+    if (togglePhysicsBtn) {
+      togglePhysicsBtn.addEventListener("click", () => {
+        isPhysicsPaused = !isPhysicsPaused;
+        if (isPhysicsPaused) {
+          togglePhysicsBtn.innerHTML = `<i class="fa-solid fa-play"></i>`;
+          togglePhysicsBtn.title = "Resume Physics Simulation";
+          updateSimStatus("frozen");
+        } else {
+          togglePhysicsBtn.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+          togglePhysicsBtn.title = "Freeze Layout Physics";
+          reheatSimulation(0.35);
+        }
+      });
+    }
+
+    const reheatBtn = document.getElementById("reheatBtn");
+    if (reheatBtn) {
+      reheatBtn.addEventListener("click", () => {
+        isPhysicsPaused = false;
+        if (togglePhysicsBtn) togglePhysicsBtn.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+        reheatSimulation(0.65);
+      });
+    }
+
+    // ─── Filter Events & Stage Pill Sync ──────────────────────────────────
+    function applyStageFilter(stage) {
+      currentStageFilter = stage;
+
+      // Sync filter chips
+      document.querySelectorAll(".filter-chip").forEach(chip => {
+        chip.classList.toggle("active", chip.getAttribute("data-stage") === stage);
+      });
+
+      // Sync legend pills
+      document.querySelectorAll(".stage-tag-pill").forEach(pill => {
+        pill.classList.toggle("active", pill.getAttribute("data-stage") === stage);
+      });
+
+      const activeNodes = getFilteredNodes();
+      if (activeNodes.length > 0) selectNode(activeNodes[0]);
+      reheatSimulation(0.25);
+    }
+
     const orphanToggle = document.getElementById("orphanToggleBtn");
     orphanToggle.addEventListener("click", () => {
       orphanFilterActive = !orphanFilterActive;
       orphanToggle.classList.toggle("active", orphanFilterActive);
       const activeNodes = getFilteredNodes();
       if (activeNodes.length > 0) selectNode(activeNodes[0]);
+      reheatSimulation(0.25);
     });
 
-    const filterChips = document.querySelectorAll(".filter-chip");
-    filterChips.forEach(chip => {
+    document.querySelectorAll(".filter-chip").forEach(chip => {
       chip.addEventListener("click", () => {
-        filterChips.forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        currentStageFilter = chip.getAttribute("data-stage");
-        const activeNodes = getFilteredNodes();
-        if (activeNodes.length > 0) selectNode(activeNodes[0]);
+        const stage = chip.getAttribute("data-stage");
+        applyStageFilter(stage);
+      });
+    });
+
+    document.querySelectorAll(".stage-tag-pill").forEach(pill => {
+      pill.addEventListener("click", () => {
+        const stage = pill.getAttribute("data-stage");
+        if (currentStageFilter === stage) {
+          applyStageFilter("ALL");
+        } else {
+          applyStageFilter(stage);
+        }
       });
     });
 
