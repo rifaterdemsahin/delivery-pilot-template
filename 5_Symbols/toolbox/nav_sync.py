@@ -55,6 +55,7 @@ MENU = [
     ("   ├─ 🎨 Design Workflow", "3_Simulation/design_workflow.md"),
     ("   ├─ 🖼️ Image Prompts", "3_Simulation/image_prompts.md"),
     ("   ├─ 🧭 Menu Design", "3_Simulation/menu_design.md"),
+    ("   └─ 🎠 Excalidraw Carousel", "3_Simulation/excalidraw_carousel.html"),
     ("📐 4. Formula", "4_Formula/_README.md"),
     ("   ├─ 📋 Specs", "4_Formula/specs.md"),
     ("   ├─ 🤔 Decisions", "4_Formula/decisions.md"),

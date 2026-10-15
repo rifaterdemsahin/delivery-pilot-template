@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="100%" height="100%" style="background:#0b0f19;font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Frame Background -->
+  <rect x="20" y="20" width="920" height="580" rx="12" fill="#0b0f19" stroke="#334155" stroke-width="2"/>
+
+  <!-- Top Header Bar -->
+  <rect x="35" y="35" width="890" height="60" rx="8" fill="url(#headerGrad)" stroke="#475569" stroke-width="1"/>
+  <text x="55" y="72" fill="#38bdf8" font-size="18" font-weight="700">⚡ Delivery Pilot — Dashboard Wireframe</text>
+  <rect x="760" y="50" width="150" height="30" rx="15" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+  <circle cx="778" cy="65" r="4" fill="#34d399"/>
+  <text x="792" y="70" fill="#a7f3d0" font-size="12" font-weight="600">Live : Port 30090</text>
+
+  <!-- Left Sidebar Panel -->
+  <rect x="35" y="105" width="230" height="440" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="55" y="132" fill="#94a3b8" font-size="11" font-weight="700" letter-spacing="1">STAGES &amp; PHASES</text>
+
+  <!-- Sidebar Item 1 -->
+  <rect x="45" y="150" width="210" height="36" rx="6" fill="#2e1065" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="60" y="173" fill="#ddd6fe" font-size="12" font-weight="500">1. Real Unknown (Why/What)</text>
+
+  <!-- Sidebar Item 2 -->
+  <rect x="45" y="195" width="210" height="36" rx="6" fill="#164e63" stroke="#06b6d4" stroke-width="1"/>
+  <text x="60" y="218" fill="#a5f3fc" font-size="12" font-weight="500">2. Environment (When/Where)</text>
+
+  <!-- Sidebar Item 3 Active -->
+  <rect x="45" y="240" width="210" height="36" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="2" filter="url(#softGlow)"/>
+  <text x="60" y="263" fill="#a7f3d0" font-size="12" font-weight="700">3. Simulation (Excalidraw) ★</text>
+
+  <!-- Sidebar Item 4 -->
+  <rect x="45" y="285" width="210" height="36" rx="6" fill="#451a03" stroke="#f59e0b" stroke-width="1"/>
+  <text x="60" y="308" fill="#fde68a" font-size="12" font-weight="500">4. Formula (Specs &amp; Gates)</text>
+
+  <!-- Sidebar Item 5 -->
+  <rect x="45" y="330" width="210" height="36" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+  <text x="60" y="353" fill="#fecaca" font-size="12" font-weight="500">5. Symbols (Project Code)</text>
+
+  <!-- Sidebar Item 6/7 -->
+  <rect x="45" y="375" width="210" height="36" rx="6" fill="#172554" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="398" fill="#bfdbfe" font-size="12" font-weight="500">7. Testing Known &amp; Semblance</text>
+
+  <!-- Main Content Stage 3 Active Canvas -->
+  <rect x="280" y="105" width="645" height="440" rx="10" fill="#022c22" stroke="#10b981" stroke-width="2"/>
+  <text x="305" y="138" fill="#34d399" font-size="16" font-weight="700">🎨 Visual Simulation Canvas &amp; Excalidraw Viewer</text>
+  <text x="305" y="160" fill="#a7f3d0" font-size="12">Stage 3 of 7 · Rapid UI Sketching, Wireframing, and Visual Contracts</text>
+
+  <!-- Sub Cards -->
+  <rect x="305" y="185" width="185" height="150" rx="8" fill="#083344" stroke="#06b6d4" stroke-width="1" stroke-dasharray="4"/>
+  <text x="397" y="245" fill="#67e8f9" font-size="13" font-weight="600" text-anchor="middle">Carousel View</text>
+  <text x="397" y="268" fill="#94a3b8" font-size="11" text-anchor="middle">Multi-file sync &amp; tabs</text>
+
+  <rect x="510" y="185" width="185" height="150" rx="8" fill="#451a03" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4"/>
+  <text x="602" y="245" fill="#fcd34d" font-size="13" font-weight="600" text-anchor="middle">Excalidraw Engine</text>
+  <text x="602" y="268" fill="#94a3b8" font-size="11" text-anchor="middle">Vector JSON elements</text>
+
+  <rect x="715" y="185" width="190" height="150" rx="8" fill="#500724" stroke="#ec4899" stroke-width="1" stroke-dasharray="4"/>
+  <text x="810" y="245" fill="#f472b6" font-size="13" font-weight="600" text-anchor="middle">Formula Gate</text>
+  <text x="810" y="268" fill="#94a3b8" font-size="11" text-anchor="middle">SPEC-016 &amp; SPEC-026</text>
+
+  <!-- Lower Banner Inside Canvas -->
+  <rect x="305" y="355" width="600" height="170" rx="8" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+  <text x="325" y="385" fill="#6ee7b7" font-size="14" font-weight="700">🔗 Lineage &amp; Traceability</text>
+  <text x="325" y="415" fill="#ecfdf5" font-size="12">↑ Upstream: 1_Real_Unknown (OKRs, Requirements, Tasks)</text>
+  <text x="325" y="440" fill="#ecfdf5" font-size="12">→ Current: 3_Simulation (Excalidraw Wireframes, SVGs, Carousel)</text>
+  <text x="325" y="465" fill="#ecfdf5" font-size="12">↓ Downstream: 4_Formula (SPEC-016, SPEC-026 approval before code)</text>
+  <text x="325" y="490" fill="#93c5fd" font-size="11">● Local inspection available via 3_Simulation/excalidraw_carousel.html</text>
+
+  <!-- Bottom Bar -->
+  <rect x="35" y="555" width="890" height="35" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="55" y="577" fill="#94a3b8" font-size="11">Delivery Pilot Template · 7-Stage Architectural Pipeline · Smoke Tests: 12/12 PASS</text>
+  <text x="830" y="577" fill="#10b981" font-size="11" font-weight="600">✔ Synchronized</text>
+</svg>

@@ -318,8 +318,15 @@
     "path": "3_Simulation/_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 2879,
+    "size": 5109,
     "category": "Documentation"
+  },
+  {
+    "path": "3_Simulation/agentic_workflow.excalidraw",
+    "name": "agentic_workflow.excalidraw",
+    "ext": ".excalidraw",
+    "size": 11025,
+    "category": "Wireframes"
   },
   {
     "path": "3_Simulation/agentic_workflow.svg",
@@ -329,18 +336,46 @@
     "category": "Images"
   },
   {
+    "path": "3_Simulation/carousel.html",
+    "name": "carousel.html",
+    "ext": ".html",
+    "size": 616,
+    "category": "Pages"
+  },
+  {
     "path": "3_Simulation/carousel_config.json",
     "name": "carousel_config.json",
     "ext": ".json",
-    "size": 223,
+    "size": 1968,
     "category": "Config"
   },
   {
     "path": "3_Simulation/design_workflow.md",
     "name": "design_workflow.md",
     "ext": ".md",
-    "size": 4039,
+    "size": 4458,
     "category": "Documentation"
+  },
+  {
+    "path": "3_Simulation/excalidraw_carousel.html",
+    "name": "excalidraw_carousel.html",
+    "ext": ".html",
+    "size": 46887,
+    "category": "Pages"
+  },
+  {
+    "path": "3_Simulation/feature_wireframe.excalidraw",
+    "name": "feature_wireframe.excalidraw",
+    "ext": ".excalidraw",
+    "size": 15652,
+    "category": "Wireframes"
+  },
+  {
+    "path": "3_Simulation/feature_wireframe.svg",
+    "name": "feature_wireframe.svg",
+    "ext": ".svg",
+    "size": 5546,
+    "category": "Images"
   },
   {
     "path": "3_Simulation/image_prompts.md",
@@ -355,6 +390,20 @@
     "ext": ".md",
     "size": 286,
     "category": "Documentation"
+  },
+  {
+    "path": "3_Simulation/system_architecture.excalidraw",
+    "name": "system_architecture.excalidraw",
+    "ext": ".excalidraw",
+    "size": 11309,
+    "category": "Wireframes"
+  },
+  {
+    "path": "3_Simulation/system_architecture.svg",
+    "name": "system_architecture.svg",
+    "ext": ".svg",
+    "size": 4924,
+    "category": "Images"
   },
   {
     "path": "4_Formula/.claude/commands/init-project.md",
@@ -486,7 +535,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 41155,
+    "size": 43914,
     "category": "Documentation"
   },
   {
@@ -528,7 +577,7 @@
     "path": "5_Symbols/deliverypilot/markdown_renderer.html",
     "name": "markdown_renderer.html",
     "ext": ".html",
-    "size": 26834,
+    "size": 26937,
     "category": "Pages"
   },
   {
@@ -619,7 +668,7 @@
     "path": "5_Symbols/toolbox/nav_sync.py",
     "name": "nav_sync.py",
     "ext": ".py",
-    "size": 7621,
+    "size": 7706,
     "category": "Toolbox"
   },
   {
@@ -675,7 +724,7 @@
     "path": "6_Semblance/smoke_test_report.md",
     "name": "smoke_test_report.md",
     "ext": ".md",
-    "size": 1178,
+    "size": 1179,
     "category": "Documentation"
   },
   {
@@ -899,7 +948,7 @@
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 33627,
+    "size": 35530,
     "category": "Pages"
   },
   {
@@ -920,7 +969,7 @@
     "path": "navigation_config.json",
     "name": "navigation_config.json",
     "ext": ".json",
-    "size": 7588,
+    "size": 7689,
     "category": "Config"
   },
   {

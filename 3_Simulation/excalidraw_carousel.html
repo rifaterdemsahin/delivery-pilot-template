@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulation Carousel & Excalidraw Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-glass: rgba(15, 23, 42, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(16, 185, 129, 0.25);
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-sim: #10b981;
+      --accent-sim-glow: rgba(16, 185, 129, 0.4);
+      --accent-violet: #8b5cf6;
+      --accent-cyan: #06b6d4;
+      --accent-amber: #f59e0b;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+
+    /* Header */
+    .renderer-header {
+      backdrop-filter: blur(14px);
+      background-color: var(--bg-glass);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .back-btn:hover {
+      color: var(--accent-sim);
+      border-color: var(--accent-sim);
+      transform: translateX(-2px);
+    }
+
+    .stage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-center {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .file-path-badge {
+      background-color: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-action:hover {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--accent-sim);
+      color: #34d399;
+    }
+
+    .btn-primary-action {
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      border: none;
+      color: #0b0f19;
+      font-weight: 600;
+    }
+
+    .btn-primary-action:hover {
+      box-shadow: 0 0 15px var(--accent-sim-glow);
+      color: #000;
+      transform: translateY(-1px);
+    }
+
+    /* Main Layout */
+    .main-container {
+      max-width: 1500px;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1.5rem;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .glass-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+
+    /* Viewer Stage Area */
+    .viewer-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .viewer-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid var(--border-color);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tabs-group {
+      display: flex;
+      gap: 0.35rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+
+    .tab-btn.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .zoom-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .zoom-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+
+    .zoom-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent-sim);
+    }
+
+    .zoom-level-text {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      min-width: 45px;
+      text-align: center;
+    }
+
+    /* Canvas / Viewport Area */
+    .viewport-container {
+      position: relative;
+      height: 600px;
+      background-color: #0b0f19;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: 
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    .viewport-canvas {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: center center;
+      transition: transform 0.15s ease-out;
+      cursor: grab;
+    }
+
+    .viewport-canvas.grabbing {
+      cursor: grabbing;
+    }
+
+    .rendered-diagram-svg {
+      max-width: 95%;
+      max-height: 95%;
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
+    }
+
+    /* JSON / Elements tab panes */
+    .tab-pane {
+      display: none;
+      width: 100%;
+      height: 600px;
+      overflow: auto;
+      padding: 1.25rem;
+      background: #0d1117;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    .code-viewer {
+      margin: 0;
+      background: transparent !important;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .elements-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .elements-table th {
+      text-align: left;
+      padding: 0.65rem 0.75rem;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--accent-sim);
+      font-family: var(--font-mono);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .elements-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #cbd5e1;
+    }
+
+    .element-badge {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+    .badge-rectangle { background: rgba(139, 92, 246, 0.2); color: #c4b5fd; }
+    .badge-text { background: rgba(56, 189, 248, 0.2); color: #7dd3fc; }
+    .badge-arrow { background: rgba(245, 158, 11, 0.2); color: #fde68a; }
+
+    /* Carousel Nav Bar */
+    .carousel-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.25rem;
+      background: rgba(0, 0, 0, 0.4);
+      border-top: 1px solid var(--border-color);
+      gap: 1rem;
+    }
+
+    .nav-arrow-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .nav-arrow-btn:hover {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--accent-sim);
+      color: #34d399;
+      transform: translateY(-1px);
+    }
+
+    .carousel-indicators {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .indicator-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .indicator-dot.active {
+      width: 24px;
+      border-radius: 6px;
+      background: var(--accent-sim);
+      box-shadow: 0 0 10px var(--accent-sim-glow);
+    }
+
+    .play-pause-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .play-pause-btn:hover {
+      border-color: var(--accent-sim);
+      color: var(--accent-sim);
+    }
+
+    /* Right Sidebar Inspector */
+    .sidebar-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: 1.5rem;
+    }
+
+    .sidebar-section-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .meta-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .meta-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #34d399;
+    }
+
+    .meta-desc {
+      color: #cbd5e1;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .lineage-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .lineage-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .lineage-item strong {
+      color: var(--accent-cyan);
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag-badge {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    /* Thumbnails List */
+    .thumbnails-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .thumb-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .thumb-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(16, 185, 129, 0.3);
+      transform: translateX(3px);
+    }
+
+    .thumb-card.active {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: var(--accent-sim);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+    }
+
+    .thumb-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--accent-sim);
+      flex-shrink: 0;
+    }
+
+    .thumb-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .thumb-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .thumb-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* User Notes for Simulation */
+    .notes-area {
+      width: 100%;
+      height: 90px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.6rem;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      resize: vertical;
+      outline: none;
+    }
+
+    .notes-area:focus {
+      border-color: var(--accent-sim);
+    }
+
+    /* Debug Drawer */
+    .debug-toggle-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-sim), var(--accent-cyan));
+      border: none;
+      color: #0b0f19;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .debug-toggle-btn:hover {
+      transform: scale(1.08) rotate(45deg);
+    }
+
+    .debug-menu-overlay {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      height: 100vh;
+      background-color: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--border-color);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .debug-menu-overlay.open { right: 0; }
+
+    .debug-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+
+    .debug-menu-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .debug-search-input {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+      outline: none;
+    }
+
+    .debug-search-input:focus { border-color: var(--accent-cyan); }
+
+    .debug-links-list {
+      list-style: none;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    .debug-item { margin-bottom: 0.4rem; }
+
+    .debug-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 0.85rem;
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      color: var(--text-primary);
+    }
+
+    .debug-link:hover {
+      background-color: rgba(6, 182, 212, 0.08);
+      border-color: rgba(6, 182, 212, 0.2);
+      color: var(--accent-cyan);
+      transform: translateX(4px);
+    }
+
+    .debug-divider { height: 1px; background-color: var(--border-color); margin: 0.75rem 0; }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .header-container { flex-direction: column; align-items: stretch; }
+      .header-left, .header-center, .header-right { justify-content: space-between; }
+      .viewport-container { height: 400px; }
+      .tab-pane { height: 400px; }
+      .debug-menu-overlay { width: 100vw; right: -100vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="renderer-header">
+    <div class="header-container">
+      <div class="header-left">
+        <a href="../index.html" class="back-btn" id="homeBackBtn">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Home</span>
+        </a>
+        <span class="stage-badge"><i class="fa-solid fa-palette"></i> Stage 3 · Simulation</span>
+      </div>
+
+      <div class="header-center">
+        <h1 class="page-title">Excalidraw & Wireframe Carousel</h1>
+        <span class="file-path-badge" id="activeFilePath">3_Simulation/...</span>
+      </div>
+
+      <div class="header-right">
+        <button class="btn-action" id="openExcalidrawBtn" title="Open this diagram in Excalidraw Web editor">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Excalidraw Web</span>
+        </button>
+        <button class="btn-action" id="downloadFileBtn" title="Download current wireframe file">
+          <i class="fa-solid fa-download"></i>
+          <span>Download</span>
+        </button>
+        <button class="btn-action btn-primary-action" id="fullscreenBtn" title="Fullscreen presentation view">
+          <i class="fa-solid fa-expand"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Area -->
+  <main class="main-container">
+    
+    <!-- Left Stage: Carousel & Viewer -->
+    <div class="glass-card viewer-card">
+      <div class="viewer-toolbar">
+        <div class="tabs-group">
+          <button class="tab-btn active" data-tab="canvasTab">
+            <i class="fa-solid fa-shapes"></i>
+            <span>Interactive Viewer</span>
+          </button>
+          <button class="tab-btn" data-tab="svgTab">
+            <i class="fa-solid fa-vector-square"></i>
+            <span>Companion SVG</span>
+          </button>
+          <button class="tab-btn" data-tab="jsonTab">
+            <i class="fa-solid fa-code"></i>
+            <span>Raw Excalidraw JSON</span>
+          </button>
+          <button class="tab-btn" data-tab="elementsTab">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Elements (<span id="elementsCountBadge">0</span>)</span>
+          </button>
+        </div>
+
+        <div class="zoom-group">
+          <button class="zoom-btn" id="zoomOutBtn" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
+          <span class="zoom-level-text" id="zoomLevel">100%</span>
+          <button class="zoom-btn" id="zoomInBtn" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
+          <button class="zoom-btn" id="zoomResetBtn" title="Fit to Screen"><i class="fa-solid fa-arrows-to-circle"></i></button>
+        </div>
+      </div>
+
+      <!-- Tab 1: Interactive Canvas Viewer -->
+      <div class="viewport-container" id="viewportContainer">
+        <div class="viewport-canvas" id="viewportCanvas">
+          <!-- Dynamically generated SVG render of Excalidraw elements -->
+          <div id="diagramRenderRoot" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Companion SVG Viewer -->
+      <div class="tab-pane" id="svgTab">
+        <div id="svgCompanionRoot" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></div>
+      </div>
+
+      <!-- Tab 3: Raw Excalidraw JSON Viewer -->
+      <div class="tab-pane" id="jsonTab">
+        <pre class="code-viewer"><code class="language-json" id="rawJsonCode">// Loading Excalidraw schema...</code></pre>
+      </div>
+
+      <!-- Tab 4: Elements Breakdown Inspector -->
+      <div class="tab-pane" id="elementsTab">
+        <table class="elements-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Element ID</th>
+              <th>Coords (X, Y, W, H)</th>
+              <th>Colors (Stroke / Fill)</th>
+              <th>Content / Label</th>
+            </tr>
+          </thead>
+          <tbody id="elementsTableBody">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Carousel Navigation Bar -->
+      <div class="carousel-nav-bar">
+        <button class="nav-arrow-btn" id="prevSlideBtn">
+          <i class="fa-solid fa-chevron-left"></i>
+          <span>Previous</span>
+        </button>
+
+        <div class="carousel-indicators" id="carouselIndicators">
+          <!-- Dynamic dots -->
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="play-pause-btn" id="playPauseBtn" title="Autoplay Slides">
+            <i class="fa-solid fa-play" id="playPauseIcon"></i>
+          </button>
+          <button class="nav-arrow-btn" id="nextSlideBtn">
+            <span>Next</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar: Inspector & Thumbnails -->
+    <aside class="glass-card sidebar-card">
+      <div>
+        <h2 class="sidebar-section-title">
+          <i class="fa-solid fa-circle-info" style="color: var(--accent-sim);"></i>
+          <span>Wireframe Specification</span>
+        </h2>
+        <div class="meta-box">
+          <h3 class="meta-title" id="metaTitle">Loading...</h3>
+          <p class="meta-desc" id="metaDesc">Wireframe description and purpose.</p>
+          
+          <div class="lineage-row">
+            <div class="lineage-item">
+              <i class="fa-solid fa-arrow-up" style="color: var(--accent-violet);"></i>
+              <span><strong>Upstream:</strong> <span id="metaUpstream">1_Real_Unknown</span></span>
+            </div>
+            <div class="lineage-item">
+              <i class="fa-solid fa-arrow-down" style="color: var(--accent-amber);"></i>
+              <span><strong>Downstream:</strong> <span id="metaDownstream">4_Formula</span></span>
+            </div>
+          </div>
+
+          <div class="tag-cloud" id="metaTags">
+            <!-- Tags -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide List / Thumbnails -->
+      <div>
+        <h2 class="sidebar-section-title">
+          <i class="fa-solid fa-images" style="color: var(--accent-cyan);"></i>
+          <span>Simulation Slides (<span id="slideTotalBadge">0</span>)</span>
+        </h2>
+        <div class="thumbnails-grid" id="thumbnailsList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Design Notes Box -->
+      <div>
+        <h2 class="sidebar-section-title">
+          <i class="fa-solid fa-pen-to-square" style="color: var(--accent-violet);"></i>
+          <span>Simulation Feedback Notes</span>
+        </h2>
+        <textarea class="notes-area" id="slideNotes" placeholder="Record design feedback, wireframe revisions, or formula gates for this slide..."></textarea>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Debug Menu Trigger & Overlay -->
+  <button class="debug-toggle-btn" id="debugToggle" title="Open Debug Navigation">
+    <i class="fa-solid fa-compass"></i>
+  </button>
+
+  <div class="debug-menu-overlay" id="debugMenuOverlay">
+    <div class="debug-menu-header">
+      <div class="debug-menu-title">🧭 Navigation Menu</div>
+      <button id="debugClose" style="background:none;border:none;color:#94a3b8;font-size:1.4rem;cursor:pointer;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <input type="text" class="debug-search-input" id="debugSearch" placeholder="Search project pages..." />
+    <ul class="debug-links-list" id="debugLinksList"></ul>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+
+  <script>
+    // ─── Default Slides Catalog (with live fallback) ───────────────────────
+    const SLIDES_CATALOG = [
+      {
+        id: "feature_wireframe",
+        title: "Delivery Pilot Dashboard Wireframe",
+        caption: "Stage 3 Excalidraw UI wireframe for multi-stage dashboard and live inspection",
+        excalidraw: "feature_wireframe.excalidraw",
+        svg: "feature_wireframe.svg",
+        type: "excalidraw",
+        stage: "3_Simulation",
+        upstream: "1_Real_Unknown/What/tasks.md",
+        downstream: "4_Formula/specs.md (SPEC-016, SPEC-026)",
+        tags: ["excalidraw", "wireframe", "dashboard", "stage-3"]
+      },
+      {
+        id: "system_architecture",
+        title: "7-Stage Architectural Data Flow",
+        caption: "End-to-end data pipeline from 1_Real_Unknown to 7_Testing_Known and Semblance",
+        excalidraw: "system_architecture.excalidraw",
+        svg: "system_architecture.svg",
+        type: "excalidraw",
+        stage: "3_Simulation",
+        upstream: "2_Environment/When/architecture.md",
+        downstream: "4_Formula/llm_thinking_log.md",
+        tags: ["architecture", "excalidraw", "pipeline", "harness"]
+      },
+      {
+        id: "agentic_workflow",
+        title: "Agentic Execution Workflow",
+        caption: "Agent handoffs, coordinator loop, and fix sub-synthesis loop",
+        excalidraw: "agentic_workflow.excalidraw",
+        svg: "agentic_workflow.svg",
+        type: "excalidraw",
+        stage: "3_Simulation",
+        upstream: "agents.md",
+        downstream: "4_Formula/harness.md",
+        tags: ["agents", "workflow", "handoffs", "excalidraw"]
+      }
+    ];
+
+    let currentSlideIndex = 0;
+    let slidesData = [...SLIDES_CATALOG];
+    let currentExcalidrawJson = null;
+    let currentScale = 1.0;
+    let autoplayTimer = null;
+    let isAutoplaying = false;
+
+    // ─── Cookie Helpers ───────────────────────────────────────────────────
+    function getCookie(name) {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : null;
+    }
+    function setCookie(name, val) {
+      document.cookie = name + "=" + val + "; path=/; max-age=31536000";
+    }
+
+    // ─── Excalidraw Vector Rendering Engine ───────────────────────────────
+    // Interprets Excalidraw JSON elements and generates clean vector SVG
+    function renderExcalidrawToSvg(data) {
+      if (!data || !Array.isArray(data.elements)) {
+        return `<div style="color:#ef4444;text-align:center;padding:2rem;"><i class="fa-solid fa-triangle-exclamation" style="font-size:2rem;margin-bottom:0.5rem;"></i><p>Invalid Excalidraw schema.</p></div>`;
+      }
+
+      const elements = data.elements.filter(el => !el.isDeleted);
+      if (elements.length === 0) {
+        return `<div style="color:#94a3b8;text-align:center;padding:2rem;">No visible elements in diagram.</div>`;
+      }
+
+      // Compute bounding box
+      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      elements.forEach(el => {
+        const x = el.x || 0;
+        const y = el.y || 0;
+        const w = Math.max(el.width || 0, 10);
+        const h = Math.max(el.height || 0, 10);
+        if (x < minX) minX = x;
+        if (y < minY) minY = y;
+        if (x + w > maxX) maxX = x + w;
+        if (y + h > maxY) maxY = y + h;
+      });
+
+      const padding = 40;
+      const viewBoxX = Math.floor(minX - padding);
+      const viewBoxY = Math.floor(minY - padding);
+      const viewBoxW = Math.ceil((maxX - minX) + padding * 2);
+      const viewBoxH = Math.ceil((maxY - minY) + padding * 2);
+      const bgColor = (data.appState && data.appState.viewBackgroundColor) || '#0b0f19';
+
+      let svgInner = '';
+
+      elements.forEach(el => {
+        const stroke = el.strokeColor || '#ffffff';
+        const fill = (el.backgroundColor && el.backgroundColor !== 'transparent') ? el.backgroundColor : 'none';
+        const strokeWidth = el.strokeWidth || 1;
+        const opacity = (el.opacity !== undefined) ? el.opacity / 100 : 1;
+        const dash = (el.strokeStyle === 'dashed') ? 'stroke-dasharray="6,6"' : (el.strokeStyle === 'dotted') ? 'stroke-dasharray="2,4"' : '';
+        const rx = el.roundness ? (el.roundness.type === 3 ? 12 : 6) : 0;
+
+        if (el.type === 'rectangle') {
+          svgInner += `<rect x="${el.x}" y="${el.y}" width="${el.width}" height="${el.height}" rx="${rx}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeWidth}" opacity="${opacity}" ${dash}/>`;
+        } else if (el.type === 'ellipse') {
+          const cx = el.x + el.width / 2;
+          const cy = el.y + el.height / 2;
+          svgInner += `<ellipse cx="${cx}" cy="${cy}" rx="${el.width/2}" ry="${el.height/2}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeWidth}" opacity="${opacity}" ${dash}/>`;
+        } else if (el.type === 'diamond') {
+          const cx = el.x + el.width / 2;
+          const cy = el.y + el.height / 2;
+          const pts = `${cx},${el.y} ${el.x + el.width},${cy} ${cx},${el.y + el.height} ${el.x},${cy}`;
+          svgInner += `<polygon points="${pts}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeWidth}" opacity="${opacity}" ${dash}/>`;
+        } else if (el.type === 'line' || el.type === 'arrow') {
+          const x1 = el.x, y1 = el.y;
+          const x2 = el.x + (el.width || 0), y2 = el.y + (el.height || 0);
+          svgInner += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="${strokeWidth}" opacity="${opacity}" ${dash}/>`;
+        } else if (el.type === 'text') {
+          const fontSize = el.fontSize || 14;
+          const lines = (el.text || '').split('\n');
+          const lineHeight = fontSize * 1.35;
+          const textAnchor = (el.textAlign === 'center') ? 'middle' : (el.textAlign === 'right') ? 'end' : 'start';
+          const tx = (el.textAlign === 'center') ? (el.x + el.width / 2) : (el.textAlign === 'right') ? (el.x + el.width) : el.x;
+
+          lines.forEach((lineText, idx) => {
+            const ty = el.y + fontSize + (idx * lineHeight);
+            svgInner += `<text x="${tx}" y="${ty}" fill="${stroke}" font-size="${fontSize}" font-family="Inter, sans-serif" text-anchor="${textAnchor}" opacity="${opacity}">${escapeHtml(lineText)}</text>`;
+          });
+        }
+      });
+
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             viewBox="${viewBoxX} ${viewBoxY} ${viewBoxW} ${viewBoxH}" 
+             width="100%" height="100%" 
+             class="rendered-diagram-svg" 
+             style="background: ${bgColor};">
+          <defs>
+            <filter id="softGlow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+          ${svgInner}
+        </svg>
+      `;
+    }
+
+    function escapeHtml(str) {
+      return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // ─── Load Slide into View ─────────────────────────────────────────────
+    async function loadSlide(index) {
+      if (index < 0 || index >= slidesData.length) return;
+      currentSlideIndex = index;
+      const slide = slidesData[index];
+
+      // Update Header & Metadata
+      document.getElementById("activeFilePath").textContent = `3_Simulation/${slide.excalidraw || slide.svg}`;
+      document.getElementById("metaTitle").textContent = slide.title;
+      document.getElementById("metaDesc").textContent = slide.caption;
+      document.getElementById("metaUpstream").textContent = slide.upstream || "1_Real_Unknown";
+      document.getElementById("metaDownstream").textContent = slide.downstream || "4_Formula";
+
+      // Tags
+      const tagsBox = document.getElementById("metaTags");
+      tagsBox.innerHTML = (slide.tags || []).map(t => `<span class="tag-badge">#${t}</span>`).join('');
+
+      // Notes
+      const notesKey = `notes_${slide.id}`;
+      document.getElementById("slideNotes").value = localStorage.getItem(notesKey) || "";
+
+      // Indicators & Thumbnails
+      updateIndicators();
+      updateThumbnails();
+
+      // Fetch Excalidraw source
+      const diagramRoot = document.getElementById("diagramRenderRoot");
+      const companionRoot = document.getElementById("svgCompanionRoot");
+      const rawJsonCode = document.getElementById("rawJsonCode");
+      const tableBody = document.getElementById("elementsTableBody");
+      const countBadge = document.getElementById("elementsCountBadge");
+
+      diagramRoot.innerHTML = `<div style="color:var(--text-muted);display:flex;align-items:center;gap:0.75rem;"><i class="fa-solid fa-spinner fa-spin fa-2x" style="color:var(--accent-sim);"></i><span>Loading Excalidraw wireframe...</span></div>`;
+
+      try {
+        const res = await fetch(slide.excalidraw);
+        if (!res.ok) throw new Error("Status " + res.status);
+        const data = await res.json();
+        currentExcalidrawJson = data;
+
+        // Render SVG to canvas
+        diagramRoot.innerHTML = renderExcalidrawToSvg(data);
+
+        // Populate raw JSON
+        const prettyJson = JSON.stringify(data, null, 2);
+        rawJsonCode.textContent = prettyJson;
+        if (window.Prism) Prism.highlightElement(rawJsonCode);
+
+        // Populate Elements Table
+        const validElements = (data.elements || []).filter(el => !el.isDeleted);
+        countBadge.textContent = validElements.length;
+        tableBody.innerHTML = validElements.map(el => {
+          const typeClass = el.type === 'rectangle' ? 'badge-rectangle' : el.type === 'text' ? 'badge-text' : 'badge-arrow';
+          const label = el.text ? el.text.slice(0, 35) + (el.text.length > 35 ? '...' : '') : '—';
+          const coords = `${Math.round(el.x)}, ${Math.round(el.y)} · ${Math.round(el.width || 0)}×${Math.round(el.height || 0)}`;
+          return `
+            <tr>
+              <td><span class="element-badge ${typeClass}">${el.type}</span></td>
+              <td style="font-family:var(--font-mono);font-size:0.78rem;">${el.id}</td>
+              <td style="font-family:var(--font-mono);">${coords}</td>
+              <td><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${el.strokeColor};margin-right:4px;"></span>${el.strokeColor}</td>
+              <td>${escapeHtml(label)}</td>
+            </tr>
+          `;
+        }).join('');
+
+      } catch (err) {
+        // Fallback: render companion SVG if Excalidraw JSON fails to load
+        diagramRoot.innerHTML = `<img src="${slide.svg}" alt="${slide.title}" class="rendered-diagram-svg" />`;
+        rawJsonCode.textContent = `// Note: Failed to fetch direct JSON (${err.message}). Rendering companion SVG vector export.`;
+        countBadge.textContent = "—";
+        tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);">Loaded as static SVG vector.</td></tr>`;
+      }
+
+      // Load companion SVG tab
+      if (slide.svg) {
+        companionRoot.innerHTML = `<object type="image/svg+xml" data="${slide.svg}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;"></object>`;
+      } else {
+        companionRoot.innerHTML = `<div style="color:var(--text-muted);text-align:center;padding:2rem;">No companion SVG available.</div>`;
+      }
+
+      resetZoom();
+    }
+
+    // ─── Indicators & Thumbnails ──────────────────────────────────────────
+    function updateIndicators() {
+      const container = document.getElementById("carouselIndicators");
+      container.innerHTML = slidesData.map((_, i) => 
+        `<span class="indicator-dot ${i === currentSlideIndex ? 'active' : ''}" onclick="goToSlide(${i})"></span>`
+      ).join('');
+    }
+
+    function updateThumbnails() {
+      const container = document.getElementById("thumbnailsList");
+      document.getElementById("slideTotalBadge").textContent = slidesData.length;
+      container.innerHTML = slidesData.map((slide, i) => `
+        <div class="thumb-card ${i === currentSlideIndex ? 'active' : ''}" onclick="goToSlide(${i})">
+          <div class="thumb-icon">
+            <i class="fa-solid ${slide.type === 'excalidraw' ? 'fa-draw-polygon' : 'fa-image'}"></i>
+          </div>
+          <div class="thumb-info">
+            <div class="thumb-title">${slide.title}</div>
+            <div class="thumb-sub">${slide.excalidraw || slide.svg}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function goToSlide(index) {
+      loadSlide(index);
+    }
+
+    // ─── Zoom & Pan Controls ──────────────────────────────────────────────
+    function updateZoom() {
+      const canvas = document.getElementById("viewportCanvas");
+      canvas.style.transform = `scale(${currentScale})`;
+      document.getElementById("zoomLevel").textContent = `${Math.round(currentScale * 100)}%`;
+    }
+
+    function zoomIn() {
+      if (currentScale < 3.0) { currentScale += 0.2; updateZoom(); }
+    }
+    function zoomOut() {
+      if (currentScale > 0.4) { currentScale -= 0.2; updateZoom(); }
+    }
+    function resetZoom() {
+      currentScale = 1.0;
+      updateZoom();
+    }
+
+    // ─── Fullscreen Toggle ────────────────────────────────────────────────
+    function toggleFullscreen() {
+      const el = document.getElementById("viewportContainer");
+      if (!document.fullscreenElement) {
+        el.requestFullscreen().catch(err => alert("Fullscreen error: " + err.message));
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // ─── Autoplay Logic ───────────────────────────────────────────────────
+    function toggleAutoplay() {
+      isAutoplaying = !isAutoplaying;
+      const icon = document.getElementById("playPauseIcon");
+      if (isAutoplaying) {
+        icon.className = "fa-solid fa-pause";
+        autoplayTimer = setInterval(() => {
+          goToSlide((currentSlideIndex + 1) % slidesData.length);
+        }, 5000);
+      } else {
+        icon.className = "fa-solid fa-play";
+        clearInterval(autoplayTimer);
+      }
+    }
+
+    // ─── Download & Open in Excalidraw ────────────────────────────────────
+    function downloadCurrentFile() {
+      const slide = slidesData[currentSlideIndex];
+      const link = document.createElement("a");
+      link.href = slide.excalidraw || slide.svg;
+      link.download = (slide.excalidraw || slide.svg).split('/').pop();
+      link.click();
+    }
+
+    function openInExcalidrawWeb() {
+      // Directs to excalidraw.com editor
+      window.open("https://excalidraw.com", "_blank");
+    }
+
+    // ─── Lifecycle & Events ───────────────────────────────────────────────
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Fetch carousel_config.json if available
+      try {
+        const res = await fetch("carousel_config.json");
+        if (res.ok) {
+          const cfg = await res.json();
+          if (Array.isArray(cfg.slides) && cfg.slides.length > 0) {
+            slidesData = cfg.slides;
+          }
+        }
+      } catch (_) {
+        // Fallback to embedded SLIDES_CATALOG
+      }
+
+      // 2. Setup Carousel navigation
+      document.getElementById("prevSlideBtn").addEventListener("click", () => {
+        goToSlide((currentSlideIndex - 1 + slidesData.length) % slidesData.length);
+      });
+      document.getElementById("nextSlideBtn").addEventListener("click", () => {
+        goToSlide((currentSlideIndex + 1) % slidesData.length);
+      });
+      document.getElementById("playPauseBtn").addEventListener("click", toggleAutoplay);
+
+      // Keyboard arrow shortcuts
+      document.addEventListener("keydown", (e) => {
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+        if (e.key === "ArrowLeft") goToSlide((currentSlideIndex - 1 + slidesData.length) % slidesData.length);
+        if (e.key === "ArrowRight") goToSlide((currentSlideIndex + 1) % slidesData.length);
+      });
+
+      // 3. Zoom Controls
+      document.getElementById("zoomInBtn").addEventListener("click", zoomIn);
+      document.getElementById("zoomOutBtn").addEventListener("click", zoomOut);
+      document.getElementById("zoomResetBtn").addEventListener("click", resetZoom);
+      document.getElementById("fullscreenBtn").addEventListener("click", toggleFullscreen);
+      document.getElementById("downloadFileBtn").addEventListener("click", downloadCurrentFile);
+      document.getElementById("openExcalidrawBtn").addEventListener("click", openInExcalidrawWeb);
+
+      // 4. Tab Navigation
+      const tabBtns = document.querySelectorAll(".tab-btn");
+      tabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          tabBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const targetTab = btn.getAttribute("data-tab");
+          const viewport = document.getElementById("viewportContainer");
+          const svgTab = document.getElementById("svgTab");
+          const jsonTab = document.getElementById("jsonTab");
+          const elemTab = document.getElementById("elementsTab");
+
+          viewport.style.display = (targetTab === "canvasTab") ? "flex" : "none";
+          svgTab.style.display = (targetTab === "svgTab") ? "block" : "none";
+          jsonTab.style.display = (targetTab === "jsonTab") ? "block" : "none";
+          elemTab.style.display = (targetTab === "elementsTab") ? "block" : "none";
+        });
+      });
+
+      // 5. Notes persistence
+      document.getElementById("slideNotes").addEventListener("input", (e) => {
+        const slide = slidesData[currentSlideIndex];
+        if (slide) {
+          localStorage.setItem(`notes_${slide.id}`, e.target.value);
+        }
+      });
+
+      // 6. Debug Menu Drawer
+      const debugToggle = document.getElementById("debugToggle");
+      const debugClose = document.getElementById("debugClose");
+      const debugOverlay = document.getElementById("debugMenuOverlay");
+      const debugSearch = document.getElementById("debugSearch");
+      const debugLinksList = document.getElementById("debugLinksList");
+
+      let navData = { debugMenu: [] };
+      try {
+        const navRes = await fetch("../navigation_config.json");
+        if (navRes.ok) navData = await navRes.json();
+      } catch (_) {}
+
+      function buildDebugMenu(filter = "") {
+        debugLinksList.innerHTML = "";
+        const query = filter.toLowerCase();
+        (navData.debugMenu || []).forEach(item => {
+          if (query && item.label === "---") return;
+          if (query && !item.label.toLowerCase().includes(query)) return;
+          if (item.label === "---") {
+            const d = document.createElement("li"); d.className = "debug-divider";
+            debugLinksList.appendChild(d);
+          } else {
+            const li = document.createElement("li"); li.className = "debug-item";
+            const a = document.createElement("a");
+            let finalUrl = item.url;
+            if (finalUrl !== "divider" && !finalUrl.startsWith("http")) {
+              if (finalUrl.includes(".html")) finalUrl = `../${finalUrl}`;
+              else finalUrl = `../5_Symbols/deliverypilot/markdown_renderer.html?file=${finalUrl}`;
+            }
+            a.href = finalUrl; a.className = "debug-link";
+            a.innerHTML = `<span>${item.label}</span><i class="fa-solid fa-chevron-right" style="font-size:0.75rem;opacity:0.5;"></i>`;
+            li.appendChild(a); debugLinksList.appendChild(li);
+          }
+        });
+      }
+
+      debugSearch.addEventListener("input", (e) => buildDebugMenu(e.target.value));
+      buildDebugMenu();
+
+      debugToggle.addEventListener("click", () => {
+        const isOpen = debugOverlay.classList.toggle("open");
+        setCookie("debug", isOpen ? "true" : "false");
+      });
+      debugClose.addEventListener("click", () => {
+        debugOverlay.classList.remove("open");
+        setCookie("debug", "false");
+      });
+
+      // 7. Fail-soft runtime interception for /index.html links (SPEC-024)
+      document.addEventListener("click", (e) => {
+        const anchor = e.target.closest("a");
+        if (anchor) {
+          const href = anchor.getAttribute("href");
+          if (href === "/index.html" || href === "/" || href === "./index.html") {
+            e.preventDefault();
+            window.location.href = "../index.html";
+          }
+        }
+      });
+
+      // 8. Load initial slide
+      loadSlide(0);
+    });
+  </script>
+</body>
+</html>

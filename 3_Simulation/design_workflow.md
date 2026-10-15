@@ -16,8 +16,9 @@
 
 - [ ] Check `1_Real_Unknown/` to ensure wireframe addresses documented problems and OKRs
 - [ ] Create Excalidraw wireframe (`.excalidraw` and exported `.svg`/`.png`) in `3_Simulation/`
+- [ ] Verify visual presentation in `3_Simulation/excalidraw_carousel.html` (SPEC-026)
 - [ ] Log the prompt/rationale used to generate designs in `image_prompts.md`
-- [ ] Add the exported image to `carousel_config.json` for the auto-updating carousel
+- [ ] Add the exported image and Excalidraw file to `carousel_config.json` for the auto-updating carousel
 - [ ] Document the feature spec in `4_Formula/specs.md` referencing the wireframe
 - [ ] Review Excalidraw wireframes against `1_Real_Unknown` and specs before coding
 - [ ] Update designs when requirements evolve
@@ -26,8 +27,10 @@
 
 ```
 3_Simulation/
+├── excalidraw_carousel.html          # Interactive Excalidraw viewer & file carousel
+├── carousel.html                     # Shortcut alias to excalidraw_carousel.html
 ├── feature_name_wireframe.excalidraw # Editable Excalidraw source
-├── feature_name_wireframe.svg        # Scalable vector export for documentation
+├── feature_name_wireframe.svg        # Scalable vector export for documentation & viewer
 ├── feature_name_wireframe.png        # Raster export for carousel & previews
 ├── feature_name_mockup.png           # High-fidelity mockup
 ├── feature_name_flow.png             # User flow diagram
@@ -40,7 +43,7 @@
 Excalidraw wireframes act as the primary visual contract between the problem space and technical formulation:
 - **Direct Lineage**: Every UI component, screen, or workflow sketched in Excalidraw maps back to an item in `1_Real_Unknown/` (`problem_statement.md`, `okrs.md`, or `questions.md`).
 - **Continuous Sync**: If a hypothesis or OKR changes in `1_Real_Unknown/`, the Excalidraw wireframe is updated first.
-- **Formula Enforcement**: As formulated in `4_Formula/` (SPEC-016), the Formula Agent validates that wireframes in `3_Simulation/` reflect the latest `1_Real_Unknown/` definitions before passing the gate to `5_Symbols/`.
+- **Formula Enforcement**: As formulated in `4_Formula/` (SPEC-016 & SPEC-026), the Formula Agent validates that wireframes in `3_Simulation/` reflect the latest `1_Real_Unknown/` definitions before passing the gate to `5_Symbols/`. Wireframe fidelity and element breakdown can be inspected directly in `3_Simulation/excalidraw_carousel.html`.
 
 
 ## Design Guidelines

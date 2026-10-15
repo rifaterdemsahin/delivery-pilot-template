@@ -93,6 +93,7 @@
 | TSK-048 | Repository Link Integrity check tool & automated broken link remediation (SPEC-023) | Formula Agent | Real Agent coordinates: Formula defines SPEC-023 → Symbols creates check_links.py & integrates Check 11 into smoke_test.py → Symbols fixes all 8 broken links across project → Test validates 12/12 passing | [x] |
 | TSK-049 | Project Menu Root Link Resolution & /index.html Resilience (SPEC-024) | Formula Agent | Real Agent coordinates: Formula defines SPEC-024 & updates navigation.md → Symbols normalizes /index.html in index.html & adds project navigation to calendar_view.html & click interceptors across project pages → Symbols updates smoke_test.py Check 3 → Test validates 12/12 passing | [x] |
 | TSK-050 | Partition 2_Environment markdowns into When and Where subfolders (SPEC-025) | Environment Agent | Real Agent coordinates: Environment Agent partitions markdowns into When/ and Where/, writes subfolder _README.md indices & updates root _README.md → Symbols updates nav_sync.py & fixes relative links → Formula specs SPEC-025 → Test validates 12/12 passing | [x] |
+| TSK-051 | Simulation Excalidraw Wireframe Carousel & Visual Inspector (SPEC-026) | Simulation Agent | Real Agent coordinates: Simulation Agent creates feature_wireframe.excalidraw, system_architecture.excalidraw, agentic_workflow.excalidraw & companion SVGs → Symbols builds excalidraw_carousel.html with vector engine, raw JSON tab & inspector → Symbols updates nav_sync.py (85 entries) & index.html → Formula specs SPEC-026 → Test validates 12/12 passing | [x] |
 
 
 

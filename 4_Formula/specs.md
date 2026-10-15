@@ -328,6 +328,30 @@
 - **Related Files:** `2_Environment/_README.md`, `2_Environment/When/_README.md`, `2_Environment/Where/_README.md`, `5_Symbols/toolbox/nav_sync.py`, `navigation_config.json`, `index.html`, `5_Symbols/deliverypilot/markdown_renderer.html`, `1_Real_Unknown/How/mindmap.md`
 - **Last Updated:** 2026-10-15
 
+### SPEC-026: Simulation Excalidraw Wireframe Carousel & Visual Inspector
+- **Status:** Active
+- **Description:** Deploys a dedicated visual file carousel and interactive Excalidraw vector viewer in `3_Simulation/` (`excalidraw_carousel.html` with shortcut alias `carousel.html`) for Stage 3 wireframes, architecture diagrams, and agent flows. Provides browser-side vector rendering of `.excalidraw` JSON, companion SVG vector preview, raw schema inspection, element breakdown, pan/zoom, autoplay, and web editor export, enforcing design-first visual contracts before code implementation.
+- **Key Behaviors:**
+  - **Vector Parsing & Rendering Engine**: Browser-side engine dynamically parses `.excalidraw` schema elements (rectangles, diamonds, ellipses, multiline text, connection lines, arrows, stroke/fill colors, rounded corners) and outputs responsive SVGs with zero external runtime dependencies.
+  - **Multi-Tab Inspection**:
+    - *Interactive Viewer*: Vector diagram canvas with pan/drag and zoom controls (40% to 300%, fit-to-screen).
+    - *Companion SVG*: Direct native embedding of exported `.svg` companion vectors.
+    - *Raw JSON*: Syntax-highlighted `.excalidraw` schema viewer with one-click copy.
+    - *Elements Breakdown*: Tabular element inspector indexing type, ID, coordinates (`x, y, w, h`), colors, and text content.
+  - **Carousel Navigation & Controls**:
+    - Previous and Next controls with keyboard arrow shortcuts (`ArrowLeft` / `ArrowRight`).
+    - Thumbnail strip with active slide indicators, slide count badges, and dot progress markers.
+    - Autoplay toggle (play/pause with 5-second interval timer).
+  - **Lineage & Formula Gate (SPEC-016)**:
+    - Every slide links upstream to `1_Real_Unknown/` tasks/problems and downstream to `4_Formula/` specs.
+    - Gates code in `5_Symbols/` until wireframes are verified against problem statements and OKRs.
+  - **Integrated Two-Menu System & Resilience**:
+    - Pinned header with Home navigation (`../index.html`), Stage 3 badge, and slide title.
+    - Slide-out debug navigation drawer loaded from `../navigation_config.json` (synced via `5_Symbols/toolbox/nav_sync.py`).
+    - Fail-soft runtime interception for `/index.html` links (`SPEC-024`).
+- **Related Files:** `3_Simulation/excalidraw_carousel.html`, `3_Simulation/carousel.html`, `3_Simulation/carousel_config.json`, `3_Simulation/feature_wireframe.excalidraw`, `3_Simulation/feature_wireframe.svg`, `3_Simulation/system_architecture.excalidraw`, `3_Simulation/system_architecture.svg`, `3_Simulation/agentic_workflow.excalidraw`, `3_Simulation/agentic_workflow.svg`, `3_Simulation/_README.md`, `3_Simulation/design_workflow.md`, `5_Symbols/toolbox/nav_sync.py`, `4_Formula/specs.md`
+- **Last Updated:** 2026-10-15
+
 ---
 
 ## Spec Template

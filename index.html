@@ -636,34 +636,50 @@
 
     <!-- Right panel: Simulation Carousel -->
     <section class="glass-card">
-      <h2 class="card-title">
-        <i class="fa-solid fa-display" style="color: var(--accent-cyan)"></i>
-        <span>Simulation Mockups</span>
-      </h2>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2 class="card-title" style="margin-bottom: 0;">
+          <i class="fa-solid fa-palette" style="color: var(--accent-cyan)"></i>
+          <span>Simulation &amp; Wireframes</span>
+        </h2>
+        <a href="3_Simulation/excalidraw_carousel.html" style="font-size: 0.85rem; color: #10b981; font-weight: 500; display: inline-flex; align-items: center; gap: 0.35rem;">
+          <span>Full Viewer</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
       
       <div class="carousel-container" id="carousel">
         <!-- Slide 1 -->
         <div class="carousel-slide active">
-          <div class="carousel-placeholder-image">
-            <i class="fa-regular fa-image"></i>
+          <div style="height: 180px; width: 100%; border-radius: 8px; overflow: hidden; background: #0b0f19; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; border: 1px solid rgba(255,255,255,0.08);">
+            <img src="3_Simulation/feature_wireframe.svg" alt="Feature Wireframe" style="max-width: 100%; max-height: 100%; object-fit: contain;">
           </div>
-          <h3 class="carousel-title">Stage 3: Mockup Index</h3>
-          <p class="carousel-desc">Visual representation of the user dashboard landing page.</p>
+          <h3 class="carousel-title">Stage 3: Dashboard Wireframe</h3>
+          <p class="carousel-desc">Excalidraw wireframe of the live dashboard and multi-stage status view.</p>
         </div>
         
         <!-- Slide 2 -->
         <div class="carousel-slide">
-          <div class="carousel-placeholder-image">
-            <i class="fa-solid fa-network-wired"></i>
+          <div style="height: 180px; width: 100%; border-radius: 8px; overflow: hidden; background: #0b0f19; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; border: 1px solid rgba(255,255,255,0.08);">
+            <img src="3_Simulation/system_architecture.svg" alt="System Architecture" style="max-width: 100%; max-height: 100%; object-fit: contain;">
           </div>
-          <h3 class="carousel-title">Stage 3: Navigation Flow</h3>
-          <p class="carousel-desc">Interactive mobile menu drawer design simulation.</p>
+          <h3 class="carousel-title">Stage 3: 7-Stage Architectural Data Flow</h3>
+          <p class="carousel-desc">Visual data pipeline connecting 1_Real_Unknown to 7_Testing_Known.</p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+          <div style="height: 180px; width: 100%; border-radius: 8px; overflow: hidden; background: #0b0f19; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; border: 1px solid rgba(255,255,255,0.08);">
+            <img src="3_Simulation/agentic_workflow.svg" alt="Agentic Workflow" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+          </div>
+          <h3 class="carousel-title">Stage 3: Agentic Execution Workflow</h3>
+          <p class="carousel-desc">Agent handoffs, coordinator loop, and fix sub-synthesis loop.</p>
         </div>
       </div>
       
       <div class="carousel-controls" id="carouselDots">
         <span class="carousel-dot active" onclick="setSlide(0)"></span>
         <span class="carousel-dot" onclick="setSlide(1)"></span>
+        <span class="carousel-dot" onclick="setSlide(2)"></span>
       </div>
     </section>
   </main>
@@ -752,6 +768,7 @@
         { label: "   ├─ 🎨 Design Workflow", url: "3_Simulation/design_workflow.md" },
         { label: "   ├─ 🖼️ Image Prompts", url: "3_Simulation/image_prompts.md" },
         { label: "   ├─ 🧭 Menu Design", url: "3_Simulation/menu_design.md" },
+        { label: "   └─ 🎠 Excalidraw Carousel", url: "3_Simulation/excalidraw_carousel.html" },
         { label: "📐 4. Formula", url: "4_Formula/_README.md" },
         { label: "   ├─ 📋 Specs", url: "4_Formula/specs.md" },
         { label: "   ├─ 🤔 Decisions", url: "4_Formula/decisions.md" },

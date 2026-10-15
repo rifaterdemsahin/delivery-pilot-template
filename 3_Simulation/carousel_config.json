@@ -1,12 +1,54 @@
 {
-  "images": [
+  "slides": [
     {
-      "url": "3_Simulation/mockup_index.png",
-      "caption": "Homepage Mockup"
+      "id": "feature_wireframe",
+      "title": "Delivery Pilot Dashboard Wireframe",
+      "caption": "Stage 3 Excalidraw UI wireframe for multi-stage dashboard and live inspection",
+      "excalidraw": "3_Simulation/feature_wireframe.excalidraw",
+      "svg": "3_Simulation/feature_wireframe.svg",
+      "type": "excalidraw",
+      "stage": "3_Simulation",
+      "upstream": "1_Real_Unknown/What/tasks.md",
+      "downstream": "4_Formula/specs.md (SPEC-016, SPEC-026)",
+      "tags": ["excalidraw", "wireframe", "dashboard", "stage-3"]
     },
     {
-      "url": "3_Simulation/mockup_navigation.png",
-      "caption": "Navigation Drawer Mockup"
+      "id": "system_architecture",
+      "title": "7-Stage Architectural Data Flow",
+      "caption": "End-to-end data pipeline from 1_Real_Unknown to 7_Testing_Known and Semblance",
+      "excalidraw": "3_Simulation/system_architecture.excalidraw",
+      "svg": "3_Simulation/system_architecture.svg",
+      "type": "excalidraw",
+      "stage": "3_Simulation",
+      "upstream": "2_Environment/When/architecture.md",
+      "downstream": "4_Formula/llm_thinking_log.md",
+      "tags": ["architecture", "excalidraw", "pipeline", "harness"]
+    },
+    {
+      "id": "agentic_workflow",
+      "title": "Agentic Execution Workflow",
+      "caption": "Agent handoffs, coordinator loop, and fix sub-synthesis loop",
+      "excalidraw": "3_Simulation/agentic_workflow.excalidraw",
+      "svg": "3_Simulation/agentic_workflow.svg",
+      "type": "excalidraw",
+      "stage": "3_Simulation",
+      "upstream": "agents.md",
+      "downstream": "4_Formula/harness.md",
+      "tags": ["agents", "workflow", "handoffs", "excalidraw"]
+    }
+  ],
+  "images": [
+    {
+      "url": "3_Simulation/feature_wireframe.svg",
+      "caption": "Delivery Pilot Dashboard Wireframe"
+    },
+    {
+      "url": "3_Simulation/system_architecture.svg",
+      "caption": "7-Stage Architectural Data Flow"
+    },
+    {
+      "url": "3_Simulation/agentic_workflow.svg",
+      "caption": "Agentic Execution Workflow"
     }
   ]
 }
