@@ -9,7 +9,7 @@
 One coherent logging story across the whole stack, plus a hands-off repair loop:
 
 1. **Frontend** — capture logs through the existing **footer debug feature** (the bottom-right debug button + `debugLog` utility), and optionally forward them to the backend.
-2. **Backend** — ship structured logs to **[Axiom](../2_Environment/axiom.md)** as the single source of truth for server-side events.
+2. **Backend** — ship structured logs to **[Axiom](../2_Environment/Where/axiom.md)** as the single source of truth for server-side events.
 3. **Continuous Fix (nightly)** — a scheduled agent that, **when no one is actively coding**, queries Axiom + `6_Semblance/error.log`, finds errors, applies fixes, and opens a PR.
 
 ```
@@ -70,7 +70,7 @@ Keep the existing behavior, but layer three capabilities on top (implement in `5
 
 ## 2️⃣ Backend Logs — Axiom
 
-The Fly.io Python backend is the **single writer to Axiom**. See [`2_Environment/axiom.md`](../2_Environment/axiom.md) for setup; the recipe here is *what* to log and *how* to structure it.
+The Fly.io Python backend is the **single writer to Axiom**. See [`2_Environment/Where/axiom.md`](../2_Environment/Where/axiom.md) for setup; the recipe here is *what* to log and *how* to structure it.
 
 ### What to log
 - Every request: method, path, status, latency, `session`.

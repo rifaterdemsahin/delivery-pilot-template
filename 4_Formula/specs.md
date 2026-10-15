@@ -310,6 +310,24 @@
 - **Related Files:** `navigation_config.json`, `index.html`, `5_Symbols/calendar_view.html`, `5_Symbols/deliverypilot/markdown_renderer.html`, `5_Symbols/deliverypilot/artifacts_carousel.html`, `5_Symbols/deliverypilot/master_review/index.html`, `5_Symbols/toolbox/smoke_test.py`, `5_Symbols/toolbox/check_links.py`, `4_Formula/specs.md`, `4_Formula/navigation.md`
 - **Last Updated:** 2026-10-15
 
+### SPEC-025: Stage 2 Environment Spatiotemporal Partitioning (When & Where)
+- **Status:** Active
+- **Description:** Organizes all documentation in `2_Environment/` into two distinct cognitive subfolders (`When/` and `Where/`) with dedicated `_README.md` index files, complementing Stage 1's `Why/`, `How/`, and `What/` taxonomy. Resolves root environment directory clutter and separates temporal execution rules and tool governance (*When*) from spatial platforms, hosting runtimes, and workstation configurations (*Where*).
+- **Key Behaviors:**
+  - **Directory Separation**:
+    - `When/`: Architecture blueprints, product rules, tools overview, toolstack rationale, dependency cross-matrices, AI stack selection, GitHub auto-fix agent, MCP servers, superskills, LLM tool governance, navigation architecture, and authoring extensions.
+    - `Where/`: GitHub Pages frontend static hosting, Cloudflare Workers edge compute, Fly.io container backends, Supabase Postgres database, Axiom structured logging, Azure Key Vault & Blob storage, localhost preview server policies (30,000+), macOS workstation setup, and Windows workstation setup.
+  - **Pinned Index Navigation**:
+    - `2_Environment/_README.md` serves as stage entry point explicitly documenting that markdowns are partitioned into `When/` and `Where/`.
+    - `2_Environment/When/_README.md` catalogs temporal lifecycle triggers and tool boundaries.
+    - `2_Environment/Where/_README.md` catalogs infrastructure platforms, hosting targets, and datastores.
+  - **Automated Navigation Synchronization**:
+    - `5_Symbols/toolbox/nav_sync.py` organizes the debug menu under `   ├─ ⏰ When` and `   └─ 🌐 Where` trees (84 synced entries).
+    - `5_Symbols/toolbox/smoke_test.py` validates that 0 markdown documents are orphaned from menus and all URLs resolve.
+    - `5_Symbols/toolbox/check_links.py` verifies all intra-stage (`../Where/...`, `../When/...`) and cross-stage (`../../...`) links are valid.
+- **Related Files:** `2_Environment/_README.md`, `2_Environment/When/_README.md`, `2_Environment/Where/_README.md`, `5_Symbols/toolbox/nav_sync.py`, `navigation_config.json`, `index.html`, `5_Symbols/deliverypilot/markdown_renderer.html`, `1_Real_Unknown/How/mindmap.md`
+- **Last Updated:** 2026-10-15
+
 ---
 
 ## Spec Template

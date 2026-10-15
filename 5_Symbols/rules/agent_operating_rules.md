@@ -54,7 +54,7 @@ Pick one backend target per service (static frontends stay on GitHub Pages):
 | Heavy containers — Docker, persistent processes, filesystems, WebSockets, GPU, long-running jobs | **Fly.io** |
 
 - Do not invent a third backend host unless Environment Agent documents it and Formula specs it.
-- **Credentials:** Fly.io and Cloudflare Workers load secrets from **Azure Key Vault** at deploy or runtime. Never bake keys into Worker code, Docker images, `wrangler.toml`, `fly.toml`, or git. See [`2_Environment/setup_azure.md`](../../2_Environment/setup_azure.md), [`2_Environment/fly_io.md`](../../2_Environment/fly_io.md), [`2_Environment/cloudflare_workers.md`](../../2_Environment/cloudflare_workers.md).
+- **Credentials:** Fly.io and Cloudflare Workers load secrets from **Azure Key Vault** at deploy or runtime. Never bake keys into Worker code, Docker images, `wrangler.toml`, `fly.toml`, or git. See [`2_Environment/Where/setup_azure.md`](../../2_Environment/Where/setup_azure.md), [`2_Environment/Where/fly_io.md`](../../2_Environment/Where/fly_io.md), [`2_Environment/Where/cloudflare_workers.md`](../../2_Environment/Where/cloudflare_workers.md).
 
 ### RULE-004 — Default storage is Azure project-based storage
 

@@ -2,7 +2,7 @@
 
 > **Stage 2 of 7 (Environment):** Product rules that all forks of delivery-pilot-template must follow. Read this when customizing the template for a new project.
 
-Related: [`navigation.md`](./navigation.md) · [`toolstack.md`](./toolstack.md) · [`README.md`](../README.md)
+Related: [`navigation.md`](./navigation.md) · [`toolstack.md`](./toolstack.md) · [`_README.md`](../../_README.md)
 
 ---
 
@@ -291,10 +291,10 @@ When forking delivery-pilot-template for a new project:
 ## Related Documentation
 
 - [`navigation.md`](./navigation.md) — Two-menu architecture deep dive
-- [`README.md`](../README.md) — Template overview and product rules summary
-- [`1_Real_Unknown/What/okrs.md`](../1_Real_Unknown/What/okrs.md) — OKR framework and examples
-- [`5_Symbols/toolbox/nav_sync.py`](../5_Symbols/toolbox/nav_sync.py) — Navigation sync script
-- [`.claude/skills/nav-sync/SKILL.md`](../.claude/skills/nav-sync/SKILL.md) — Nav sync skill for agents
+- [`_README.md`](../../_README.md) — Template overview and product rules summary
+- [`1_Real_Unknown/What/okrs.md`](../../1_Real_Unknown/What/okrs.md) — OKR framework and examples
+- [`5_Symbols/toolbox/nav_sync.py`](../../5_Symbols/toolbox/nav_sync.py) — Navigation sync script
+- [`.claude/skills/nav-sync/SKILL.md`](../../.claude/skills/nav-sync/SKILL.md) — Nav sync skill for agents
 
 ---
 
@@ -308,4 +308,4 @@ AI agents working on forks must:
 5. Run `nav_sync.py` after menu changes
 6. Validate with smoke tests before committing
 
-See [`5_Symbols/rules/agent_operating_rules.md`](../5_Symbols/rules/agent_operating_rules.md) for full agent rules.
+See [`5_Symbols/rules/agent_operating_rules.md`](../../5_Symbols/rules/agent_operating_rules.md) for full agent rules.

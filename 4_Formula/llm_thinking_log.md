@@ -1303,6 +1303,35 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - Formulated `SPEC-024` in `4_Formula/specs.md`.
 - 12/12 smoke tests pass green. Ready for commit and push.
 
+---
+
+## 2026-10-15 — TSK-050: Stage 2 Environment Spatiotemporal Partitioning: When & Where (SPEC-025)
+
+### 📥 Inputs & Requirements
+- **User Prompt:** "collect the environment related markdowns into 2 folders in 2_Environment in When and Where folders. mention in the readme they would be placed there.commit and push"
+- **Stage Focus:** Environment Agent (partition markdowns into `When/` and `Where/`, write index READMEs, update stage root `_README.md`) + Formula Agent (SPEC-025 spec definition) + Symbols Agent (nav_sync update, link remediation) + Test Agent (validation).
+
+### 🔍 Analysis & Discoveries
+1. **Taxonomy Alignment**:
+   - Stage 1 partitions intent into the Golden Circle: `Why/`, `How/`, and `What/`.
+   - Stage 2 natural complement: `When/` (temporal lifecycles, execution triggers, tool selection criteria, architecture rules) and `Where/` (spatial execution targets, edge compute, container backends, database, telemetry, local dev).
+2. **Directory Distribution**:
+   - `When/`: `architecture.md`, `dependencies.md`, `extensions.md`, `github_agent.md`, `llm_tools.md`, `mcp.md`, `navigation.md`, `product_rules.md`, `setup_ai.md`, `superskills.md`, `tools.md`, `toolstack.md`, plus `_README.md`.
+   - `Where/`: `axiom.md`, `cloudflare_workers.md`, `fly_io.md`, `github_pages.md`, `local_server.md`, `setup_azure.md`, `setup_mac.md`, `setup_windows.md`, `supabase.md`, plus `_README.md`.
+   - Stage root: `2_Environment/_README.md` documents the taxonomy, points to both folders, and provides the AI setup & testing checklist.
+3. **Link Remediation**:
+   - Relocation caused 28 relative path references to break. Using `check_links.py`, all 28 were identified and remediated to point to `../Where/...`, `../../1_Real_Unknown/...`, or `../../.env.example`.
+4. **Navigation & Mindmap**:
+   - Updated `5_Symbols/toolbox/nav_sync.py` to organize the debug menu under `   ├─ ⏰ When` and `   └─ 🌐 Where` trees (84 synced entries).
+   - Updated `1_Real_Unknown/How/mindmap.md` S2 subgraph and connection matrix to reflect the spatiotemporal partitioning.
+
+### 📤 Outcomes & Decisions
+- `2_Environment/` clean, modular When/Where architecture established.
+- `SPEC-025` formulated in `4_Formula/specs.md`.
+- `check_links.py` validates 100 files with 0 broken links.
+- 12/12 smoke tests pass green.
+
+
 
 
 

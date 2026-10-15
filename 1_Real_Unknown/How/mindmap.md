@@ -16,12 +16,11 @@ flowchart TD
         S1_WHY --> S1_WHAT --> S1_HOW
     end
 
-    subgraph S2["2️⃣ Environment (Context & Tooling)"]
-        S2_ARCH["🏗️ architecture.md · product_rules.md"]
-        S2_TOOLS["🧰 tools.md · toolstack.md · dependencies.md"]
-        S2_EXT["🔌 extensions.md (Excalidraw, Mermaid, Markdown Preview)"]
-        S2_CLOUD["☁️ setup_azure.md · fly_io.md<br/>cloudflare_workers.md · supabase.md"]
-        S2_ARCH --- S2_TOOLS --- S2_EXT --- S2_CLOUD
+    subgraph S2["2️⃣ Environment (When & Where Context)"]
+        direction TB
+        S2_WHEN["⏰ When: When/architecture.md<br/>When/product_rules.md · When/tools.md<br/>When/toolstack.md · When/dependencies.md<br/>When/setup_ai.md · When/llm_tools.md<br/>When/navigation.md · When/extensions.md"]
+        S2_WHERE["🌐 Where: Where/github_pages.md<br/>Where/cloudflare_workers.md · Where/fly_io.md<br/>Where/supabase.md · Where/axiom.md<br/>Where/setup_azure.md · Where/local_server.md<br/>Where/setup_mac.md · Where/setup_windows.md"]
+        S2_WHEN <--> S2_WHERE
     end
 
     subgraph S3["3️⃣ Simulation (Vision & Wireframes)"]
@@ -78,7 +77,7 @@ flowchart TD
 | **1️⃣ Real Unknown: Why** | `Why/problem_statement.md`<br/>`Why/requirements.md`<br/>`Why/hypotheses.md`<br/>`Why/questions.md` | Customer pain, user prompts, market gaps | `1_Real_Unknown/What/okrs.md`<br/>`3_Simulation/` (Wireframes)<br/>`4_Formula/specs.md` | Grounds the entire project in actual need. Prevents building solutions for unverified or ill-defined problems. |
 | **1️⃣ Real Unknown: What** | `What/okrs.md`<br/>`What/tasks.md`<br/>`What/todos.md`<br/>`What/prompts.md` | Problem statements & functional requirements | `1_Real_Unknown/How/kanban.md`<br/>All stage agents | Quantifies success metrics and organizes tasks into multi-agent coordinated phases. Logs all input prompts for complete auditability. |
 | **1️⃣ Real Unknown: How** | `How/kanban.md`<br/>`How/costs.md`<br/>`How/risks.md`<br/>`How/sanity_check_report.md`<br/>`How/mindmap.md`<br/>`How/patterns.md`<br/>`How/ai_harness.md` | Phase tracking, cloud spend, error feedback | `2_Environment/architecture.md`<br/>Real Agent Coordinator | Tracks workflow velocity, monitors resource spend, registers active/mitigated risks, and documents structural lineage, architectural patterns & AI harness triad. |
-| **2️⃣ Environment** | `architecture.md`<br/>`tools.md`<br/>`extensions.md`<br/>`setup_*.md` | `1_Real_Unknown/` requirements & constraints | `3_Simulation/`<br/>`4_Formula/`<br/>Developer environment | Establishes infrastructure, toolstack rationale, IDE extensions (Excalidraw, Mermaid, Markdown Preview), and zero-secret Azure Key Vault policies. |
+| **2️⃣ Environment** | `When/` (architecture, tools, extensions)<br/>`Where/` (fly_io, cloudflare, azure, local) | `1_Real_Unknown/` requirements & constraints | `3_Simulation/`<br/>`4_Formula/`<br/>Developer environment | Establishes infrastructure, toolstack rationale, IDE extensions (Excalidraw, Mermaid, Markdown Preview), and zero-secret Azure Key Vault policies partitioned across temporal When rules and spatial Where environments. |
 | **3️⃣ Simulation** | `feature_wireframe.excalidraw`<br/>`design_workflow.md`<br/>`carousel_config.json` | `1_Real_Unknown` problems & OKRs | `4_Formula/specs.md` (SPEC-016 Gate)<br/>`index.html` carousel | "Make the invisible visible before writing code". Excalidraw wireframes translate problems into visual workflows, keeping design and specs in strict sync. |
 | **4️⃣ Formula** | `specs.md`<br/>`decisions.md`<br/>`llm_thinking_log.md`<br/>`harness.md` | `3_Simulation/` wireframes & `2_Environment/` tools | `5_Symbols/` implementation gate | Mandatory thinking & planning gate. Specs define behavior before coding, and post-delivery formulation ensures specifications reflect reality (RULE-001). |
 | **5️⃣ Symbols: project/** | Application source code, APIs, backend services | `4_Formula/specs.md`<br/>`5_Symbols/rules/` | `7_Testing_Known/` | Houses product-specific implementation, cleanly decoupled from the underlying delivery-pilot framework. |

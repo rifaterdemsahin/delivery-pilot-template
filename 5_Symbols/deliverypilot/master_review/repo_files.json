@@ -38,7 +38,7 @@
     "path": "1_Real_Unknown/How/mindmap.md",
     "name": "mindmap.md",
     "ext": ".md",
-    "size": 7907,
+    "size": 8163,
     "category": "Documentation"
   },
   {
@@ -80,14 +80,14 @@
     "path": "1_Real_Unknown/What/prompts.md",
     "name": "prompts.md",
     "ext": ".md",
-    "size": 38715,
+    "size": 40490,
     "category": "Documentation"
   },
   {
     "path": "1_Real_Unknown/What/tasks.md",
     "name": "tasks.md",
     "ext": ".md",
-    "size": 12347,
+    "size": 12728,
     "category": "Documentation"
   },
   {
@@ -136,133 +136,7 @@
     "path": "2_Environment/_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 4654,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/architecture.md",
-    "name": "architecture.md",
-    "ext": ".md",
-    "size": 4654,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/axiom.md",
-    "name": "axiom.md",
-    "ext": ".md",
-    "size": 3378,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/cloudflare_workers.md",
-    "name": "cloudflare_workers.md",
-    "ext": ".md",
-    "size": 2874,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/dependencies.md",
-    "name": "dependencies.md",
-    "ext": ".md",
-    "size": 6406,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/extensions.md",
-    "name": "extensions.md",
-    "ext": ".md",
-    "size": 5855,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/fly_io.md",
-    "name": "fly_io.md",
-    "ext": ".md",
-    "size": 6485,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/github_agent.md",
-    "name": "github_agent.md",
-    "ext": ".md",
-    "size": 6385,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/github_pages.md",
-    "name": "github_pages.md",
-    "ext": ".md",
-    "size": 3398,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/llm_tools.md",
-    "name": "llm_tools.md",
-    "ext": ".md",
-    "size": 6492,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/local_server.md",
-    "name": "local_server.md",
-    "ext": ".md",
-    "size": 128,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/mcp.md",
-    "name": "mcp.md",
-    "ext": ".md",
-    "size": 3429,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/navigation.md",
-    "name": "navigation.md",
-    "ext": ".md",
-    "size": 7027,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/product_rules.md",
-    "name": "product_rules.md",
-    "ext": ".md",
-    "size": 9537,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/setup_ai.md",
-    "name": "setup_ai.md",
-    "ext": ".md",
-    "size": 3101,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/setup_azure.md",
-    "name": "setup_azure.md",
-    "ext": ".md",
-    "size": 2547,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/setup_mac.md",
-    "name": "setup_mac.md",
-    "ext": ".md",
-    "size": 1204,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/setup_windows.md",
-    "name": "setup_windows.md",
-    "ext": ".md",
-    "size": 1214,
-    "category": "Documentation"
-  },
-  {
-    "path": "2_Environment/supabase.md",
-    "name": "supabase.md",
-    "ext": ".md",
-    "size": 3526,
+    "size": 5849,
     "category": "Documentation"
   },
   {
@@ -280,24 +154,164 @@
     "category": "Config"
   },
   {
-    "path": "2_Environment/superskills.md",
+    "path": "2_Environment/When/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 3185,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/architecture.md",
+    "name": "architecture.md",
+    "ext": ".md",
+    "size": 4654,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/dependencies.md",
+    "name": "dependencies.md",
+    "ext": ".md",
+    "size": 6406,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/extensions.md",
+    "name": "extensions.md",
+    "ext": ".md",
+    "size": 5855,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/github_agent.md",
+    "name": "github_agent.md",
+    "ext": ".md",
+    "size": 6385,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/llm_tools.md",
+    "name": "llm_tools.md",
+    "ext": ".md",
+    "size": 6492,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/mcp.md",
+    "name": "mcp.md",
+    "ext": ".md",
+    "size": 3429,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/navigation.md",
+    "name": "navigation.md",
+    "ext": ".md",
+    "size": 7027,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/product_rules.md",
+    "name": "product_rules.md",
+    "ext": ".md",
+    "size": 9559,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/setup_ai.md",
+    "name": "setup_ai.md",
+    "ext": ".md",
+    "size": 3101,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/When/superskills.md",
     "name": "superskills.md",
     "ext": ".md",
     "size": 4524,
     "category": "Documentation"
   },
   {
-    "path": "2_Environment/tools.md",
+    "path": "2_Environment/When/tools.md",
     "name": "tools.md",
     "ext": ".md",
-    "size": 5947,
+    "size": 6051,
     "category": "Documentation"
   },
   {
-    "path": "2_Environment/toolstack.md",
+    "path": "2_Environment/When/toolstack.md",
     "name": "toolstack.md",
     "ext": ".md",
     "size": 6998,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/_README.md",
+    "name": "_README.md",
+    "ext": ".md",
+    "size": 2934,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/axiom.md",
+    "name": "axiom.md",
+    "ext": ".md",
+    "size": 3378,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/cloudflare_workers.md",
+    "name": "cloudflare_workers.md",
+    "ext": ".md",
+    "size": 2874,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/fly_io.md",
+    "name": "fly_io.md",
+    "ext": ".md",
+    "size": 6485,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/github_pages.md",
+    "name": "github_pages.md",
+    "ext": ".md",
+    "size": 3398,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/local_server.md",
+    "name": "local_server.md",
+    "ext": ".md",
+    "size": 128,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/setup_azure.md",
+    "name": "setup_azure.md",
+    "ext": ".md",
+    "size": 2547,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/setup_mac.md",
+    "name": "setup_mac.md",
+    "ext": ".md",
+    "size": 1204,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/setup_windows.md",
+    "name": "setup_windows.md",
+    "ext": ".md",
+    "size": 1214,
+    "category": "Documentation"
+  },
+  {
+    "path": "2_Environment/Where/supabase.md",
+    "name": "supabase.md",
+    "ext": ".md",
+    "size": 3526,
     "category": "Documentation"
   },
   {
@@ -402,7 +416,7 @@
     "path": "4_Formula/_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 3868,
+    "size": 3878,
     "category": "Documentation"
   },
   {
@@ -451,14 +465,14 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 95276,
+    "size": 97611,
     "category": "Documentation"
   },
   {
     "path": "4_Formula/logging_and_autofix.md",
     "name": "logging_and_autofix.md",
     "ext": ".md",
-    "size": 9208,
+    "size": 9226,
     "category": "Documentation"
   },
   {
@@ -472,7 +486,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 38879,
+    "size": 41155,
     "category": "Documentation"
   },
   {
@@ -514,7 +528,7 @@
     "path": "5_Symbols/deliverypilot/markdown_renderer.html",
     "name": "markdown_renderer.html",
     "ext": ".html",
-    "size": 26472,
+    "size": 26834,
     "category": "Pages"
   },
   {
@@ -549,7 +563,7 @@
     "path": "5_Symbols/rules/agent_operating_rules.md",
     "name": "agent_operating_rules.md",
     "ext": ".md",
-    "size": 7928,
+    "size": 7964,
     "category": "Rules"
   },
   {
@@ -605,7 +619,7 @@
     "path": "5_Symbols/toolbox/nav_sync.py",
     "name": "nav_sync.py",
     "ext": ".py",
-    "size": 7295,
+    "size": 7621,
     "category": "Toolbox"
   },
   {
@@ -885,7 +899,7 @@
     "path": "index.html",
     "name": "index.html",
     "ext": ".html",
-    "size": 33265,
+    "size": 33627,
     "category": "Pages"
   },
   {
@@ -906,7 +920,7 @@
     "path": "navigation_config.json",
     "name": "navigation_config.json",
     "ext": ".json",
-    "size": 7230,
+    "size": 7588,
     "category": "Config"
   },
   {
