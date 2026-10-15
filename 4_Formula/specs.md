@@ -151,16 +151,25 @@
 - **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `5_Symbols/rules/git_conventions.md`, `4_Formula/specs.md`, `4_Formula/llm_thinking_log.md`, `agents.md`
 - **Last Updated:** 2026-09-10
 
-### SPEC-012: Backend Deploy Target + Azure Project Storage
+### SPEC-012: Backend Deploy Target + Azure Project Storage (Default Cloudflare vs Stateful Fly.io)
 - **Status:** Active
-- **Description:** Apps with a backend deploy to Fly.io or Cloudflare Workers based on requirements. Heavy container workloads go to Fly.io. Both platforms take credentials from Azure Key Vault. Default file/blob storage is Azure project-based storage.
+- **Description:** Specifies the deployment target selection policy for application backends and packing strategies:
+  1. The **default deployment for systems with no state (stateless)** is **Cloudflare** (Cloudflare Workers / edge functions).
+  2. When there are **many HTML files and state is getting saved** (persistent sessions, volume state, multi-file artifact packing, long-running processes, Docker containers), the project uses **Fly.io** to manage packing, bundling, and deployments.
+  Both platforms load secrets from Azure Key Vault. Default file/blob persistence is Azure project-based storage.
 - **Key Behaviors:**
-  - Static frontends stay on GitHub Pages. Backend services choose **Cloudflare Workers** (lightweight, stateless, edge) or **Fly.io** (Docker / persistent / heavy containers).
-  - Heavy container requirements (Docker, filesystem, WebSockets, GPU, long-running jobs) **must** deploy to Fly.io.
-  - Fly.io and Cloudflare Workers load all credentials from **Azure Key Vault** — never from git, Worker source, Docker images, or committed config.
-  - **Default storage** is Azure project-based storage (Storage account / blob containers scoped to this project). Fly volumes, Cloudflare R2, local disk, and git LFS are not the default. Structured data may still use Supabase; exceptions go in `4_Formula/decisions.md`.
-- **Related Files:** `5_Symbols/rules/agent_operating_rules.md`, `2_Environment/fly_io.md`, `2_Environment/cloudflare_workers.md`, `2_Environment/setup_azure.md`, `2_Environment/architecture.md`, `4_Formula/specs.md` (SPEC-004)
-- **Last Updated:** 2026-09-10
+  - **Default Stateless Deployment (Cloudflare)**:
+    - Pure request/response APIs, edge routing, authentication token validation, caching layers, and webhooks with no persistent server state deploy by default to Cloudflare Workers.
+    - Static frontend pages with no backend logic stay on GitHub Pages.
+  - **Stateful & Multi-HTML Deployment (Fly.io)**:
+    - When an application involves **many HTML files** (e.g. multi-page generated suites, simulation carousels, documentation bundles, artifact archives) AND **state is getting saved** (local disk/volume persistence, SQLite/embedded databases, persistent processes, background task queues, WebSockets, or runtime state packing), the project uses **Fly.io**.
+    - Fly.io packages the large collection of HTML files alongside the state-saving backend runtime into a single Dockerized container deployment unit with persistent volume mounts (`fly.toml`, Dockerfile).
+  - **Credentials from Azure Key Vault**:
+    - Both Fly.io and Cloudflare Workers load all credentials from **Azure Key Vault** at deploy or runtime — never from git, Worker source, Docker images, or committed config files.
+  - **Default Blob Storage (Azure Storage)**:
+    - Default storage for files and blobs is **Azure project-based storage** (Storage account / blob containers scoped to this project). Fly volumes, Cloudflare R2, local disk, and git LFS are not the default. Structured relational data uses Supabase (Postgres); exceptions go in `4_Formula/decisions.md`.
+- **Related Files:** `5_Symbols/rules/agent_operating_rules.md` (RULE-003, RULE-004), `2_Environment/Where/fly_io.md`, `2_Environment/Where/cloudflare_workers.md`, `2_Environment/Where/setup_azure.md`, `2_Environment/When/architecture.md`, `4_Formula/specs.md` (SPEC-004)
+- **Last Updated:** 2026-10-15
 
 ### SPEC-013: Allowed Root Folders (Move Extras Into Stages)
 - **Status:** Active

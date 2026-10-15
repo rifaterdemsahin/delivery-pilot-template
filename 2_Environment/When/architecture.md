@@ -7,14 +7,14 @@
 
 ## 🗺️ High-Level System Architecture
 
-This project is built as a highly responsive, modern static application on **GitHub Pages**. Apps with a backend deploy to **Cloudflare Workers** or **Fly.io** based on requirements (RULE-003 / SPEC-012): lightweight/stateless backends go to Workers; **heavy container** workloads go to Fly.io. Both take credentials from **Azure Key Vault**. Default file/blob storage is **Azure project-based storage** (RULE-004).
+This project is built as a highly responsive, modern static application on **GitHub Pages**. Apps with a backend deploy to **Cloudflare Workers** or **Fly.io** based on requirements (RULE-003 / SPEC-012): the **default deployment for systems with no state is Cloudflare Workers**; when there are **many HTML files and state is getting saved** (or heavy container requirements), the project uses **Fly.io** to manage packing, bundling, and deployments. Both take credentials from **Azure Key Vault**. Default file/blob storage is **Azure project-based storage** (RULE-004).
 
 ```mermaid
 graph TD
     User["🌐 End User (Browser)"]
     GitHubPages["📦 GitHub Pages (Frontend)"]
-    CloudflareWorkers["⚡ Cloudflare Workers (light backend / edge)"]
-    FlyIO["🐳 Fly.io (heavy containers)"]
+    CloudflareWorkers["⚡ Cloudflare Workers (default: no state / edge)"]
+    FlyIO["🐳 Fly.io (many HTML files + state saved / containers)"]
     AzureStorage["📁 Azure project storage (default blobs)"]
     Supabase["🗄️ Supabase (Postgres / Auth / Realtime)"]
     Axiom["📊 Axiom (Server-Side Logs)"]
@@ -45,18 +45,18 @@ graph TD
 ### 1. Frontend Static Layer (`index.html`)
 - **Hosting:** Hosted directly at the root of the repository on GitHub Pages.
 - **Styling & Assets:** Vanilla CSS styling, Fira Code / Outfit / Inter fonts, and FontAwesome icons loaded via CDN.
-- **Routing:** Handled dynamically via `5_Symbols/markdown_renderer.html` using query parameters (e.g. `?file=1_Real_Unknown/kanban.md`).
+- **Routing:** Handled dynamically via `5_Symbols/deliverypilot/markdown_renderer.html` using query parameters (e.g. `?file=1_Real_Unknown/How/kanban.md`).
 - **Menu System:**
   - **Project Menu:** Always visible, reads from `navigation_config.json`.
   - **Debug Menu:** Configured dynamically, toggled via a floating action button on the bottom right. Persists using cookie values (`debug=true`).
   - **Console Logger:** `debugLog` utility logs loading operations, API integrations, and routing info for developers if debug mode is active.
 
-### 2. Backend — Cloudflare Workers (`2_Environment/cloudflare_workers.md`)
-- Target for **lightweight, stateless** backends and edge logic (auth, routing, caching, rate limiting).
+### 2. Backend — Cloudflare Workers ([`cloudflare_workers.md`](../Where/cloudflare_workers.md))
+- **Default deployment target for systems with no state (stateless backends)** and edge logic (auth, routing, caching, rate limiting).
 - Credentials from Azure Key Vault (RULE-003).
 
-### 3. Backend — Fly.io (`2_Environment/fly_io.md`)
-- Target for **heavy container** backends: Docker, persistent processes, filesystems, WebSockets, GPU, long-running jobs.
+### 3. Backend — Fly.io ([`fly_io.md`](../Where/fly_io.md))
+- **Deployment target when there are many HTML files and state is getting saved**, as well as heavy container backends: Docker, persistent processes, volume filesystems, WebSockets, GPU, long-running jobs.
 - Credentials from Azure Key Vault (RULE-003).
 
 ### 4. Database & Data Layer (`2_Environment/supabase.md`)

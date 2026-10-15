@@ -1368,6 +1368,39 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - 12/12 smoke tests pass green (`smoke_test.py`).
 - `repo_files.json` regenerated with 142 tracked assets.
 
+---
+
+## 2026-10-15 — TSK-052: Deployment Specs: Default Cloudflare (No-State) vs Fly.io (Many HTML Files + State Saved) (SPEC-012)
+
+### 📥 Inputs & Requirements
+- **User Prompt:** "mention in the specs the default deployment with no state systems is cloudflare but when there is many html files and state getting saved than the project uses fly.io to manage packing and deployments > update related files in the template"
+- **Stage Focus:** Formula Agent (update `SPEC-012` in `4_Formula/specs.md`) + Symbols Agent (update `RULE-003` in `agent_operating_rules.md`) + Environment Agent (update `architecture.md`, `cloudflare_workers.md`, `fly_io.md`, `tools.md`, `toolstack.md`) + Real Agent (update `tasks.md`, `prompts.md`, `_README.md`, `agents.md`, `kilocode.md`) + Test Agent (`logic.md` & smoke verification).
+
+### 🔍 Analysis & Decisions
+1. **Architectural Gating & Decision Rules**:
+   - Explicitly codify the deployment target boundary:
+     - **Default / No-State Systems**: Cloudflare (Workers / edge compute) is the default deployment target for stateless systems (pure request/response, edge functions, auth, caching, API gateways) where no server state needs to be maintained.
+     - **Many HTML Files + State Saved**: Fly.io is selected when an application involves many HTML files (e.g. multi-page generated suites, simulation carousels, documentation bundles, artifact archives) AND state is getting saved (persistent volumes, local disk/session state, background queues, SQLite databases, long-running processes).
+   - In this mode, Fly.io provides Dockerized container packaging that bundles the collection of HTML assets with the state-saving backend runtime, managed via `fly.toml` and persistent disk mounts.
+2. **Template Document Alignment**:
+   - `4_Formula/specs.md`: Refactored `SPEC-012: Backend Deploy Target + Azure Project Storage (Default Cloudflare vs Stateful Fly.io)`.
+   - `5_Symbols/rules/agent_operating_rules.md`: Updated `RULE-003` description and requirements table; fixed relative paths to When/Where subfolders.
+   - `2_Environment/When/architecture.md`: Updated Mermaid diagram and Core Components sections to highlight default Cloudflare for no-state vs Fly.io for many HTML files + state saved.
+   - `2_Environment/Where/cloudflare_workers.md`: Documented as default for no-state systems.
+   - `2_Environment/Where/fly_io.md`: Documented as deployment target for many HTML files with state saved.
+   - `2_Environment/When/tools.md` & `toolstack.md`: Updated stack tables and rationale.
+   - `_README.md`: Updated `RULE-003` in both the `## Refactor` and `## Init` prompts.
+   - `agents.md` & `kilocode.md`: Updated `RULE-003` in standing operating rules summary.
+   - `7_Testing_Known/logic.md`: Updated row 2 premise/conclusion chain.
+
+### 📤 Outcomes & Decisions
+- Clear, unambiguous deployment policy across all 7 stages.
+- `SPEC-012` updated in `4_Formula/specs.md`.
+- `RULE-003` updated in `5_Symbols/rules/agent_operating_rules.md`.
+- 102 markdown and HTML files verified with 0 broken links (`check_links.py`).
+- 12/12 smoke tests pass green (`smoke_test.py`).
+
+
 
 
 

@@ -2,12 +2,13 @@
 
 ## What is it?
 
-Cloudflare Workers is a serverless execution environment that runs at the edge — on Cloudflare's global network of 300+ data centers. Code executes close to users, reducing latency. In this project it is the **deployment target for lightweight, stateless backends** and edge logic (RULE-003 / SPEC-012). Heavy container workloads go to Fly.io. Both platforms take credentials from **Azure Key Vault**.
+Cloudflare Workers is a serverless execution environment that runs at the edge — on Cloudflare's global network of 300+ data centers. Code executes close to users, reducing latency. In this project it is the **default deployment target for systems with no state (stateless backends)** and edge logic (RULE-003 / SPEC-012). When there are many HTML files and state is getting saved, the project uses **Fly.io** instead to manage packing and deployments. Both platforms take credentials from **Azure Key Vault**.
 
 ## Use Cases
 
 | Use Case | Why Cloudflare Workers |
 |----------|----------------------|
+| **Default No-State Backend** | Standard choice for stateless request/response APIs and edge functions |
 | **API Gateway** | Route, transform, and throttle requests at the edge before hitting your backend |
 | **Authentication** | Validate JWTs, API keys, or session tokens at the edge — reject unauthorized traffic early |
 | **Geo-based Routing** | Serve different content or route to different backends based on user location |
@@ -18,6 +19,7 @@ Cloudflare Workers is a serverless execution environment that runs at the edge �
 
 ## When to Choose Cloudflare Workers
 
+- You have a **system with no state** (stateless, pure request/response, edge functions)
 - You need **ultra-low latency** (sub-50ms response times)
 - Your backend logic is **lightweight** (no long-running processes, no heavy computation)
 - You want **zero cold starts** (Workers start in <1ms)
@@ -26,8 +28,9 @@ Cloudflare Workers is a serverless execution environment that runs at the edge �
 
 ## When NOT to Choose Cloudflare Workers
 
+- You have **many HTML files and state getting saved** — use **Fly.io** to manage packing, volume persistence, and deployments
 - You need **persistent connections** (WebSockets, SSE) — use Fly.io instead
-- Your workload requires **GPU or heavy compute** — use a dedicated server
+- Your workload requires **GPU or heavy compute** — use Fly.io or a dedicated server
 - You need **file system access** or local storage — Workers are stateless
 - You're running **long-running tasks** (>30s) — Workers have a CPU time limit
 

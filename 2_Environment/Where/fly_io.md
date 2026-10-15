@@ -2,12 +2,13 @@
 
 ## What is it?
 
-Fly.io is a platform for **container-based deployments** of full-stack applications and services close to users. It deploys **Docker containers** to edge locations worldwide, giving you persistent compute with global distribution. In this project it is the **deployment target for backends with heavy container requirements** (RULE-003 / SPEC-012). Lightweight, stateless backends go to Cloudflare Workers instead. Both platforms take credentials from **Azure Key Vault**.
+Fly.io is a platform for **container-based deployments** of full-stack applications and services close to users. It deploys **Docker containers** to edge locations worldwide, giving you persistent compute with global distribution. In this project it is the **deployment target used when there are many HTML files and state is getting saved**, as well as backends with heavy container requirements (RULE-003 / SPEC-012). The default deployment for systems with no state is Cloudflare Workers. When packaging and packing many HTML files alongside a state-saving backend (filesystems, volumes, persistent sessions, long-running processes), Fly.io manages containerized packaging, bundling, and deployments. Both platforms take credentials from **Azure Key Vault**.
 
 ## Use Cases
 
 | Use Case | Why Fly.io |
 |----------|-----------|
+| **Many HTML Files + Saved State** | Package, bundle, and serve multi-page HTML suites, simulation carousels, and artifact archives while persisting state on volumes |
 | **Python API Server** | Run Flask/FastAPI apps with persistent processes — no cold starts |
 | **Background Jobs** | Execute long-running tasks (data processing, scraping, ML inference) |
 | **WebSocket Servers** | Real-time features (chat, live updates, collaboration) with persistent connections |
@@ -18,8 +19,9 @@ Fly.io is a platform for **container-based deployments** of full-stack applicati
 
 ## When to Choose Fly.io
 
-- You need **persistent processes** (not just request/response)
-- Your backend requires **file system access** or local storage
+- You have **many HTML files and state is getting saved** across runs or user interactions
+- You need **persistent processes** and file packing (not just stateless request/response)
+- Your backend requires **file system access**, persistent volumes, or local SQLite/disk storage
 - You're running **Python, Node, Go, Rust** — any Docker-based app
 - You need **WebSockets** or **Server-Sent Events**
 - You want **global deployment** with minimal config
@@ -27,8 +29,8 @@ Fly.io is a platform for **container-based deployments** of full-stack applicati
 
 ## When NOT to Choose Fly.io
 
-- You're serving **only static files** — use GitHub Pages
-- Your logic is **lightweight and stateless** — use Cloudflare Workers
+- You're serving **only static files with no backend** — use GitHub Pages
+- Your system has **no state (stateless, pure request/response)** — use **Cloudflare Workers** (default)
 - You need **enterprise compliance** (HIPAA, SOC 2) out of the box — consider Azure/AWS
 - You want **zero DevOps** — Fly.io requires some Docker knowledge
 

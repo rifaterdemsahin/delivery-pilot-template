@@ -9,8 +9,8 @@
 | Layer | Tool | Role | Detail Doc |
 |-------|------|------|------------|
 | **Frontend hosting** | GitHub Pages | Static site (`index.html`, docs, mockups) | [`github_pages.md`](../Where/github_pages.md) |
-| **Light backend / edge** | Cloudflare Workers | Stateless backends + auth, routing, caching (RULE-003) | [`cloudflare_workers.md`](../Where/cloudflare_workers.md) |
-| **Heavy container backend** | Fly.io | Docker / persistent / GPU / long-running jobs (RULE-003) | [`fly_io.md`](../Where/fly_io.md) |
+| **Light backend / edge** | Cloudflare Workers | Default deployment for no-state systems + auth, routing, caching (RULE-003) | [`cloudflare_workers.md`](../Where/cloudflare_workers.md) |
+| **Heavy container backend** | Fly.io | When many HTML files & state getting saved / Docker / persistent / GPU (RULE-003) | [`fly_io.md`](../Where/fly_io.md) |
 | **Default file/blob storage** | Azure project storage | Project-scoped Storage account / blobs (RULE-004) | [`setup_azure.md`](../Where/setup_azure.md) |
 | **Database & data layer** | Supabase | Managed Postgres, auth, realtime, pgvector | [`supabase.md`](../Where/supabase.md) |
 | **Server-side logs** | Axiom | Centralized logging, tracing, alerting, dashboards | [`axiom.md`](../Where/axiom.md) |

@@ -147,7 +147,7 @@ Read first: agents.md and 5_Symbols/rules/agent_operating_rules.md (RULE-001 thr
 
 RULE-001 — After each change, formulate what you did as a spec in 4_Formula/specs.md. Log reasoning in 4_Formula/llm_thinking_log.md.
 RULE-002 — After every logical change, commit and push. Do not batch unrelated work. Never commit secrets.
-RULE-003 — Apps with a backend deploy to Cloudflare Workers (lightweight, stateless) or Fly.io (heavy containers). Both take credentials from Azure Key Vault. Static frontends stay on GitHub Pages.
+RULE-003 — Default deployment with no state systems is Cloudflare Workers; when there are many HTML files and state getting saved, use Fly.io to manage packing and deployments. Both take credentials from Azure Key Vault. Static frontends stay on GitHub Pages.
 RULE-004 — Default storage is Azure project-based storage with an isolated project container (e.g. dp-<project-name>). Do not default to Fly volumes, R2, or git LFS.
 RULE-005 — Allowed root folders only:
   .claude/skills
@@ -209,7 +209,7 @@ Read first: agents.md and 5_Symbols/rules/agent_operating_rules.md (RULE-001 thr
 
 RULE-001 — Formulate what you did as a spec in 4_Formula/specs.md. Log reasoning in 4_Formula/llm_thinking_log.md.
 RULE-002 — After every logical change, commit and push. Never commit secrets.
-RULE-003 — Backends: Cloudflare Workers (light) or Fly.io (heavy containers). Credentials from Azure Key Vault.
+RULE-003 — Default deployment with no state is Cloudflare Workers; when many HTML files and state getting saved, use Fly.io to manage packing and deployments. Credentials from Azure Key Vault.
 RULE-004 — Default storage is Azure project-based storage (isolated project container dp-<project-name>).
 RULE-005 — Allowed root folders only: .claude/skills, .github/workflows, .kilo/skills, 1_Real_Unknown … 7_Testing_Known. Move extras into those. Keep index.html, _README.md, robots.txt, sitemap.xml, navigation_config.json, agents.md at the repo root.
 

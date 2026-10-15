@@ -42,16 +42,16 @@ Coordinator: [`agents.md`](../../agents.md) · Specs: [`4_Formula/specs.md`](../
 - [ ] No secrets in the diff
 - [ ] Debug menu synced if a markdown file was added, renamed, or deleted
 
-### RULE-003 — Backend deploy: Fly.io or Cloudflare Workers
+### RULE-003 — Backend deploy: Default Cloudflare for no-state; Fly.io for many HTML files + state saved
 
-> Apps with a backend deploy to **Fly.io** or **Cloudflare Workers**, chosen from the app's requirements. Heavy container requirements go to **Fly.io**. Both take credentials from **Azure Key Vault**.
+> The default deployment with **no state systems** is **Cloudflare** (Cloudflare Workers / edge functions). When there are **many HTML files and state is getting saved**, the project uses **Fly.io** to manage packing, bundling, and deployments. Both platforms take credentials from **Azure Key Vault**.
 
 Pick one backend target per service (static frontends stay on GitHub Pages):
 
 | Requirement | Deploy to |
 |-------------|-----------|
-| Lightweight, stateless, edge (auth, routing, caching, short request/response) | **Cloudflare Workers** |
-| Heavy containers — Docker, persistent processes, filesystems, WebSockets, GPU, long-running jobs | **Fly.io** |
+| **Default / No state systems** — lightweight, stateless, edge (auth, routing, caching, short request/response, edge functions) | **Cloudflare Workers** |
+| **Many HTML files & state getting saved** — persistent processes, filesystems, volumes, dynamic HTML bundling, WebSockets, GPU, long-running jobs | **Fly.io** |
 
 - Do not invent a third backend host unless Environment Agent documents it and Formula specs it.
 - **Credentials:** Fly.io and Cloudflare Workers load secrets from **Azure Key Vault** at deploy or runtime. Never bake keys into Worker code, Docker images, `wrangler.toml`, `fly.toml`, or git. See [`2_Environment/Where/setup_azure.md`](../../2_Environment/Where/setup_azure.md), [`2_Environment/Where/fly_io.md`](../../2_Environment/Where/fly_io.md), [`2_Environment/Where/cloudflare_workers.md`](../../2_Environment/Where/cloudflare_workers.md).
@@ -143,7 +143,7 @@ These live in the coordinator (`agents.md`) and the rest of this folder. This fi
 | Commit message format | `git_conventions.md` |
 | Two-menu navigation + nav sync | `4_Formula/navigation.md`, `5_Symbols/toolbox/nav_sync.py` |
 | Secrets never in git | Azure Key Vault; `.env.example` only |
-| Backend host (Workers vs Fly.io) | RULE-003; `2_Environment/fly_io.md`, `2_Environment/cloudflare_workers.md` |
+| Backend host (Workers vs Fly.io) | RULE-003; `../../2_Environment/Where/fly_io.md`, `../../2_Environment/Where/cloudflare_workers.md` |
 | Default file/blob storage | RULE-004; Azure project-based storage |
 | Allowed root folders; move extras | RULE-005; `file_organization.md` |
 

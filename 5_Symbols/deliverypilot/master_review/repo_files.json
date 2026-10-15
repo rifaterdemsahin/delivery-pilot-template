@@ -80,14 +80,14 @@
     "path": "1_Real_Unknown/What/prompts.md",
     "name": "prompts.md",
     "ext": ".md",
-    "size": 40490,
+    "size": 43640,
     "category": "Documentation"
   },
   {
     "path": "1_Real_Unknown/What/tasks.md",
     "name": "tasks.md",
     "ext": ".md",
-    "size": 12728,
+    "size": 13607,
     "category": "Documentation"
   },
   {
@@ -164,7 +164,7 @@
     "path": "2_Environment/When/architecture.md",
     "name": "architecture.md",
     "ext": ".md",
-    "size": 4654,
+    "size": 5001,
     "category": "Documentation"
   },
   {
@@ -234,14 +234,14 @@
     "path": "2_Environment/When/tools.md",
     "name": "tools.md",
     "ext": ".md",
-    "size": 6051,
+    "size": 6097,
     "category": "Documentation"
   },
   {
     "path": "2_Environment/When/toolstack.md",
     "name": "toolstack.md",
     "ext": ".md",
-    "size": 6998,
+    "size": 7075,
     "category": "Documentation"
   },
   {
@@ -262,14 +262,14 @@
     "path": "2_Environment/Where/cloudflare_workers.md",
     "name": "cloudflare_workers.md",
     "ext": ".md",
-    "size": 2874,
+    "size": 3317,
     "category": "Documentation"
   },
   {
     "path": "2_Environment/Where/fly_io.md",
     "name": "fly_io.md",
     "ext": ".md",
-    "size": 6485,
+    "size": 7144,
     "category": "Documentation"
   },
   {
@@ -514,7 +514,7 @@
     "path": "4_Formula/llm_thinking_log.md",
     "name": "llm_thinking_log.md",
     "ext": ".md",
-    "size": 97611,
+    "size": 103754,
     "category": "Documentation"
   },
   {
@@ -535,7 +535,7 @@
     "path": "4_Formula/specs.md",
     "name": "specs.md",
     "ext": ".md",
-    "size": 43914,
+    "size": 45138,
     "category": "Documentation"
   },
   {
@@ -612,7 +612,7 @@
     "path": "5_Symbols/rules/agent_operating_rules.md",
     "name": "agent_operating_rules.md",
     "ext": ".md",
-    "size": 7964,
+    "size": 8235,
     "category": "Rules"
   },
   {
@@ -766,7 +766,7 @@
     "path": "7_Testing_Known/logic.md",
     "name": "logic.md",
     "ext": ".md",
-    "size": 2187,
+    "size": 2216,
     "category": "Documentation"
   },
   {
@@ -927,14 +927,14 @@
     "path": "_README.md",
     "name": "_README.md",
     "ext": ".md",
-    "size": 12837,
+    "size": 12980,
     "category": "Documentation"
   },
   {
     "path": "agents.md",
     "name": "agents.md",
     "ext": ".md",
-    "size": 40257,
+    "size": 40326,
     "category": "Documentation"
   },
   {
@@ -955,7 +955,7 @@
     "path": "kilocode.md",
     "name": "kilocode.md",
     "ext": ".md",
-    "size": 19866,
+    "size": 19935,
     "category": "Documentation"
   },
   {
@@ -976,7 +976,7 @@
     "path": "README.md",
     "name": "README.md",
     "ext": ".md",
-    "size": 12837,
+    "size": 12980,
     "category": "Documentation"
   },
   {
