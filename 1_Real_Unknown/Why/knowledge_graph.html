@@ -528,6 +528,280 @@
       transform: translateY(-2px);
     }
 
+    /* Floating Hover Popover ("Show Inside") */
+    .hover-preview-card {
+      position: absolute;
+      width: 320px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(139, 92, 246, 0.2);
+      z-index: 50;
+      pointer-events: auto;
+      transition: opacity 0.18s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .hover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hover-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 0;
+    }
+
+    .hover-stage-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--stage-real);
+      flex-shrink: 0;
+    }
+
+    .hover-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hover-badge {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      white-space: nowrap;
+    }
+
+    .hover-path {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--stage-env);
+      background: rgba(6, 182, 212, 0.08);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      border: 1px solid rgba(6, 182, 212, 0.15);
+      word-break: break-all;
+    }
+
+    .hover-content-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .hover-section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hover-excerpt {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+      max-height: 110px;
+      overflow-y: auto;
+    }
+
+    .hover-note-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px dashed rgba(245, 158, 11, 0.35);
+      border-radius: 6px;
+      padding: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .hover-note-text {
+      font-size: 0.8rem;
+      color: #fde68a;
+      line-height: 1.4;
+      max-height: 80px;
+      overflow-y: auto;
+    }
+
+    .hover-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 0.5rem;
+      margin-top: 0.15rem;
+    }
+
+    .hover-stats {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .hover-actions {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .hover-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+
+    .hover-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .hover-btn-note {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.35);
+      color: #fbbf24;
+    }
+    .hover-btn-note:hover {
+      background: #f59e0b;
+      color: #0b0f19;
+    }
+
+    /* Notes Section in Inspector */
+    .notes-card {
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .notes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .notes-title {
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fbbf24;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .notes-badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .notes-badge.saved {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .notes-badge.empty {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+
+    .note-textarea {
+      width: 100%;
+      min-height: 85px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      padding: 0.6rem;
+      resize: vertical;
+      outline: none;
+      line-height: 1.45;
+      transition: var(--transition);
+    }
+
+    .note-textarea:focus {
+      border-color: #fbbf24;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+    }
+
+    .note-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .note-timestamp {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .node-excerpt-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .node-excerpt-text {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+
+    .btn-notes-filter.active {
+      background: #f59e0b;
+      color: #0b0f19;
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+    }
+
     /* Debug Drawer */
     .debug-toggle-btn {
       position: fixed;
@@ -668,13 +942,21 @@
         <i class="fa-solid fa-triangle-exclamation"></i>
         <span>Orphans (<span id="orphanCountBadge">0</span>)</span>
       </button>
+      <button class="btn-tool btn-notes-filter" id="notesToggleBtn" title="Filter documents with notes">
+        <i class="fa-solid fa-pen-to-square" style="color: #fbbf24;"></i>
+        <span>Notes (<span id="headerNotesCount">0</span>)</span>
+      </button>
+      <button class="btn-tool" id="exportNotesBtn" title="Download all notes as Markdown">
+        <i class="fa-solid fa-file-export" style="color: #34d399;"></i>
+        <span>Export Notes</span>
+      </button>
       <button class="btn-tool" id="resetViewBtn" title="Reset view and center graph">
         <i class="fa-solid fa-arrows-to-circle"></i>
         <span>Reset Canvas</span>
       </button>
       <button class="btn-tool" id="exportGraphBtn" title="Export graph nodes & edges as JSON">
         <i class="fa-solid fa-download"></i>
-        <span>Export</span>
+        <span>Export Graph</span>
       </button>
     </div>
   </header>
@@ -695,6 +977,7 @@
       <!-- Stage Filters Overlay -->
       <div class="stage-filters-strip" id="stageFiltersStrip">
         <button class="filter-chip active" data-stage="ALL">All Documents</button>
+        <button class="filter-chip" data-stage="NOTES">📝 With Notes (<span id="filterNotesCount">0</span>)</button>
         <button class="filter-chip" data-stage="ORPHANS">⚠️ Orphans Only</button>
         <button class="filter-chip" data-stage="1_Real_Unknown">1. Real</button>
         <button class="filter-chip" data-stage="2_Environment">2. Env</button>
@@ -703,6 +986,40 @@
         <button class="filter-chip" data-stage="5_Symbols">5. Symbols</button>
         <button class="filter-chip" data-stage="6_Semblance">6. Semblance</button>
         <button class="filter-chip" data-stage="7_Testing_Known">7. Test</button>
+      </div>
+
+      <!-- Floating Hover Popover ("Show Inside") -->
+      <div class="hover-preview-card" id="hoverPreviewCard" style="display: none;">
+        <div class="hover-header">
+          <div class="hover-title-row">
+            <span class="hover-stage-dot" id="hoverStageDot"></span>
+            <span class="hover-title" id="hoverTitle">Document</span>
+          </div>
+          <span class="hover-badge" id="hoverStageBadge">Stage</span>
+        </div>
+        <div class="hover-path" id="hoverPath">path/to/file.md</div>
+        
+        <div class="hover-content-box">
+          <div class="hover-section-label"><i class="fa-solid fa-file-lines"></i> Inside Content:</div>
+          <div class="hover-excerpt" id="hoverExcerpt">Preview text...</div>
+        </div>
+
+        <div class="hover-note-box" id="hoverNoteBox" style="display: none;">
+          <div class="hover-section-label" style="color: #fbbf24;"><i class="fa-solid fa-pen-to-square"></i> Your Note:</div>
+          <div class="hover-note-text" id="hoverNoteText">Note content...</div>
+        </div>
+
+        <div class="hover-footer">
+          <span class="hover-stats" id="hoverStats">🔗 0 in · 0 out</span>
+          <div class="hover-actions">
+            <button class="hover-btn hover-btn-note" id="hoverAddNoteBtn" title="Take note on this document">
+              <i class="fa-solid fa-pen"></i> Take Note
+            </button>
+            <a href="#" class="hover-btn" id="hoverOpenDocBtn" target="_blank" title="Open in Markdown Renderer">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
       </div>
 
       <!-- Canvas Controls -->
@@ -746,6 +1063,14 @@
               <div class="metric-label">Wikilinks</div>
             </div>
           </div>
+
+          <!-- Inside Content Excerpt -->
+          <div class="node-excerpt-box">
+            <div style="font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;display:flex;align-items:center;gap:0.35rem;">
+              <i class="fa-solid fa-file-lines"></i> Inside Content Excerpt:
+            </div>
+            <div class="node-excerpt-text" id="inspectExcerpt">Click any node to see inside excerpt</div>
+          </div>
         </div>
 
         <!-- Orphan Warning & Fix Recommendation -->
@@ -787,6 +1112,29 @@
           </div>
           <div class="links-list" id="incomingLinksList">
             <div style="color:var(--text-muted);font-size:0.8rem;padding:0.5rem;">None</div>
+          </div>
+        </div>
+
+        <!-- Document Notes Card -->
+        <div class="notes-card">
+          <div class="notes-header">
+            <div class="notes-title">
+              <i class="fa-solid fa-pen-to-square"></i>
+              <span>Document Notes</span>
+            </div>
+            <span class="notes-badge empty" id="inspectNoteBadge">No Note</span>
+          </div>
+          <textarea id="documentNoteInput" class="note-textarea" placeholder="Take notes, record findings, or draft wikilinks for this document... (auto-saved)"></textarea>
+          <div class="note-actions-row">
+            <div style="display: flex; gap: 0.35rem;">
+              <button class="btn-tool" id="saveNoteBtn" style="padding:0.35rem 0.65rem;font-size:0.78rem;background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.35);color:#34d399;">
+                <i class="fa-solid fa-floppy-disk"></i> Save
+              </button>
+              <button class="btn-tool" id="clearNoteBtn" style="padding:0.35rem 0.65rem;font-size:0.78rem;background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);color:#f87171;">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+            <span id="inspectNoteTimestamp" class="note-timestamp"></span>
           </div>
         </div>
 
@@ -835,8 +1183,89 @@
     let hoveredNode = null;
     let draggedNode = null;
     let orphanFilterActive = false;
+    let notesFilterActive = false;
     let currentStageFilter = "ALL";
     let searchQuery = "";
+
+    // Hover Card State
+    let isMouseOverHoverCard = false;
+    let hoverHideTimer = null;
+
+    // ─── Document Notes System (localStorage) ─────────────────────────
+    const NOTES_STORAGE_KEY = "dp_knowledge_graph_notes";
+
+    function loadAllNotes() {
+      try {
+        const raw = localStorage.getItem(NOTES_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (_) {
+        return {};
+      }
+    }
+
+    function saveNoteForNode(nodeId, noteText, title = "") {
+      const allNotes = loadAllNotes();
+      const trimmed = noteText.trim();
+      if (trimmed) {
+        allNotes[nodeId] = {
+          text: trimmed,
+          title: title || nodeId,
+          updatedAt: new Date().toISOString()
+        };
+      } else {
+        delete allNotes[nodeId];
+      }
+      localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(allNotes));
+      updateNotesBadges();
+    }
+
+    function getNoteForNode(nodeId) {
+      if (!nodeId) return null;
+      const allNotes = loadAllNotes();
+      return allNotes[nodeId] || null;
+    }
+
+    function hasNote(nodeId) {
+      if (!nodeId) return false;
+      const allNotes = loadAllNotes();
+      return !!(allNotes[nodeId] && allNotes[nodeId].text.trim());
+    }
+
+    function updateNotesBadges() {
+      const allNotes = loadAllNotes();
+      const count = Object.keys(allNotes).length;
+      const headerBadge = document.getElementById("headerNotesCount");
+      if (headerBadge) headerBadge.textContent = count;
+      const filterBadge = document.getElementById("filterNotesCount");
+      if (filterBadge) filterBadge.textContent = count;
+    }
+
+    function exportAllNotesMarkdown() {
+      const allNotes = loadAllNotes();
+      const keys = Object.keys(allNotes);
+      if (keys.length === 0) {
+        alert("No notes found yet! Click any node and type in the Document Notes box to start taking notes.");
+        return;
+      }
+      let md = "# 📝 Knowledge Graph Notes & Annotations\n\n";
+      md += `> Generated on ${new Date().toLocaleString()} across ${keys.length} documents.\n\n`;
+      keys.forEach(k => {
+        const n = allNotes[k];
+        const node = graphData.nodes.find(item => item.id === k);
+        const stage = node ? node.stage : "Unknown";
+        md += `## 📄 [${n.title || k}](../../5_Symbols/deliverypilot/markdown_renderer.html?file=${encodeURIComponent(k)})\n`;
+        md += `- **Path:** \`${k}\`\n`;
+        md += `- **Stage:** ${stage}\n`;
+        md += `- **Last Updated:** ${new Date(n.updatedAt).toLocaleString()}\n\n`;
+        md += `### Notes:\n${n.text}\n\n---\n\n`;
+      });
+
+      const blob = new Blob([md], { type: "text/markdown" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "knowledge_graph_notes.md";
+      a.click();
+    }
 
     // Viewport transform
     let scale = 0.85;
@@ -921,6 +1350,7 @@
       document.getElementById("orphanCountBadge").textContent = orphans;
       document.getElementById("graphStatsBadge").textContent = 
         `${graphData.nodes.length} nodes · ${graphData.edges.length} edges · ${orphans} orphans`;
+      updateNotesBadges();
 
       // Select default node (problem_statement.md or first)
       const defaultNode = graphData.nodes.find(n => n.id.includes("problem_statement.md")) || graphData.nodes[0];
@@ -1101,6 +1531,26 @@
         const labelText = node.label.replace(".md", "");
         ctx.fillText(labelText, node.x, node.y + node.radius + 14);
 
+        // Note indicator badge on canvas
+        if (hasNote(node.id)) {
+          const badgeX = node.x + node.radius * 0.72;
+          const badgeY = node.y - node.radius * 0.72;
+          ctx.beginPath();
+          ctx.arc(badgeX, badgeY, 7.5, 0, Math.PI * 2);
+          ctx.fillStyle = "#f59e0b";
+          ctx.fill();
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          ctx.fillStyle = "#0b0f19";
+          ctx.font = "bold 9px sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("✎", badgeX, badgeY + 0.5);
+          ctx.textBaseline = "alphabetic";
+        }
+
         ctx.globalAlpha = 1.0;
       });
 
@@ -1112,7 +1562,9 @@
     function getFilteredNodes() {
       let list = graphData.nodes;
 
-      if (orphanFilterActive || currentStageFilter === "ORPHANS") {
+      if (notesFilterActive || currentStageFilter === "NOTES") {
+        list = list.filter(n => hasNote(n.id));
+      } else if (orphanFilterActive || currentStageFilter === "ORPHANS") {
         list = list.filter(n => n.is_orphan);
       } else if (currentStageFilter !== "ALL") {
         list = list.filter(n => n.stage === currentStageFilter);
@@ -1131,6 +1583,7 @@
       selectedNode = node;
       document.getElementById("inspectTitle").textContent = node.title || node.label;
       document.getElementById("inspectPath").textContent = node.path;
+      document.getElementById("inspectExcerpt").textContent = node.excerpt || "Click Open in Markdown Renderer to inspect complete document content.";
       
       const badge = document.getElementById("inspectStageBadge");
       badge.textContent = node.stage;
@@ -1141,6 +1594,24 @@
       document.getElementById("inspectInDegree").textContent = node.in_degree || 0;
       document.getElementById("inspectOutDegree").textContent = node.out_degree || 0;
       document.getElementById("inspectWikilinks").textContent = node.wikilinks_count || 0;
+
+      // Populate Notes Card
+      const note = getNoteForNode(node.id);
+      const noteInput = document.getElementById("documentNoteInput");
+      const noteBadge = document.getElementById("inspectNoteBadge");
+      const noteTs = document.getElementById("inspectNoteTimestamp");
+
+      if (note && note.text.trim()) {
+        noteInput.value = note.text;
+        noteBadge.textContent = "Saved";
+        noteBadge.className = "notes-badge saved";
+        noteTs.textContent = "Saved " + new Date(note.updatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      } else {
+        noteInput.value = "";
+        noteBadge.textContent = "No Note";
+        noteBadge.className = "notes-badge empty";
+        noteTs.textContent = "";
+      }
 
       // Orphan Alert & Fix Advice
       const orphanCard = document.getElementById("orphanAlertCard");
@@ -1229,6 +1700,77 @@
       panY = 0;
     }
 
+    // ─── Hover Preview Card ("Show Inside") ──────────────────────────────
+    function updateHoverCard(node) {
+      const card = document.getElementById("hoverPreviewCard");
+      if (!node) {
+        if (!isMouseOverHoverCard) {
+          hoverHideTimer = setTimeout(() => {
+            if (!isMouseOverHoverCard) card.style.display = "none";
+          }, 200);
+        }
+        return;
+      }
+      clearTimeout(hoverHideTimer);
+
+      const screenX = node.x * scale + panX;
+      const screenY = node.y * scale + panY;
+
+      document.getElementById("hoverTitle").textContent = node.title || node.label;
+      document.getElementById("hoverStageDot").style.backgroundColor = node.color || "#8b5cf6";
+      const badge = document.getElementById("hoverStageBadge");
+      badge.textContent = node.stage;
+      badge.style.color = node.color || "#fff";
+      badge.style.borderColor = node.color || "rgba(255,255,255,0.2)";
+
+      document.getElementById("hoverPath").textContent = node.path;
+      document.getElementById("hoverExcerpt").textContent = node.excerpt || "Click to open and read full document content.";
+
+      const note = getNoteForNode(node.id);
+      const noteBox = document.getElementById("hoverNoteBox");
+      if (note && note.text.trim()) {
+        noteBox.style.display = "flex";
+        document.getElementById("hoverNoteText").textContent = note.text;
+      } else {
+        noteBox.style.display = "none";
+      }
+
+      document.getElementById("hoverStats").textContent = `🔗 ${node.out_degree || 0} out · ${node.in_degree || 0} in`;
+
+      const openBtn = document.getElementById("hoverOpenDocBtn");
+      openBtn.href = `../../5_Symbols/deliverypilot/markdown_renderer.html?file=${encodeURIComponent(node.path)}`;
+
+      const addNoteBtn = document.getElementById("hoverAddNoteBtn");
+      addNoteBtn.onclick = () => {
+        selectNode(node);
+        card.style.display = "none";
+        const noteArea = document.getElementById("documentNoteInput");
+        noteArea.focus();
+        noteArea.scrollIntoView({ behavior: "smooth", block: "center" });
+      };
+
+      card.style.display = "flex";
+      const cardW = 320;
+      const cardH = card.offsetHeight || 220;
+      const cW = container.clientWidth;
+      const cH = container.clientHeight;
+
+      let left = screenX + node.radius * scale + 15;
+      let top = screenY - 40;
+
+      if (left + cardW > cW - 20) {
+        left = screenX - cardW - node.radius * scale - 15;
+      }
+      if (top + cardH > cH - 20) {
+        top = cH - cardH - 20;
+      }
+      if (top < 20) top = 20;
+      if (left < 20) left = 20;
+
+      card.style.left = `${left}px`;
+      card.style.top = `${top}px`;
+    }
+
     // ─── Mouse & Canvas Interaction ───────────────────────────────────────
     function getMousePos(e) {
       const rect = canvas.getBoundingClientRect();
@@ -1273,11 +1815,16 @@
       } else {
         const pos = getMousePos(e);
         const activeNodes = getFilteredNodes();
+        const prevHovered = hoveredNode;
         hoveredNode = activeNodes.find(n => {
           const dx = n.x - pos.x;
           const dy = n.y - pos.y;
           return (dx * dx + dy * dy) <= (n.radius * n.radius);
         }) || null;
+
+        if (hoveredNode !== prevHovered) {
+          updateHoverCard(hoveredNode);
+        }
       }
     });
 
@@ -1335,6 +1882,72 @@
           btn.innerHTML = `<i class="fa-solid fa-copy"></i><span>Copy Wikilink</span>`;
         }, 2000);
       });
+    });
+
+    // ─── Hover Card Listeners ──────────────────────────────────────────
+    const hoverCard = document.getElementById("hoverPreviewCard");
+    hoverCard.addEventListener("mouseenter", () => {
+      isMouseOverHoverCard = true;
+      clearTimeout(hoverHideTimer);
+    });
+    hoverCard.addEventListener("mouseleave", () => {
+      isMouseOverHoverCard = false;
+      hoverCard.style.display = "none";
+    });
+
+    // ─── Note-Taking Actions ─────────────────────────────────────────────
+    // Save Note Button
+    document.getElementById("saveNoteBtn").addEventListener("click", () => {
+      if (!selectedNode) return;
+      const text = document.getElementById("documentNoteInput").value;
+      saveNoteForNode(selectedNode.id, text, selectedNode.title || selectedNode.label);
+      selectNode(selectedNode);
+      const btn = document.getElementById("saveNoteBtn");
+      btn.innerHTML = `<i class="fa-solid fa-check"></i> Saved!`;
+      setTimeout(() => {
+        btn.innerHTML = `<i class="fa-solid fa-floppy-disk"></i> Save`;
+      }, 1500);
+    });
+
+    // Clear Note Button
+    document.getElementById("clearNoteBtn").addEventListener("click", () => {
+      if (!selectedNode) return;
+      if (confirm(`Clear note for "${selectedNode.label}"?`)) {
+        saveNoteForNode(selectedNode.id, "", "");
+        selectNode(selectedNode);
+      }
+    });
+
+    // Debounced Auto-Save while typing in note textarea
+    let noteAutoSaveTimer = null;
+    document.getElementById("documentNoteInput").addEventListener("input", (e) => {
+      if (!selectedNode) return;
+      const text = e.target.value;
+      clearTimeout(noteAutoSaveTimer);
+      noteAutoSaveTimer = setTimeout(() => {
+        saveNoteForNode(selectedNode.id, text, selectedNode.title || selectedNode.label);
+        const noteBadge = document.getElementById("inspectNoteBadge");
+        if (text.trim()) {
+          noteBadge.textContent = "Saved";
+          noteBadge.className = "notes-badge saved";
+          document.getElementById("inspectNoteTimestamp").textContent = "Auto-saved just now";
+        } else {
+          noteBadge.textContent = "No Note";
+          noteBadge.className = "notes-badge empty";
+        }
+      }, 600);
+    });
+
+    // Export Notes Button
+    document.getElementById("exportNotesBtn").addEventListener("click", exportAllNotesMarkdown);
+
+    // Notes Filter Toggle Button (Header)
+    const notesToggle = document.getElementById("notesToggleBtn");
+    notesToggle.addEventListener("click", () => {
+      notesFilterActive = !notesFilterActive;
+      notesToggle.classList.toggle("active", notesFilterActive);
+      const activeNodes = getFilteredNodes();
+      if (activeNodes.length > 0) selectNode(activeNodes[0]);
     });
 
     // Export Graph

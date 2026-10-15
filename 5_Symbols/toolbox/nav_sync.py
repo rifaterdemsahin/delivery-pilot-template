@@ -93,7 +93,6 @@ MENU = [
     ("🎛️ Master Review & Feedback", "5_Symbols/deliverypilot/master_review/index.html"),
     ("🎠 Artifacts Carousel", "5_Symbols/deliverypilot/artifacts_carousel.html"),
     ("📖 agents.md (Coordinator & Personas)", "agents.md"),
-    ("⚡ kilocode.md", "kilocode.md"),
 ]
 
 # 1. navigation_config.json

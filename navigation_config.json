@@ -88,7 +88,6 @@
     {"label": "---", "url": "divider"},
     {"label": "🎛️ Master Review & Feedback", "url": "5_Symbols/deliverypilot/master_review/index.html"},
     {"label": "🎠 Artifacts Carousel", "url": "5_Symbols/deliverypilot/artifacts_carousel.html"},
-    {"label": "📖 agents.md (Coordinator & Personas)", "url": "agents.md"},
-    {"label": "⚡ kilocode.md", "url": "kilocode.md"}
+    {"label": "📖 agents.md (Coordinator & Personas)", "url": "agents.md"}
   ]
 }

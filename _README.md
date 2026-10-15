@@ -161,7 +161,7 @@ RULE-005 — Allowed root folders only:
   6_Semblance
   7_Testing_Known
 Move every other root file or folder into the related subfolder of those (git mv, then fix references).
-Keep at repo root only: index.html, _README.md (symlink README.md -> _README.md), robots.txt, sitemap.xml, .gitignore, .env.example, navigation_config.json, agents.md, kilocode.md.
+Keep at repo root only: index.html, _README.md (symlink README.md -> _README.md), robots.txt, sitemap.xml, .gitignore, .env.example, navigation_config.json, agents.md.
 
 Stage Architecture & Placement:
 - 1_Real_Unknown/: Group into Golden Circle subfolders:

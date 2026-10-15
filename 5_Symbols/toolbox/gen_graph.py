@@ -62,6 +62,19 @@ def get_title(content, fallback):
         return title[:50]
     return fallback
 
+def get_excerpt(content, max_len=240):
+    text = re.sub(r"```.*?```", "", content, flags=re.DOTALL)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = re.sub(r"!\[.*?\]\(.*?\)", "", text)
+    text = re.sub(r"\[\[([^|\]]+)\|([^\]]+)\]\]", r"\2", text)
+    text = re.sub(r"\[\[([^\]]+)\]\]", r"\1", text)
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+    text = re.sub(r"^#+\s*.*$", "", text, flags=re.MULTILINE)
+    text = " ".join(text.split())
+    if len(text) > max_len:
+        return text[:max_len].rsplit(" ", 1)[0] + "…"
+    return text or "Document index or configuration file."
+
 def normalize_rel_path(path):
     return path.replace("\\", "/").lstrip("./")
 
@@ -130,11 +143,13 @@ def build_knowledge_graph():
         stage = get_stage(rel_path)
         basename = os.path.basename(rel_path)
         title = get_title(content, basename)
+        excerpt = get_excerpt(content)
 
         nodes[rel_path] = {
             "id": rel_path,
             "label": basename,
             "title": title,
+            "excerpt": excerpt,
             "path": rel_path,
             "stage": stage,
             "color": STAGE_COLORS.get(stage, "#64748b"),

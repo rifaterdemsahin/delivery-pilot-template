@@ -1437,6 +1437,49 @@ This log documents the thinking phase summaries and reasoning processes of the L
 - SPEC-027 formulated in `4_Formula/specs.md`.
 - 12/12 smoke tests pass green.
 
+---
+
+## 2026-10-15 — TSK-054: Remove kilocode.md & Knowledge Graph Hover Inside Preview with Note-Taking (SPEC-020 & SPEC-027)
+
+### 📥 Inputs & Requirements
+- **User Prompt:** "remove kilocode.md and when hovered over an item show inside and give the functionality to take notes. http://localhost:30090/1_Real_Unknown/Why/knowledge_graph.html"
+- **Stage Focus:** Real Agent (coordinator & `Why/` owner) + Symbols Agent (`knowledge_graph.html`, `gen_graph.py`, `nav_sync.py`) + Formula Agent (update `SPEC-020` & `SPEC-027`) + Test Agent (`smoke_test.py`, `check_links.py`).
+
+### 🔍 Analysis & Decisions
+1. **Total Persona Consolidation (`kilocode.md` removal)**:
+   - Merged the Kilo Code persona directly into `agents.md` under `### ⚡ Kilo Code Agent Persona (Kilo Code)`.
+   - Updated `agents.md` supported agents table and switching instructions to reference internal section anchors.
+   - Removed `kilocode.md` from repository root using `git rm kilocode.md`.
+   - Updated `.kilo/kilo.json` to point `"kilocode": "agents.md"`.
+   - Cleaned references in `5_Symbols/toolbox/nav_sync.py`, `5_Symbols/toolbox/smoke_test.py` (`ALLOWED_ROOT_FILES`), `5_Symbols/rules/agent_operating_rules.md`, `_README.md`, and `artifacts_carousel.html`.
+   - Updated `SPEC-020` in `4_Formula/specs.md` to record that zero standalone persona files remain at root, fully satisfying `RULE-005`.
+2. **Hover Preview ("Show Inside")**:
+   - Enhanced `5_Symbols/toolbox/gen_graph.py` with `get_excerpt()` to extract the first 240 clean characters of text from every document (stripping headings, images, raw markup, and code blocks) and persist into `nodes[id]["excerpt"]`.
+   - Added `#hoverPreviewCard` in `1_Real_Unknown/Why/knowledge_graph.html` featuring:
+     - Document title, filename, and color-coded stage dot.
+     - "📖 Inside Content:" preview box displaying the excerpt.
+     - "📝 Your Note:" box displaying active notes if present.
+     - In/Out connection counters.
+     - Interactive quick buttons: "Take Note" (focuses and scrolls note textarea) and "Open Document" (opens in Markdown Renderer).
+   - Styled with dark glassmorphism, smooth fade transitions, and viewport-edge collision detection.
+3. **Note-Taking Engine**:
+   - Implemented client-side note storage in `localStorage` under `dp_knowledge_graph_notes`.
+   - Added a dedicated **Document Notes** card in the Inspector sidebar with status badge ("Saved" / "No Note"), textarea, and auto-save on input (debounced 600ms).
+   - Added "Save" and "Clear" action buttons with user feedback and timestamps.
+   - Rendered visual canvas note indicators (`✎` amber badges) on any node with saved notes.
+   - Added Notes filter toggle button in the header and a `📝 With Notes` filter chip in the stage filter strip.
+   - Added `exportAllNotesMarkdown()` to download all user notes as a structured Markdown file (`knowledge_graph_notes.md`).
+4. **Verification**:
+   - Ran `nav_sync.py`: 85 debug menu entries synced across 3 sources.
+   - Ran `check_links.py`: 102 markdown and HTML files verified with 0 broken links.
+   - Ran `smoke_test.py`: 12/12 smoke tests pass green.
+   - Regenerated `repo_files.json`: 144 files cataloged.
+
+### 📤 Outcomes & Decisions
+- `kilocode.md` removed; personas 100% unified in `agents.md`.
+- Knowledge Graph canvas equipped with inside content hover preview and complete note-taking suite.
+- 12/12 smoke tests pass.
+
 
 
 

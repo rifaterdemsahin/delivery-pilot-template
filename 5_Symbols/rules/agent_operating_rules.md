@@ -114,7 +114,7 @@ Pick one backend target per service (static frontends stay on GitHub Pages):
 | `.gitignore`, `.env.example` | Git and secrets template |
 | `navigation_config.json` | Loaded by root `index.html` and renderer |
 | `calendar_config.json` | Loaded by calendar view component |
-| `agents.md` + LLM persona files (`kilocode.md`, …) | Coordinator & consolidated personas contract |
+| `agents.md` | Coordinator & consolidated personas contract |
 
 Do not park new docs, scripts, or tool caches next to these. Tool caches (`.antigravitycli/`, `node_modules/`, `.env`) stay gitignored, not in a stage folder.
 
@@ -122,7 +122,7 @@ Do not park new docs, scripts, or tool caches next to these. Tool caches (`.anti
 
 ## Session checklist
 
-1. Read this file + `agents.md` (coordinator and consolidated personas, or `kilocode.md`).
+1. Read this file + `agents.md` (coordinator and consolidated personas).
 2. Map the task in `1_Real_Unknown/` (OKRs, `tasks.md`, `prompts.md`).
 3. Spec in `4_Formula/` **before** `5_Symbols` code (and confirm with the user when crossing into implementation).
 4. Implement, then **update the spec to match what you actually did** (RULE-001).

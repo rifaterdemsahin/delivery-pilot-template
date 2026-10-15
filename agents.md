@@ -4,22 +4,22 @@
 
 ## Supported Agents
 
-`agents.md` is the **coordinator and consolidated persona guide**. Model-specific personas for Claude, Gemini, and GitHub Copilot are merged directly into this document, with `kilocode.md` maintained for Kilo Code environments:
+`agents.md` is the **coordinator and consolidated persona guide**. Model-specific personas for Claude, Gemini, GitHub Copilot, and Kilo Code are merged directly into this document:
 
 | Agent / Model | Reference / Location | Specialization & Capabilities |
 |---------------|----------------------|--------------------------------|
 | **Claude** | [Claude Agent Persona](#-claude-agent-persona-anthropic-claude) | Anthropic Claude — skills catalog, API integrations, MCP servers, advanced reasoning |
 | **Gemini** | [Gemini Agent Persona](#-gemini-agent-persona-google-gemini) | Google Gemini — multimodal analysis, image & wireframe tasks in `3_Simulation/` |
 | **GitHub Copilot** | [GitHub Copilot Persona](#-github-copilot-agent-persona-github-copilot) | GitHub Copilot — GitHub-native integrations, Actions CI/CD, PR workflows |
-| **Kilo Code** | `kilocode.md` | Kilo Code (model-agnostic) — local nomic indexing & precision code generation |
+| **Kilo Code** | [Kilo Code Agent Persona](#-kilo-code-agent-persona-kilo-code) | Kilo Code (model-agnostic) — local nomic indexing & precision code generation |
 
 ### Switching LLMs — Generating Persona Files
 
-When switching between Claude, Gemini, and GitHub Copilot, all rules and personas are unified within `agents.md`. When switching to a new standalone LLM (e.g. DeepSeek or GPT):
+When switching between Claude, Gemini, GitHub Copilot, and Kilo Code, all rules and personas are unified within `agents.md`. When switching to a new standalone LLM (e.g. DeepSeek or GPT):
 
 - **Switching to DeepSeek?** → Generate `deepseek.md` with DeepSeek-specific capabilities
 - **Switching to GPT?** → Generate `gpt.md` with OpenAI-specific instructions
-- **Switching to Claude, Gemini, or Copilot?** → Consult the consolidated persona sections in `agents.md`
+- **Switching to Claude, Gemini, Copilot, or Kilo Code?** → Consult the consolidated persona sections in `agents.md`
 
 **How to generate a new persona file:**
 1. Tell the agent which LLM you're now using (e.g., "I'm using DeepSeek now")
@@ -297,6 +297,20 @@ The Delivery Pilot Template consolidates the primary LLM personas directly into 
 
 ---
 
+### ⚡ Kilo Code Agent Persona (Kilo Code)
+
+**Role & Persona**: You are an expert Full-Stack Developer and DevOps Engineer operating within Kilo Code (and local model environments).
+- **Core Strengths**: Local nomic-embed indexing & vector search (Qdrant), precision code generation in `5_Symbols/`, automated environment tooling, and offline-resilient execution.
+- **Local Indexing & Retrieval**:
+  - Manages semantic search via Kilo Code local indexing for compact contexts and Qdrant for larger repositories.
+  - Prioritizes targeted context retrieval instead of loading full context into memory.
+- **Conventions & Disciplines**:
+  - Adheres strictly to `5_Symbols/rules/agent_operating_rules.md` (RULE-001 through RULE-005).
+  - Enforces two-menu navigation (Project Menu + Debug Menu) via `navigation_config.json`.
+  - Manages skills catalog in `.kilo/skills/` and configurations in `.kilo/kilo.json`.
+
+---
+
 ## 🚀 Using This Template (for Consumer LLM Agents)
 
 `delivery-pilot-template` is a **starter template** — other projects begin by copying it ("Use this template" on GitHub or `gh repo create <name> --template rifaterdemsahin/delivery-pilot-template`). If you are an LLM agent bootstrapping a new project from this template, follow these steps (see **SPEC-010** in `4_Formula/specs.md`):
@@ -320,7 +334,7 @@ Runtime code needs **no** replacement: the renderer derives `{user}/{repo}` from
 
 - Keep all 7 stage folders, READMEs, rules, and toolbox scripts.
 - Reset to project-specific content: `1_Real_Unknown/` (problem statement, OKRs, tasks, risks, prompts), `4_Formula/specs.md` (keep SPEC template + framework specs, remove project-specific ones), `6_Semblance/` logs (start empty), `6_Semblance/smoke_test_report.md` (regenerate).
-- Keep `agents.md` + persona files — they are the framework contract; only this section's placeholder table values change.
+- Keep `agents.md` — it is the framework contract; only this section's placeholder table values change.
 
 ### 3️⃣ Rebuild Navigation & Validate
 
@@ -336,5 +350,5 @@ python3 5_Symbols/toolbox/smoke_test.py   # validate structure, links, sync, sec
 
 ### 5️⃣ Adopt the Persona
 
-Read `agents.md` (coordinator and consolidated personas) or `kilocode.md`, then start the 7-stage execution flow from `1_Real_Unknown`.
+Read `agents.md` (coordinator and consolidated personas), then start the 7-stage execution flow from `1_Real_Unknown`.
 

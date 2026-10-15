@@ -257,14 +257,14 @@
 
 ### SPEC-020: Consolidated Agent Persona & Coordinator Architecture
 - **Status:** Active
-- **Description:** Consolidates model-specific personas for Claude (`claude.md`), Gemini (`gemini.md`), and GitHub Copilot (`copilot.md`) directly into `agents.md`. Eliminates file duplication and cross-persona maintenance drift while preserving individual LLM specializations (Claude skills & MCPs, Gemini multimodal analysis, Copilot Actions CI/CD).
+- **Description:** Consolidates model-specific personas for Claude (`claude.md`), Gemini (`gemini.md`), GitHub Copilot (`copilot.md`), and Kilo Code (`kilocode.md`) directly into `agents.md`. Eliminates file duplication and cross-persona maintenance drift while preserving individual LLM specializations (Claude skills & MCPs, Gemini multimodal analysis, Copilot Actions CI/CD, Kilo Code local indexing & precision coding).
 - **Key Behaviors:**
   - **Single Source of Truth**: `agents.md` serves as both universal coordinator for the 7 stages and comprehensive repository for model-specific personas.
-  - **Consolidated Personas**: Includes dedicated sections for Claude (skills, MCP servers, error loop), Gemini (multimodal inspection in `3_Simulation/`, AI stack), and Copilot (Actions CI/CD, PR pipelines).
-  - **Clean Root Footprint**: Retires standalone persona files (`claude.md`, `gemini.md`, `copilot.md`), keeping only `agents.md` and `kilocode.md`.
+  - **Consolidated Personas**: Includes dedicated sections for Claude (skills, MCP servers, error loop), Gemini (multimodal inspection in `3_Simulation/`, AI stack), Copilot (Actions CI/CD, PR pipelines), and Kilo Code (local nomic indexing, Qdrant vectors, offline-resilient execution).
+  - **Clean Root Footprint**: Retires all standalone persona files (`claude.md`, `gemini.md`, `copilot.md`, `kilocode.md`), keeping only `agents.md` at the repository root in full accordance with `RULE-005`.
   - **Tool & Navigation Alignment**: `5_Symbols/toolbox/nav_sync.py` and `navigation_config.json` route to `agents.md` as the unified coordinator and persona reference.
-- **Related Files:** `agents.md`, `kilocode.md`, `5_Symbols/toolbox/nav_sync.py`, `5_Symbols/toolbox/smoke_test.py`, `navigation_config.json`
-- **Last Updated:** 2026-10-14
+- **Related Files:** `agents.md`, `5_Symbols/toolbox/nav_sync.py`, `5_Symbols/toolbox/smoke_test.py`, `navigation_config.json`
+- **Last Updated:** 2026-10-15
 
 ### SPEC-021: Strict DeliveryPilot Encapsulation & Pure ProjectMenu Partitioning
 - **Status:** Active

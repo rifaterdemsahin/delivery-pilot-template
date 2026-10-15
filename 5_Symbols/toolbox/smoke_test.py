@@ -56,7 +56,6 @@ ALLOWED_ROOT_FILES = {
     "claude.md",
     "gemini.md",
     "copilot.md",
-    "kilocode.md",
     "LICENSE",
     "LICENCE",
 }

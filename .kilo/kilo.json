@@ -7,7 +7,7 @@
     ".kilo/skills/secrets.md"
   ],
   "agents": {
-    "kilocode": ".kilo/agent/kilocode.md",
+    "kilocode": "agents.md",
     "colors": {
       "real": "#8b5cf6",
       "environment": "#06b6d4",
