@@ -42,6 +42,7 @@
     {"label": "      ├─ 📄 GitHub Pages", "url": "2_Environment/Where/github_pages.md"},
     {"label": "      ├─ ⚡ Cloudflare Workers", "url": "2_Environment/Where/cloudflare_workers.md"},
     {"label": "      ├─ 🚀 Fly.io (Deployments)", "url": "2_Environment/Where/fly_io.md"},
+    {"label": "      ├─ 🔌 Platform API (Fly+GitHub)", "url": "2_Environment/Where/platform_api.md"},
     {"label": "      ├─ 🗄️ Supabase (Database)", "url": "2_Environment/Where/supabase.md"},
     {"label": "      ├─ 📊 Axiom (Logs)", "url": "2_Environment/Where/axiom.md"},
     {"label": "      ├─ ☁️ Setup — Azure", "url": "2_Environment/Where/setup_azure.md"},

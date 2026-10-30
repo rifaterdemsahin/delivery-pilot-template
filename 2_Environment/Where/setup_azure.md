@@ -54,6 +54,12 @@ To pull secrets into GitHub workflows, the repository needs Azure Service Princi
 
 ---
 
+## 🔌 Platform API keys (Fly.io + GitHub)
+
+Store `FLY-API-TOKEN` and `GITHUB-AGENT-TOKEN` in the shared vault `dp-kv-deliverypilot` — see [Platform API](./platform_api.md) (SPEC-028).
+
+---
+
 ## 📁 Azure project-based storage (default)
 
 The project **default storage** is Azure Storage scoped to this project (RULE-004 / SPEC-012): one Storage account, blob containers for uploads, artifacts, and files. Account keys and connection strings live in this Key Vault — never in git.

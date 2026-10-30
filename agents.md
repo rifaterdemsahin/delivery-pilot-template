@@ -336,6 +336,10 @@ Runtime code needs **no** replacement: the renderer derives `{user}/{repo}` from
 - Reset to project-specific content: `1_Real_Unknown/` (problem statement, OKRs, tasks, risks, prompts), `4_Formula/specs.md` (keep SPEC template + framework specs, remove project-specific ones), `6_Semblance/` logs (start empty), `6_Semblance/smoke_test_report.md` (regenerate).
 - Keep `agents.md` — it is the framework contract; only this section's placeholder table values change.
 
+### 2️⃣b Wire Fly.io + GitHub API Access (SPEC-028)
+
+Edit `2_Environment/platform_config.json` (Fly apps, approved machines, shared-config repo/paths) and verify with `python3 5_Symbols/toolbox/platform_api.py check`. Keys `FLY-API-TOKEN` and `GITHUB-AGENT-TOKEN` come from the shared Azure Key Vault `dp-kv-deliverypilot` — never from files in git. Details: `2_Environment/Where/platform_api.md`.
+
 ### 3️⃣ Rebuild Navigation & Validate
 
 ```bash

@@ -385,6 +385,17 @@
 - **Related Files:** `agents.md`, `5_Symbols/rules/agent_operating_rules.md`, `1_Real_Unknown/Why/knowledge_graph.html`, `1_Real_Unknown/Why/graph_data.json`, `5_Symbols/toolbox/gen_graph.py`, `5_Symbols/toolbox/nav_sync.py`, `4_Formula/specs.md`
 - **Last Updated:** 2026-10-15
 
+### SPEC-028: Platform API Access (Fly.io + GitHub) with Key Vault Keys
+- **Status:** Active
+- **Description:** Every project spawned from the template can reach deployed Fly.io machines and the shared GitHub-hosted configuration through one stdlib-only client. API keys (`FLY-API-TOKEN`, `GITHUB-AGENT-TOKEN`) are stored only in the shared Azure Key Vault `dp-kv-deliverypilot` and resolved at runtime; `2_Environment/platform_config.json` holds non-secret pointers only.
+- **Key Behaviors:**
+  - `platform_api.py` lists Fly apps/machines, detects unapproved running machines (drift guard), and fetches shared config files via the GitHub Contents API.
+  - Secret resolution: Key Vault (`az keyvault secret show`) first, then env fallback for CI; values are never printed or persisted.
+  - `/bootstrap-template` configures the pointers and verifies with `platform_api.py check`.
+  - `.github/workflows/platform-drift.yml` runs the drift guard on demand via `AZURE_CREDENTIALS`.
+- **Related Files:** `5_Symbols/toolbox/platform_api.py`, `2_Environment/platform_config.json`, `2_Environment/Where/platform_api.md`, `2_Environment/Where/fly_io.md`, `2_Environment/Where/setup_azure.md`, `.github/workflows/platform-drift.yml`, `.claude/skills/bootstrap-template/SKILL.md`
+- **Last Updated:** 2026-10-30
+
 ---
 
 ## Spec Template

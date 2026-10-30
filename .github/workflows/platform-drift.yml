@@ -1,0 +1,22 @@
+# Fly.io drift guard (SPEC-028): fails if an unapproved machine is running.
+# Manual only, so new projects without Azure/Key Vault wiring don't fail on a schedule.
+# Add a `schedule:` trigger once AZURE_CREDENTIALS is configured.
+name: Platform drift guard
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fly-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Check Fly.io machines
+        run: python3 5_Symbols/toolbox/platform_api.py fly-drift

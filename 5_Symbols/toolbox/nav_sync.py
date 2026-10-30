@@ -46,6 +46,7 @@ MENU = [
     ("      ├─ 📄 GitHub Pages", "2_Environment/Where/github_pages.md"),
     ("      ├─ ⚡ Cloudflare Workers", "2_Environment/Where/cloudflare_workers.md"),
     ("      ├─ 🚀 Fly.io (Deployments)", "2_Environment/Where/fly_io.md"),
+    ("      ├─ 🔌 Platform API (Fly+GitHub)", "2_Environment/Where/platform_api.md"),
     ("      ├─ 🗄️ Supabase (Database)", "2_Environment/Where/supabase.md"),
     ("      ├─ 📊 Axiom (Logs)", "2_Environment/Where/axiom.md"),
     ("      ├─ ☁️ Setup — Azure", "2_Environment/Where/setup_azure.md"),

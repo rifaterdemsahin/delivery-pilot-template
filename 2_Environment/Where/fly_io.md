@@ -134,6 +134,10 @@ for app in $(flyctl apps list -j | jq -r '.[].ID'); do
 done
 
 
+## Reaching Deployed Machines via API (SPEC-028)
+
+Projects list and audit existing machines through the Fly Machines API using `5_Symbols/toolbox/platform_api.py` (`fly-machines`, `fly-drift`). The token `FLY-API-TOKEN` is read from Azure Key Vault at runtime. See [Platform API](./platform_api.md).
+
 ## References
 
 - [Fly.io Docs](https://fly.io/docs/)

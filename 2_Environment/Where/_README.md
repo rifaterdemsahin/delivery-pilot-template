@@ -26,6 +26,7 @@ It defines the physical, cloud, and local targets of the project:
 | [`fly_io.md`](fly_io.md) | Fly.io | Containerized execution environment for heavy backends, Python APIs, and WebSockets |
 | [`supabase.md`](supabase.md) | Supabase (PostgreSQL) | Primary relational database, Row-Level Security, authentication, and realtime data |
 | [`axiom.md`](axiom.md) | Axiom Cloud | Centralized server-side structured log management, tracing, and alerts |
+| [`platform_api.md`](platform_api.md) | Fly.io + GitHub API | Reach deployed machines and shared config; keys from Azure Key Vault (SPEC-028) |
 | [`setup_azure.md`](setup_azure.md) | Microsoft Azure | Azure Key Vault for zero-secret credential management & Blob Storage |
 | [`local_server.md`](local_server.md) | Localhost (Port 30,000+) | Local development web server policy (avoiding port collision with system services) |
 | [`setup_mac.md`](setup_mac.md) | macOS Workstation | Developer onboarding, Homebrew packages, and Mac environment setup |
